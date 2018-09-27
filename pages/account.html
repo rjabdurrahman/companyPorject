@@ -12,9 +12,7 @@
             <div class="w3-rest">
                 <select class="w3-select w3-border" name="option">
                     <option value="" disabled selected>Choose Nature</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc}}</option>
                 </select>
             </div>
         </div>
@@ -23,11 +21,11 @@
                 <label class="w3-medium">A/C Code</label>
             </div>
             <div class="w3-rest" style="display: flex">
-                <input class="w3-input w3-border" name="first" type="text" value="NCA" style="width: 70px;" disabled>
+                <input class="w3-input w3-border" name="first" type="text" value="NCA" style="width: 70px; text-align: center" disabled>
                 <label style="padding: 8px;">-</label>
-                <input class="w3-input w3-border" name="first" type="text">
+                <input class="w3-input w3-border" name="first" type="text" style="text-align: center">
                 <label style="padding: 8px;">-</label>
-                <input class="w3-input w3-border" name="first" type="text" style="width: 60px;">
+                <input class="w3-input w3-border" name="first" type="text" style="width: 60px; text-align: center">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -43,3 +41,6 @@
         </p>
     </div>
 </div>
+<script>
+    
+</script>

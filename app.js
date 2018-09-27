@@ -16,6 +16,3 @@ app.config(function($routeProvider) {
 app.controller('LoginCntlr', function($scope){
     $scope.message = "Login Cntl";
 });
-app.controller('AccountCntlr', function($scope){
-    $scope.message = "Account Cntl";
-});
