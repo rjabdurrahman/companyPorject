@@ -4,7 +4,7 @@ app.controller('AccountCntlr', function ($scope) {
         NCA : 'Non-Current Asset',
         CL : 'Current Liability',
         NCL : 'Non-Current Liability',
-        EQ : 'Equity',
+        EQTY : 'Equity',
         EX : 'Experience',
         REV : 'Revenue',
         WD : 'Withdrawal',
