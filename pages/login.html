@@ -1,1 +1,25 @@
-Login Page
+<div class="div-box w3-card-4 margin-auto" style="margin-top: 18px;">
+    <div class="w3-container w3-indigo">
+        <h2>Login</h2>
+    </div>
+    <div class="w3-container">
+        <input id="usernameField" class="w3-input" type="text" style="width: 100%; margin-top: 10px;" placeholder="Username">
+        <input id="passwordField" class="w3-input" type="text" style="width: 100%; margin-top: 10px;" placeholder="Password">
+        <p>
+            <button id="loginBtn" class="w3-btn w3-indigo">Login</button>
+        </p>
+    </div>
+</div>
+<script>
+    if(!lsGet('user')){
+        let user = {
+            id : 1,
+            username : 'afsana',
+            pass : '1234'
+        };
+        lsSetJ('comUser', user);
+    }
+    $js('loginBtn').addEventListener('click', function () {
+        window.location.href = '#account';
+    });
+</script>

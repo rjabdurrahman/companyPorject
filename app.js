@@ -5,10 +5,17 @@ app.config(function($routeProvider) {
 
   .when('/', {
     templateUrl : 'pages/login.html',
-    controller  : 'HomeCntlr'
+    controller  : 'LoginCntlr'
+  })
+  .when('/account', {
+    templateUrl : 'pages/account.html',
+    controller  : 'AccountCntlr'
   })
   .otherwise({redirectTo: '/'});
 });
-app.controller('HomeCntlr', function($scope){
-    $scope.message = "Home Cntl";
+app.controller('LoginCntlr', function($scope){
+    $scope.message = "Login Cntl";
+});
+app.controller('AccountCntlr', function($scope){
+    $scope.message = "Account Cntl";
 });

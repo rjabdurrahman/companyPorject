@@ -21,39 +21,7 @@ a {
     display: none;
 }
 
-@media print {
-    @page {
-        margin-top: 8mm;
-        margin-bottom: 0mm;
-        border: 1px solid black;
-    }
-    body * {
-        visibility: hidden;
-    }
-    .print-view, .print-view * {
-        visibility: visible;
-        /* display: inline-block; */
-    }
-    .print-center {
-        position: absolute;
-        top: 0;
-        left: calc((100% - 500px)/2);
-    }
-    .print-none {
-        visibility: hidden;
-    }
-    .print-corner {
-        width: 250px;
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-        margin-right: 10px;
-        text-align: center;
-        font-size: 14px;
-    }
-}
-
-input, select, option {
+input, select, option, textarea {
     outline: none;
 }
 
@@ -63,7 +31,7 @@ input.w3-input:focus {
 
 input[type="text"]:disabled {
     background: white;
-    color: black;
+    color: gray;
 }
 
 .margin-auto {
@@ -76,118 +44,4 @@ input[type="text"]:disabled {
 
 .flex {
     display: flex;
-}
-
-/* Main Page */
-
-.box {
-    height: 120px;
-    width: 120px;
-    position: relative;
-    cursor: pointer;
-    margin: 7px;
-}
-
-.box i {
-    position: absolute;
-    left: 30px;
-    top: 20px;
-    text-align: center;
-    font-size: 60px;
-}
-
-.box .footer {
-    position: absolute;
-    bottom: 0;
-    padding: 4px 6px 4px 6px;
-    text-align: center;
-    width: 100%;
-}
-
-.top-nav button {
-    border: 1px solid white;
-    margin: 4px 4px 12px 4px;
-}
-
-/*Add Student*/
-
-#studentList label, #resultList label, #subjectList label, #examList label {
-    margin-top: 7px;
-    font-size: 16px;
-}
-
-#studentList label::after, #resultList label::after, #subjectList label::after {
-    content: ".";
-}
-
-/*Add Result*/
-
-.list_header label {
-    font-size: 12px;
-    color: indigo;
-    width: 60px;
-    float: right;
-    overflow: hidden;
-    text-align: center;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.list_header-full {
-    display: flex;
-}
-
-.list_header-full label {
-    font-size: 12px;
-    color: indigo;
-    flex: 1;
-    text-align: center;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-#resultList, #subjectList {
-    clear: both;
-}
-
-.marks_input {
-    width: 60px;
-    margin-left: 10px;
-    text-align: center;
-}
-
-/* Add Subject */
-
-/* View Result Table View */
-
-td, th {
-    border-collapse: collapse;
-    border: 1px black solid;
-}
-
-.rotate {
-    /* FF3.5+ */
-    -moz-transform: rotate(-90.0deg);
-    /* Opera 10.5 */
-    -o-transform: rotate(-90.0deg);
-    /* Saf3.1+, Chrome */
-    -webkit-transform: rotate(-90.0deg);
-    /* IE6,IE7 */
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
-    /* IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
-    /* Standard */
-    transform: rotate(-90.0deg);
-}
-
-/* Grade Manager */
-
-#gradeList p input {
-    flex: 1;
-    margin-right: 10px;
-    text-align: center;
-}
-
-#gradeList p input:last-child {
-    margin-right: 0;
 }
