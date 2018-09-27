@@ -26,13 +26,13 @@
                         <option value="SE">SE</option>
                         <option value="RE">RE</option>
                     </select>
-                    <input ng-switch-default class="w3-input w3-border" name="first" type="text" value="{{natureSelection}}" style="width: 70px; text-align: center"
+                    <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}" style="width: 70px; text-align: center"
                         disabled>
                 </section>
                 <label style="padding: 8px;">-</label>
-                <input class="w3-input w3-border" name="first" type="text" style="text-align: center">
+                <input ng-model="accFirst" class="w3-input w3-border" type="text" style="text-align: center">
                 <label style="padding: 8px;">-</label>
-                <input class="w3-input w3-border" name="first" type="text" style="width: 60px; text-align: center">
+                <input ng-model="accSecond" class="w3-input w3-border" type="text" style="width: 60px; text-align: center">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -40,9 +40,10 @@
                 <label class="w3-medium">Accounts</label>
             </div>
             <div class="w3-rest">
-                <textarea class="w3-input w3-border" name="" id="" rows="5"></textarea>
+                <textarea ng-model="account.text" class="w3-input w3-border" name="" id="" rows="5"></textarea>
             </div>
         </div>
+        <div>DATa - {{account}} - {{accFirst + "-" + accSecond}}</div>
         <p>
             <button id="loginBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
         </p>
