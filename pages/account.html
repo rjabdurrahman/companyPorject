@@ -1,10 +1,8 @@
-<div>
-    <div class="w3-container w3-padding-16 w3-indigo">
-        <button class="w3-button w3-border">Account</button>
-        <button class="w3-button w3-border">Receivable</button>
-        <button class="w3-button w3-border">Others</button>
+<div class="div-box w3-card-4 margin-auto" style="margin-top: 18px;">
+    <div class="w3-container w3-indigo">
+        <h2>Account</h2>
     </div>
-    <div class="w3-container w3-card-4 div-box margin-auto w3-border w3-border-indigo" style="margin-top: 16px; padding-bottom: 16px;">
+    <div class="w3-container">
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:100px; padding: 10px;">
                 <label class="w3-medium">Nature</label>
@@ -48,50 +46,53 @@
             <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
             <button class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
         </p>
+        <div style="clear: both;height: 16px;"></div>
     </div>
 </div>
+
+
 <script>
     // lsSetJ('comAccounts', []);
-    $js('submitAccBtn').addEventListener('click', function(){
+    $js('submitAccBtn').addEventListener('click', function () {
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
         var accCodeInit = '';
         let accCodeInitNode = $js('accCodeInit').firstElementChild;
-        if(accCodeInitNode.tagName == 'INPUT'){
+        if (accCodeInitNode.tagName == 'INPUT') {
             accCodeInit = accCodeInitNode.value;
         }
-        else if(accCodeInitNode.tagName == 'SELECT'){
+        else if (accCodeInitNode.tagName == 'SELECT') {
             accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
         }
         let accCodeFirst = $js('accCodeFirst').value;
         let accCodeSecond = $js('accCodeSecond').value;
         let accTxt = $js('accTxt').value;
-        if(accNature == '' || accNature == 'Choose Nature' || accCodeInit == ''){
+        if (accNature == '' || accNature == 'Choose Nature' || accCodeInit == '') {
             alert('select Nature');
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
-        if(accCodeSecond != ''){
+        if (accCodeSecond != '') {
             accNumber += "-" + accCodeSecond;
         }
         let account = {
-            nature : accNature,
-            accNo : accNumber,
-            accText : accTxt,
+            nature: accNature,
+            accNo: accNumber,
+            accText: accTxt,
         }
-        let comAccounts = lsExGJInit('comAccounts',[]);
+        let comAccounts = lsExGJInit('comAccounts', []);
         comAccounts.push(account);
         lsSetJ('comAccounts', comAccounts);
-        $print(lsExGJInit('comAccounts',[]));
+        $print(lsExGJInit('comAccounts', []));
         clearAccFields();
     });
-    function clearAccFields(){
+    function clearAccFields() {
         $js('accNature').selectedIndex = 0;
         accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
         let accCodeInitNode = $js('accCodeInit').firstElementChild;
-        if(accCodeInitNode.tagName == 'INPUT'){
+        if (accCodeInitNode.tagName == 'INPUT') {
             accCodeInitNode.value = "";
         }
-        else if(accCodeInitNode.tagName == 'SELECT'){
+        else if (accCodeInitNode.tagName == 'SELECT') {
             accCodeInitNode.selectedIndex = 0;
         }
     }
