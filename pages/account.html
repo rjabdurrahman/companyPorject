@@ -45,10 +45,13 @@
         </div>
         <p>
             <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+            <button class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
+            <button class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
         </p>
     </div>
 </div>
 <script>
+    // lsSetJ('comAccounts', []);
     $js('submitAccBtn').addEventListener('click', function(){
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
         var accCodeInit = '';
@@ -62,11 +65,22 @@
         let accCodeFirst = $js('accCodeFirst').value;
         let accCodeSecond = $js('accCodeSecond').value;
         let accTxt = $js('accTxt').value;
+        if(accNature == '' || accNature == 'Choose Nature' || accCodeInit == ''){
+            alert('select Nature');
+            return;
+        }
+        var accNumber = accCodeInit + "-" + accCodeFirst;
+        if(accCodeSecond != ''){
+            accNumber += "-" + accCodeSecond;
+        }
         let account = {
             nature : accNature,
-            accNo : accCodeInit + "-" + accCodeFirst + "-" + accCodeSecond,
+            accNo : accNumber,
             accText : accTxt,
         }
-        $print(account);
+        let comAccounts = lsExGJInit('comAccounts',[]);
+        comAccounts.push(account);
+        lsSetJ('comAccounts', comAccounts);
+        $print(lsExGJInit('comAccounts',[]));
     });
 </script>
