@@ -6,6 +6,17 @@ a {
     text-decoration: none;
 }
 
+ul{
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid lightgray;
+    width: 300px;
+    background-color: lightgray;
+}
+ul li{
+    padding: 2px;
+    cursor: pointer;
+}
 .hide {
     visibility: hidden;
     display: none;
