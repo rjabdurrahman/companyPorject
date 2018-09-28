@@ -85,9 +85,13 @@
         let accCodeFirst = $js('accCodeFirst').value;
         let accCodeSecond = $js('accCodeSecond').value;
         let accTxt = $js('accTxt').value;
-        if (accNature == '' || accNature == 'Choose Nature' || accCodeInit == '') {
+        if (accNature == '' || accNature == 'Choose Nature') {
             $('#notification').html("<h6>Select Nature</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             // alert('select Nature');
+            return;
+        }
+        else if ($js('accCodeFirst').value == '') {
+            $('#notification').html("<h6>Input Account Code</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
