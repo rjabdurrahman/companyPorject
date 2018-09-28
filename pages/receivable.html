@@ -75,7 +75,10 @@
     </table>
 </div>
 <script>
-    var accountCodes = ['2323', '121', '112', 'dfdsfe'];
+    var accountCodes = [];
+    lsExGJInit('comAccounts', []).forEach(element => {
+        accountCodes.push(element.accNo);
+    });
     $('#recACCode').autocomplete({
         source: accountCodes
     });
