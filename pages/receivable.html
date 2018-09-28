@@ -140,9 +140,16 @@
             { wch: 20 },
             { wch: 15 },
             { wch: 14 },
-            { wch: 30 }
+            { MDW: 5 }
+        ];
+        var wsrows = [
+            {
+                hpx: 24,
+                level: 2
+            }
         ];
         ws['!cols'] = wscols;
+        ws['!rows'] = wsrows;
         XLSX.utils.book_append_sheet(wb, ws, 'Receivables');
         var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
         function s2ab(s) {
