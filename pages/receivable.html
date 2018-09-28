@@ -57,24 +57,20 @@
 <div class="w3-panel">
     <table class="w3-table w3-striped w3-border">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Points</th>
+            <th>ID</th>
+            <th>A/C Code</th>
+            <th>Party Name</th>
+            <th>Customer Type</th>
+            <th>Mobile</th>
+            <th>Address</th>
         </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-        <tr>
-            <td>Adam</td>
-            <td>Johnson</td>
-            <td>67</td>
+        <tr ng-repeat="rec in comReceivables track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{rec.acCode}}</td>
+            <td>{{rec.partyName}}</td>
+            <td>{{rec.cusType}}</td>
+            <td>{{rec.mobile}}</td>
+            <td>{{rec.address}}</td>
         </tr>
     </table>
 </div>
