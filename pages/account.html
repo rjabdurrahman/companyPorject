@@ -45,7 +45,7 @@
         </div>
         <p>
             <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-            <button class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
+            <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
             <button class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
         </p>
     </div>
@@ -82,5 +82,17 @@
         comAccounts.push(account);
         lsSetJ('comAccounts', comAccounts);
         $print(lsExGJInit('comAccounts',[]));
+        clearAccFields();
     });
+    function clearAccFields(){
+        $js('accNature').selectedIndex = 0;
+        accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
+        let accCodeInitNode = $js('accCodeInit').firstElementChild;
+        if(accCodeInitNode.tagName == 'INPUT'){
+            accCodeInitNode.value = "";
+        }
+        else if(accCodeInitNode.tagName == 'SELECT'){
+            accCodeInitNode.selectedIndex = 0;
+        }
+    }
 </script>
