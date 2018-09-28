@@ -44,14 +44,14 @@
         <p>
             <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
             <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
-            <button class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
+            <button onclick="printAccounts()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
         </p>
         <div style="clear: both;height: 16px;"></div>
     </div>
 </div>
 
 <div class="w3-panel">
-    <table class="w3-table w3-striped w3-border">
+    <table id="accountsTable" class="w3-table w3-striped w3-border">
         <tr>
             <th>ID</th>
             <th>Nature</th>
@@ -110,5 +110,18 @@
         else if (accCodeInitNode.tagName == 'SELECT') {
             accCodeInitNode.selectedIndex = 0;
         }
+    }
+
+    function printAccounts() {
+        $print("print");
+        var wb = XLSX.utils.table_to_book(document.getElementById('accountsTable'), { sheet: "Sheet JS" });
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'test.xlsx');
     }
 </script>

@@ -52,3 +52,12 @@ function $html(tag, atts, text) {
 // firebase.initializeApp(config);
 
 // var studentRef = firebase.database().ref('students');
+
+var wb = XLSX.utils.book_new();
+wb.Props = {
+    Title: "Company WordBook",
+    Subject: "Test",
+    Author: "Abdur Rahman",
+    CreatedDate: new Date(2018,09,18)
+};
+wb.SheetNames.push("Test Sheet");
