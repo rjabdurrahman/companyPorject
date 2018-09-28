@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<div class="w3-panel" style="display: none;">
+<div class="w3-panel">
     <table id="accountsTable" class="w3-table w3-striped w3-border">
         <tr>
             <th>ID</th>
@@ -108,6 +108,7 @@
         lsSetJ('comAccounts', comAccounts);
         clearAccFields();
         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        location.reload();
     });
     function clearAccFields() {
         $js('accNature').selectedIndex = 0;
@@ -123,7 +124,7 @@
 
     function printAccounts() {
         $print("print");
-        var wb = XLSX.utils.table_to_book(document.getElementById('accountsTable'), { sheet: "Sheet JS" });
+        var wb = XLSX.utils.table_to_book(document.getElementById('accountsTable'), { sheet: "Accounts" });
         var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
         function s2ab(s) {
             var buf = new ArrayBuffer(s.length);
@@ -131,6 +132,6 @@
             for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
             return buf;
         }
-        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'test.xlsx');
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'accounts.xlsx');
     }
 </script>
