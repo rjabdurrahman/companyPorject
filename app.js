@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
     templateUrl : 'pages/account.html',
     controller  : 'AccountCntlr'
   })
+  .when('/receivable', {
+    templateUrl : 'pages/receivable.html',
+    controller  : 'ReceivableCntlr'
+  })
   .otherwise({redirectTo: '/'});
 });
 app.controller('LoginCntlr', function($scope){

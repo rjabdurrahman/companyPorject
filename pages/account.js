@@ -14,5 +14,4 @@ app.controller('AccountCntlr', function ($scope) {
         CN : 'Contra',
     }
     $scope.comAccounts = lsExGJInit('comAccounts', []);
-    $print($scope.comAccounts);
 });
