@@ -1,3 +1,6 @@
+<div id="notification" class="w3-panel w3-green w3-card-4 notification">
+    <h6>Added Successfully!</h6>
+</div>
 <div class="div-box w3-card-4 margin-auto" style="margin-top: 18px;">
     <div class="w3-container w3-indigo">
         <h2>Receivable</h2>
@@ -16,7 +19,7 @@
                 <label class="w3-medium">Party Name</label>
             </div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" type="text" name="" id="">
+                <input class="w3-input w3-border" type="text" name="" id="recPartyName">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -24,7 +27,7 @@
                 <label class="w3-medium">Customer Type</label>
             </div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" type="text" name="" id="">
+                <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -32,7 +35,7 @@
                 <label class="w3-medium">Mobile No</label>
             </div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" type="text" name="" id="">
+                <input class="w3-input w3-border" type="text" name="" id="recMObileNo">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -40,13 +43,13 @@
                 <label class="w3-medium">Address</label>
             </div>
             <div class="w3-rest">
-                <textarea id="accTdfefxt" class="w3-input w3-border" name="" id="" rows="2"></textarea>
+                <textarea class="w3-input w3-border" name="" id="recAddress" rows="2"></textarea>
             </div>
         </div>
         <p>
-            <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-            <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
-            <button onclick="printAccounts()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
+            <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+            <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
+            <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
         </p>
         <div style="clear: both;height: 16px;"></div>
     </div>
@@ -79,5 +82,44 @@
     var accountCodes = ['2323', '121', '112', 'dfdsfe'];
     $('#recACCode').autocomplete({
         source: accountCodes
+    });
+    $js('submitRecBtn').addEventListener('click', function () {
+        var recACCode = $js('recACCode').value;
+        var recPartyName = $js('recPartyName').value;
+        var recCustomerType = $js('recCustomerType').value;
+        var recMObileNo = $js('recMObileNo').value;
+        var recAddress = $js('recAddress').value;
+        var receive = {
+            acCode: recACCode,
+            partyName: recPartyName,
+            cusType: recCustomerType,
+            mobile: recMObileNo,
+            address: recAddress
+        };
+        if (recACCode == "") {
+            $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (recPartyName == "") {
+            $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (recCustomerType == "") {
+            $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (recMObileNo == "") {
+            $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (recAddress == "") {
+            $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        $print(receive);
+        var comReceivables = lsExGJInit('comReceivables', []);
+        comReceivables.push(receive);
+        lsSetJ('comReceivables', comReceivables);
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
     });
 </script>
