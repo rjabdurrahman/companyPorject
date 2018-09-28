@@ -1,3 +1,6 @@
+<div id="notification" class="w3-panel w3-green w3-card-4 notification">
+    <h6>Added Successfully!</h6>
+</div>
 <div class="div-box w3-card-4 margin-auto" style="margin-top: 18px;">
     <div class="w3-container w3-indigo">
         <h2>Account</h2>
@@ -83,7 +86,8 @@
         let accCodeSecond = $js('accCodeSecond').value;
         let accTxt = $js('accTxt').value;
         if (accNature == '' || accNature == 'Choose Nature' || accCodeInit == '') {
-            alert('select Nature');
+            $('#notification').html("<h6>Select Nature</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            // alert('select Nature');
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
@@ -99,6 +103,7 @@
         comAccounts.push(account);
         lsSetJ('comAccounts', comAccounts);
         clearAccFields();
+        $('#notification').fadeIn(200).delay(300).fadeOut(200);
     });
     function clearAccFields() {
         $js('accNature').selectedIndex = 0;
