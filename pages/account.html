@@ -4,13 +4,13 @@
         <button class="w3-button w3-border">Receivable</button>
         <button class="w3-button w3-border">Others</button>
     </div>
-    <div class="w3-container div-box margin-auto w3-border w3-border-indigo" style="margin-top: 16px; padding-bottom: 16px;">
+    <div class="w3-container w3-card-4 div-box margin-auto w3-border w3-border-indigo" style="margin-top: 16px; padding-bottom: 16px;">
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:100px; padding: 10px;">
                 <label class="w3-medium">Nature</label>
             </div>
             <div class="w3-rest">
-                <select ng-model="natureSelection" class="w3-select w3-border" name="option">
+                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" name="option">
                     <option value="" disabled selected>Choose Nature</option>
                     <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc}}</option>
                 </select>
@@ -21,7 +21,7 @@
                 <label class="w3-medium">A/C Code</label>
             </div>
             <div class="w3-rest" style="display: flex">
-                <section ng-switch="natureSelection">
+                <section id="accCodeInit" ng-switch="natureSelection">
                     <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 70px; color: gray;">
                         <option value="SE">SE</option>
                         <option value="RE">RE</option>
@@ -30,9 +30,9 @@
                         disabled>
                 </section>
                 <label style="padding: 8px;">-</label>
-                <input ng-model="accFirst" class="w3-input w3-border" type="text" style="text-align: center">
+                <input id="accCodeFirst" class="w3-input w3-border" type="text" style="text-align: center">
                 <label style="padding: 8px;">-</label>
-                <input ng-model="accSecond" class="w3-input w3-border" type="text" style="width: 60px; text-align: center">
+                <input id="accCodeSecond" class="w3-input w3-border" type="text" style="width: 60px; text-align: center">
             </div>
         </div>
         <div class="w3-row w3-section">
@@ -40,15 +40,33 @@
                 <label class="w3-medium">Accounts</label>
             </div>
             <div class="w3-rest">
-                <textarea ng-model="account.text" class="w3-input w3-border" name="" id="" rows="5"></textarea>
+                <textarea id="accTxt" class="w3-input w3-border" name="" id="" rows="5"></textarea>
             </div>
         </div>
-        <div>DATa - {{account}} - {{accFirst + "-" + accSecond}}</div>
         <p>
-            <button id="loginBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+            <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
         </p>
     </div>
 </div>
 <script>
-
+    $js('submitAccBtn').addEventListener('click', function(){
+        let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
+        var accCodeInit = '';
+        let accCodeInitNode = $js('accCodeInit').firstElementChild;
+        if(accCodeInitNode.tagName == 'INPUT'){
+            accCodeInit = accCodeInitNode.value;
+        }
+        else if(accCodeInitNode.tagName == 'SELECT'){
+            accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
+        }
+        let accCodeFirst = $js('accCodeFirst').value;
+        let accCodeSecond = $js('accCodeSecond').value;
+        let accTxt = $js('accTxt').value;
+        let account = {
+            nature : accNature,
+            accNo : accCodeInit + "-" + accCodeFirst + "-" + accCodeSecond,
+            accText : accTxt,
+        }
+        $print(account);
+    });
 </script>
