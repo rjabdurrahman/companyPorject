@@ -11,7 +11,7 @@ app.controller('AccountCntlr', function ($scope) {
         SD : 'Contra Revenue',
         COGS : 'Cost of Goods Sold',
         WIP : 'Production',
-        CN : 'Contra',
+        CN : 'Contra'
     }
     $scope.comAccounts = lsExGJInit('comAccounts', []);
 });
