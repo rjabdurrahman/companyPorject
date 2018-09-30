@@ -40,6 +40,23 @@ function $html(tag, atts, text) {
     return node;
 }
 
+function numValidate(evt) {
+    var theEvent = evt || window.event;
+
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+    } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /[0-9]|\./;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+}
 
 // var config = {
 //     apiKey: "AIzaSyC5pbKSkg-q4yA_2SX0bMZ8fuZoOaOWrrE",
@@ -58,6 +75,6 @@ wb.Props = {
     Title: "Company WordBook",
     Subject: "Test",
     Author: "Abdur Rahman",
-    CreatedDate: new Date(2018,09,18)
+    CreatedDate: new Date(2018, 09, 18)
 };
 // wb.SheetNames.push("Test Sheet");
