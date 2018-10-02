@@ -1,75 +1,79 @@
-<div id="notification" class="w3-panel w3-green w3-card-4 notification">
-    <h6>Added Successfully!</h6>
-</div>
-<div class="div-box w3-card-4 margin-auto" style="margin-top: 18px;">
-    <div class="w3-container w3-indigo">
-        <h2>Account</h2>
+<div class="overlay">
+    <div id="notification" class="w3-panel w3-green w3-card-4 notification">
+        <h6>Added Successfully!</h6>
     </div>
-    <div class="w3-container">
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:100px; padding: 10px;">
-                <label class="w3-medium">Nature</label>
-            </div>
-            <div class="w3-rest">
-                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" name="option">
-                    <option value="" disabled selected>Choose Nature</option>
-                    <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc}}</option>
-                </select>
-            </div>
+    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+        <div class="w3-container w3-indigo">
+            <h2>Account</h2>
         </div>
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:100px; padding: 10px;">
-                <label class="w3-medium">A/C Code</label>
-            </div>
-            <div class="w3-rest" style="display: flex">
-                <section id="accCodeInit" ng-switch="natureSelection">
-                    <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 70px; color: gray;">
-                        <option value="SE">SE</option>
-                        <option value="RE">RE</option>
+        <div class="w3-container">
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:100px; padding: 10px;">
+                    <label class="w3-medium">Nature</label>
+                </div>
+                <div class="w3-rest">
+                    <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" name="option">
+                        <option value="" disabled selected>Choose Nature</option>
+                        <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc}}</option>
                     </select>
-                    <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}" style="width: 70px; text-align: center"
-                        disabled>
-                </section>
-                <label style="padding: 8px;">-</label>
-                <input id="accCodeFirst" class="w3-input w3-border" type="text" maxlength="3" style="text-align: center" onkeypress="numValidate(event)">
-                <label style="padding: 8px;">-</label>
-                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 60px; text-align: center" onkeypress="numValidate(event)">
+                </div>
             </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:100px; padding: 10px;">
+                    <label class="w3-medium">A/C Code</label>
+                </div>
+                <div class="w3-rest" style="display: flex">
+                    <section id="accCodeInit" ng-switch="natureSelection">
+                        <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 70px; color: gray;">
+                            <option value="SE">SE</option>
+                            <option value="RE">RE</option>
+                        </select>
+                        <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}"
+                            style="width: 70px; text-align: center" disabled>
+                    </section>
+                    <label style="padding: 8px;">-</label>
+                    <input id="accCodeFirst" class="w3-input w3-border" type="text" maxlength="3" style="text-align: center"
+                        onkeypress="numValidate(event)">
+                    <label style="padding: 8px;">-</label>
+                    <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 60px; text-align: center"
+                        onkeypress="numValidate(event)">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:100px; padding: 10px;">
+                    <label class="w3-medium">Accounts</label>
+                </div>
+                <div class="w3-rest">
+                    <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
+                </div>
+            </div>
+            <p>
+                <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
+                <button onclick="printAccounts()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                    All</button>
+            </p>
+            <div style="clear: both;height: 16px;"></div>
         </div>
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:100px; padding: 10px;">
-                <label class="w3-medium">Accounts</label>
-            </div>
-            <div class="w3-rest">
-                <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
-            </div>
-        </div>
-        <p>
-            <button id="submitAccBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-            <button onclick="clearAccFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Again</button>
-            <button onclick="printAccounts()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print All</button>
-        </p>
-        <div style="clear: both;height: 16px;"></div>
+    </div>
+
+    <div class="w3-panel">
+        <table id="accountsTable" class="w3-table w3-white w3-striped w3-border">
+            <tr>
+                <th>ID</th>
+                <th>Nature</th>
+                <th>A/C Code</th>
+                <th>Account Text</th>
+            </tr>
+            <tr ng-repeat="comAcc in comAccounts track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{comAcc.nature}}</td>
+                <td>{{comAcc.accCode}}</td>
+                <td>{{comAcc.accText}}</td>
+            </tr>
+        </table>
     </div>
 </div>
-
-<div class="w3-panel">
-    <table id="accountsTable" class="w3-table w3-striped w3-border">
-        <tr>
-            <th>ID</th>
-            <th>Nature</th>
-            <th>A/C Code</th>
-            <th>Account Text</th>
-        </tr>
-        <tr ng-repeat="comAcc in comAccounts track by $index">
-            <td>{{$index + 1}}</td>
-            <td>{{comAcc.nature}}</td>
-            <td>{{comAcc.accCode}}</td>
-            <td>{{comAcc.accText}}</td>
-        </tr>
-    </table>
-</div>
-
 <script>
     // lsSetJ('comAccounts', []);
     $js('submitAccBtn').addEventListener('click', function () {
