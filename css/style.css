@@ -1,7 +1,8 @@
 body {
     position: relative;
-    background-image: url(../img/bg.jpg);
-    /* background-size: cover; */
+    background-image: url(../img/bu-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     top: 0;
     bottom: 0;
@@ -66,7 +67,7 @@ input[type="text"]:disabled {
 
 .overlay{
     position: absolute;
-    background-color: rgba(227, 229, 137, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
 }
 
