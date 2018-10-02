@@ -1,6 +1,7 @@
-html{
+html {
     height: 100%;
 }
+
 body {
     position: relative;
     background-image: url(../img/bu-bg.jpg);
@@ -17,17 +18,25 @@ a {
     text-decoration: none;
 }
 
-ul{
+/* Autocomplete Styles */
+
+ul.ui-autocomplete {
     list-style-type: none;
     padding: 0;
     border: 1px solid lightgray;
     width: 300px;
     background-color: lightgray;
 }
-ul li{
+
+ul.ui-autocomplete li {
     padding: 2px;
     cursor: pointer;
 }
+
+span[role="status"] {
+    display: none;
+}
+
 .hide {
     visibility: hidden;
     display: none;
@@ -68,24 +77,24 @@ input[type="text"]:disabled {
     display: flex;
 }
 
-.overlay{
+.overlay {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
 }
 
 /* Login Input BG */
-input#usernameField{
+
+input#usernameField {
     background-image: url('../img/user.png');
     background-size: 20px 20px;
     background-position: center right 18px;
     background-repeat: no-repeat;
 }
 
-input#passwordField{
+input#passwordField {
     background-image: url('../img/pass.png');
     background-size: 20px 20px;
     background-position: center right 18px;
     background-repeat: no-repeat;
 }
-
