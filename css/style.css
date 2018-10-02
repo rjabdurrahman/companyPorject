@@ -56,6 +56,10 @@ input, select, option, textarea {
     border-radius: 4px;
 }
 
+.w3-button, .w3-btn{
+    border-radius: 4px;
+}
+
 input.w3-input:focus {
     border-bottom: 1.5px solid indigo;
 }
