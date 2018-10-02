@@ -68,7 +68,6 @@ input[type="text"]:disabled {
     position: absolute;
     background-color: rgba(227, 229, 137, 0.4);
     width: 100%;
-    /* height: 100vh; */
 }
 
 /* Login Input BG */
