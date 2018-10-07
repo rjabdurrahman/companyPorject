@@ -98,26 +98,30 @@
             des : empDes,
             salary : empSalary
         };
-        //     if (empCode == "") {
-        //         $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-        //         return;
-        //     }
-        //     else if (empName == "") {
-        //         $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-        //         return;
-        //     }
-        //     else if (empType == "") {
-        //         $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-        //         return;
-        //     }
-        //     else if (empMObileNo == "") {
-        //         $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-        //         return;
-        //     }
-        //     else if (empAddress == "") {
-        //         $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-        //         return;
-        //     }
+            if (empCode == "") {
+                $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
+            else if (empName == "") {
+                $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
+            else if (empType == "") {
+                $('#notification').html("<h6>Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
+            else if (empPost == "") {
+                $('#notification').html("<h6>Post Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
+            else if (empDes == "") {
+                $('#notification').html("<h6>Designation Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
+            else if (empSalary == "") {
+                $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
             $print(emp);
         //     var comempeivables = lsExGJInit('comempeivables', []);
         //     comempeivables.push(empeive);
