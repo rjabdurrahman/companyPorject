@@ -58,6 +58,12 @@ function numValidate(evt) {
     }
 }
 
+// Account Codes for Suggesitions
+var accountCodes = [];
+lsExGJInit('comAccounts', []).forEach(element => {
+    accountCodes.push(element.accCode);
+});
+
 // var config = {
 //     apiKey: "AIzaSyC5pbKSkg-q4yA_2SX0bMZ8fuZoOaOWrrE",
 //     authDomain: "resultmanagement-f2d68.firebaseapp.com",

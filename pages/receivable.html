@@ -75,10 +75,6 @@
     </div>
 </div>
 <script>
-    var accountCodes = [];
-    lsExGJInit('comAccounts', []).forEach(element => {
-        accountCodes.push(element.accCode);
-    });
     $('#recACCode').autocomplete({
         source: accountCodes,
         minLength: 0
