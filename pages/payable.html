@@ -1,1 +1,171 @@
-Payable
+<div class="overlay">
+    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+        <div class="w3-container w3-indigo">
+            <h2>Payable</h2>
+        </div>
+        <div class="w3-container">
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">A/C Code</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Party Name</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Party Type</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Proprietor Name</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Mobile No</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recMObileNo" onkeypress="numValidate(event)">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Address</label>
+                </div>
+                <div class="w3-rest">
+                    <textarea class="w3-input w3-border" name="" id="recAddress" rows="2"></textarea>
+                </div>
+            </div>
+            <p>
+                <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                    All</button>
+            </p>
+            <div style="clear: both;height: 16px;"></div>
+        </div>
+    </div>
+    <div class="w3-panel">
+        <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+            <tr>
+                <th>ID</th>
+                <th>A/C Code</th>
+                <th>Party Name</th>
+                <th>Customer Type</th>
+                <th>Mobile</th>
+                <th>Address</th>
+            </tr>
+            <tr ng-repeat="rec in comReceivables track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{rec.acCode}}</td>
+                <td>{{rec.partyName}}</td>
+                <td>{{rec.cusType}}</td>
+                <td>{{rec.mobile}}</td>
+                <td>{{rec.address}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    // var accountCodes = [];
+    // lsExGJInit('comAccounts', []).forEach(element => {
+    //     accountCodes.push(element.accCode);
+    // });
+    // $('#recACCode').autocomplete({
+    //     source: accountCodes,
+    //     minLength: 0
+    // }).focus(function () {
+    //     $(this).autocomplete("search");
+    // });
+    // $js('submitRecBtn').addEventListener('click', function () {
+    //     var recACCode = $js('recACCode').value;
+    //     var recPartyName = $js('recPartyName').value;
+    //     var recCustomerType = $js('recCustomerType').value;
+    //     var recMObileNo = $js('recMObileNo').value;
+    //     var recAddress = $js('recAddress').value;
+    //     var receive = {
+    //         acCode: recACCode,
+    //         partyName: recPartyName,
+    //         cusType: recCustomerType,
+    //         mobile: recMObileNo,
+    //         address: recAddress
+    //     };
+    //     if (recACCode == "") {
+    //         $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+    //         return;
+    //     }
+    //     else if (recPartyName == "") {
+    //         $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+    //         return;
+    //     }
+    //     else if (recCustomerType == "") {
+    //         $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+    //         return;
+    //     }
+    //     else if (recMObileNo == "") {
+    //         $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+    //         return;
+    //     }
+    //     else if (recAddress == "") {
+    //         $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+    //         return;
+    //     }
+    //     $print(receive);
+    //     var comReceivables = lsExGJInit('comReceivables', []);
+    //     comReceivables.push(receive);
+    //     lsSetJ('comReceivables', comReceivables);
+    //     clearRecFields();
+    //     $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+    //     location.reload();
+    // });
+
+    // function clearRecFields() {
+    //     $js('recACCode').value = $js('recPartyName').value = $js('recCustomerType').value = $js('recMObileNo').value = $js('recAddress').value = "";
+    // }
+
+    // function printReceivables() {
+    //     $print("print");
+    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('receivesTable'), { cellDates: true });
+    //     var wscols = [
+    //         { wch: 4 },
+    //         { wch: 12 },
+    //         { wch: 20 },
+    //         { wch: 20 },
+    //         { wch: 14 },
+    //         { wch: 40 }
+    //     ];
+    //     var wsrows = [
+    //         {
+    //             hpx: 24,
+    //             level: 2
+    //         }
+    //     ];
+    //     ws['!cols'] = wscols;
+    //     ws['!rows'] = wsrows;
+    //     XLSX.utils.book_append_sheet(wb, ws, 'Receivables');
+    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    //     function s2ab(s) {
+    //         var buf = new ArrayBuffer(s.length);
+    //         var view = new Uint8Array(buf);
+    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    //         return buf;
+    //     }
+    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Receivables.xlsx');
+    // }
+</script>

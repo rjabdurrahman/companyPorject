@@ -1,0 +1,52 @@
+<div class="overlay">
+    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+        <div class="w3-container w3-indigo">
+            <h2>Bank</h2>
+        </div>
+        <div class="w3-container">
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Code</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:150px; padding: 10px;">
+                    <label class="w3-medium">Bank Name</label>
+                </div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                </div>
+            </div>
+            <p>
+                <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                    All</button>
+            </p>
+            <div style="clear: both;height: 16px;"></div>
+        </div>
+    </div>
+    <div class="w3-panel">
+        <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+            <tr>
+                <th>ID</th>
+                <th>A/C Code</th>
+                <th>Party Name</th>
+                <th>Customer Type</th>
+                <th>Mobile</th>
+                <th>Address</th>
+            </tr>
+            <tr ng-repeat="rec in comReceivables track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{rec.acCode}}</td>
+                <td>{{rec.partyName}}</td>
+                <td>{{rec.cusType}}</td>
+                <td>{{rec.mobile}}</td>
+                <td>{{rec.address}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
