@@ -53,7 +53,7 @@
                 </div>
             </div>
             <p>
-                <button id="submitpayBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button id="submitPayBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
                 <button onclick="clearPayFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
                 <button onclick="printPayables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
@@ -89,51 +89,57 @@
     }).focus(function () {
         $(this).autocomplete("search");
     });
-    // $js('submitpayBtn').addEventListener('click', function () {
-    //     var payACCode = $js('payACCode').value;
-    //     var payPartyName = $js('payPartyName').value;
-    //     var payCustomerType = $js('payCustomerType').value;
-    //     var payMObileNo = $js('payMObileNo').value;
-    //     var payAddress = $js('payAddress').value;
-    //     var payeive = {
-    //         acCode: payACCode,
-    //         partyName: payPartyName,
-    //         cusType: payCustomerType,
-    //         mobile: payMObileNo,
-    //         address: payAddress
-    //     };
-    //     if (payACCode == "") {
-    //         $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-    //         return;
-    //     }
-    //     else if (payPartyName == "") {
-    //         $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-    //         return;
-    //     }
-    //     else if (payCustomerType == "") {
-    //         $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-    //         return;
-    //     }
-    //     else if (payMObileNo == "") {
-    //         $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-    //         return;
-    //     }
-    //     else if (payAddress == "") {
-    //         $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-    //         return;
-    //     }
-    //     $print(payeive);
-    //     var compayeivables = lsExGJInit('compayeivables', []);
-    //     compayeivables.push(payeive);
-    //     lsSetJ('compayeivables', compayeivables);
-    //     clearpayFields();
-    //     $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-    //     location.reload();
-    // });
+    $js('submitPayBtn').addEventListener('click', function () {
+        var payACCode = $js('payACCode').value;
+        var payPartyName = $js('payPartyName').value;
+        var payPartyType = $js('payPartyType').value;
+        var payProprietor = $js('payProprietor').value;
+        var payMObileNo = $js('payMObileNo').value;
+        var payAddress = $js('payAddress').value;
+        var pay = {
+            acCode: payACCode,
+            partyName: payPartyName,
+            partyType: payPartyType,
+            proprietor: payProprietor,
+            mobile: payMObileNo,
+            address: payAddress
+        };
+        if (payACCode == "") {
+            $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (payPartyName == "") {
+            $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (payPartyType == "") {
+            $('#notification').html("<h6>Party Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (payProprietor == "") {
+            $('#notification').html("<h6>Proprietor Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (payMObileNo == "") {
+            $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (payAddress == "") {
+            $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        $print(pay);
+        var comPayables = lsExGJInit('comPayables', []);
+        comPayables.push(pay);
+        lsSetJ('comPayables', comPayables);
+        clearPayFields();
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        location.reload();
+    });
 
-    // function clearpayFields() {
-    //     $js('payACCode').value = $js('payPartyName').value = $js('payCustomerType').value = $js('payMObileNo').value = $js('payAddress').value = "";
-    // }
+    function clearPayFields() {
+        $js('payACCode').value = $js('payPartyName').value = $js('payPartyType').value = $js('payProprietor').value = $js('payMObileNo').value = $js('payAddress').value = "";
+    }
 
     // function printPayables() {
     //     $print("print");
