@@ -123,17 +123,17 @@
                 return;
             }
             $print(emp);
-        //     var comempeivables = lsExGJInit('comempeivables', []);
-        //     comempeivables.push(empeive);
-        //     lsSetJ('comempeivables', comempeivables);
-        //     clearempFields();
-        //     $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        //     location.reload();
+            var comEmps = lsExGJInit('comEmps', []);
+            comEmps.push(emp);
+            lsSetJ('comEmps', comEmps);
+            clearEmpFields();
+            $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+            location.reload();
     });
 
-    // function clearempFields() {
-    //     $js('empCode').value = $js('empName').value = $js('empType').value = $js('empMObileNo').value = $js('empAddress').value = "";
-    // }
+    function clearEmpFields() {
+        $js('empCode').value = $js('empName').value = $js('empType').value = $js('empPost').value = $js('empDes').value = $js('empSalary').value = "";
+    }
 
     // function printempeivables() {
     //     $print("print");
