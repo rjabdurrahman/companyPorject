@@ -9,7 +9,7 @@
                     <label class="w3-medium">Code</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                    <input class="w3-input w3-border" type="text" name="" id="empCode">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -17,7 +17,7 @@
                     <label class="w3-medium">Name</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                    <input class="w3-input w3-border" type="text" name="" id="empName">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -25,7 +25,7 @@
                     <label class="w3-medium">Employee Type</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                    <input class="w3-input w3-border" type="text" name="" id="empType">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -33,7 +33,7 @@
                     <label class="w3-medium">Posting</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                    <input class="w3-input w3-border" type="text" name="" id="empPost">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -41,7 +41,7 @@
                     <label class="w3-medium">Designation</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                    <input class="w3-input w3-border" type="text" name="" id="empDes">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -49,20 +49,20 @@
                     <label class="w3-medium">Salary</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recMObileNo" onkeypress="numValidate(event)">
+                    <input class="w3-input w3-border" type="text" name="" id="empSalary" onkeypress="numValidate(event)">
                 </div>
             </div>
             <p>
-                <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                <button id="submitEmpBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearEmpFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                <button onclick="printEmps()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
             </p>
             <div style="clear: both;height: 16px;"></div>
         </div>
     </div>
     <div class="w3-panel">
-        <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="empeivesTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
                 <th>A/C Code</th>
@@ -71,14 +71,93 @@
                 <th>Mobile</th>
                 <th>Address</th>
             </tr>
-            <tr ng-repeat="rec in comReceivables track by $index">
+            <tr ng-repeat="emp in comempeivables track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{rec.acCode}}</td>
-                <td>{{rec.partyName}}</td>
-                <td>{{rec.cusType}}</td>
-                <td>{{rec.mobile}}</td>
-                <td>{{rec.address}}</td>
+                <td>{{emp.Code}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.cusType}}</td>
+                <td>{{emp.mobile}}</td>
+                <td>{{emp.address}}</td>
             </tr>
         </table>
     </div>
 </div>
+<script>
+    $js('submitEmpBtn').addEventListener('click', function () {
+        var empCode = $js('empCode').value;
+        var empName = $js('empName').value;
+        var empType = $js('empType').value;
+        var empPost = $js('empPost').value;
+        var empDes = $js('empDes').value;
+        var empSalary = $js('empSalary').value;
+        var emp = {
+            code: empCode,
+            name: empName,
+            type: empType,
+            post: empPost,
+            des : empDes,
+            salary : empSalary
+        };
+        //     if (empCode == "") {
+        //         $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //         return;
+        //     }
+        //     else if (empName == "") {
+        //         $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //         return;
+        //     }
+        //     else if (empType == "") {
+        //         $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //         return;
+        //     }
+        //     else if (empMObileNo == "") {
+        //         $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //         return;
+        //     }
+        //     else if (empAddress == "") {
+        //         $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //         return;
+        //     }
+            $print(emp);
+        //     var comempeivables = lsExGJInit('comempeivables', []);
+        //     comempeivables.push(empeive);
+        //     lsSetJ('comempeivables', comempeivables);
+        //     clearempFields();
+        //     $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //     location.reload();
+    });
+
+    // function clearempFields() {
+    //     $js('empCode').value = $js('empName').value = $js('empType').value = $js('empMObileNo').value = $js('empAddress').value = "";
+    // }
+
+    // function printempeivables() {
+    //     $print("print");
+    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('empeivesTable'), { cellDates: true });
+    //     var wscols = [
+    //         { wch: 4 },
+    //         { wch: 12 },
+    //         { wch: 20 },
+    //         { wch: 20 },
+    //         { wch: 14 },
+    //         { wch: 40 }
+    //     ];
+    //     var wsrows = [
+    //         {
+    //             hpx: 24,
+    //             level: 2
+    //         }
+    //     ];
+    //     ws['!cols'] = wscols;
+    //     ws['!rows'] = wsrows;
+    //     XLSX.utils.book_append_sheet(wb, ws, 'empeivables');
+    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    //     function s2ab(s) {
+    //         var buf = new ArrayBuffer(s.length);
+    //         var view = new Uint8Array(buf);
+    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    //         return buf;
+    //     }
+    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'empeivables.xlsx');
+    // }
+</script>
