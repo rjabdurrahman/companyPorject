@@ -49,6 +49,7 @@ span[role="status"] {
     top: 100px;
     right: 10px;
     display: none;
+    z-index: 10;
 }
 
 input, select, option, textarea {
