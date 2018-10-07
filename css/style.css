@@ -90,6 +90,7 @@ input[type="text"]:disabled {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
+    min-height: calc(100vh - 137px);;
 }
 
 /* Login Input BG */

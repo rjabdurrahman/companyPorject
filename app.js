@@ -43,6 +43,10 @@ app.config(function($routeProvider) {
     templateUrl : 'pages/contractors.html',
     controller  : 'ContractorsCntlr'
   })
+  .when('/rice', {
+    templateUrl : 'pages/rice.html',
+    controller  : 'RiceCntlr'
+  })
   .otherwise({redirectTo: '/'});
 });
 app.controller('LoginCntlr', function($scope){
@@ -68,4 +72,7 @@ app.controller('BankCntlr', function($scope){
 });
 app.controller('ContractorsCntlr', function($scope){
   $scope.message = "Contractors Cntl";
+});
+app.controller('RiceCntlr', function($scope){
+  $scope.message = "Rice Cntl";
 });
