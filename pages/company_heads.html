@@ -9,7 +9,7 @@
                     <label class="w3-medium">A/C Code</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                    <input class="w3-input w3-border" type="text" name="" id="chACCode">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -17,20 +17,20 @@
                     <label class="w3-medium">Party Name</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                    <input class="w3-input w3-border" type="text" name="" id="chPartyName">
                 </div>
             </div>
             <p>
-                <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                <button id="submitChBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearChFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                <button onclick="printChs()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
             </p>
             <div style="clear: both;height: 16px;"></div>
         </div>
     </div>
-    <div class="w3-panel">
-        <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+    <div class="w3-panel" style="display: none;">
+        <table id="cheivesTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
                 <th>A/C Code</th>
@@ -39,14 +39,73 @@
                 <th>Mobile</th>
                 <th>Address</th>
             </tr>
-            <tr ng-repeat="rec in comReceivables track by $index">
+            <tr ng-repeat="ch in comCh track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{rec.acCode}}</td>
-                <td>{{rec.partyName}}</td>
-                <td>{{rec.cusType}}</td>
-                <td>{{rec.mobile}}</td>
-                <td>{{rec.address}}</td>
+                <td>{{ch.acCode}}</td>
+                <td>{{ch.partyName}}</td>
+                <td>{{ch.cusType}}</td>
+                <td>{{ch.mobile}}</td>
+                <td>{{ch.address}}</td>
             </tr>
         </table>
     </div>
 </div>
+<script>
+    $js('submitChBtn').addEventListener('click', function () {
+        var chACCode = $js('chACCode').value;
+        var chPartyName = $js('chPartyName').value;
+        var ch = {
+            acCode: chACCode,
+            partyName: chPartyName
+        };
+        if (chACCode == "") {
+            $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (chPartyName == "") {
+            $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        $print(ch);
+        var comCh = lsExGJInit('comCh', []);
+        comCh.push(ch);
+        lsSetJ('comCh', comCh);
+        clearchFields();
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        location.reload();
+    });
+
+    function clearchFields() {
+        $js('chACCode').value = $js('chPartyName').value = "";
+    }
+
+    // function printCh() {
+    //     $print("print");
+    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('cheivesTable'), { cellDates: true });
+    //     var wscols = [
+    //         { wch: 4 },
+    //         { wch: 12 },
+    //         { wch: 20 },
+    //         { wch: 20 },
+    //         { wch: 14 },
+    //         { wch: 40 }
+    //     ];
+    //     var wsrows = [
+    //         {
+    //             hpx: 24,
+    //             level: 2
+    //         }
+    //     ];
+    //     ws['!cols'] = wscols;
+    //     ws['!rows'] = wsrows;
+    //     XLSX.utils.book_append_sheet(wb, ws, 'Ch');
+    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    //     function s2ab(s) {
+    //         var buf = new ArrayBuffer(s.length);
+    //         var view = new Uint8Array(buf);
+    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    //         return buf;
+    //     }
+    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Ch.xlsx');
+    // }
+</script>
