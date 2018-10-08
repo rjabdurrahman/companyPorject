@@ -9,7 +9,7 @@
                     <label class="w3-medium">Code</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                    <input class="w3-input w3-border" type="text" name="" id="trCode">
                 </div>
             </div>
             <div class="w3-row w3-section">
@@ -17,20 +17,20 @@
                     <label class="w3-medium">Truck No</label>
                 </div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                    <input class="w3-input w3-border" type="text" name="" id="trNo">
                 </div>
             </div>
             <p>
-                <button id="submitRecBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearRecFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printReceivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                <button id="submitTrBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                <button onclick="clearTrFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                <button onclick="printTrs()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
             </p>
             <div style="clear: both;height: 16px;"></div>
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="TreivesTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
                 <th>A/C Code</th>
@@ -39,14 +39,73 @@
                 <th>Mobile</th>
                 <th>Address</th>
             </tr>
-            <tr ng-repeat="rec in comReceivables track by $index">
+            <tr ng-repeat="Tr in comTr track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{rec.acCode}}</td>
-                <td>{{rec.partyName}}</td>
-                <td>{{rec.cusType}}</td>
-                <td>{{rec.mobile}}</td>
-                <td>{{rec.address}}</td>
+                <td>{{Tr.acCode}}</td>
+                <td>{{Tr.partyName}}</td>
+                <td>{{Tr.cusType}}</td>
+                <td>{{Tr.mobile}}</td>
+                <td>{{Tr.address}}</td>
             </tr>
         </table>
     </div>
 </div>
+<script>
+    $js('submitTrBtn').addEventListener('click', function () {
+        var trCode = $js('trCode').value;
+        var trNo = $js('trNo').value;
+        var tr = {
+            code: trCode,
+            name: trNo
+        };
+        if (trCode == "") {
+            $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (trNo == "") {
+            $('#notification').html("<h6>Number Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        $print(tr);
+        var comTrs = lsExGJInit('comTrs', []);
+        comTrs.push(tr);
+        lsSetJ('comTrs', comTrs);
+        clearTrFields();
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        location.reload();
+    });
+
+    function clearTrFields() {
+        $js('trCode').value = $js('trNo').value = "";
+    }
+
+    // function printtrvables() {
+    //     $print("print");
+    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('trvesTable'), { cellDates: true });
+    //     var wscols = [
+    //         { wch: 4 },
+    //         { wch: 12 },
+    //         { wch: 20 },
+    //         { wch: 20 },
+    //         { wch: 14 },
+    //         { wch: 40 }
+    //     ];
+    //     var wsrows = [
+    //         {
+    //             hpx: 24,
+    //             level: 2
+    //         }
+    //     ];
+    //     ws['!cols'] = wscols;
+    //     ws['!rows'] = wsrows;
+    //     XLSX.utils.book_append_sheet(wb, ws, 'trvables');
+    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    //     function s2ab(s) {
+    //         var buf = new ArrayBuffer(s.length);
+    //         var view = new Uint8Array(buf);
+    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    //         return buf;
+    //     }
+    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'trvables.xlsx');
+    // }
+</script>
