@@ -24,20 +24,11 @@
         <table id="costCentereivesTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-                <th>Customer Type</th>
-                <th>Mobile</th>
-                <th>Address</th>
+                <th>Cost Center</th>
             </tr>
             <tr ng-repeat="costCenter in comCostCenters track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{costCenter.acCode}}</td>
-                <td>{{costCenter.partyName}}</td>
-                <td>{{costCenter.cusType}}</td>
-                <td>{{costCenter.mobile}}</td>
-                <td>{{costCenter.address}}</td>
-            </tr>
+                <td>{{costCenter}}</td>
         </table>
     </div>
 </div>

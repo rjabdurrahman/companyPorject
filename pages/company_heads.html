@@ -30,22 +30,16 @@
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="cheivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="comHeadsTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
                 <th>A/C Code</th>
                 <th>Party Name</th>
-                <th>Customer Type</th>
-                <th>Mobile</th>
-                <th>Address</th>
             </tr>
             <tr ng-repeat="ch in comCh track by $index">
                 <td>{{$index + 1}}</td>
                 <td>{{ch.acCode}}</td>
                 <td>{{ch.partyName}}</td>
-                <td>{{ch.cusType}}</td>
-                <td>{{ch.mobile}}</td>
-                <td>{{ch.address}}</td>
             </tr>
         </table>
     </div>

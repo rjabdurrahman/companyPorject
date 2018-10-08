@@ -62,20 +62,22 @@
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="payeivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="payablesTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
                 <th>A/C Code</th>
                 <th>Party Name</th>
-                <th>Customer Type</th>
+                <th>Party Type</th>
+                <th>Proprietor Name</th>
                 <th>Mobile</th>
                 <th>Address</th>
             </tr>
-            <tr ng-repeat="pay in compayeivables track by $index">
+            <tr ng-repeat="pay in comPayables track by $index">
                 <td>{{$index + 1}}</td>
                 <td>{{pay.acCode}}</td>
                 <td>{{pay.partyName}}</td>
-                <td>{{pay.cusType}}</td>
+                <td>{{pay.partyType}}</td>
+                <td>{{pay.proprietor}}</td>
                 <td>{{pay.mobile}}</td>
                 <td>{{pay.address}}</td>
             </tr>

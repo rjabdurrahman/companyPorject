@@ -53,16 +53,16 @@ app.controller('LoginCntlr', function($scope){
     $scope.message = "Login Cntl";
 });
 app.controller('PayableCntlr', function($scope){
-  $scope.message = "Payable Cntl";
+  $scope.comPayables = lsExGJInit('comPayables', []);
 });
 app.controller('CompanyHeadsCntlr', function($scope){
-  $scope.message = "CompanyHeads Cntl";
+  $scope.comCh = lsExGJInit('comCh', []);
 });
 app.controller('CostCenterCntlr', function($scope){
-  $scope.message = "CostCenter Cntl";
+  $scope.comCostCenters = lsExGJInit('comCostCenters', []);
 });
 app.controller('TruckTractorCntlr', function($scope){
-  $scope.message = "TruckTractor Cntl";
+  $scope.comTrs = lsExGJInit('comTrs', []);
 });
 app.controller('EmployeesCntlr', function($scope){
   $scope.message = "Employees Cntl";
