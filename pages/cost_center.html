@@ -14,7 +14,7 @@
             </div>
                 <button id="submitCostCenterBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
                 <button onclick="clearCostCenterFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printCostCentereivables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                <button onclick="printCostCenter()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
             </p>
             <div style="clear: both;height: 16px;"></div>
@@ -52,33 +52,33 @@
         $js('costCenterName').value = "";
     }
 
-    // function printcostCentereivables() {
-    //     $print("print");
-    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('costCentereivesTable'), { cellDates: true });
-    //     var wscols = [
-    //         { wch: 4 },
-    //         { wch: 12 },
-    //         { wch: 20 },
-    //         { wch: 20 },
-    //         { wch: 14 },
-    //         { wch: 40 }
-    //     ];
-    //     var wsrows = [
-    //         {
-    //             hpx: 24,
-    //             level: 2
-    //         }
-    //     ];
-    //     ws['!cols'] = wscols;
-    //     ws['!rows'] = wsrows;
-    //     XLSX.utils.book_append_sheet(wb, ws, 'costCentereivables');
-    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
-    //     function s2ab(s) {
-    //         var buf = new ArrayBuffer(s.length);
-    //         var view = new Uint8Array(buf);
-    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-    //         return buf;
-    //     }
-    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'costCentereivables.xlsx');
-    // }
+    function printCostCenter() {
+        $print("print");
+        var ws = XLSX.utils.table_to_sheet(document.getElementById('costCenterTable'), { cellDates: true });
+        // var wscols = [
+        //     { wch: 4 },
+        //     { wch: 12 },
+        //     { wch: 20 },
+        //     { wch: 20 },
+        //     { wch: 14 },
+        //     { wch: 40 }
+        // ];
+        // var wsrows = [
+        //     {
+        //         hpx: 24,
+        //         level: 2
+        //     }
+        // ];
+        // ws['!cols'] = wscols;
+        // ws['!rows'] = wsrows;
+        XLSX.utils.book_append_sheet(wb, ws, 'Cost Center');
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Cost_Center.xlsx');
+    }
 </script>

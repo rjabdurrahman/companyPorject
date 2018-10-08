@@ -23,7 +23,7 @@
             <p>
                 <button id="submitRiceBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
                 <button onclick="clearRiceFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printRices()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                <button onclick="printRice()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
             </p>
             <div style="clear: both;height: 16px;"></div>
@@ -72,33 +72,33 @@
         $js('riceCode').value = $js('riceName').value = "";
     }
 
-    // function printriceeivables() {
-    //     $print("print");
-    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('riceeivesTable'), { cellDates: true });
-    //     var wscols = [
-    //         { wch: 4 },
-    //         { wch: 12 },
-    //         { wch: 20 },
-    //         { wch: 20 },
-    //         { wch: 14 },
-    //         { wch: 40 }
-    //     ];
-    //     var wsrows = [
-    //         {
-    //             hpx: 24,
-    //             level: 2
-    //         }
-    //     ];
-    //     ws['!cols'] = wscols;
-    //     ws['!rows'] = wsrows;
-    //     XLSX.utils.book_append_sheet(wb, ws, 'riceeivables');
-    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
-    //     function s2ab(s) {
-    //         var buf = new ArrayBuffer(s.length);
-    //         var view = new Uint8Array(buf);
-    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-    //         return buf;
-    //     }
-    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'riceeivables.xlsx');
-    // }
+    function printRice() {
+        $print("print");
+        var ws = XLSX.utils.table_to_sheet(document.getElementById('riceTable'), { cellDates: true });
+        // var wscols = [
+        //     { wch: 4 },
+        //     { wch: 12 },
+        //     { wch: 20 },
+        //     { wch: 20 },
+        //     { wch: 14 },
+        //     { wch: 40 }
+        // ];
+        // var wsrows = [
+        //     {
+        //         hpx: 24,
+        //         level: 2
+        //     }
+        // ];
+        // ws['!cols'] = wscols;
+        // ws['!rows'] = wsrows;
+        XLSX.utils.book_append_sheet(wb, ws, 'Rice');
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Rice.xlsx');
+    }
 </script>

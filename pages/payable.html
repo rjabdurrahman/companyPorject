@@ -143,33 +143,33 @@
         $js('payACCode').value = $js('payPartyName').value = $js('payPartyType').value = $js('payProprietor').value = $js('payMObileNo').value = $js('payAddress').value = "";
     }
 
-    // function printPayables() {
-    //     $print("print");
-    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('payeivesTable'), { cellDates: true });
-    //     var wscols = [
-    //         { wch: 4 },
-    //         { wch: 12 },
-    //         { wch: 20 },
-    //         { wch: 20 },
-    //         { wch: 14 },
-    //         { wch: 40 }
-    //     ];
-    //     var wsrows = [
-    //         {
-    //             hpx: 24,
-    //             level: 2
-    //         }
-    //     ];
-    //     ws['!cols'] = wscols;
-    //     ws['!rows'] = wsrows;
-    //     XLSX.utils.book_append_sheet(wb, ws, 'payeivables');
-    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
-    //     function s2ab(s) {
-    //         var buf = new ArrayBuffer(s.length);
-    //         var view = new Uint8Array(buf);
-    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-    //         return buf;
-    //     }
-    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'payeivables.xlsx');
-    // }
+    function printPayables() {
+        $print("print");
+        var ws = XLSX.utils.table_to_sheet(document.getElementById('payableTable'), { cellDates: true });
+        // var wscols = [
+        //     { wch: 4 },
+        //     { wch: 12 },
+        //     { wch: 20 },
+        //     { wch: 20 },
+        //     { wch: 14 },
+        //     { wch: 40 }
+        // ];
+        // var wsrows = [
+        //     {
+        //         hpx: 24,
+        //         level: 2
+        //     }
+        // ];
+        // ws['!cols'] = wscols;
+        // ws['!rows'] = wsrows;
+        XLSX.utils.book_append_sheet(wb, ws, 'Payables');
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Payables.xlsx');
+    }
 </script>
