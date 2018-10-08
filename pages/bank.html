@@ -30,22 +30,16 @@
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="bankeivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="bankTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-                <th>Customer Type</th>
-                <th>Mobile</th>
-                <th>Address</th>
+                <th>Code</th>
+                <th>Name</th>
             </tr>
             <tr ng-repeat="bank in comBanks track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{bank.acCode}}</td>
-                <td>{{bank.partyName}}</td>
-                <td>{{bank.cusType}}</td>
-                <td>{{bank.mobile}}</td>
-                <td>{{bank.address}}</td>
+                <td>{{bank.code}}</td>
+                <td>{{bank.name}}</td>
             </tr>
         </table>
     </div>

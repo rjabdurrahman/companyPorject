@@ -38,22 +38,18 @@
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="coneivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="conTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-                <th>Customer Type</th>
-                <th>Mobile</th>
-                <th>Address</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Contract</th>
             </tr>
             <tr ng-repeat="con in comContractors track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{con.acCode}}</td>
-                <td>{{con.partyName}}</td>
-                <td>{{con.cusType}}</td>
-                <td>{{con.mobile}}</td>
-                <td>{{con.address}}</td>
+                <td>{{con.code}}</td>
+                <td>{{con.name}}</td>
+                <td>{{con.contact}}</td>
             </tr>
         </table>
     </div>

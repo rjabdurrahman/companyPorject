@@ -62,22 +62,24 @@
         </div>
     </div>
     <div class="w3-panel" style="display: none;">
-        <table id="empeivesTable" class="w3-table w3-white w3-striped w3-border">
+        <table id="empTable" class="w3-table w3-white w3-striped w3-border">
             <tr>
                 <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-                <th>Customer Type</th>
-                <th>Mobile</th>
-                <th>Address</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Employee Type</th>
+                <th>Posting</th>
+                <th>Designation</th>
+                <th>Salary</th>
             </tr>
-            <tr ng-repeat="emp in comempeivables track by $index">
+            <tr ng-repeat="emp in comEmps track by $index">
                 <td>{{$index + 1}}</td>
-                <td>{{emp.Code}}</td>
-                <td>{{emp.Name}}</td>
-                <td>{{emp.cusType}}</td>
-                <td>{{emp.mobile}}</td>
-                <td>{{emp.address}}</td>
+                <td>{{emp.code}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.type}}</td>
+                <td>{{emp.post}}</td>
+                <td>{{emp.des}}</td>
+                <td>{{emp.salary}}</td>
             </tr>
         </table>
     </div>

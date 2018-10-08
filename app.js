@@ -65,14 +65,14 @@ app.controller('TruckTractorCntlr', function($scope){
   $scope.comTrs = lsExGJInit('comTrs', []);
 });
 app.controller('EmployeesCntlr', function($scope){
-  $scope.message = "Employees Cntl";
+  $scope.comEmps = lsExGJInit('comEmps', []);
 });
 app.controller('BankCntlr', function($scope){
-  $scope.message = "Bank Cntl";
+  $scope.comBanks = lsExGJInit('comBanks', []);
 });
 app.controller('ContractorsCntlr', function($scope){
-  $scope.message = "Contractors Cntl";
+  $scope.comContractors = lsExGJInit('comContractors', []);
 });
 app.controller('RiceCntlr', function($scope){
-  $scope.message = "Rice Cntl";
+  $scope.comRices = lsExGJInit('comRices', []);
 });
