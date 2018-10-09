@@ -1,12 +1,11 @@
-var wbook = XLSX.utils.book_new();
-wbook.Props = {
-    Title: "Company WordBook",
-    Subject: "Test",
-    Author: "Abdur Rahman",
-    CreatedDate: new Date(2018, 09, 18)
-};
-
 function printAll() {
+    let wbook = XLSX.utils.book_new();
+    wbook.Props = {
+        Title: "Company WordBook",
+        Subject: "Test",
+        Author: "Abdur Rahman",
+        CreatedDate: new Date(2018, 09, 18)
+    };
     $print('printAll');
     var accounts = {
         CA: 'Current Asset',
