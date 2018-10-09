@@ -74,6 +74,7 @@
 <script>
     // lsSetJ('comAccounts', []);
     $js('submitAccBtn').addEventListener('click', function () {
+        let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
         var accCodeInit = '';
         let accCodeInitNode = $js('accCodeInit').firstElementChild;
@@ -95,8 +96,8 @@
             $('#notification').html("<h6>Input Account Code</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        else if ($js('accCodeFirst').value < 99) {
-            $('#notification').html("<h6>Code Must be in 100</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
+            $('#notification').html("<h6>Code Must Between " + accounts[accNatureCode].min + " to " + accounts[accNatureCode].max + "</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
