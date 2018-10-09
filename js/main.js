@@ -64,6 +64,21 @@ lsExGJInit('comAccounts', []).forEach(element => {
     accountCodes.push(element.accCode);
 });
 
+var wb = XLSX.utils.book_new();
+wb.Props = {
+    Title: "Company WordBook",
+    Subject: "Test",
+    Author: "Abdur Rahman",
+    CreatedDate: new Date(2018, 09, 18)
+};
+// wb.SheetNames.push("Test Sheet");
+function s2ab(s) {
+    var buf = new ArrayBuffer(s.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+}
+
 // var config = {
 //     apiKey: "AIzaSyC5pbKSkg-q4yA_2SX0bMZ8fuZoOaOWrrE",
 //     authDomain: "resultmanagement-f2d68.firebaseapp.com",
@@ -75,12 +90,3 @@ lsExGJInit('comAccounts', []).forEach(element => {
 // firebase.initializeApp(config);
 
 // var studentRef = firebase.database().ref('students');
-
-var wb = XLSX.utils.book_new();
-wb.Props = {
-    Title: "Company WordBook",
-    Subject: "Test",
-    Author: "Abdur Rahman",
-    CreatedDate: new Date(2018, 09, 18)
-};
-// wb.SheetNames.push("Test Sheet");
