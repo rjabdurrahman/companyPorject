@@ -7,26 +7,13 @@ function printAll() {
         CreatedDate: new Date(2018, 09, 18)
     };
     $print('printAll');
-    var accounts = {
-        CA: 'Current Asset',
-        NCA: 'Non-Current Asset',
-        CL: 'Current Liability',
-        NCL: 'Non-Current Liability',
-        EQTY: 'Equity',
-        EX: 'Experience',
-        REV: 'Revenue',
-        WD: 'Withdrawal',
-        SD: 'Contra Revenue',
-        COGS: 'Cost of Goods Sold',
-        WIP: 'Production',
-        CN: 'Contra'
-    }
+    var comAc = accounts;
     var comAccounts = [];
     var accs = lsExGJInit('comAccounts', []);
     var accLength = lsExGJInit('comAccounts', []).length;
-    for (acc in accounts) {
+    for (acc in comAc) {
         for (i = 0; i < accLength; i++) {
-            if (accs[i].nature == accounts[acc]) {
+            if (accs[i].nature == comAc[acc].name) {
                 comAccounts.push(accs[i]);
             };
         }
