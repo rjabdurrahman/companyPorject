@@ -98,6 +98,7 @@
         }
         else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
             $('#notification').html("<h6>Code Must Between " + accounts[accNatureCode].min + " to " + accounts[accNatureCode].max + "</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            $js('accCodeFirst').focus();
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
