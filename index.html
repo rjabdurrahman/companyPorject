@@ -21,7 +21,7 @@
     <div class="w3-container w3-indigo">
         <h2 style="float: left">Company Name</h2>
         <section style="float: right; margin-top: 12px;">
-            <a href="#login" class="w3-button w3-border">Log Out</a>
+            <a href="#login" onclick="logOut()" class="w3-button w3-border">Log Out</a>
         </section>
     </div>
     <div class="w3-container w3-padding-16 w3-indigo">
@@ -44,11 +44,19 @@
         <h6>Added Successfully!</h6>
     </div>
     <ng-view></ng-view>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script src="app.js"></script>
     <script src="js/main.js"></script>
     <script src="js/print.js"></script>
     <script src="pages/account.js"></script>
     <script src="pages/receivable.js"></script>
+    <script>
+        function logOut() {
+            auth.signOut().catch(function (error) {
+                alert(error);
+            });
+        }
+    </script>
 </body>
 
 </html>

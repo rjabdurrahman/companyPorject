@@ -95,14 +95,34 @@ function s2ab(s) {
     return buf;
 }
 
-// var config = {
-//     apiKey: "AIzaSyC5pbKSkg-q4yA_2SX0bMZ8fuZoOaOWrrE",
-//     authDomain: "resultmanagement-f2d68.firebaseapp.com",
-//     databaseURL: "https://resultmanagement-f2d68.firebaseio.com",
-//     projectId: "resultmanagement-f2d68",
-//     storageBucket: "resultmanagement-f2d68.appspot.com",
-//     messagingSenderId: "943256271830"
-// };
-// firebase.initializeApp(config);
-
-// var studentRef = firebase.database().ref('students');
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCcl2jCPFCebAgYpfygKlXraqy4N0lrN8o",
+    authDomain: "company-173ab.firebaseapp.com",
+    databaseURL: "https://company-173ab.firebaseio.com",
+    projectId: "company-173ab",
+    storageBucket: "",
+    messagingSenderId: "289097515037"
+};
+firebase.initializeApp(config);
+const auth = firebase.auth();
+auth.onAuthStateChanged(function (fuser) {
+    if (fuser) {
+        $print(fuser);
+        window.location.href = '#account';
+        // $js('dashboard').style.display = 'block';
+        // $js('loginboard').style.display = 'none';
+        // var user = firebase.auth().currentUser;
+        // if (user != null) {
+        //     name = user.displayName;
+        //     email = user.email;
+        //     photoUrl = user.photoURL;
+        //     emailVerified = user.emailVerified;
+        //     uid = user.uid;
+        // }
+    }
+    else {
+        $print('You are not logged!');
+        window.location.href = '#login';
+    }
+});

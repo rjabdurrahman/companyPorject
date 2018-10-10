@@ -4,8 +4,10 @@
             <h2>Login</h2>
         </div>
         <div class="w3-container" style="padding-bottom: 18px;">
-            <input id="usernameField" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;" placeholder="Username">
-            <input id="passwordField" class="w3-input w3-border" type="password" style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Password">
+            <input id="userEmailField" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
+                placeholder="Email">
+            <input id="userPasswordField" class="w3-input w3-border" type="password" style="width: 100%; margin-top: 22px; padding: 10px;"
+                placeholder="Password">
             <p style="padding: 6px;">
                 <button id="loginBtn" class="w3-btn w3-indigo">Login</button>
                 <a style="float: right; margin-top: 12px;" href="#">Forget Password?</a>
@@ -14,15 +16,22 @@
     </div>
 </div>
 <script>
-    if (!lsGet('user')) {
-        let user = {
-            id: 1,
-            username: 'afsana',
-            pass: '1234'
-        };
-        lsSetJ('comUser', user);
-    }
+    // if (!lsGet('user')) {
+    //     let user = {
+    //         id: 1,
+    //         username: 'afsana',
+    //         pass: '1234'
+    //     };
+    //     lsSetJ('comUser', user);
+    // }
     $js('loginBtn').addEventListener('click', function () {
-        window.location.href = '#account';
+        let email = $js('userEmailField').value;
+        let password = $js('userPasswordField').value;
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+            var code = error.code;
+            var message = error.message;
+            alert(message);
+        });
+        $print(auth);
     });
 </script>
