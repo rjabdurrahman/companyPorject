@@ -41,6 +41,21 @@
                 <a onclick="printAll()" class="w3-bar-item w3-button">Print All</a>
             </div>
         </div>
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Journal <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#account" class="w3-bar-item w3-button">Main Account</a>
+                <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
+                <a href="#payable" class="w3-bar-item w3-button">Payable</a>
+            </div>
+        </div>
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Ledger <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#account" class="w3-bar-item w3-button">Main Account</a>
+                <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
+            </div>
+        </div>
     </div>
     <!-- <div class="w3-container w3-padding-16 w3-indigo">
         <section style="float: left;" class="button-container">
@@ -68,7 +83,7 @@
     <script src="pages/account.js"></script>
     <script src="pages/receivable.js"></script>
     <script>
-        
+
         function logOut() {
             auth.signOut().catch(function (error) {
                 alert(error);
