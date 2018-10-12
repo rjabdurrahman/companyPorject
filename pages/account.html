@@ -101,6 +101,10 @@
             $js('accCodeFirst').focus();
             return;
         }
+        else if ($js('accTxt').value == '') {
+            $('#notification').html("<h6>Input Text Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
         var accNumber = accCodeInit + "-" + accCodeFirst;
         if (accCodeSecond != '') {
             accNumber += "-" + accCodeSecond;
