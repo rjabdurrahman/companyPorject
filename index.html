@@ -21,25 +21,42 @@
     <div class="w3-container w3-indigo">
         <h2 style="float: left">Company Name</h2>
         <section style="float: right; margin-top: 12px;">
-            <a href="#login" onclick="logOut()" class="w3-button w3-border">Log Out</a>
+            <a href="#login" onclick="logOut()" class="w3-bar-item w3-button">Log Out</a>
         </section>
     </div>
-    <div class="w3-container w3-padding-16 w3-indigo">
+    <div class="w3-bar w3-indigo">
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Account <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#account" class="w3-bar-item w3-button">Account</a>
+                <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
+                <a href="#payable" class="w3-bar-item w3-button">Payable</a>
+                <a href="#companyheads" class="w3-bar-item w3-button">Company Heads</a>
+                <a href="#costcenter" class="w3-bar-item w3-button">Cost Center</a>
+                <a href="#trucktractor" class="w3-bar-item w3-button">Truck & Tractor</a>
+                <a href="#employees" class="w3-bar-item w3-button">Employees</a>
+                <a href="#bank" class="w3-bar-item w3-button">Bank</a>
+                <a href="#contractors" class="w3-bar-item w3-button">Contractors</a>
+                <a href="#rice" class="w3-bar-item w3-button">Rice</a>
+                <a onclick="printAll()" class="w3-bar-item w3-button">Print All</a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="w3-container w3-padding-16 w3-indigo">
         <section style="float: left;" class="button-container">
-            <a href="#account" class="w3-button w3-border">Account</a>
-            <a href="#receivable" class="w3-button w3-border">Receivable</a>
-            <a href="#payable" class="w3-button w3-border">Payable</a>
-            <a href="#companyheads" class="w3-button w3-border">Company Heads</a>
-            <a href="#costcenter" class="w3-button w3-border">Cost Center</a>
-            <a href="#trucktractor" class="w3-button w3-border">Truck & Tractor</a>
-            <a href="#employees" class="w3-button w3-border">Employees</a>
-            <a href="#bank" class="w3-button w3-border">Bank</a>
-            <a href="#contractors" class="w3-button w3-border">Contractors</a>
-            <a href="#rice" class="w3-button w3-border">Rice</a>
-            <a onclick="printAll()" class="w3-button w3-border">Print All</a>
+            <a href="#account" class="w3-bar-item w3-button">Account</a>
+            <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
+            <a href="#payable" class="w3-bar-item w3-button">Payable</a>
+            <a href="#companyheads" class="w3-bar-item w3-button">Company Heads</a>
+            <a href="#costcenter" class="w3-bar-item w3-button">Cost Center</a>
+            <a href="#trucktractor" class="w3-bar-item w3-button">Truck & Tractor</a>
+            <a href="#employees" class="w3-bar-item w3-button">Employees</a>
+            <a href="#bank" class="w3-bar-item w3-button">Bank</a>
+            <a href="#contractors" class="w3-bar-item w3-button">Contractors</a>
+            <a href="#rice" class="w3-bar-item w3-button">Rice</a>
+            <a onclick="printAll()" class="w3-bar-item w3-button">Print All</a>
         </section>
-
-    </div>
+    </div> -->
     <div id="notification" class="w3-panel w3-green w3-card-4 notification">
         <h6>Added Successfully!</h6>
     </div>
@@ -55,6 +72,14 @@
             auth.signOut().catch(function (error) {
                 alert(error);
             });
+        }
+        function dropDownShow(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
         }
     </script>
 </body>
