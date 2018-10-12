@@ -58,11 +58,7 @@ input, select, option, textarea {
     border-radius: 4px;
 }
 
-.button-container .w3-button {
-    margin-bottom: 6px;
-}
-
-.w3-button, .w3-btn{
+.w3-btn{
     border-radius: 4px;
 }
 
