@@ -27,6 +27,8 @@ ul.ui-autocomplete {
     border: 1px solid lightgray;
     width: 300px;
     background-color: lightgray;
+    max-height: 200px;
+    overflow: scroll;
 }
 
 ul.ui-autocomplete li {
