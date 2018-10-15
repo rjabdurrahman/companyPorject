@@ -36,6 +36,10 @@ a {
     font-family: 'Montserrat', sans-serif;
 }
 
+.ex-font{
+    font-family: 'Exo 2', sans-serif;
+}
+
 /* Autocomplete Styles */
 
 ul.ui-autocomplete {
