@@ -1,8 +1,8 @@
 <div class="overlay-container">
     <div class="overlay">
         <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 90px;">
-            <div class="w3-container main-bg-color">
-                <h2 class="ex-font">Login</h2>
+            <div class="w3-container main-bg-color div-title">
+                <h2>LOGIN</h2>
             </div>
             <div class="w3-container" style="padding-bottom: 18px;">
                 <input id="userEmailField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
@@ -24,14 +24,6 @@
             document.getElementById("loginBtn").click();
         }
     }
-    // if (!lsGet('user')) {
-    //     let user = {
-    //         id: 1,
-    //         username: 'afsana',
-    //         pass: '1234'
-    //     };
-    //     lsSetJ('comUser', user);
-    // }
     $js('loginBtn').addEventListener('click', function () {
         let email = $js('userEmailField').value;
         let password = $js('userPasswordField').value;

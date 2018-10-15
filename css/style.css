@@ -95,6 +95,11 @@ input, select, option, textarea {
     border-radius: 4px;
 }
 
+.w3-btn:hover{
+    box-shadow: none !important;
+    opacity: 0.8;
+}
+
 input.w3-input:hover, input.w3-input:focus, textarea.w3-input:hover, textarea.w3-input:focus, select:hover, select:focus {
     border: none;
     border: 1px solid #014387 !important;
@@ -111,6 +116,29 @@ input[type="text"]:disabled {
 
 .div-box {
     width: 500px;
+}
+
+.div-title {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.div-title h2 {
+    text-transform: uppercase;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.div-title:after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: solid 8px #014387;
+    border-left: solid 8px transparent;
+    border-right: solid 8px transparent;
 }
 
 .flex {
