@@ -1,18 +1,18 @@
-html {
+/* html {
     height: 100%;
-}
+} */
 
 body {
     /* position: relative;
     background-image: url(../img/bu-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0px 60px; */
+    background-position: 0px 60px;
     min-height: 100%;
     top: 0;
     bottom: 0;
     width: 100%;
-    padding: 0;
+    padding: 0; */
 }
 
 a {
@@ -20,16 +20,20 @@ a {
 }
 
 .mian-color, .mian-color a, .mian-color button {
-    color: #012D5A;
+    color: #014387;
 }
 
 .main-bg-color {
-    background-color: #012D5A;
-    color: white;
+    background-color: #014387 !important;
+    color: white !important;
 }
 
 .robo-font {
     font-family: 'Roboto', sans-serif;
+}
+
+.mont-font{
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Autocomplete Styles */
@@ -107,12 +111,14 @@ input[type="text"]:disabled {
     display: flex;
 }
 
+.overlay-container{
+    background-image: url(../img/bu-bg.jpg);
+    background-size: cover;
+}
+
 .overlay {
-    position: absolute;
     background-color: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    min-height: calc(100vh - 137px);
-    ;
+    height: 100vh;
 }
 
 /* Login Input BG */
