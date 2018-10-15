@@ -3,11 +3,11 @@ html {
 }
 
 body {
-    position: relative;
+    /* position: relative;
     background-image: url(../img/bu-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0px 60px;
+    background-position: 0px 60px; */
     min-height: 100%;
     top: 0;
     bottom: 0;
@@ -17,6 +17,19 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.mian-color, .mian-color a, .mian-color button {
+    color: #012D5A;
+}
+
+.main-bg-color {
+    background-color: #012D5A;
+    color: white;
+}
+
+.robo-font {
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Autocomplete Styles */
@@ -60,7 +73,7 @@ a.w3-button, button.w3-button {
     border-radius: 4px;
 }
 
-.w3-dropdown-hover button.w3-button{
+.w3-dropdown-hover button.w3-button {
     margin-right: 10px;
 }
 
