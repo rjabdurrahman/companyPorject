@@ -84,6 +84,7 @@ a.w3-button, button.w3-button {
 
 .w3-dropdown-hover button.w3-button {
     margin-right: 10px;
+    /* border: 1px solid gray; */
 }
 
 input, select, option, textarea {
