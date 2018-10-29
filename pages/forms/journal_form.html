@@ -1,0 +1,112 @@
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px; width: 950px;">
+            <div class="w3-container main-bg-color div-title">
+                <h2>Journal Form</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col s2" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Entry NO</label>
+                    </div>
+                    <div class="w3-col s2">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s2" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Voucher NO</label>
+                    </div>
+                    <div class="w3-col s3">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s1" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Date</label>
+                    </div>
+                    <div class="w3-col s2">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                </div>
+                <div class="w3-row w3-section w3-border">
+                    <div class="w3-col s8" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Debit Info</label>
+                    </div>
+                    <div class="w3-col s2" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Dr. Amount</label>
+                    </div>
+                    <div class="w3-col s2" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Cr. Amount</label>
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col s1" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">PCode</label>
+                    </div>
+                    <div class="w3-col s3" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Party Name</label>
+                    </div>
+                    <div class="w3-col s1" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">A/C Code</label>
+                    </div>
+                    <div class="w3-col s3" style="padding-top: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">Account Title</label>
+                    </div>
+                    <div class="w3-col s2" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">-</label>
+                    </div>
+                    <div class="w3-col s2" style="padding-top: 10px; padding-left: 10px; text-align: center; box-sizing: border-box;">
+                        <label class="w3-medium">-</label>
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col s1">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s3">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s1">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s3">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s2">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                    <div class="w3-col s2">
+                        <input class="w3-input w3-border" type="text" name="" id="sd">
+                    </div>
+                </div>
+                <p>
+                    <button id="submitRecBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                    <button onclick="clearRecFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printReceivables()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both; height: 16px;"></div>
+            </div>
+        </div>
+        <div class="w3-panel" style="display: none;">
+            <table id="receivesTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>A/C Code</th>
+                    <th>Party Name</th>
+                    <th>Customer Type</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                </tr>
+                <tr ng-repeat="rec in comReceivables track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{rec.acCode}}</td>
+                    <td>{{rec.partyName}}</td>
+                    <td>{{rec.cusType}}</td>
+                    <td>{{rec.mobile}}</td>
+                    <td>{{rec.address}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

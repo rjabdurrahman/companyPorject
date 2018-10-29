@@ -47,6 +47,10 @@ app.config(function($routeProvider) {
     templateUrl : 'pages/rice.html',
     controller  : 'RiceCntlr'
   })
+  .when('/journalform', {
+    templateUrl : 'pages/forms/journal_form.html',
+    controller  : 'RiceCntlr'
+  })
   .otherwise({redirectTo: '/'});
 });
 app.controller('LoginCntlr', function($scope){
