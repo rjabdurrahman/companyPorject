@@ -1,87 +1,89 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Payable</h2>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Payable</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">A/C Code</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="payACCode">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Party Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="payPartyName">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Party Type</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="payPartyType">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Proprietor Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="payProprietor">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Mobile No</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="payMObileNo" onkeypress="numValidate(event)">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Address</label>
+                    </div>
+                    <div class="w3-rest">
+                        <textarea class="w3-input w3-border" name="" id="payAddress" rows="2"></textarea>
+                    </div>
+                </div>
+                <p>
+                    <button id="submitPayBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                    <button onclick="clearPayFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printPayables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
+            </div>
         </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">A/C Code</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="payACCode">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Party Name</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="payPartyName">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Party Type</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="payPartyType">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Proprietor Name</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="payProprietor">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Mobile No</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="payMObileNo" onkeypress="numValidate(event)">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Address</label>
-                </div>
-                <div class="w3-rest">
-                    <textarea class="w3-input w3-border" name="" id="payAddress" rows="2"></textarea>
-                </div>
-            </div>
-            <p>
-                <button id="submitPayBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearPayFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printPayables()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
-                    All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
+        <div class="w3-panel" style="display: none;">
+            <table id="payableTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>A/C Code</th>
+                    <th>Party Name</th>
+                    <th>Party Type</th>
+                    <th>Proprietor Name</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                </tr>
+                <tr ng-repeat="pay in comPayables track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{pay.acCode}}</td>
+                    <td>{{pay.partyName}}</td>
+                    <td>{{pay.partyType}}</td>
+                    <td>{{pay.proprietor}}</td>
+                    <td>{{pay.mobile}}</td>
+                    <td>{{pay.address}}</td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="payableTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-                <th>Party Type</th>
-                <th>Proprietor Name</th>
-                <th>Mobile</th>
-                <th>Address</th>
-            </tr>
-            <tr ng-repeat="pay in comPayables track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{pay.acCode}}</td>
-                <td>{{pay.partyName}}</td>
-                <td>{{pay.partyType}}</td>
-                <td>{{pay.proprietor}}</td>
-                <td>{{pay.mobile}}</td>
-                <td>{{pay.address}}</td>
-            </tr>
-        </table>
     </div>
 </div>
 <script>

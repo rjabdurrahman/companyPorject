@@ -1,47 +1,49 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Company Heads</h2>
-        </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">A/C Code</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="chACCode">
-                </div>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Company Heads</h2>
             </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Party Name</label>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">A/C Code</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="chACCode">
+                    </div>
                 </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="chPartyName">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Party Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="chPartyName">
+                    </div>
                 </div>
+                <p>
+                    <button id="submitChBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                    <button onclick="clearChFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printCh()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
             </div>
-            <p>
-                <button id="submitChBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearChFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printCh()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
-                    All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="comHeadTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>A/C Code</th>
-                <th>Party Name</th>
-            </tr>
-            <tr ng-repeat="ch in comCh track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{ch.acCode}}</td>
-                <td>{{ch.partyName}}</td>
-            </tr>
-        </table>
+        <div class="w3-panel" style="display: none;">
+            <table id="comHeadTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>A/C Code</th>
+                    <th>Party Name</th>
+                </tr>
+                <tr ng-repeat="ch in comCh track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{ch.acCode}}</td>
+                    <td>{{ch.partyName}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 <script>

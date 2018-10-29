@@ -1,57 +1,59 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Contractors</h2>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Contractors</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Code</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="conCode">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="conName">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Contract</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="conContact">
+                    </div>
+                </div>
+                <p>
+                    <button id="submitConBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                    <button onclick="clearConFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printCon()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
+            </div>
         </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Code</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="conCode">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Name</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="conName">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Contract</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="conContact">
-                </div>
-            </div>
-            <p>
-                <button id="submitConBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearConFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printCon()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
-                    All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
+        <div class="w3-panel" style="display: none;">
+            <table id="conTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Contract</th>
+                </tr>
+                <tr ng-repeat="con in comContractors track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{con.code}}</td>
+                    <td>{{con.name}}</td>
+                    <td>{{con.contact}}</td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="conTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Contract</th>
-            </tr>
-            <tr ng-repeat="con in comContractors track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{con.code}}</td>
-                <td>{{con.name}}</td>
-                <td>{{con.contact}}</td>
-            </tr>
-        </table>
     </div>
 </div>
 <script>
@@ -60,9 +62,9 @@
         var conName = $js('conName').value;
         var conContact = $js('conContact').value;
         var contractor = {
-            code : conCode,
-            name : conName,
-            contact : conContact
+            code: conCode,
+            name: conName,
+            contact: conContact
         };
         if (conCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);

@@ -1,46 +1,48 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Rice</h2>
-        </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Code</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="riceCode">
-                </div>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Rice</h2>
             </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Name</label>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Code</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="riceCode">
+                    </div>
                 </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="riceName">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="riceName">
+                    </div>
                 </div>
+                <p>
+                    <button id="submitRiceBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                    <button onclick="clearRiceFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printRice()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
             </div>
-            <p>
-                <button id="submitRiceBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearRiceFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printRice()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
-                    All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="riceTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>Code</th>
-                <th>Name</th>
-            </tr>
-            <tr ng-repeat="rice in comRices track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{rice.code}}</td>
-                <td>{{rice.name}}</td>
-        </table>
+        <div class="w3-panel" style="display: none;">
+            <table id="riceTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                </tr>
+                <tr ng-repeat="rice in comRices track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{rice.code}}</td>
+                    <td>{{rice.name}}</td>
+            </table>
+        </div>
     </div>
 </div>
 <script>

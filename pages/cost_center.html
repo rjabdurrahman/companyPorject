@@ -1,35 +1,37 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Cost Center</h2>
-        </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Cost Center</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="costCenterName">
-                </div>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Cost Center</h2>
             </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Cost Center</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="costCenterName">
+                    </div>
+                </div>
                 <button id="submitCostCenterBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
                 <button onclick="clearCostCenterFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
                 <button onclick="printCostCenter()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
                     All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
+            </div>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="costCenterTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>Cost Center</th>
-            </tr>
-            <tr ng-repeat="costCenter in comCostCenters track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{costCenter}}</td>
-        </table>
+        <div class="w3-panel" style="display: none;">
+            <table id="costCenterTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>Cost Center</th>
+                </tr>
+                <tr ng-repeat="costCenter in comCostCenters track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{costCenter}}</td>
+            </table>
+        </div>
     </div>
 </div>
 <script>

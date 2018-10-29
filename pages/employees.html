@@ -1,87 +1,89 @@
-<div class="overlay">
-    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
-        <div class="w3-container w3-indigo">
-            <h2>Employees</h2>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="margin-top: 18px;">
+            <div class="w3-container w3-indigo">
+                <h2>Employees</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Code</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empCode">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Name</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empName">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Employee Type</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empType">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Posting</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empPost">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Designation</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empDes">
+                    </div>
+                </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Salary</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" name="" id="empSalary" onkeypress="numValidate(event)">
+                    </div>
+                </div>
+                <p>
+                    <button id="submitEmpBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
+                    <button onclick="clearEmpFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
+                    <button onclick="printEmp()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
+                        All</button>
+                </p>
+                <div style="clear: both;height: 16px;"></div>
+            </div>
         </div>
-        <div class="w3-container">
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Code</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empCode">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Name</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empName">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Employee Type</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empType">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Posting</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empPost">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Designation</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empDes">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:150px; padding: 10px;">
-                    <label class="w3-medium">Salary</label>
-                </div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" type="text" name="" id="empSalary" onkeypress="numValidate(event)">
-                </div>
-            </div>
-            <p>
-                <button id="submitEmpBtn" class="w3-btn w3-indigo" style="float: right;">Submit</button>
-                <button onclick="clearEmpFields()" class="w3-btn w3-indigo" style="float: right; margin-right: 10px;">Clear</button>
-                <button onclick="printEmp()" class="w3-btn w3-indigo" style="float: left; margin-right: 10px;">Print
-                    All</button>
-            </p>
-            <div style="clear: both;height: 16px;"></div>
+        <div class="w3-panel" style="display: none;">
+            <table id="empTable" class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Employee Type</th>
+                    <th>Posting</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                </tr>
+                <tr ng-repeat="emp in comEmps track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{emp.code}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.type}}</td>
+                    <td>{{emp.post}}</td>
+                    <td>{{emp.des}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <div class="w3-panel" style="display: none;">
-        <table id="empTable" class="w3-table w3-white w3-striped w3-border">
-            <tr>
-                <th>ID</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Employee Type</th>
-                <th>Posting</th>
-                <th>Designation</th>
-                <th>Salary</th>
-            </tr>
-            <tr ng-repeat="emp in comEmps track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{emp.code}}</td>
-                <td>{{emp.name}}</td>
-                <td>{{emp.type}}</td>
-                <td>{{emp.post}}</td>
-                <td>{{emp.des}}</td>
-                <td>{{emp.salary}}</td>
-            </tr>
-        </table>
     </div>
 </div>
 <script>
@@ -97,40 +99,40 @@
             name: empName,
             type: empType,
             post: empPost,
-            des : empDes,
-            salary : empSalary
+            des: empDes,
+            salary: empSalary
         };
-            if (empCode == "") {
-                $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            else if (empName == "") {
-                $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            else if (empType == "") {
-                $('#notification').html("<h6>Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            else if (empPost == "") {
-                $('#notification').html("<h6>Post Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            else if (empDes == "") {
-                $('#notification').html("<h6>Designation Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            else if (empSalary == "") {
-                $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                return;
-            }
-            $print(emp);
-            var comEmps = lsExGJInit('comEmps', []);
-            comEmps.push(emp);
-            lsSetJ('comEmps', comEmps);
-            clearEmpFields();
-            $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-            location.reload();
+        if (empCode == "") {
+            $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (empName == "") {
+            $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (empType == "") {
+            $('#notification').html("<h6>Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (empPost == "") {
+            $('#notification').html("<h6>Post Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (empDes == "") {
+            $('#notification').html("<h6>Designation Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (empSalary == "") {
+            $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        $print(emp);
+        var comEmps = lsExGJInit('comEmps', []);
+        comEmps.push(emp);
+        lsSetJ('comEmps', comEmps);
+        clearEmpFields();
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        location.reload();
     });
 
     function clearEmpFields() {
