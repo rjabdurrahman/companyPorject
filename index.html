@@ -17,16 +17,32 @@
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
-    #chartTable td{
-        border: 1px solid lightgray;
-    }
-    #chartTable td input{
-        border: none !important;
-        border-radius: 0;
-    }
-    #chartTable td, #chartTable th{
-        vertical-align: middle;
-    }
+        .border{
+            border: 1px solid #014387 !important;
+            z-index: 99 !important;
+        }
+        #chartTable{
+            background-color: white;
+            table-layout: fixed
+        }
+
+        #chartTable input{
+            padding: 0;
+        }
+
+        #chartTable td {
+            border: 1px solid lightgray;
+        }
+
+        #chartTable td input {
+            border: none !important;
+            border-radius: 0;
+        }
+
+        #chartTable td,
+        #chartTable th {
+            vertical-align: middle;
+        }
     </style>
 </head>
 
