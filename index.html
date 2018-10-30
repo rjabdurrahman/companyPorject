@@ -17,10 +17,6 @@
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
-        .border{
-            border: 1px solid #014387 !important;
-            z-index: 99 !important;
-        }
         #chartTable{
             background-color: white;
             table-layout: fixed
@@ -121,7 +117,6 @@
     <script src="pages/account.js"></script>
     <script src="pages/receivable.js"></script>
     <script>
-
         function logOut() {
             auth.signOut().catch(function (error) {
                 alert(error);
