@@ -106,23 +106,23 @@ var config = {
 };
 firebase.initializeApp(config);
 const auth = firebase.auth();
-auth.onAuthStateChanged(function (fuser) {
-    if (fuser) {
-        $print(fuser);
-        window.location.href = '#account';
-        // $js('dashboard').style.display = 'block';
-        // $js('loginboard').style.display = 'none';
-        // var user = firebase.auth().currentUser;
-        // if (user != null) {
-        //     name = user.displayName;
-        //     email = user.email;
-        //     photoUrl = user.photoURL;
-        //     emailVerified = user.emailVerified;
-        //     uid = user.uid;
-        // }
-    }
-    else {
-        $print('You are not logged!');
-        window.location.href = '#login';
-    }
-});
+// auth.onAuthStateChanged(function (fuser) {
+//     if (fuser) {
+//         $print(fuser);
+//         window.location.href = '#account';
+//         // $js('dashboard').style.display = 'block';
+//         // $js('loginboard').style.display = 'none';
+//         // var user = firebase.auth().currentUser;
+//         // if (user != null) {
+//         //     name = user.displayName;
+//         //     email = user.email;
+//         //     photoUrl = user.photoURL;
+//         //     emailVerified = user.emailVerified;
+//         //     uid = user.uid;
+//         // }
+//     }
+//     else {
+//         $print('You are not logged!');
+//         window.location.href = '#login';
+//     }
+// });
