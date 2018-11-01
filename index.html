@@ -17,12 +17,12 @@
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
-        #chartTable{
+        #chartTable {
             background-color: white;
             table-layout: fixed
         }
 
-        #chartTable input{
+        #chartTable input {
             padding: 0;
         }
 
@@ -30,12 +30,13 @@
             border: 1px solid lightgray;
         }
 
-        #chartTable td input, #chartTable td textarea {
+        #chartTable td input,
+        #chartTable td textarea {
             border: none !important;
             border-radius: 0;
         }
 
-        #chartTable tr.primary{
+        #chartTable tr.primary {
             background-color: #009688;
             color: white;
             text-transform: uppercase;
@@ -44,7 +45,7 @@
             height: 50px;
         }
 
-        #chartTable tr.secondary{
+        #chartTable tr.secondary {
             background-color: #4e706d;
             color: white;
         }
@@ -124,6 +125,16 @@
         <h6>Added Successfully!</h6>
     </div>
     <ng-view></ng-view>
+    <div class="w3-container main-bg-color robo-font" style="padding: 6px 15% 6px 10%;">
+        <section style="float: left;">
+            <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;<span
+                style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April 18</span>
+        </section>
+        <section style="float: right;">
+            <i class="fa fa-phone" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;<span
+                style="font-size: 14px;">HOW TO USE?</span>
+        </section>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script src="app.js"></script>
     <script src="js/main.js"></script>
