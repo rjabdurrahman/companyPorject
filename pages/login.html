@@ -1,13 +1,13 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="div-box" style="margin-top: 90px; float: left; margin-right: 40px; margin-left: 40px; min-height: 300px; color: white;">
+        <div class="div-box clearfix" style="margin-top: 90px; float: left; margin-right: 40px; margin-left: 40px; min-height: 300px; color: white;">
             <h1 style="font-size: 60px; text-align: center;" class="ex-font">Welcome To</h1>
             <section style="text-align: center;">
                 <span id="typing" style="font-size: 60px;" class="ex-font"></span>
                 <span style="font-size: 60px;" class='type-cursor'>|</span>
             </section>
         </div>
-        <div class="div-box w3-light-gray w3-card-4" style="margin-top: 60px; float: right; margin-right: 100px; margin-left: 40px;">
+        <div class="div-box w3-light-gray w3-card-4 clearfix" style="margin-top: 60px; float: right; margin-right: 100px; margin-left: 40px;">
             <div class="w3-container main-bg-color div-title">
                 <h2>LOGIN</h2>
             </div>
@@ -52,7 +52,6 @@
     function typeWriter() {
         if (pos < data[turn].length) {
             document.getElementById("typing").innerHTML += data[turn].charAt(pos);
-            console.log(data[turn].charAt(pos));
             pos++;
             setTimeout(typeWriter, speed);
         } else {
