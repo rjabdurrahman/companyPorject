@@ -150,7 +150,8 @@ input[type="text"]:disabled {
 }
 
 .overlay-container {
-    position: relative;
+    border: 1px solid transparent;
+    /* position: relative; */
     width: 100%;
     min-height: calc(100vh - 160px);
     background-image: url(../img/bu-bg.jpg);
@@ -159,7 +160,8 @@ input[type="text"]:disabled {
 }
 
 .overlay {
-    position: absolute;
+    border: 1px solid transparent;
+    /* position: absolute; */
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     min-height: calc(100vh - 160px);
