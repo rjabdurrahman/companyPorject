@@ -1,6 +1,6 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="div-box w3-light-gray w3-card-4 margin-auto">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: none;">
             <div class="w3-container main-bg-color div-title">
                 <h2>Account</h2>
             </div>
@@ -54,9 +54,18 @@
                 </p>
             </div>
         </div>
-
-        <div class="w3-panel" style="display: none;">
-            <table id="accountsTable" class="w3-table w3-white w3-striped w3-border">
+        <div class="w3-card-4 table-container">
+            <div class="w3-indigo table-head">
+                <table class="w3-table w3-striped">
+                    <tr>
+                        <td>ID</td>
+                        <td>Nature</td>
+                        <td>A/C Code</td>
+                        <td>Account Text</td>
+                    </tr>
+                </table>
+            </div>
+            <table class="w3-table w3-striped w3-white">
                 <tr>
                     <th>ID</th>
                     <th>Nature</th>
