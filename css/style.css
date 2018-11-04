@@ -205,12 +205,12 @@ input#userPasswordField {
 .table-head {
     position: absolute;
     width: 100%;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 18px;
     line-height: 1.4;
 }
 
-.table-container th, td {
+.table-container th, .table-container td {
     font-weight: unset;
     padding-top: 15px !important;
     padding-bottom: 15px !important;
