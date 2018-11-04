@@ -20,7 +20,7 @@ a {
 }
 
 .mian-color, .mian-color a, .mian-color button {
-    color: #014387;
+    color: #014387 !important;
 }
 
 .main-bg-color {
@@ -104,6 +104,11 @@ input, select, option, textarea {
     opacity: 0.8;
 }
 
+.circle-btn {
+    height: 52px;
+    width: 52px;
+}
+
 input.w3-input:hover, input.w3-input:focus, textarea.w3-input:hover, textarea.w3-input:focus, select:hover, select:focus {
     border: none;
     border: 1px solid #014387 !important;
@@ -184,9 +189,12 @@ input#userPasswordField {
 
 /* Data Table Style */
 
+.table-main-cotainer {
+    margin: 20px 30px;
+}
+
 .table-container {
     font-family: 'Lato', sans-serif;
-    margin: 22px 30px;
     border-radius: 5px;
     overflow: hidden;
     position: relative;

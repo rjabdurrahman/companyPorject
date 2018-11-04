@@ -1,34 +1,37 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="w3-card-4 table-container">
-            <div class="main-bg-color table-head">
-                <table class="w3-table w3-striped">
+        <div class="table-main-cotainer">
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn">+</button>
+            <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
+            <div class="w3-card-4 table-container">
+                <div class="main-bg-color table-head">
+                    <table class="w3-table w3-striped">
+                        <tr>
+                            <td>ID</td>
+                            <td>Nature</td>
+                            <td>A/C Code</td>
+                            <td>Account Text</td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="w3-table w3-striped w3-white">
                     <tr>
-                        <td>ID</td>
-                        <td>Nature</td>
-                        <td>A/C Code</td>
-                        <td>Account Text</td>
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>A/C Code</th>
+                        <th>Account Text</th>
+                    </tr>
+                    <tr ng-repeat="comAcc in comAccounts track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
                     </tr>
                 </table>
             </div>
-            <table class="w3-table w3-striped w3-white">
-                <tr>
-                    <th>ID</th>
-                    <th>Nature</th>
-                    <th>A/C Code</th>
-                    <th>Account Text</th>
-                </tr>
-                <tr ng-repeat="comAcc in comAccounts track by $index">
-                    <td>{{$index + 1}}</td>
-                    <td>{{comAcc.nature}}</td>
-                    <td>{{comAcc.accCode}}</td>
-                    <td>{{comAcc.accText}}</td>
-                </tr>
-            </table>
         </div>
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn main-bg-color">Add Account</button>
         <div id="id01" class="w3-modal">
-            <div class="w3-modal-content" style="background-color: transparent;">
+            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
                     <header class="w3-container main-bg-color div-title">
                         <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
