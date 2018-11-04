@@ -120,8 +120,8 @@ input[type="text"]:disabled {
 
 .div-box {
     width: 500px;
-    margin-top: 18px;
-    margin-bottom: 18px;
+    /* margin-top: 18px;
+    margin-bottom: 18px; */
 }
 
 .div-title {
@@ -187,7 +187,7 @@ input#userPasswordField {
 .table-container {
     font-family: 'Lato', sans-serif;
     margin: 22px 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
     font-size: 15px;
