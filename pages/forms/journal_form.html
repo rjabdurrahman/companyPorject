@@ -5,7 +5,7 @@
                 <h2>Journal Form</h2>
             </div>
             <div class="w3-container" style="margin-top: 20px;">
-                <table id="chartTable" class="w3-table" style="font-size: 16px;">
+                <table class="w3-table" style="font-size: 16px;">
                     <tr>
                         <td style="width: 115px;">
                             <span>Entry No</span>
@@ -60,8 +60,9 @@
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
-                    <tr>
-                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;">+</td>
+                    <tr id="debitLine">
+                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
+                            onclick="addDebitField()">+</td>
                         <td colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -101,7 +102,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;">+</td>
+                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
+                            onclick="addCreditField()">+</td>
                         <td colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -133,5 +135,22 @@
     </div>
 </div>
 <script>
-
+    function addDebitField() {
+        var chartTable = $js('chartTable');
+        // var newLine = m("tr",
+        //     [
+        //         m("td", "1"),
+        //         m("td", "Kasi"),
+        //         m("td", "pat")
+        //     ]
+        // );
+        // $print(newLine);
+        var newLine = document.createElement('tr');
+        var newCell = document.createElement('td');
+        newLine.appendChild(newCell);
+        chartTable.children[0].insertBefore(newLine, chartTable.children[0].children[3]);
+    }
+    function addCreditField() {
+        $print('credit')
+    }
 </script>
