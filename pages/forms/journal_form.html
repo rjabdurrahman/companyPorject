@@ -137,18 +137,19 @@
 <script>
     function addDebitField() {
         var chartTable = $js('chartTable');
-        // var newLine = m("tr",
-        //     [
-        //         m("td", "1"),
-        //         m("td", "Kasi"),
-        //         m("td", "pat")
-        //     ]
-        // );
-        // $print(newLine);
-        var newLine = document.createElement('tr');
-        var newCell = document.createElement('td');
-        newLine.appendChild(newCell);
-        chartTable.children[0].insertBefore(newLine, chartTable.children[0].children[3]);
+        var newRow = document.createElement('tr');
+        m.render(newRow,
+            [
+                m("td", "1"),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : 'Data', disabled : true})]),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : 'Data', disabled : true})]),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: right'})]),
+                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : '------', disabled : true})])
+            ]
+        );
+        chartTable.children[0].insertBefore(newRow, chartTable.children[0].children[3]);
     }
     function addCreditField() {
         $print('credit')
