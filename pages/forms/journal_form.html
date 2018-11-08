@@ -56,7 +56,7 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
@@ -143,17 +143,26 @@
         m.render(newRow,
             [
                 m("td", ++serial),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : 'Data', disabled : true})]),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : 'Data', disabled : true})]),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: right'})]),
-                m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : '------', disabled : true})])
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name : 'debitAmount', style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
             ]
         );
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
     }
     function addCreditField() {
         $print('credit')
+    }
+    function findTotal() {
+        var arr = document.getElementsByName('qty');
+        var tot = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (parseInt(arr[i].value))
+                tot += parseInt(arr[i].value);
+        }
+        document.getElementById('total').value = tot;
     }
 </script>
