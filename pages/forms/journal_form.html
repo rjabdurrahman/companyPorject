@@ -56,7 +56,8 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeyup="findTotal()" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeyup="findTotal()"
+                                style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
@@ -140,21 +141,33 @@
         let adderRow = $js(field);
         let serial = parseInt(adderRow.parentElement.previousElementSibling.firstElementChild.innerHTML);
         let newRow = document.createElement('tr');
-        m.render(newRow,
-            [
-                m("td", ++serial),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name : 'debitAmount', onkeyup : findTotal, style: 'text-align: right' })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
-            ]
-        );
+        if (field == "addDebitField") {
+            m.render(newRow,
+                [
+                    m("td", ++serial),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeyup: findTotal, style: 'text-align: right' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
+                ]
+            );
+        }
+        else if (field == "addCreditField") {
+            m.render(newRow,
+                [
+                    m("td", ++serial),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeyup: findTotal, style: 'text-align: right' })])
+                ]
+            );
+        }
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
-    }
-    function addCreditField() {
-        $print('credit')
     }
     function findTotal() {
         let amountsEl = document.getElementsByName('debitAmount');
@@ -164,6 +177,5 @@
                 total += parseInt(amountsEl[amountEl].value);
         }
         document.getElementById('totalDebit').textContent = total;
-        $print(total);
     }
 </script>
