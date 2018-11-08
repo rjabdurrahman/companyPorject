@@ -137,10 +137,12 @@
 <script>
     function addDebitField() {
         var chartTable = $js('chartTable');
+        var adderRow = $js('addDebitField');
+        let serial = parseInt(adderRow.parentElement.previousElementSibling.firstElementChild.innerHTML);
         var newRow = document.createElement('tr');
         m.render(newRow,
             [
-                m("td", "1"),
+                m("td", ++serial),
                 m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
                 m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : 'Data', disabled : true})]),
                 m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center'})]),
@@ -149,7 +151,7 @@
                 m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : '------', disabled : true})])
             ]
         );
-        chartTable.children[0].insertBefore(newRow, $js('addDebitField').parentElement);
+        chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
     }
     function addCreditField() {
         $print('credit')
