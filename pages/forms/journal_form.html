@@ -56,7 +56,7 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeyup="findTotal(this.name)"
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
                                 style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
@@ -99,7 +99,7 @@
                         </td>
                         <td style="text-align: center; color: gray">------</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeyup="findTotal(this.name)"
+                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
                                 style="text-align: right">
                         </td>
                     </tr>
@@ -150,7 +150,7 @@
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeyup: findTotal, style: 'text-align: right' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress : numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
                 ]
             );
@@ -164,7 +164,7 @@
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeyup: findTotal, style: 'text-align: right' })])
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress : numValidate, onkeyup: findTotal, style: 'text-align: right' })])
                 ]
             );
         }
@@ -178,14 +178,14 @@
         let amountsEl = document.getElementsByName(field);
         let total = 0;
         for (var amountEl in amountsEl) {
-            if (parseInt(amountsEl[amountEl].value))
-                total += parseInt(amountsEl[amountEl].value);
+            if (parseFloat(amountsEl[amountEl].value))
+                total += parseFloat(amountsEl[amountEl].value);
         }
         if(field == "debitAmount"){
-            $js('totalDebit').textContent = total;
+            $js('totalDebit').textContent = parseFloat(total.toFixed(2));
         }
         else if(field == "creditAmount"){
-            $js('totalCredit').textContent = total;
+            $js('totalCredit').textContent = parseFloat(total.toFixed(2));
         }
     }
 </script>
