@@ -61,7 +61,7 @@
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
                     <tr id="debitLine">
-                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
+                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
                             onclick="addDebitField()">+</td>
                         <td colspan="6"></td>
                     </tr>
@@ -149,7 +149,7 @@
                 m("td", [m('input', {class : 'w3-input w3-border', type : 'text', style : 'text-align: center', value : '------', disabled : true})])
             ]
         );
-        chartTable.children[0].insertBefore(newRow, chartTable.children[0].children[3]);
+        chartTable.children[0].insertBefore(newRow, $js('addDebitField').parentElement);
     }
     function addCreditField() {
         $print('credit')
