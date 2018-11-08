@@ -56,7 +56,7 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeyup="findTotal()" style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
@@ -109,8 +109,8 @@
                     <tr class="primary">
                         <td></td>
                         <td colspan="4" style="text-align: center;">Total</td>
-                        <td style="text-align: right">6150</td>
-                        <td style="text-align: right">6150</td>
+                        <td id="totalDebit" style="text-align: right">00</td>
+                        <td style="text-align: right">00</td>
                     </tr>
                     <tr>
                         <td colspan="2">Cost Center</td>
@@ -147,7 +147,7 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name : 'debitAmount', style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name : 'debitAmount', onkeyup : findTotal, style: 'text-align: right' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
             ]
         );
@@ -157,12 +157,13 @@
         $print('credit')
     }
     function findTotal() {
-        var arr = document.getElementsByName('qty');
-        var tot = 0;
-        for (var i = 0; i < arr.length; i++) {
-            if (parseInt(arr[i].value))
-                tot += parseInt(arr[i].value);
+        let amountsEl = document.getElementsByName('debitAmount');
+        let total = 0;
+        for (var amountEl in amountsEl) {
+            if (parseInt(amountsEl[amountEl].value))
+                total += parseInt(amountsEl[amountEl].value);
         }
-        document.getElementById('total').value = tot;
+        document.getElementById('totalDebit').textContent = total;
+        $print(total);
     }
 </script>
