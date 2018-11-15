@@ -113,6 +113,11 @@ input[type="text"]:disabled {
     margin-bottom: 18px; */
 }
 
+.tbm{
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
 .div-title {
     position: relative;
     margin-bottom: 6px;

@@ -18,21 +18,25 @@
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
-        #chartTable {
+        #chartTable,
+        .chart-table {
             background-color: white;
             table-layout: fixed;
         }
 
-        #chartTable input {
+        #chartTable input,
+        .chart-table input {
             padding: 0;
         }
 
-        #chartTable td {
+        #chartTable td,
+        .chart-table td {
             border: 1px solid lightgray;
         }
 
         #chartTable td input,
-        #chartTable td textarea {
+        #chartTable td textarea,
+        .chart-table td input {
             border: none !important;
             border-radius: 0;
         }
@@ -52,7 +56,9 @@
         }
 
         #chartTable td,
-        #chartTable th {
+        #chartTable th,
+        .chart-table th,
+        .chart-table td {
             vertical-align: middle;
         }
     </style>
@@ -62,12 +68,12 @@
     <header>
         <div class="w3-container main-bg-color robo-font" style="padding: 6px 15% 6px 10%;">
             <section style="float: left;">
-                <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;<span
-                    style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April 18</span>
+                <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
+                <span style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April 18</span>
             </section>
             <section style="float: right;">
-                <i class="fa fa-phone" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;<span
-                    style="font-size: 14px;">+880&nbsp;-&nbsp;1757&nbsp;-&nbsp;110296</span>
+                <i class="fa fa-phone" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
+                <span style="font-size: 14px;">+880&nbsp;-&nbsp;1757&nbsp;-&nbsp;110296</span>
             </section>
         </div>
         <div class="w3-container mian-color mont-font" style="display: flex; padding: 10px 60px 10px 60px; height: 40px; box-sizing: unset;">
@@ -75,13 +81,17 @@
                 <img src="img/logo.png" alt="">
             </section> -->
             <section style="font-family: 'Pacifico', cursive; font-size: 27px;">
-                <span>Company<sup>&reg;</sup></span>
+                <span>Company
+                    <sup>&reg;</sup>
+                </span>
             </section>
             <section style="margin-left: auto; font-size: 14px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
                     <a href="#/" style="margin-right: 10px;" class="w3-bar-item w3-button w3-border">HOME</a>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">CHART&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
+                        <button class="w3-button">CHART&nbsp;&nbsp;
+                            <i class="fa fa-caret-down"></i>
+                        </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
                             <a href="#account" class="w3-bar-item w3-button">Main Account</a>
                             <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
@@ -97,14 +107,18 @@
                         </div>
                     </div>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">FORM ENTRY&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
+                        <button class="w3-button">FORM ENTRY&nbsp;&nbsp;
+                            <i class="fa fa-caret-down"></i>
+                        </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
                             <a href="#journalform" class="w3-bar-item w3-button">Journal Form</a>
                             <a href="#/" class="w3-bar-item w3-button">Puchase Return</a>
                         </div>
                     </div>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">JOURNAL&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
+                        <button class="w3-button">JOURNAL&nbsp;&nbsp;
+                            <i class="fa fa-caret-down"></i>
+                        </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
                             <a href="#" class="w3-bar-item w3-button">Here</a>
                             <a href="#" class="w3-bar-item w3-button">Show</a>
@@ -112,7 +126,9 @@
                         </div>
                     </div>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">LEDGER&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
+                        <button class="w3-button">LEDGER&nbsp;&nbsp;
+                            <i class="fa fa-caret-down"></i>
+                        </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
                             <a href="#account" class="w3-bar-item w3-button">Main Account</a>
                             <a href="#" class="w3-bar-item w3-button">Balance Sheets</a>
@@ -135,8 +151,8 @@
                 How To Use?
             </button>
             <section style="float: right;">
-                <i class="fa fa-copyright" aria-hidden="true" style="font-size: 16px; color: yellow;"></i>&nbsp;&nbsp;<span
-                    style="font-size: 14px;">BDTunes24 - 2018</span>
+                <i class="fa fa-copyright" aria-hidden="true" style="font-size: 16px; color: yellow;"></i>&nbsp;&nbsp;
+                <span style="font-size: 14px;">BDTunes24 - 2018</span>
             </section>
         </div>
     </footer>

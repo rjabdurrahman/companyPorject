@@ -1,11 +1,11 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="width: 1000px;">
+        <div class="div-box tbm w3-light-gray w3-card-4 margin-auto" style="width: 1000px;">
             <div class="w3-container main-bg-color div-title">
                 <h2>Journal Form</h2>
             </div>
             <div class="w3-container" style="margin-top: 20px;">
-                <table class="w3-table" style="font-size: 16px;">
+                <table class="w3-table chart-table" style="font-size: 16px;">
                     <tr>
                         <td style="width: 115px;">
                             <span>Entry No</span>
@@ -23,7 +23,7 @@
                         </td>
                     </tr>
                 </table>
-                <table id="chartTable" class="w3-table" style="font-size: 16px;">
+                <table id="chartTable" class="w3-table chart-table" style="font-size: 16px;">
                     <tr class="primary">
                         <td style="width: 45px;"></td>
                         <td colspan="4" style="text-align: center;">Debit Info</td>
@@ -45,15 +45,13 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
@@ -62,8 +60,7 @@
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
                     <tr id="debitLine">
-                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addDebitField')">+</td>
+                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addDebitField')">+</td>
                         <td colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -87,15 +84,13 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense" disabled>
                         </td>
                         <td style="text-align: center; color: gray">------</td>
                         <td>
@@ -104,8 +99,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addCreditField')">+</td>
+                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addCreditField')">+</td>
                         <td colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -137,6 +131,12 @@
     </div>
 </div>
 <script>
+    // $('#recACCode').autocomplete({
+    //     source: accountCodes,
+    //     minLength: 0
+    // }).focus(function () {
+    //     $(this).autocomplete("search");
+    // });
     function addField(field) {
         let chartTable = $js('chartTable');
         let adderRow = $js(field);
@@ -150,7 +150,7 @@
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress : numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
                 ]
             );
@@ -164,7 +164,7 @@
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress : numValidate, onkeyup: findTotal, style: 'text-align: right' })])
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
                 ]
             );
         }
@@ -172,7 +172,7 @@
     }
     function findTotal(fname) {
         var field = this.name;
-        if(typeof(fname) == "string"){
+        if (typeof (fname) == "string") {
             field = fname;
         }
         let amountsEl = document.getElementsByName(field);
@@ -181,10 +181,10 @@
             if (parseFloat(amountsEl[amountEl].value))
                 total += parseFloat(amountsEl[amountEl].value);
         }
-        if(field == "debitAmount"){
+        if (field == "debitAmount") {
             $js('totalDebit').textContent = parseFloat(total.toFixed(2));
         }
-        else if(field == "creditAmount"){
+        else if (field == "creditAmount") {
             $js('totalCredit').textContent = parseFloat(total.toFixed(2));
         }
     }
