@@ -39,8 +39,9 @@ ul.ui-autocomplete {
     border: 1px solid lightgray;
     width: 300px;
     background-color: lightgray;
-    max-height: 200px;
-    overflow: scroll;
+    max-height: 110px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 ul.ui-autocomplete li {
