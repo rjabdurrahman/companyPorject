@@ -42,10 +42,10 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value=""
                                 disabled>
                         </td>
                         <td>
@@ -93,7 +93,7 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="Salse Expense"
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value=""
                                 disabled>
                         </td>
                         <td style="text-align: center; color: gray">------</td>
@@ -160,7 +160,7 @@
             m.render(newRow,
                 [
                     m("td", ++serial),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
@@ -174,9 +174,9 @@
                 [
                     m("td", ++serial),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
                 ]
