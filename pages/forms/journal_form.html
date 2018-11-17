@@ -45,8 +45,7 @@
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value=""
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
@@ -93,8 +92,7 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value=""
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td style="text-align: center; color: gray">------</td>
                         <td>
@@ -126,8 +124,12 @@
                         <td colspan="3">
                             <textarea name="" id="" cols="40" rows="1"></textarea>
                         </td>
-                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer;">Clear</td>
-                        <td class="main-bg-color w3-btn" style="text-align: center; cursor: pointer;">Submit</td>
+                        <td class="main-bg-color" style="text-align: center; cursor: pointer;">
+                            <button class="w3-btn">Clear</button>
+                        </td>
+                        <td class="main-bg-color" style="text-align: center; cursor: pointer;">
+                            <button id="submitBtn" class="w3-btn" disabled>Submit</button>
+                        </td>
                     </tr>
                 </table>
                 <br style="clear: both;">
@@ -145,8 +147,8 @@
             $(this).autocomplete("search");
         });
     }
-    function ACNameComplete(element){
-        element.parentElement.nextElementSibling.firstElementChild.value = lsExGJInit('comAccounts', []).find(function(el){
+    function ACNameComplete(element) {
+        element.parentElement.nextElementSibling.firstElementChild.value = lsExGJInit('comAccounts', []).find(function (el) {
             return el.accCode == element.value;
         }).accText;
     }
@@ -185,6 +187,15 @@
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
         autoCompleteAC();
     }
+    function submitValid() {
+        var debits = document.getElementsByName('debitAmount');
+        var credits = document.getElementsByName('creditAmount');
+        if (debits.length != credits.length) return false;
+        for (i = 0; i < debits.length; i++) {
+            if (debits[i].value != credits[i].value) return false;
+        }
+        return true;
+    }
     function findTotal(fname) {
         var field = this.name;
         if (typeof (fname) == "string") {
@@ -202,5 +213,7 @@
         else if (field == "creditAmount") {
             $js('totalCredit').textContent = parseFloat(total.toFixed(2));
         }
+
+        $js('submitBtn').disabled = !submitValid();
     }
 </script>
