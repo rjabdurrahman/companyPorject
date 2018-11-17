@@ -81,5 +81,7 @@ app.controller('RiceCntlr', function($scope){
   $scope.comRices = lsExGJInit('comRices', []);
 });
 app.controller('JournalFormCntlr', function($scope){
-  $scope.msg = 'journal';
+  $scope.accName = function(code){
+    return code;
+  }
 });
