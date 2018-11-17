@@ -140,10 +140,13 @@
         $('[name="ACCode"]').autocomplete({
             source: accountCodes,
             minLength: 0,
-            change: function (event, ui) { $print('ok'); }
+            change: function (event, ui) { ACNameComplete(this); }
         }).focus(function () {
             $(this).autocomplete("search");
         });
+    }
+    function ACNameComplete(element){
+        element.parentElement.nextElementSibling.firstElementChild.value = "ok";
     }
     autoCompleteAC();
     function addField(field) {
@@ -156,9 +159,9 @@
                 [
                     m("td", ++serial),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center' })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'Data', disabled: true })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
                 ]
