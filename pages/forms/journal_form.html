@@ -146,7 +146,9 @@
         });
     }
     function ACNameComplete(element){
-        element.parentElement.nextElementSibling.firstElementChild.value = "ok";
+        element.parentElement.nextElementSibling.firstElementChild.value = lsExGJInit('comAccounts', []).find(function(el){
+            return el.accCode == element.value;
+        }).accText;
     }
     autoCompleteAC();
     function addField(field) {
