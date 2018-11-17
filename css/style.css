@@ -192,7 +192,7 @@ input#userPasswordField {
 }
 
 .table-head {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     /* font-weight: bold; */
     font-size: 18px;
@@ -203,6 +203,11 @@ input#userPasswordField {
     font-weight: unset;
     padding-top: 15px !important;
     padding-bottom: 15px !important;
+}
+
+.table-container .tbody th, .table-container .tbody td{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
 }
 
 /* Chart Table Style */
