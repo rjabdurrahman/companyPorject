@@ -137,20 +137,15 @@
     </div>
 </div>
 <script>
-    $('[name="ACCode"]').on("click", function () {
-        $(this).autocomplete({
+    function autoComplete() {
+        $('[name="ACCode"]').autocomplete({
             source: accountCodes,
             minLength: 0
         }).focus(function () {
             $(this).autocomplete("search");
         });
-    });
-    // $('[name="ACCode"]').autocomplete({
-    //     source: accountCodes,
-    //     minLength: 0
-    // }).focus(function () {
-    //     $(this).autocomplete("search");
-    // });
+    }
+    autoComplete();
     function addField(field) {
         let chartTable = $js('chartTable');
         let adderRow = $js(field);
@@ -183,6 +178,7 @@
             );
         }
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
+        autoComplete();
     }
     function findTotal(fname) {
         var field = this.name;
