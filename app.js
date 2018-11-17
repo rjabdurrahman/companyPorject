@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
   })
   .when('/journalform', {
     templateUrl : 'pages/forms/journal_form.html',
-    controller  : 'RiceCntlr'
+    controller  : 'JournalFormCntlr'
   })
   .otherwise({redirectTo: '/'});
 });
@@ -79,4 +79,7 @@ app.controller('ContractorsCntlr', function($scope){
 });
 app.controller('RiceCntlr', function($scope){
   $scope.comRices = lsExGJInit('comRices', []);
+});
+app.controller('JournalFormCntlr', function($scope){
+  $scope.msg = 'journal';
 });
