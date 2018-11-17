@@ -210,8 +210,8 @@ input#userPasswordField {
 }
 
 .table-container .tbody th, .table-container .tbody td{
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 /* Chart Table Style */
