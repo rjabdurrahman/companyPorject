@@ -49,11 +49,10 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" ng-model="natureSelection" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="{{accName(natureSelection)}}"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
@@ -140,7 +139,8 @@
     function autoCompleteAC() {
         $('[name="ACCode"]').autocomplete({
             source: accountCodes,
-            minLength: 0
+            minLength: 0,
+            change: function (event, ui) { $print('ok'); }
         }).focus(function () {
             $(this).autocomplete("search");
         });
