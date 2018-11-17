@@ -137,7 +137,7 @@
     </div>
 </div>
 <script>
-    function autoComplete() {
+    function autoCompleteAC() {
         $('[name="ACCode"]').autocomplete({
             source: accountCodes,
             minLength: 0
@@ -145,7 +145,7 @@
             $(this).autocomplete("search");
         });
     }
-    autoComplete();
+    autoCompleteAC();
     function addField(field) {
         let chartTable = $js('chartTable');
         let adderRow = $js(field);
@@ -178,7 +178,7 @@
             );
         }
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
-        autoComplete();
+        autoCompleteAC();
     }
     function findTotal(fname) {
         var field = this.name;
