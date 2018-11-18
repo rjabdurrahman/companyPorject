@@ -50,7 +50,7 @@
                 <div class="w3-bar w3-white">
                     <a href="#/" style="margin-right: 10px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}" class="w3-bar-item w3-button">HOME</a>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">CHART&nbsp;&nbsp;
+                        <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="w3-dropdown-hover">
-                        <button class="w3-button">FORM ENTRY&nbsp;&nbsp;
+                        <button ng-class="{'w3-border' : $route.current.activetab == 'journal'}" class="w3-button">FORM ENTRY&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -76,7 +76,7 @@
                             <a href="#/" class="w3-bar-item w3-button">Puchase Return</a>
                         </div>
                     </div>
-                    <div class="w3-dropdown-hover">
+                    <!-- <div class="w3-dropdown-hover">
                         <button class="w3-button">JOURNAL&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -85,8 +85,8 @@
                             <a href="#" class="w3-bar-item w3-button">Show</a>
                             <a href="#" class="w3-bar-item w3-button">Print</a>
                         </div>
-                    </div>
-                    <div class="w3-dropdown-hover">
+                    </div> -->
+                    <!-- <div class="w3-dropdown-hover">
                         <button class="w3-button">LEDGER&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -94,7 +94,7 @@
                             <a href="#account" class="w3-bar-item w3-button">Main Account</a>
                             <a href="#" class="w3-bar-item w3-button">Balance Sheets</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <section>
