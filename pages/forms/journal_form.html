@@ -42,10 +42,10 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" ng-model="ACCode" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" onkeyup="ACNameComplete(this)" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="{{accName(ACCode)}}" disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
@@ -54,14 +54,13 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">------</td>
                     </tr>
                     <tr id="debitLine">
-                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addDebitField')">+</td>
+                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addDebitField')">+</td>
                         <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
@@ -85,8 +84,7 @@
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
@@ -96,13 +94,12 @@
                         </td>
                         <td style="text-align: center; color: gray">------</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                style="text-align: right">
                         </td>
                     </tr>
                     <tr>
-                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addCreditField')">+</td>
+                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addCreditField')">+</td>
                         <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
@@ -138,21 +135,27 @@
     </div>
 </div>
 <script>
-    function autoCompleteAC() {
-        $('[name="ACCode"]').autocomplete({
-            source: accountCodes,
-            minLength: 0,
-            change: function (event, ui) { ACNameComplete(this); }
-        }).focus(function () {
-            $(this).autocomplete("search");
-        });
-    }
+    // function autoCompleteAC() {
+    //     $('[name="ACCode"]').autocomplete({
+    //         source: accountCodes,
+    //         minLength: 0,
+    //         change: function (event, ui) { ACNameComplete(this); }
+    //     }).focus(function () {
+    //         $(this).autocomplete("search");
+    //     });
+    // }
     function ACNameComplete(element) {
-        element.parentElement.nextElementSibling.firstElementChild.value = lsExGJInit('comAccounts', []).find(function (el) {
+        $print(element.value)
+        let data = lsExGJInit('comAccounts', []).find(function (el) {
             return el.accCode == element.value;
-        }).accText;
+        });
+        $print(data);
+        if(data){
+            element.parentElement.nextElementSibling.firstElementChild.value = data.accText;
+        }
+        else element.parentElement.nextElementSibling.firstElementChild.value = '';
     }
-    autoCompleteAC();
+    // autoCompleteAC();
     function addField(field) {
         let chartTable = $js('chartTable');
         let adderRow = $js(field);
@@ -185,7 +188,7 @@
             );
         }
         chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
-        autoCompleteAC();
+        // autoCompleteAC();
     }
     function submitValid() {
         var debits = document.getElementsByName('debitAmount');
