@@ -34,7 +34,7 @@
             </section>
             <section style="float: right;">
                 <i class="fa fa-phone" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
-                <span style="font-size: 14px;">Mobile No{{$route.current.activetab}}</span>
+                <span style="font-size: 14px;">Mobile No</span>
             </section>
         </div>
         <div class="w3-container mian-color mont-font" style="background-color: white; display: flex; padding: 10px 60px 10px 60px; height: 40px; box-sizing: unset;">
@@ -48,7 +48,7 @@
             </section>
             <section style="margin-left: auto; font-size: 14px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
-                    <a href="#/" style="margin-right: 10px;" class="w3-bar-item w3-button">HOME</a>
+                    <a href="#/" style="margin-right: 10px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}" class="w3-bar-item w3-button">HOME</a>
                     <div class="w3-dropdown-hover">
                         <button class="w3-button">CHART&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
