@@ -117,13 +117,13 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                                <input ng-model="unit" class="w3-input w3-border" type="text" style="text-align: center">
                             </td>
                             <td>
-                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                                <input ng-model="price" class="w3-input w3-border" type="text" style="text-align: center">
                             </td>
                             <td>
-                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                                <input class="w3-input w3-border" type="text" value="{{unit * price | number}}" style="text-align: center">
                             </td>
                             <td colspan="3"></td>
                         </tr>
