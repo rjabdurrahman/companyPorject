@@ -7,17 +7,17 @@
             <div class="w3-container" style="margin-top: 20px;">
                 <table class="w3-table chart-table" style="font-size: 16px;">
                     <tr>
-                        <td style="width: 115px;">
+                        <td class="secondary" style="width: 115px; padding-left: 5px; text-align: center;">
                             <span>Entry No</span>
                         </td>
                         <td class="border">
                             <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
                         </td>
-                        <td style="width: 115px;">Voucher No</td>
+                        <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
                         </td>
-                        <td style="width: 125px;">Date</td>
+                        <td class="secondary" style="width: 125px; text-align: center;">Date</td>
                         <td style="width: 125px;">
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
@@ -62,7 +62,7 @@
                     <tr id="debitLine">
                         <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
                             onclick="addField('addDebitField')">+</td>
-                        <td colspan="6"></td>
+                        <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
                         <td></td>
@@ -103,7 +103,7 @@
                     <tr>
                         <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
                             onclick="addField('addCreditField')">+</td>
-                        <td colspan="6"></td>
+                        <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
                         <td></td>
@@ -112,7 +112,7 @@
                         <td id="totalCredit" style="text-align: right">0</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Cost Center</td>
+                        <td class="secondary" colspan="2">Cost Center</td>
                         <td colspan="3">
                             <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
@@ -120,7 +120,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="2">Description</td>
+                        <td class="secondary" colspan="2">Description</td>
                         <td colspan="3">
                             <textarea name="" id="" cols="40" rows="1"></textarea>
                         </td>
