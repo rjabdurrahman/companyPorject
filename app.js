@@ -62,6 +62,11 @@ app.config(function ($routeProvider) {
       controller: 'JournalFormCntlr',
       activetab: 'journal'
     })
+    .when('/purchase', {
+      templateUrl: 'pages/forms/purchase.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
+    })
     .when('/purchasereturn', {
       templateUrl: 'pages/forms/purchase_return.html',
       controller: 'JournalFormCntlr',
