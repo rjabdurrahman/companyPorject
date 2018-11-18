@@ -13,47 +13,47 @@ app.config(function ($routeProvider) {
       activetab : 'chart'
     })
     .when('/receivable', {
-      templateUrl: 'pages/receivable.html',
+      templateUrl: 'pages/cons.html',
       controller: 'ReceivableCntlr',
       activetab : 'chart'
     })
     .when('/payable', {
-      templateUrl: 'pages/payable.html',
+      templateUrl: 'pages/cons.html',
       controller: 'PayableCntlr',
       activetab : 'chart'
     })
     .when('/companyheads', {
-      templateUrl: 'pages/company_heads.html',
+      templateUrl: 'pages/cons.html',
       controller: 'CompanyHeadsCntlr',
       activetab : 'chart'
     })
     .when('/costcenter', {
-      templateUrl: 'pages/cost_center.html',
+      templateUrl: 'pages/cons.html',
       controller: 'CostCenterCntlr',
       activetab : 'chart'
     })
     .when('/trucktractor', {
-      templateUrl: 'pages/truck_tractor.html',
+      templateUrl: 'pages/cons.html',
       controller: 'TruckTractorCntlr',
       activetab : 'chart'
     })
     .when('/employees', {
-      templateUrl: 'pages/employees.html',
+      templateUrl: 'pages/cons.html',
       controller: 'EmployeesCntlr',
       activetab : 'chart'
     })
     .when('/bank', {
-      templateUrl: 'pages/bank.html',
+      templateUrl: 'pages/cons.html',
       controller: 'BankCntlr',
       activetab : 'chart'
     })
     .when('/contractors', {
-      templateUrl: 'pages/contractors.html',
+      templateUrl: 'pages/cons.html',
       controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
     .when('/rice', {
-      templateUrl: 'pages/rice.html',
+      templateUrl: 'pages/cons.html',
       controller: 'RiceCntlr',
       activetab : 'chart'
     })
