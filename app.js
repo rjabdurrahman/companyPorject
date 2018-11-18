@@ -4,11 +4,13 @@ app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'pages/login.html',
-      controller: 'LoginCntlr'
+      controller: 'LoginCntlr',
+      activetab : 'home'
     })
     .when('/account', {
       templateUrl: 'pages/account.html',
-      controller: 'AccountCntlr'
+      controller: 'AccountCntlr',
+      activetab : 'chart'
     })
     .when('/receivable', {
       templateUrl: 'pages/receivable.html',
@@ -48,12 +50,13 @@ app.config(function ($routeProvider) {
     })
     .when('/journalform', {
       templateUrl: 'pages/forms/journal_form.html',
-      controller: 'JournalFormCntlr'
+      controller: 'JournalFormCntlr',
+      activetab : 'journal'
     })
     .otherwise({ redirectTo: '/' });
 });
-app.run(function ($rootScope) {
-  $rootScope.color = 'blue';
+app.run(function ($rootScope, $location, $route) {
+  $rootScope.$route = $route;
 });
 app.controller('LoginCntlr', function ($scope) {
   $scope.message = "Login Cntl";
