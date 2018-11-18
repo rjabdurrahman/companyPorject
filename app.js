@@ -101,6 +101,8 @@ app.controller('RiceCntlr', function ($scope) {
 });
 app.controller('JournalFormCntlr', function ($scope) {
   $scope.accName = function (code) {
-    return code;
+    return lsExGJInit('comAccounts', []).find(function(obj){
+      return obj.accCode == code;
+    }).accText;
   }
 });
