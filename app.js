@@ -67,6 +67,16 @@ app.config(function ($routeProvider) {
       controller: 'JournalFormCntlr',
       activetab: 'journal'
     })
+    .when('/sales', {
+      templateUrl: 'pages/forms/sales.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
+    })
+    .when('/salesreturn', {
+      templateUrl: 'pages/forms/sales_return.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {
