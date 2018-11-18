@@ -14,39 +14,48 @@ app.config(function ($routeProvider) {
     })
     .when('/receivable', {
       templateUrl: 'pages/receivable.html',
-      controller: 'ReceivableCntlr'
+      controller: 'ReceivableCntlr',
+      activetab : 'chart'
     })
     .when('/payable', {
       templateUrl: 'pages/payable.html',
-      controller: 'PayableCntlr'
+      controller: 'PayableCntlr',
+      activetab : 'chart'
     })
     .when('/companyheads', {
       templateUrl: 'pages/company_heads.html',
-      controller: 'CompanyHeadsCntlr'
+      controller: 'CompanyHeadsCntlr',
+      activetab : 'chart'
     })
     .when('/costcenter', {
       templateUrl: 'pages/cost_center.html',
-      controller: 'CostCenterCntlr'
+      controller: 'CostCenterCntlr',
+      activetab : 'chart'
     })
     .when('/trucktractor', {
       templateUrl: 'pages/truck_tractor.html',
-      controller: 'TruckTractorCntlr'
+      controller: 'TruckTractorCntlr',
+      activetab : 'chart'
     })
     .when('/employees', {
       templateUrl: 'pages/employees.html',
-      controller: 'EmployeesCntlr'
+      controller: 'EmployeesCntlr',
+      activetab : 'chart'
     })
     .when('/bank', {
       templateUrl: 'pages/bank.html',
-      controller: 'BankCntlr'
+      controller: 'BankCntlr',
+      activetab : 'chart'
     })
     .when('/contractors', {
       templateUrl: 'pages/contractors.html',
-      controller: 'ContractorsCntlr'
+      controller: 'ContractorsCntlr',
+      activetab : 'chart'
     })
     .when('/rice', {
       templateUrl: 'pages/rice.html',
-      controller: 'RiceCntlr'
+      controller: 'RiceCntlr',
+      activetab : 'chart'
     })
     .when('/journalform', {
       templateUrl: 'pages/forms/journal_form.html',
