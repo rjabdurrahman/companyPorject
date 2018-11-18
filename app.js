@@ -62,6 +62,11 @@ app.config(function ($routeProvider) {
       controller: 'JournalFormCntlr',
       activetab : 'journal'
     })
+    .when('/purchasereturn', {
+      templateUrl: 'pages/cons.html',
+      controller: 'JournalFormCntlr',
+      activetab : 'journal'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {
