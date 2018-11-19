@@ -200,10 +200,9 @@ input#userPasswordField {
     font-family: 'Lato', sans-serif;
     border-radius: 5px;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
     font-size: 15px;
     line-height: 21px;
-    max-height: calc(100vh - 200px);
 }
 
 .chart-data-table {
@@ -221,7 +220,8 @@ input#userPasswordField {
 }
 
 .ch-table-content {
-    overflow: scroll;
+    max-height: calc(100vh - 250px);
+    overflow: auto;
 }
 
 .table-container thead th, .table-container thead td {
