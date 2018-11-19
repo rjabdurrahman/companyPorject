@@ -216,16 +216,15 @@ input#userPasswordField {
 }
 
 .chart-data-table thead {
-    width: 100%;
     font-size: 18px;
     line-height: 1.2;
 }
 
-.chart-data-table tbody {
-    overflow: scroll !important;
+.ch-table-content {
+    overflow: scroll;
 }
 
-.table-container th, .table-container td {
+.table-container thead th, .table-container thead td {
     font-weight: unset;
     padding-top: 14px !important;
     padding-bottom: 14px !important;
