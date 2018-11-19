@@ -52,9 +52,24 @@ app.config(function ($routeProvider) {
       controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
+    .when('/paddyraw', {
+      templateUrl: 'pages/cons.html',
+      controller: 'ContractorsCntlr',
+      activetab : 'chart'
+    })
+    .when('/paddydry', {
+      templateUrl: 'pages/cons.html',
+      controller: 'ContractorsCntlr',
+      activetab : 'chart'
+    })
     .when('/rice', {
       templateUrl: 'pages/rice.html',
       controller: 'RiceCntlr',
+      activetab : 'chart'
+    })
+    .when('/byproducts', {
+      templateUrl: 'pages/cons.html',
+      controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
     .when('/journalform', {
