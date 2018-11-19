@@ -5,67 +5,82 @@ app.config(function ($routeProvider) {
     .when('/', {
       templateUrl: 'pages/login.html',
       controller: 'LoginCntlr',
-      activetab : 'home'
+      activetab: 'home'
     })
     .when('/account', {
       templateUrl: 'pages/account.html',
       controller: 'AccountCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/receivable', {
       templateUrl: 'pages/cons.html',
       controller: 'ReceivableCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/payable', {
       templateUrl: 'pages/cons.html',
       controller: 'PayableCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/companyheads', {
       templateUrl: 'pages/cons.html',
       controller: 'CompanyHeadsCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/costcenter', {
       templateUrl: 'pages/cons.html',
       controller: 'CostCenterCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/trucktractor', {
       templateUrl: 'pages/cons.html',
       controller: 'TruckTractorCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/employees', {
       templateUrl: 'pages/cons.html',
       controller: 'EmployeesCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/bank', {
       templateUrl: 'pages/cons.html',
       controller: 'BankCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/contractors', {
       templateUrl: 'pages/cons.html',
       controller: 'ContractorsCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/rice', {
       templateUrl: 'pages/cons.html',
       controller: 'RiceCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/journalform', {
       templateUrl: 'pages/forms/journal_form.html',
       controller: 'JournalFormCntlr',
-      activetab : 'journal'
+      activetab: 'journal'
+    })
+    .when('/purchase', {
+      templateUrl: 'pages/forms/purchase.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
     })
     .when('/purchasereturn', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/forms/purchase_return.html',
       controller: 'JournalFormCntlr',
-      activetab : 'journal'
+      activetab: 'journal'
+    })
+    .when('/sales', {
+      templateUrl: 'pages/forms/sales.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
+    })
+    .when('/salesreturn', {
+      templateUrl: 'pages/forms/sales_return.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'journal'
     })
     .otherwise({ redirectTo: '/' });
 });
@@ -100,7 +115,9 @@ app.controller('RiceCntlr', function ($scope) {
   $scope.comRices = lsExGJInit('comRices', []);
 });
 app.controller('JournalFormCntlr', function ($scope) {
-  $scope.accName = function (code) {
-    return code;
-  }
+  // $scope.accName = function (code) {
+  //   return lsExGJInit('comAccounts', []).find(function (el) {
+  //     return el.accCode == code;
+  //   }).accText;
+  // }
 });

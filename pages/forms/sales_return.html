@@ -1,0 +1,268 @@
+<div class="overlay-container">
+        <div class="overlay">
+            <div class="div-box tbm w3-light-gray w3-card-4 margin-auto" style="width: 75%; border-top-left-radius: 8px;">
+                <div class="w3-container main-bg-color div-title">
+                    <h2>Sales Return</h2>
+                </div>
+                <div class="w3-container" style="margin-top: 20px;">
+                    <table class="w3-table chart-table" style="font-size: 16px;">
+                        <tr>
+                            <td class="secondary" style="width: 115px; padding-left: 5px; text-align: center;">
+                                <span>Entry No</span>
+                            </td>
+                            <td class="border">
+                                <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
+                            </td>
+                            <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
+                            </td>
+                            <td class="secondary" style="width: 125px; text-align: center;">Date</td>
+                            <td style="width: 125px;">
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="chartTable" class="w3-table chart-table" style="font-size: 16px;">
+                        <tr class="primary">
+                            <td style="width: 45px;"></td>
+                            <td colspan="4" style="text-align: center;">Debit Info</td>
+                            <td>Dr. Amount</td>
+                            <td>Cr. Amount</td>
+                        </tr>
+                        <tr class="secondary">
+                            <td></td>
+                            <td>Party Code</td>
+                            <td>Party Name</td>
+                            <td>A/C Code</td>
+                            <td>A/C Name</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" onkeyup="ACNameComplete(this)" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                    style="text-align: right">
+                            </td>
+                            <td style="text-align: center; color: gray;">------</td>
+                        </tr>
+                        <tr id="debitLine">
+                            <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addDebitField')">+</td>
+                            <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
+                        </tr>
+                        <tr class="primary">
+                            <td></td>
+                            <td colspan="4" style="text-align: center;">Credit Info</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="secondary">
+                            <td></td>
+                            <td>FG Code</td>
+                            <td>FINISHED GOOD</td>
+                            <td>A/C Code</td>
+                            <td>A/C Name</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            </td>
+                            <td style="text-align: center; color: gray">------</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                    style="text-align: right">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addCreditField')">+</td>
+                            <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
+                        </tr>
+                        <tr>
+                            <td class="secondary" colspan="2">Primary Unit</td>
+                            <td colspan="3">
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="secondary">Primary Quantity</td>
+                            <td class="secondary">Primary Unit Pri</td>
+                            <td class="secondary">Total Price</td>
+                            <td colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input ng-model="unit" class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td>
+                                <input ng-model="price" class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" value="{{unit * price | number}}" style="text-align: center">
+                            </td>
+                            <td colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="secondary">Standard Unit</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td class="secondary">Packet Size</td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="secondary">Total Quantity</td>
+                            <td colspan="2" class="secondary">Standard Unit Price</td>
+                            <td class="secondary">Total Price</td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td colspan="2">
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td>
+                                <input class="w3-input w3-border" type="text" style="text-align: center">
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr class="primary">
+                            <td></td>
+                            <td colspan="4" style="text-align: center;">Total</td>
+                            <td id="totalDebit" style="text-align: right">0</td>
+                            <td id="totalCredit" style="text-align: right">0</td>
+                        </tr>
+                        <tr>
+                            <td class="secondary" colspan="2">Description</td>
+                            <td colspan="3">
+                                <textarea name="" id="" cols="40" rows="1"></textarea>
+                            </td>
+                            <td class="main-bg-color" style="text-align: center; cursor: pointer;">
+                                <button class="w3-btn">Clear</button>
+                            </td>
+                            <td class="main-bg-color" style="text-align: center; cursor: pointer;">
+                                <button id="submitBtn" class="w3-btn" disabled>Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <br style="clear: both;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // function autoCompleteAC() {
+        //     $('[name="ACCode"]').autocomplete({
+        //         source: accountCodes,
+        //         minLength: 0,
+        //         change: function (event, ui) { ACNameComplete(this); }
+        //     }).focus(function () {
+        //         $(this).autocomplete("search");
+        //     });
+        // }
+        function ACNameComplete(element) {
+            $print(element.value)
+            let data = lsExGJInit('comAccounts', []).find(function (el) {
+                return el.accCode == element.value;
+            });
+            $print(data);
+            if (data) {
+                element.parentElement.nextElementSibling.firstElementChild.value = data.accText;
+            }
+            else element.parentElement.nextElementSibling.firstElementChild.value = '';
+        }
+        // autoCompleteAC();
+        function addField(field) {
+            let chartTable = $js('chartTable');
+            let adderRow = $js(field);
+            let serial = parseInt(adderRow.parentElement.previousElementSibling.firstElementChild.innerHTML);
+            let newRow = document.createElement('tr');
+            if (field == "addDebitField") {
+                m.render(newRow,
+                    [
+                        m("td", ++serial),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
+                    ]
+                );
+            }
+            else if (field == "addCreditField") {
+                m.render(newRow,
+                    [
+                        m("td", ++serial),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
+                        m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
+                    ]
+                );
+            }
+            chartTable.children[0].insertBefore(newRow, adderRow.parentElement);
+            // autoCompleteAC();
+        }
+        function submitValid() {
+            var debits = document.getElementsByName('debitAmount');
+            var credits = document.getElementsByName('creditAmount');
+            if (debits.length != credits.length) return false;
+            for (i = 0; i < debits.length; i++) {
+                if (debits[i].value != credits[i].value) return false;
+            }
+            return true;
+        }
+        function findTotal(fname) {
+            var field = this.name;
+            if (typeof (fname) == "string") {
+                field = fname;
+            }
+            let amountsEl = document.getElementsByName(field);
+            let total = 0;
+            for (var amountEl in amountsEl) {
+                if (parseFloat(amountsEl[amountEl].value))
+                    total += parseFloat(amountsEl[amountEl].value);
+            }
+            if (field == "debitAmount") {
+                $js('totalDebit').textContent = parseFloat(total.toFixed(2));
+            }
+            else if (field == "creditAmount") {
+                $js('totalCredit').textContent = parseFloat(total.toFixed(2));
+            }
+    
+            $js('submitBtn').disabled = !submitValid();
+        }
+    </script>
