@@ -18,12 +18,14 @@
                             <th>Account Text</th>
                         </tr>
                     </thead>
-                    <tr class="tbody" ng-repeat="comAcc in comAccounts track by $index">
-                        <td>{{$index + 1}}</td>
-                        <td>{{comAcc.nature}}</td>
-                        <td>{{comAcc.accCode}}</td>
-                        <td>{{comAcc.accText}}</td>
-                    </tr>
+                    <tbody>
+                        <tr ng-repeat="comAcc in comAccounts track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{comAcc.nature}}</td>
+                            <td>{{comAcc.accCode}}</td>
+                            <td>{{comAcc.accText}}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

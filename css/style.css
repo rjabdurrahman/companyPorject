@@ -204,8 +204,10 @@ input#userPasswordField {
     font-size: 15px;
     line-height: 21px;
     max-height: calc(100vh - 200px);
-    overflow-x: hidden;
-    overflow-y: scroll;
+}
+
+.chart-data-table {
+    table-layout: fixed !important;
 }
 
 .chart-data-table td, .chart-data-table th {
@@ -219,13 +221,17 @@ input#userPasswordField {
     line-height: 1.2;
 }
 
+.chart-data-table tbody {
+    overflow: scroll !important;
+}
+
 .table-container th, .table-container td {
     font-weight: unset;
     padding-top: 14px !important;
     padding-bottom: 14px !important;
 }
 
-.table-container .tbody th, .table-container .tbody td {
+.table-container tbody th, .table-container tbody td {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
 }
