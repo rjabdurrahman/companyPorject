@@ -13,49 +13,49 @@ app.config(function ($routeProvider) {
       activetab: 'chart'
     })
     .when('/receivable', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/receivable.html',
       controller: 'ReceivableCntlr',
       activetab: 'chart'
     })
     .when('/payable', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/payable.html',
       controller: 'PayableCntlr',
       activetab: 'chart'
     })
     .when('/companyheads', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/company_heads.html',
       controller: 'CompanyHeadsCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/costcenter', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/cost_center.html',
       controller: 'CostCenterCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/trucktractor', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/truck_tractor.html',
       controller: 'TruckTractorCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/employees', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/employees.html',
       controller: 'EmployeesCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/bank', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/bank.html',
       controller: 'BankCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/contractors', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/contractors.html',
       controller: 'ContractorsCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/rice', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/rice.html',
       controller: 'RiceCntlr',
-      activetab: 'chart'
+      activetab : 'chart'
     })
     .when('/journalform', {
       templateUrl: 'pages/forms/journal_form.html',
@@ -91,6 +91,7 @@ app.controller('LoginCntlr', function ($scope) {
   $scope.message = "Login Cntl";
 });
 app.controller('PayableCntlr', function ($scope) {
+  $scope.title = "Payable";
   $scope.comPayables = lsExGJInit('comPayables', []);
 });
 app.controller('CompanyHeadsCntlr', function ($scope) {
