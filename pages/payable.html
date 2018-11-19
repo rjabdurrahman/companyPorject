@@ -14,9 +14,12 @@
                         <thead>
                             <tr class="main-bg-color">
                                 <th>ID</th>
-                                <th>Nature</th>
                                 <th>A/C Code</th>
-                                <th>Account Text</th>
+                                <th>Party Name</th>
+                                <th>Party Type</th>
+                                <th>Proprietor Name</th>
+                                <th>Mobile</th>
+                                <th>Address</th>
                             </tr>
                         </thead>
                     </table>
@@ -24,11 +27,14 @@
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
                         <tbody>
-                            <tr ng-repeat="comAcc in comAccounts track by $index">
+                            <tr ng-repeat="pay in comPayables track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{comAcc.nature}}</td>
-                                <td>{{comAcc.accCode}}</td>
-                                <td>{{comAcc.accText}}</td>
+                                <td>{{pay.acCode}}</td>
+                                <td>{{pay.partyName}}</td>
+                                <td>{{pay.partyType}}</td>
+                                <td>{{pay.proprietor}}</td>
+                                <td>{{pay.mobile}}</td>
+                                <td>{{pay.address}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -102,28 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-panel" style="display: none;">
-            <table id="payableTable" class="w3-table w3-white w3-striped w3-border">
-                <tr>
-                    <th>ID</th>
-                    <th>A/C Code</th>
-                    <th>Party Name</th>
-                    <th>Party Type</th>
-                    <th>Proprietor Name</th>
-                    <th>Mobile</th>
-                    <th>Address</th>
-                </tr>
-                <tr ng-repeat="pay in comPayables track by $index">
-                    <td>{{$index + 1}}</td>
-                    <td>{{pay.acCode}}</td>
-                    <td>{{pay.partyName}}</td>
-                    <td>{{pay.partyType}}</td>
-                    <td>{{pay.proprietor}}</td>
-                    <td>{{pay.mobile}}</td>
-                    <td>{{pay.address}}</td>
-                </tr>
-            </table>
-        </div>
+        <!-- End of the journy -->
     </div>
 </div>
 <script>
