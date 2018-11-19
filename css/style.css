@@ -205,6 +205,21 @@ input#userPasswordField {
     line-height: 21px;
 }
 
+.ch-title {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    white-space: nowrap;
+    background-color: white;
+    border-radius: 4px;
+}
+
 .chart-data-table {
     table-layout: fixed !important;
 }
