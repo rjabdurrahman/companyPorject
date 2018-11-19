@@ -95,7 +95,7 @@ app.controller('PayableCntlr', function ($scope) {
   $scope.comPayables = lsExGJInit('comPayables', []);
 });
 app.controller('CompanyHeadsCntlr', function ($scope) {
-  $scope.title = "Company Heads";
+  $scope.title = "Company Head";
   $scope.comCh = lsExGJInit('comCh', []);
 });
 app.controller('CostCenterCntlr', function ($scope) {

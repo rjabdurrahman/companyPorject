@@ -14,9 +14,7 @@
                         <thead>
                             <tr class="main-bg-color">
                                 <th>ID</th>
-                                <th>Nature</th>
-                                <th>A/C Code</th>
-                                <th>Account Text</th>
+                                <th>Cost Center</th>
                             </tr>
                         </thead>
                     </table>
@@ -24,11 +22,9 @@
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
                         <tbody>
-                            <tr ng-repeat="comAcc in comAccounts track by $index">
+                            <tr ng-repeat="costCenter in comCostCenters track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{comAcc.nature}}</td>
-                                <td>{{comAcc.accCode}}</td>
-                                <td>{{comAcc.accText}}</td>
+                                <td>{{costCenter}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,17 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-panel" style="display: none;">
-            <table id="costCenterTable" class="w3-table w3-white w3-striped w3-border">
-                <tr>
-                    <th>ID</th>
-                    <th>Cost Center</th>
-                </tr>
-                <tr ng-repeat="costCenter in comCostCenters track by $index">
-                    <td>{{$index + 1}}</td>
-                    <td>{{costCenter}}</td>
-            </table>
-        </div>
+        <!-- End of the journy -->
     </div>
 </div>
 <script>

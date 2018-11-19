@@ -14,9 +14,12 @@
                         <thead>
                             <tr class="main-bg-color">
                                 <th>ID</th>
-                                <th>Nature</th>
-                                <th>A/C Code</th>
-                                <th>Account Text</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Employee Type</th>
+                                <th>Posting</th>
+                                <th>Designation</th>
+                                <th>Salary</th>
                             </tr>
                         </thead>
                     </table>
@@ -24,11 +27,14 @@
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
                         <tbody>
-                            <tr ng-repeat="comAcc in comAccounts track by $index">
+                            <tr ng-repeat="emp in comEmps track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{comAcc.nature}}</td>
-                                <td>{{comAcc.accCode}}</td>
-                                <td>{{comAcc.accText}}</td>
+                                <td>{{emp.code}}</td>
+                                <td>{{emp.name}}</td>
+                                <td>{{emp.type}}</td>
+                                <td>{{emp.post}}</td>
+                                <td>{{emp.des}}</td>
+                                <td>{{emp.salary}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -102,28 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-panel" style="display: none;">
-            <table id="empTable" class="w3-table w3-white w3-striped w3-border">
-                <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Employee Type</th>
-                    <th>Posting</th>
-                    <th>Designation</th>
-                    <th>Salary</th>
-                </tr>
-                <tr ng-repeat="emp in comEmps track by $index">
-                    <td>{{$index + 1}}</td>
-                    <td>{{emp.code}}</td>
-                    <td>{{emp.name}}</td>
-                    <td>{{emp.type}}</td>
-                    <td>{{emp.post}}</td>
-                    <td>{{emp.des}}</td>
-                    <td>{{emp.salary}}</td>
-                </tr>
-            </table>
-        </div>
+        <!-- End of the Journy -->
     </div>
 </div>
 <script>
