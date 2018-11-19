@@ -1,6 +1,7 @@
-body{
+body {
     background-color: white;
 }
+
 a {
     text-decoration: none;
 }
@@ -27,8 +28,17 @@ a {
     font-family: 'Exo 2', sans-serif;
 }
 
+.clearfix::after, .clearfix::before {
+    content: "";
+    display: block;
+}
+
 .clearfix::after {
     clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
 }
 
 /* Autocomplete Styles */
@@ -117,7 +127,7 @@ input[type="text"]:disabled {
     overflow: hidden;
 }
 
-.tbm{
+.tbm {
     margin-top: 18px;
     margin-bottom: 18px;
 }
@@ -209,34 +219,27 @@ input#userPasswordField {
     padding-bottom: 15px !important;
 }
 
-.table-container .tbody th, .table-container .tbody td{
+.table-container .tbody th, .table-container .tbody td {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
 }
 
 /* Chart Table Style */
 
-#chartTable,
-.chart-table {
+#chartTable, .chart-table {
     background-color: white;
     table-layout: fixed;
 }
 
-#chartTable input,
-.chart-table input {
+#chartTable input, .chart-table input {
     padding: 0;
 }
 
-#chartTable td,
-.chart-table td {
+#chartTable td, .chart-table td {
     border: 1px solid lightgray;
 }
 
-#chartTable td input,
-#chartTable td textarea,
-.chart-table td input,
-.chart-table td input:hover,
-.chart-table td input:focus {
+#chartTable td input, #chartTable td textarea, .chart-table td input, .chart-table td input:hover, .chart-table td input:focus {
     border: none !important;
     border-radius: 0;
 }
@@ -255,16 +258,14 @@ input#userPasswordField {
     color: white;
 }
 
-.tab-warn{
+.tab-warn {
     text-align: right !important;
     font-size: 12px;
     color: gray;
 }
 
-#chartTable td,
-#chartTable th,
-.chart-table th,
-.chart-table td {
+#chartTable td, #chartTable th, .chart-table th, .chart-table td {
     vertical-align: middle;
 }
+
 /* Chart Table Style End */
