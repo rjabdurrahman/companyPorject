@@ -35,66 +35,70 @@
                 </div>
             </div>
         </div>
-        <div class="div-box w3-light-gray w3-card-4 margin-auto">
-            <div class="w3-container main-bg-color div-title">
-                <h2>Payable</h2>
-            </div>
-            <div class="w3-container">
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">A/C Code</label>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
+                <div class="div-box w3-light-gray w3-card-4 margin-auto">
+                    <div class="w3-container main-bg-color div-title">
+                        <h2>Payable</h2>
                     </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="payACCode">
+                    <div class="w3-container">
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">A/C Code</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payACCode">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Party Name</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payPartyName">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Party Type</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payPartyType">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Proprietor Name</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payProprietor">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Mobile No</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payMObileNo" onkeypress="numValidate(event)">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Address</label>
+                            </div>
+                            <div class="w3-rest">
+                                <textarea class="w3-input w3-border" name="" id="payAddress" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <p>
+                            <button id="submitPayBtn" class="w3-btn main-bg-color div-title" style="float: right;">Submit</button>
+                            <button onclick="clearPayFields()" class="w3-btn main-bg-color div-title" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="printPayables()" class="w3-btn main-bg-color div-title" style="float: left; margin-right: 10px;">Print
+                                All</button>
+                        </p>
+                        <div style="clear: both;height: 16px;"></div>
                     </div>
                 </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Party Name</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="payPartyName">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Party Type</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="payPartyType">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Proprietor Name</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="payProprietor">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Mobile No</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="payMObileNo" onkeypress="numValidate(event)">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Address</label>
-                    </div>
-                    <div class="w3-rest">
-                        <textarea class="w3-input w3-border" name="" id="payAddress" rows="2"></textarea>
-                    </div>
-                </div>
-                <p>
-                    <button id="submitPayBtn" class="w3-btn main-bg-color div-title" style="float: right;">Submit</button>
-                    <button onclick="clearPayFields()" class="w3-btn main-bg-color div-title" style="float: right; margin-right: 10px;">Clear</button>
-                    <button onclick="printPayables()" class="w3-btn main-bg-color div-title" style="float: left; margin-right: 10px;">Print
-                        All</button>
-                </p>
-                <div style="clear: both;height: 16px;"></div>
             </div>
         </div>
         <div class="w3-panel" style="display: none;">

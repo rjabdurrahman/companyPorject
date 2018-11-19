@@ -35,58 +35,62 @@
                 </div>
             </div>
         </div>
-        <div class="div-box w3-light-gray w3-card-4 margin-auto">
-            <div class="w3-container main-bg-color div-title">
-                <h2>Receivable</h2>
-            </div>
-            <div class="w3-container">
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">A/C Code</label>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
+                <div class="div-box w3-light-gray w3-card-4 margin-auto">
+                    <div class="w3-container main-bg-color div-title">
+                        <h2>Receivable</h2>
                     </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                    <div class="w3-container">
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">A/C Code</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="recACCode">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Party Name</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="recPartyName">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Customer Type</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Mobile No</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="recMObileNo" onkeypress="numValidate(event)">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Address</label>
+                            </div>
+                            <div class="w3-rest">
+                                <textarea class="w3-input w3-border" name="" id="recAddress" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <p>
+                            <button id="submitRecBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button onclick="clearRecFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="printReceivables()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
+                                All</button>
+                        </p>
+                        <div style="clear: both;height: 16px;"></div>
                     </div>
                 </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Party Name</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="recPartyName">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Customer Type</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="recCustomerType">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Mobile No</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="recMObileNo" onkeypress="numValidate(event)">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Address</label>
-                    </div>
-                    <div class="w3-rest">
-                        <textarea class="w3-input w3-border" name="" id="recAddress" rows="2"></textarea>
-                    </div>
-                </div>
-                <p>
-                    <button id="submitRecBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                    <button onclick="clearRecFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
-                    <button onclick="printReceivables()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
-                        All</button>
-                </p>
-                <div style="clear: both;height: 16px;"></div>
             </div>
         </div>
         <div class="w3-panel" style="display: block;">

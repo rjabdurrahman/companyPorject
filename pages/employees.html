@@ -35,66 +35,70 @@
                 </div>
             </div>
         </div>
-        <div class="div-box w3-light-gray w3-card-4 margin-auto">
-            <div class="w3-container main-bg-color div-title">
-                <h2>Employees</h2>
-            </div>
-            <div class="w3-container">
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Code</label>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
+                <div class="div-box w3-light-gray w3-card-4 margin-auto">
+                    <div class="w3-container main-bg-color div-title">
+                        <h2>Employees</h2>
                     </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empCode">
+                    <div class="w3-container">
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Code</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empCode">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Name</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empName">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Employee Type</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empType">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Posting</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empPost">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Designation</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empDes">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Salary</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="empSalary" onkeypress="numValidate(event)">
+                            </div>
+                        </div>
+                        <p>
+                            <button id="submitEmpBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button onclick="clearEmpFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="printEmp()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
+                                All</button>
+                        </p>
+                        <div style="clear: both;height: 16px;"></div>
                     </div>
                 </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Name</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empName">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Employee Type</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empType">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Posting</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empPost">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Designation</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empDes">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:150px; padding: 10px;">
-                        <label class="w3-medium">Salary</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="text" name="" id="empSalary" onkeypress="numValidate(event)">
-                    </div>
-                </div>
-                <p>
-                    <button id="submitEmpBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                    <button onclick="clearEmpFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
-                    <button onclick="printEmp()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
-                        All</button>
-                </p>
-                <div style="clear: both;height: 16px;"></div>
             </div>
         </div>
         <div class="w3-panel" style="display: none;">
