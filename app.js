@@ -95,24 +95,31 @@ app.controller('PayableCntlr', function ($scope) {
   $scope.comPayables = lsExGJInit('comPayables', []);
 });
 app.controller('CompanyHeadsCntlr', function ($scope) {
+  $scope.title = "Company Heads";
   $scope.comCh = lsExGJInit('comCh', []);
 });
 app.controller('CostCenterCntlr', function ($scope) {
+  $scope.title = "Cost Center";
   $scope.comCostCenters = lsExGJInit('comCostCenters', []);
 });
 app.controller('TruckTractorCntlr', function ($scope) {
+  $scope.title = "Truck Tractor";
   $scope.comTrs = lsExGJInit('comTrs', []);
 });
 app.controller('EmployeesCntlr', function ($scope) {
+  $scope.title = "Employee";
   $scope.comEmps = lsExGJInit('comEmps', []);
 });
 app.controller('BankCntlr', function ($scope) {
+  $scope.title = "Bank";
   $scope.comBanks = lsExGJInit('comBanks', []);
 });
 app.controller('ContractorsCntlr', function ($scope) {
+  $scope.title = "Contractor";
   $scope.comContractors = lsExGJInit('comContractors', []);
 });
 app.controller('RiceCntlr', function ($scope) {
+  $scope.title = "Rice";
   $scope.comRices = lsExGJInit('comRices', []);
 });
 app.controller('JournalFormCntlr', function ($scope) {
