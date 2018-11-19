@@ -203,25 +203,31 @@ input#userPasswordField {
     position: relative;
     font-size: 15px;
     line-height: 21px;
+    max-height: calc(100vh - 200px);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
-.table-head {
-    /* position: absolute; */
+.chart-data-table td, .chart-data-table th {
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.chart-data-table thead {
     width: 100%;
-    /* font-weight: bold; */
     font-size: 18px;
-    line-height: 1.4;
+    line-height: 1.2;
 }
 
 .table-container th, .table-container td {
     font-weight: unset;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
 }
 
 .table-container .tbody th, .table-container .tbody td {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
 }
 
 /* Chart Table Style */

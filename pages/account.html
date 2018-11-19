@@ -1,30 +1,23 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="margin-auto" style="max-width: 900px; margin-top: 18px; margin-bottom: 18px;">
+        <div class="margin-auto" style="max-width: 900px; margin-top: 15px; margin-bottom: 15px;">
             <section class="clearfix">
-                    <label class="w3-btn w3-xlarge w3-white" style="float: left;">{{title}}s</label>
-                    <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
-                    <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
+                <label class="w3-btn w3-xlarge w3-white" style="float: left;">{{title}}s</label>
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
+                    style="float: right;">+</button>
+                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
             <div class="w3-card-4 table-container">
-                <!-- <div class="main-bg-color table-head">
-                    <table class="w3-table w3-striped">
-                        <tr>
-                            <td>ID</td>
-                            <td>Nature</td>
-                            <td>A/C Code</td>
-                            <td>Account Text</td>
-                        </tr>
-                    </table>
-                </div> -->
                 <table class="w3-table w3-striped w3-white chart-data-table">
-                    <tr class="main-bg-color table-head">
-                        <th>ID</th>
-                        <th>Nature</th>
-                        <th>A/C Code</th>
-                        <th>Account Text</th>
-                    </tr>
+                    <thead>
+                        <tr class="main-bg-color table-head">
+                            <th>ID</th>
+                            <th>Nature</th>
+                            <th>A/C Code</th>
+                            <th>Account Text</th>
+                        </tr>
+                    </thead>
                     <tr class="tbody" ng-repeat="comAcc in comAccounts track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{comAcc.nature}}</td>
