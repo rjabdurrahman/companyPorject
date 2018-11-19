@@ -1,4 +1,5 @@
 app.controller('AccountCntlr', function ($scope) {
+    $scope.title = "Account";
     $scope.accounts = accounts;
     lsSetJ('accCodes', $scope.accounts);
     $scope.comAccounts = [];
