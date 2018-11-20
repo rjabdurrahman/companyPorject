@@ -147,7 +147,7 @@ app.controller('RiceCntlr', function ($scope) {
 });
 app.controller('ByProductsCntlr', function ($scope) {
   $scope.title = "By Product";
-  $scope.comRices = lsExGJInit('comRices', []);
+  $scope.comByProducts = lsExGJInit('comByProducts', []);
 });
 app.controller('JournalFormCntlr', function ($scope) {
   // $scope.accName = function (code) {
