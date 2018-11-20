@@ -297,3 +297,34 @@ input#userPasswordField {
 }
 
 /* Chart Table Style End */
+
+/* Form Date Tooltip style */
+#date+label {
+    display: none;
+    position: absolute;
+    padding: 5px;
+    margin-left: -9px;
+    margin-top: 10px;
+    color: black;
+    background-color: orange;
+    text-shadow: none;
+    border-radius: 5px;
+}
+
+#date+label::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: solid 8px orange;
+    border-left: solid 8px transparent;
+    border-right: solid 8px transparent;
+}
+
+#date:focus+label {
+    display: block;
+}
+/* Form Date Tooltip style End*/
