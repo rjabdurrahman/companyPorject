@@ -257,6 +257,7 @@ input#userPasswordField {
 #chartTable, .chart-table {
     background-color: white;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
 #chartTable input, .chart-table input {
@@ -265,6 +266,7 @@ input#userPasswordField {
 
 #chartTable td, .chart-table td {
     border: 1px solid lightgray;
+    display: table-cell;
     font-size: 15px !important;
     padding-top: 3px !important;
     padding-bottom: 3px !important;
@@ -276,17 +278,20 @@ input#userPasswordField {
 }
 
 #chartTable tr.primary {
-    background-color: #009688;
+    background-color: #4e706d;
+    /* background-color: #009688; */
     color: white;
     text-transform: uppercase;
     font-size: 18px;
     font-family: 'Exo 2', sans-serif;
-    height: 50px;
+    height: 40px;
 }
 
 .secondary {
-    background-color: #4e706d;
-    color: white;
+    background-color: #f1f1f1;
+    /* background-color: #4e706d; */
+    /* color: white; */
+    color: black;
 }
 
 .tab-warn {
@@ -302,6 +307,7 @@ input#userPasswordField {
 /* Chart Table Style End */
 
 /* Form Date Tooltip style */
+
 #date+label {
     display: none;
     position: absolute;
@@ -330,4 +336,5 @@ input#userPasswordField {
 #date:focus+label {
     display: block;
 }
+
 /* Form Date Tooltip style End*/
