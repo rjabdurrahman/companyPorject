@@ -265,6 +265,9 @@ input#userPasswordField {
 
 #chartTable td, .chart-table td {
     border: 1px solid lightgray;
+    font-size: 15px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
 }
 
 #chartTable td input, #chartTable td textarea, .chart-table td input, .chart-table td input:hover, .chart-table td input:focus {
