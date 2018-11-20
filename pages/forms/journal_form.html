@@ -230,6 +230,7 @@
         // let newRx = /Jan/
         if (!date.match(regEx)) {
             $print(date);
+            $js('date').focus()
         }
         else
             $print('ok');
