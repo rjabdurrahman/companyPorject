@@ -23,14 +23,14 @@
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
                         <tbody>
-                            <tr ng-repeat="bank in comBanks track by $index">
+                            <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{bank.code}}</td>
-                                <td>{{bank.name}}</td>
+                                <td>{{paddyDry.code}}</td>
+                                <td>{{paddyDry.name}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <div ng-show="!comBanks.length" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                    <div ng-show="!comPaddyDrys.length" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
                         Records Found!</div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                                 <label class="w3-medium">Code</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="bankCode">
+                                <input class="w3-input w3-border" type="text" name="" id="paddyDryCode">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -56,13 +56,13 @@
                                 <label class="w3-medium">Name</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="bankName">
+                                <input class="w3-input w3-border" type="text" name="" id="paddyDryName">
                             </div>
                         </div>
                         <p>
-                            <button id="submitBankBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            <button onclick="clearBankFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
-                            <button onclick="printBank()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
+                            <button id="paddyDrySubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button onclick="paddyDryClear()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="paddyDryPrint()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
                                 All</button>
                         </p>
                         <div style="clear: both;height: 16px;"></div>
@@ -74,61 +74,61 @@
     </div>
 </div>
 <script>
-    $js('submitBankBtn').addEventListener('click', function () {
-        var bankCode = $js('bankCode').value;
-        var bankName = $js('bankName').value;
-        var bank = {
-            code: bankCode,
-            name: bankName
+    $js('paddyDrySubmit').addEventListener('click', function () {
+        var paddyDryCode = $js('paddyDryCode').value;
+        var paddyDryName = $js('paddyDryName').value;
+        var paddyDry = {
+            code: paddyDryCode,
+            name: paddyDryName
         };
-        if (bankCode == "") {
+        if (paddyDryCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        else if (bankName == "") {
+        else if (paddyDryName == "") {
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(bank);
-        var comBanks = lsExGJInit('comBanks', []);
-        comBanks.push(bank);
-        lsSetJ('comBanks', comBanks);
-        clearBankFields();
+        $print(paddyDry);
+        var comPaddyDrys = lsExGJInit('comPaddyDrys', []);
+        comPaddyDrys.push(paddyDry);
+        lsSetJ('comPaddyDrys', comPaddyDrys);
+        paddyDryClear();
         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         location.reload();
     });
 
-    function clearBankFields() {
-        $js('bankCode').value = $js('bankName').value = "";
+    function paddyDryClear() {
+        $js('paddyDryCode').value = $js('paddyDryName').value = "";
     }
 
-    function printBank() {
-        $print("print");
-        var ws = XLSX.utils.table_to_sheet(document.getElementById('bankTable'), { cellDates: true });
-        // var wscols = [
-        //     { wch: 4 },
-        //     { wch: 12 },
-        //     { wch: 20 },
-        //     { wch: 20 },
-        //     { wch: 14 },
-        //     { wch: 40 }
-        // ];
-        // var wsrows = [
-        //     {
-        //         hpx: 24,
-        //         level: 2
-        //     }
-        // ];
-        // ws['!cols'] = wscols;
-        // ws['!rows'] = wsrows;
-        XLSX.utils.book_append_sheet(wb, ws, 'Bank');
-        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
-        function s2ab(s) {
-            var buf = new ArrayBuffer(s.length);
-            var view = new Uint8Array(buf);
-            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-            return buf;
-        }
-        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Bank.xlsx');
-    }
+    // function printpaddyDry() {
+    //     $print("print");
+    //     var ws = XLSX.utils.table_to_sheet(document.getElementById('paddyDryTable'), { cellDates: true });
+    //     // var wscols = [
+    //     //     { wch: 4 },
+    //     //     { wch: 12 },
+    //     //     { wch: 20 },
+    //     //     { wch: 20 },
+    //     //     { wch: 14 },
+    //     //     { wch: 40 }
+    //     // ];
+    //     // var wsrows = [
+    //     //     {
+    //     //         hpx: 24,
+    //     //         level: 2
+    //     //     }
+    //     // ];
+    //     // ws['!cols'] = wscols;
+    //     // ws['!rows'] = wsrows;
+    //     XLSX.utils.book_append_sheet(wb, ws, 'paddyDry');
+    //     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    //     function s2ab(s) {
+    //         var buf = new ArrayBuffer(s.length);
+    //         var view = new Uint8Array(buf);
+    //         for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    //         return buf;
+    //     }
+    //     saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'paddyDry.xlsx');
+    // }
 </script>

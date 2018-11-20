@@ -139,7 +139,7 @@ app.controller('PaddyRawCntlr', function ($scope) {
 });
 app.controller('PaddyDryCntlr', function ($scope) {
   $scope.title = "Paddy Dry";
-  $scope.comRices = lsExGJInit('comRices', []);
+  $scope.comPaddyDrys = lsExGJInit('comPaddyDrys', []);
 });
 app.controller('RiceCntlr', function ($scope) {
   $scope.title = "Rice";
