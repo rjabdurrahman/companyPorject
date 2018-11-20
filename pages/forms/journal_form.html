@@ -55,7 +55,7 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
+                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
                                 onkeyup="findTotal(this.name)" style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">x</td>
@@ -83,17 +83,17 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="partyCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----"
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="-----"
                                 disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center" value="" disabled>
                         </td>
                         <td style="text-align: center; color: gray">x</td>
                         <td>
@@ -173,7 +173,7 @@
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
                 ]
             );
@@ -195,7 +195,7 @@
         // autoCompleteAC();
     }
     function submitValid() {
-        var debits = document.getElementsByName('debitAmount');
+        var debits = document.getElementsByName('debitTotalAmount');
         var credits = document.getElementsByName('creditAmount');
         if (debits.length != credits.length) return false;
         for (i = 0; i < debits.length; i++) {
@@ -214,7 +214,7 @@
             if (parseFloat(amountsEl[amountEl].value))
                 total += parseFloat(amountsEl[amountEl].value);
         }
-        if (field == "debitAmount") {
+        if (field == "debitTotalAmount") {
             $js('totalDebit').textContent = parseFloat(total.toFixed(2));
         }
         else if (field == "creditAmount") {
