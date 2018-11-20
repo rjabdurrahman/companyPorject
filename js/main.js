@@ -6,6 +6,10 @@ function $js(id) {
     return document.getElementById(id);
 }
 
+function $sn(name){
+    return document.getElementsByName(name);
+}
+
 function lsSet(vname, data) {
     localStorage.setItem(vname, data);
 }

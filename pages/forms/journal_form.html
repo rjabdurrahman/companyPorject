@@ -228,15 +228,20 @@
         let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
         // let newRx = /Jan/
-        if (!(date.value).match(regEx)) {
-            $print(date);
-            $js('date').focus(); 
-            return;
-        }
+        // if (!(date.value).match(regEx)) {
+        //     $print(date);
+        //     $js('date').focus(); 
+        //     return;
+        // }
         let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
         let costCenter =$js('costCenter');
         let description = $js('description');
+        let partyCodes = [];
+        $sn('partyCode').forEach(function(element){
+            partyCodes.push(element.value);
+        });
+        $print(partyCodes);
         let jorurnal = {
             entryNo : parseInt(entryNo.value),
             voucherNo : parseInt(voucherNo.value),
