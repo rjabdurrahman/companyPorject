@@ -225,7 +225,8 @@
 
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date').value;
-        let regEx = /^\d{1,2}-\d{2}-\d{2}$/;
+        let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
+        // let newRx = /Jan/
         if (!date.match(regEx)) {
             $print(date);
         }
