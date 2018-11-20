@@ -4,3 +4,8 @@
 4. Journal form description responsive
 5. Menubar responsive
 6. Homepage login flexer
+7. Form entry minus button
+*8. Edit/Delete for chart table
+
+*ASK
+1. Form Entry auto field creation respectively
