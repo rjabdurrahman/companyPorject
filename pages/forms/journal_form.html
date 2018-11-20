@@ -11,11 +11,11 @@
                             <span>Entry No</span>
                         </td>
                         <td class="border">
-                            <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="voucherNo" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 125px; text-align: center;">Date</td>
                         <td style="width: 125px;">
@@ -115,7 +115,7 @@
                     <tr>
                         <td class="secondary" colspan="2">Cost Center</td>
                         <td colspan="3">
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" id="costCenter" style="text-align: center">
                         </td>
                         <td></td>
                         <td></td>
@@ -123,7 +123,7 @@
                     <tr>
                         <td class="secondary" colspan="2">Description</td>
                         <td colspan="3">
-                            <textarea class="w3-input" name="" id="" rows="1"></textarea>
+                            <textarea class="w3-input" name="" id="description" rows="1"></textarea>
                         </td>
                         <td class="main-bg-color" style="text-align: center; cursor: pointer;">
                             <button class="w3-btn">Clear</button>
@@ -225,14 +225,25 @@
     }
 
     $js('submitBtn').addEventListener('click', function () {
-        let date = $js('date').value;
+        let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
         // let newRx = /Jan/
-        if (!date.match(regEx)) {
+        if (!(date.value).match(regEx)) {
             $print(date);
-            $js('date').focus()
+            $js('date').focus(); 
+            return;
         }
-        else
-            $print('ok');
+        let entryNo = $js('entryNo');
+        let voucherNo = $js('voucherNo');
+        let costCenter =$js('costCenter');
+        let description = $js('description');
+        let jorurnal = {
+            entryNo : parseInt(entryNo.value),
+            voucherNo : parseInt(voucherNo.value),
+            date : date.value,
+            costCenter : costCenter.value,
+            description : description.value
+        }
+        console.table(jorurnal);
     });
 </script>
