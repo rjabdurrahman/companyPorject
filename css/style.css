@@ -277,9 +277,9 @@ input#userPasswordField {
     border-radius: 0;
 }
 
-#chartTable td input:disabled {
-    /* background-color: #f1f1f1; */
-}
+/* #chartTable td input:disabled {
+    background-color: #f1f1f1;
+} */
 
 #chartTable tr.primary {
     background-color: #4e706d;
