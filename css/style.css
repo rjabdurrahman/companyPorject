@@ -41,6 +41,13 @@ a {
     *zoom: 1;
 }
 
+
+.w3-dropdown-content a {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    border-bottom: 1px solid lightgray !important;
+}
+
 /* Autocomplete Styles */
 
 ul.ui-autocomplete {
