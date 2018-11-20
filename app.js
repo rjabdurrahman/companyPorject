@@ -53,12 +53,12 @@ app.config(function ($routeProvider) {
       activetab : 'chart'
     })
     .when('/paddyraw', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/paddy_raw.html',
       controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
     .when('/paddydry', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/paddy_dry.html',
       controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
@@ -68,7 +68,7 @@ app.config(function ($routeProvider) {
       activetab : 'chart'
     })
     .when('/byproducts', {
-      templateUrl: 'pages/cons.html',
+      templateUrl: 'pages/by_products.html',
       controller: 'ContractorsCntlr',
       activetab : 'chart'
     })
