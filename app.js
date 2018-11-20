@@ -54,12 +54,12 @@ app.config(function ($routeProvider) {
     })
     .when('/paddyraw', {
       templateUrl: 'pages/paddy_raw.html',
-      controller: 'ContractorsCntlr',
+      controller: 'PaddyRawCntlr',
       activetab : 'chart'
     })
     .when('/paddydry', {
       templateUrl: 'pages/paddy_dry.html',
-      controller: 'ContractorsCntlr',
+      controller: 'PaddyDryCntlr',
       activetab : 'chart'
     })
     .when('/rice', {
@@ -69,7 +69,7 @@ app.config(function ($routeProvider) {
     })
     .when('/byproducts', {
       templateUrl: 'pages/by_products.html',
-      controller: 'ContractorsCntlr',
+      controller: 'ByProductsCntlr',
       activetab : 'chart'
     })
     .when('/journalform', {
@@ -133,8 +133,20 @@ app.controller('ContractorsCntlr', function ($scope) {
   $scope.title = "Contractor";
   $scope.comContractors = lsExGJInit('comContractors', []);
 });
+app.controller('PaddyRawCntlr', function ($scope) {
+  $scope.title = "Paddy Raw";
+  $scope.comRices = lsExGJInit('comRices', []);
+});
+app.controller('PaddyDryCntlr', function ($scope) {
+  $scope.title = "Paddy Dry";
+  $scope.comRices = lsExGJInit('comRices', []);
+});
 app.controller('RiceCntlr', function ($scope) {
   $scope.title = "Rice";
+  $scope.comRices = lsExGJInit('comRices', []);
+});
+app.controller('ByProductsCntlr', function ($scope) {
+  $scope.title = "By Product";
   $scope.comRices = lsExGJInit('comRices', []);
 });
 app.controller('JournalFormCntlr', function ($scope) {
