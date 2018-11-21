@@ -239,9 +239,11 @@
         let description = $js('description');
         let creditDetails = [];
         $sn('crPartyCode').forEach(function(element){
+            let partyCodeEl = element;
+            let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
             let credit = {
-                partyCode : element.value,
-                partyName : element.parentElement.nextElementSibling.firstElementChild.value
+                partyCode : partyCodeEl.value,
+                partyName : partyNameEl.value
             }
             creditDetails.push(credit);
         });
