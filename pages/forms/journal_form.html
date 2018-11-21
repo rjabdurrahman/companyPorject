@@ -83,7 +83,7 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="partyCode" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="crPartyCode" style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="-----"
@@ -149,11 +149,11 @@
     //     });
     // }
     function ACNameComplete(element) {
-        $print(element.value)
+        // $print(element.value);
         let data = lsExGJInit('comAccounts', []).find(function (el) {
             return el.accCode == element.value;
         });
-        $print(data);
+        // $print(data);
         if (data) {
             element.parentElement.nextElementSibling.firstElementChild.value = data.accText;
         }
@@ -182,7 +182,7 @@
             m.render(newRow,
                 [
                     m("td", ++serial),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
@@ -237,11 +237,11 @@
         let voucherNo = $js('voucherNo');
         let costCenter =$js('costCenter');
         let description = $js('description');
-        let partyCodes = [];
-        $sn('partyCode').forEach(function(element){
-            partyCodes.push(element.value);
+        let crPartyCodes = [];
+        $sn('crPartyCode').forEach(function(element){
+            crPartyCodes.push(element.value);
         });
-        $print(partyCodes);
+        $print(crPartyCodes);
         let jorurnal = {
             entryNo : parseInt(entryNo.value),
             voucherNo : parseInt(voucherNo.value),

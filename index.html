@@ -52,39 +52,39 @@
             <section style="margin-left: auto; font-size: 14px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
                     <a href="#/" style="margin-right: 10px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
-                        class="w3-bar-item w3-button">HOME</a>
-                    <div class="w3-dropdown-hover">
+                        class="w3-bar-item w3-button w3-mobile">HOME</a>
+                    <div class="w3-dropdown-hover w3-mobile">
                         <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#account" class="w3-bar-item w3-button">Main Account</a>
-                            <a href="#receivable" class="w3-bar-item w3-button">Receivable</a>
-                            <a href="#payable" class="w3-bar-item w3-button">Payable</a>
-                            <a href="#companyheads" class="w3-bar-item w3-button">Company Heads</a>
-                            <a href="#costcenter" class="w3-bar-item w3-button">Cost Center</a>
-                            <a href="#trucktractor" class="w3-bar-item w3-button">Truck & Tractor</a>
-                            <a href="#employees" class="w3-bar-item w3-button">Employees</a>
-                            <a href="#bank" class="w3-bar-item w3-button">Bank</a>
-                            <a href="#contractors" class="w3-bar-item w3-button">Contractors</a>
-                            <a href="#paddyraw" class="w3-bar-item w3-button">Paddy Raw</a>
-                            <a href="#paddydry" class="w3-bar-item w3-button">Paddy Dry</a>
-                            <a href="#rice" class="w3-bar-item w3-button">Rice</a>
-                            <a href="#byproducts" class="w3-bar-item w3-button">By Products</a>
-                            <a onclick="printAll()" class="w3-bar-item w3-button">Print All</a>
+                            <a href="#account" class="w3-bar-item w3-button w3-mobile">Main Account</a>
+                            <a href="#receivable" class="w3-bar-item w3-button w3-mobile">Receivable</a>
+                            <a href="#payable" class="w3-bar-item w3-button w3-mobile">Payable</a>
+                            <a href="#companyheads" class="w3-bar-item w3-button w3-mobile">Company Heads</a>
+                            <a href="#costcenter" class="w3-bar-item w3-button w3-mobile">Cost Center</a>
+                            <a href="#trucktractor" class="w3-bar-item w3-button w3-mobile">Truck & Tractor</a>
+                            <a href="#employees" class="w3-bar-item w3-button w3-mobile">Employees</a>
+                            <a href="#bank" class="w3-bar-item w3-button w3-mobile">Bank</a>
+                            <a href="#contractors" class="w3-bar-item w3-button w3-mobile">Contractors</a>
+                            <a href="#paddyraw" class="w3-bar-item w3-button w3-mobile">Paddy Raw</a>
+                            <a href="#paddydry" class="w3-bar-item w3-button w3-mobile">Paddy Dry</a>
+                            <a href="#rice" class="w3-bar-item w3-button w3-mobile">Rice</a>
+                            <a href="#byproducts" class="w3-bar-item w3-button w3-mobile">By Products</a>
+                            <a onclick="printAll()" class="w3-bar-item w3-button w3-mobile">Print All</a>
                         </div>
                     </div>
-                    <div class="w3-dropdown-hover">
+                    <div class="w3-dropdown-hover w3-mobile">
                         <button ng-class="{'w3-border' : $route.current.activetab == 'journal'}" class="w3-button">FORM
                             ENTRY&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#journalform" class="w3-bar-item w3-button">Journal Form</a>
-                            <a href="#purchase" class="w3-bar-item w3-button">Purchase</a>
-                            <a href="#purchasereturn" class="w3-bar-item w3-button">Puchase Return</a>
-                            <a href="#sales" class="w3-bar-item w3-button">Sales</a>
-                            <a href="#salesreturn" class="w3-bar-item w3-button">Sales Return</a>
+                            <a href="#journalform" class="w3-bar-item w3-button w3-mobile">Journal Form</a>
+                            <a href="#purchase" class="w3-bar-item w3-button w3-mobile">Purchase</a>
+                            <a href="#purchasereturn" class="w3-bar-item w3-button w3-mobile">Puchase Return</a>
+                            <a href="#sales" class="w3-bar-item w3-button w3-mobile">Sales</a>
+                            <a href="#salesreturn" class="w3-bar-item w3-button w3-mobile">Sales Return</a>
                         </div>
                     </div>
                     <!-- <div class="w3-dropdown-hover">
@@ -92,9 +92,9 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#" class="w3-bar-item w3-button">Here</a>
-                            <a href="#" class="w3-bar-item w3-button">Show</a>
-                            <a href="#" class="w3-bar-item w3-button">Print</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Here</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Show</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Print</a>
                         </div>
                     </div>
                     <div class="w3-dropdown-hover">
@@ -102,14 +102,13 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#account" class="w3-bar-item w3-button">Main Account</a>
-                            <a href="#" class="w3-bar-item w3-button">Balance Sheets</a>
+                            <a href="#account" class="w3-bar-item w3-button w3-mobile">Main Account</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Balance Sheets</a>
                         </div>
                     </div> -->
+                    <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
+                        Out</button>
                 </div>
-            </section>
-            <section>
-                <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-border">Log Out</button>
             </section>
         </div>
     </header>
