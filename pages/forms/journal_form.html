@@ -237,11 +237,15 @@
         let voucherNo = $js('voucherNo');
         let costCenter =$js('costCenter');
         let description = $js('description');
-        let crPartyCodes = [];
+        let creditDetails = [];
         $sn('crPartyCode').forEach(function(element){
-            crPartyCodes.push(element.value);
+            let credit = {
+                partyCode : element.value,
+                partyName : element.parentElement.nextElementSibling.firstElementChild.value
+            }
+            creditDetails.push(credit);
         });
-        $print(crPartyCodes);
+        $print(creditDetails);
         let jorurnal = {
             entryNo : parseInt(entryNo.value),
             voucherNo : parseInt(voucherNo.value),
