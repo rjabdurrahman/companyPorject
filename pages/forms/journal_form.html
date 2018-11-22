@@ -287,15 +287,16 @@
             }
             debitDetails.push(debit);
         });
-        $print(debitDetails);
-        $print(creditDetails);
         let jorurnal = {
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
+            debit : debitDetails,
+            credit : creditDetails,
             costCenter: costCenter.value,
             description: description.value
         }
-        console.table(jorurnal);
+        console.log(jorurnal);
+        lsSetJ('comAccounts', comAccounts);
     });
 </script>

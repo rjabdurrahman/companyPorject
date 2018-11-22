@@ -6,7 +6,7 @@
 7. Form entry minus button
 *8. Edit/Delete for chart table
 9. Account Code Firefox flex
-10. AC Code autocomplete action not working.
+10. Receivables AC Code autocomplete action not working.
 
 *ASK
 1. Form Entry auto field creation respectively
