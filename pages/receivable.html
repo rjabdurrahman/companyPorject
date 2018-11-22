@@ -17,6 +17,7 @@
                                 <th>A/C Code</th>
                                 <th>Party Name</th>
                                 <th>Customer Type</th>
+                                <th>Propritor Name</th>
                                 <th>Mobile</th>
                                 <th>Address</th>
                             </tr>
@@ -31,6 +32,7 @@
                                 <td>{{rec.acCode}}</td>
                                 <td>{{rec.partyName}}</td>
                                 <td>{{rec.cusType}}</td>
+                                <td>{{rec.recProprietor}}</td>
                                 <td>{{rec.mobile}}</td>
                                 <td>{{rec.address}}</td>
                             </tr>
@@ -74,6 +76,14 @@
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Proprietor Name</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="recProprietor">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
                                 <label class="w3-medium">Mobile No</label>
                             </div>
                             <div class="w3-rest">
@@ -91,8 +101,7 @@
                         <p>
                             <button id="submitRecBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                             <button onclick="clearRecFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
-                            <button onclick="printReceivables()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
-                                All</button>
+
                         </p>
                         <div style="clear: both;height: 16px;"></div>
                     </div>
@@ -113,12 +122,14 @@
         var recACCode = $js('recACCode').value;
         var recPartyName = $js('recPartyName').value;
         var recCustomerType = $js('recCustomerType').value;
+        var recProprietor = $js('recProprietor').value;
         var recMObileNo = $js('recMObileNo').value;
         var recAddress = $js('recAddress').value;
         var receive = {
             acCode: recACCode,
             partyName: recPartyName,
             cusType: recCustomerType,
+            recProprietor: recProprietor,
             mobile: recMObileNo,
             address: recAddress
         };
