@@ -11,15 +11,18 @@
                             <span>Entry No</span>
                         </td>
                         <td class="border">
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo" onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo"
+                                onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="voucherNo" onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="voucherNo"
+                                onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 125px; text-align: center;">Date</td>
                         <td style="width: 125px;">
-                            <input class="w3-input w3-border" type="text" id="date" style="text-align: center;" placeholder="DD-Mon-YY">
+                            <input class="w3-input w3-border" type="text" id="date" style="text-align: center;"
+                                placeholder="DD-Mon-YY">
                             <label>Ex: 12-Jan-18</label>
                         </td>
                     </tr>
@@ -43,13 +46,14 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" onpaste="ACNameComplete(event)" onkeyup="ACNameComplete(event)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
+                                onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
@@ -86,14 +90,16 @@
                             <input class="w3-input w3-border" type="text" name="crPartyCode" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="-----"
-                                disabled>
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
+                                value="-----" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
+                                onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center" value="" disabled>
+                            <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center"
+                                value="" disabled>
                         </td>
                         <td style="text-align: center; color: gray">x</td>
                         <td>
@@ -234,29 +240,29 @@
         // }
         let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
-        let costCenter =$js('costCenter');
+        let costCenter = $js('costCenter');
         let description = $js('description');
         let creditDetails = [];
-        $sn('crPartyCode').forEach(function(element){
+        $sn('crPartyCode').forEach(function (element) {
             let partyCodeEl = element;
             let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
             let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
             let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
             let credit = {
-                partyCode : partyCodeEl.value,
-                partyName : partyNameEl.value,
-                ACCode : ACCodeEl.value,
-                ACName : ACNameEl.value
+                partyCode: partyCodeEl.value,
+                partyName: partyNameEl.value,
+                ACCode: ACCodeEl.value,
+                ACName: ACNameEl.value
             }
             creditDetails.push(credit);
         });
         $print(creditDetails);
         let jorurnal = {
-            entryNo : parseInt(entryNo.value),
-            voucherNo : parseInt(voucherNo.value),
-            date : date.value,
-            costCenter : costCenter.value,
-            description : description.value
+            entryNo: parseInt(entryNo.value),
+            voucherNo: parseInt(voucherNo.value),
+            date: date.value,
+            costCenter: costCenter.value,
+            description: description.value
         }
         console.table(jorurnal);
     });
