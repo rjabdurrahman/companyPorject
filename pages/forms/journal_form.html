@@ -46,7 +46,7 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" onpaste="partyNameComplete(event)" onkeyup="partyNameComplete(event)"
+                            <input class="w3-input w3-border" type="text" name="drPartyCode" onpaste="partyNameComplete(event)" onkeyup="partyNameComplete(event)"
                                 style="text-align: center">
                         </td>
                         <td>
@@ -259,6 +259,7 @@
         let voucherNo = $js('voucherNo');
         let costCenter = $js('costCenter');
         let description = $js('description');
+        let debitDetails = [];
         let creditDetails = [];
         $sn('crPartyCode').forEach(function (element) {
             let partyCodeEl = element;
@@ -273,6 +274,20 @@
             }
             creditDetails.push(credit);
         });
+        $sn('drPartyCode').forEach(function (element) {
+            let partyCodeEl = element;
+            let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
+            let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+            let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+            let debit = {
+                partyCode: partyCodeEl.value,
+                partyName: partyNameEl.value,
+                ACCode: ACCodeEl.value,
+                ACName: ACNameEl.value
+            }
+            debitDetails.push(debit);
+        });
+        $print(debitDetails);
         $print(creditDetails);
         let jorurnal = {
             entryNo: parseInt(entryNo.value),
