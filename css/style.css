@@ -232,12 +232,14 @@ input#userPasswordField {
 }
 
 .chart-data-table td, .chart-data-table th {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
     text-align: center;
     border-bottom: 1px solid lightgray;
 }
 
 .chart-data-table thead {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.2;
 }
 
@@ -254,6 +256,7 @@ input#userPasswordField {
 }
 
 .table-container tbody th, .table-container tbody td {
+    font-size: 13px;
     /* text-align: center; */
     padding-top: 8px !important;
     padding-bottom: 8px !important;
