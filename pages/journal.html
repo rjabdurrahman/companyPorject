@@ -25,7 +25,7 @@
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
                         <tbody ng-repeat="jor in journal track by $index">
-                            <tr ng-repeat="deb in jor.debit track by $index">
+                            <tr ng-repeat="deb in jor.debitCredit track by $index">
                                 <td>{{jor.entryNo}}</td>
                                 <td>{{jor.date}}</td>
                                 <td>{{jor.voucherNo}}</td>

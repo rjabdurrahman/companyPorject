@@ -262,6 +262,7 @@
                 let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let debit = {
+                    type : 'Dr',
                     partyCode: partyCodeEl.value,
                     partyName: partyNameEl.value,
                     ACCode: ACCodeEl.value,
@@ -275,6 +276,7 @@
                 let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let credit = {
+                    type : 'Cr',
                     partyCode: partyCodeEl.value,
                     partyName: partyNameEl.value,
                     ACCode: ACCodeEl.value,
