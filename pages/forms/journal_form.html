@@ -43,7 +43,7 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" onpaste="ACNameComplete(this)" onkeyup="ACNameComplete(this)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" onpaste="ACNameComplete(event)" onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
@@ -148,16 +148,15 @@
     //         $(this).autocomplete("search");
     //     });
     // }
-    function ACNameComplete(element) {
-        // $print(element.value);
+    function ACNameComplete(event) {
         let data = lsExGJInit('comAccounts', []).find(function (el) {
-            return el.accCode == element.value;
+            return el.accCode == event.target.value;
         });
         // $print(data);
         if (data) {
-            element.parentElement.nextElementSibling.firstElementChild.value = data.accText;
+            event.target.parentElement.nextElementSibling.firstElementChild.value = data.accText;
         }
-        else element.parentElement.nextElementSibling.firstElementChild.value = '';
+        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     // autoCompleteAC();
     function addField(field) {
@@ -204,6 +203,7 @@
         return true;
     }
     function findTotal(fname) {
+        // $print(fname.target.value);
         var field = this.name;
         if (typeof (fname) == "string") {
             field = fname;
@@ -227,7 +227,6 @@
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
-        // let newRx = /Jan/
         // if (!(date.value).match(regEx)) {
         //     $print(date);
         //     $js('date').focus(); 
@@ -241,9 +240,13 @@
         $sn('crPartyCode').forEach(function(element){
             let partyCodeEl = element;
             let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
+            let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+            let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
             let credit = {
                 partyCode : partyCodeEl.value,
-                partyName : partyNameEl.value
+                partyName : partyNameEl.value,
+                ACCode : ACCodeEl.value,
+                ACName : ACNameEl.value
             }
             creditDetails.push(credit);
         });
