@@ -1,6 +1,6 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="margin-auto" style="width: 90%; margin-top: 15px; margin-bottom: 15px;">
+        <div class="margin-auto" style="width: 95%">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
             </section>
@@ -16,6 +16,9 @@
                                 <th>Party Name</th>
                                 <th>AC Code</th>
                                 <th>AC Name</th>
+                                <th>Dr/Cr</th>
+                                <th>Dr. Amount</th>
+                                <th>Cr. Amount</th>
                                 <th>Cost Center</th>
                                 <th>Description</th>
                             </tr>
@@ -33,6 +36,9 @@
                                 <td>{{deb.partyName}}</td>
                                 <td>{{deb.ACCode}}</td>
                                 <td>{{deb.ACName}}</td>
+                                <td>{{deb.type}}</td>
+                                <td>{{deb.drAmount}}</td>
+                                <td>{{deb.crAmount}}</td>
                                 <td>{{jor.costCenter}}</td>
                                 <td>{{jor.description}}</td>
                             </tr>

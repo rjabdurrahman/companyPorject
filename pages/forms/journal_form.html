@@ -60,7 +60,9 @@
                             <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
                                 style="text-align: right">
                         </td>
-                        <td style="text-align: center; color: gray;">x</td>
+                        <td>
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="x" disabled>
+                        </td>
                     </tr>
                     <tr id="debitLine">
                         <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addDebitField')">+</td>
@@ -97,7 +99,9 @@
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center" value="" disabled>
                         </td>
-                        <td style="text-align: center; color: gray">x</td>
+                        <td>
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="x" disabled>
+                        </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
                                 style="text-align: right">
@@ -261,12 +265,15 @@
                 let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
                 let debit = {
                     type : 'Dr',
                     partyCode: partyCodeEl.value,
                     partyName: partyNameEl.value,
                     ACCode: ACCodeEl.value,
-                    ACName: ACNameEl.value
+                    ACName: ACNameEl.value,
+                    drAmount: parseFloat(drAmount.value)
                 }
                 debitCredit.push(debit);
             }
@@ -275,12 +282,15 @@
                 let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
                 let credit = {
                     type : 'Cr',
                     partyCode: partyCodeEl.value,
                     partyName: partyNameEl.value,
                     ACCode: ACCodeEl.value,
-                    ACName: ACNameEl.value
+                    ACName: ACNameEl.value,
+                    crAmount: parseFloat(crAmount.value)
                 }
                 debitCredit.push(credit);
             }
