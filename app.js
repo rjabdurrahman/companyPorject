@@ -67,7 +67,7 @@ app.config(function ($routeProvider) {
       controller: 'RiceCntlr',
       activetab: 'chart'
     })
-    .when('/byproducts', {
+    .when('/buyproducts', {
       templateUrl: 'pages/by_products.html',
       controller: 'ByProductsCntlr',
       activetab: 'chart'
