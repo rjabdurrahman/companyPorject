@@ -1,12 +1,12 @@
 1. Account Ranges
 2. Account code
-3. Contractors Data Load
 4. Journal form description responsive
 5. Menubar responsive
 6. Homepage login flexer
 7. Form entry minus button
 *8. Edit/Delete for chart table
 9. Account Code Firefox flex
+10. AC Code autocomplete action not working.
 
 *ASK
 1. Form Entry auto field creation respectively
