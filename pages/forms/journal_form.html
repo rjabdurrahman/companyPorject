@@ -11,18 +11,15 @@
                             <span>Entry No</span>
                         </td>
                         <td class="border">
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo"
-                                onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="voucherNo"
-                                onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="voucherNo" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary" style="width: 125px; text-align: center;">Date</td>
                         <td style="width: 125px;">
-                            <input class="w3-input w3-border" type="text" id="date" style="text-align: center;"
-                                placeholder="DD-Mon-YY">
+                            <input class="w3-input w3-border" type="text" id="date" style="text-align: center;" placeholder="DD-Mon-YY">
                             <label>Ex: 12-Jan-18</label>
                         </td>
                     </tr>
@@ -53,21 +50,20 @@
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
-                                onkeyup="ACNameComplete(event)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)" onkeyup="ACNameComplete(event)"
+                                style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                style="text-align: right">
                         </td>
                         <td style="text-align: center; color: gray;">x</td>
                     </tr>
                     <tr id="debitLine">
-                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addDebitField')">+</td>
+                        <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addDebitField')">+</td>
                         <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
@@ -88,30 +84,27 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="ACNameComplete(event)"
-                                onkeyup="ACNameComplete(event)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="ACNameComplete(event)" onkeyup="ACNameComplete(event)"
+                                style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
-                                value="-----" disabled>
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center" value="-----" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
-                                onkeyup="ACNameComplete(event)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)" onkeyup="ACNameComplete(event)"
+                                style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center"
-                                value="" disabled>
+                            <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center" value="" disabled>
                         </td>
                         <td style="text-align: center; color: gray">x</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)" onkeyup="findTotal(this.name)"
+                                style="text-align: right">
                         </td>
                     </tr>
                     <tr>
-                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addCreditField')">+</td>
+                        <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;" onclick="addField('addCreditField')">+</td>
                         <td class="tab-warn" colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -191,9 +184,9 @@
             m.render(newRow,
                 [
                     m("td", ++serial),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste : partyNameComplete, onkeyup : partyNameComplete, style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'drPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste : ACNameComplete, onkeyup : ACNameComplete, style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })])
@@ -204,9 +197,9 @@
             m.render(newRow,
                 [
                     m("td", ++serial),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste : partyNameComplete, onkeyup : partyNameComplete, style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
-                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste : ACNameComplete, onkeyup : ACNameComplete, style: 'text-align: center' })]),
+                    m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '------', disabled: true })]),
                     m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
@@ -291,12 +284,14 @@
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
-            debit : debitDetails,
-            credit : creditDetails,
+            debit: debitDetails,
+            credit: creditDetails,
             costCenter: costCenter.value,
             description: description.value
         }
         console.log(jorurnal);
-        lsSetJ('comAccounts', comAccounts);
+        let journalForm = lsExGJInit('journalForm', []);
+        journalForm.push(jorurnal);
+        lsSetJ('journalForm', journalForm);
     });
 </script>
