@@ -99,7 +99,7 @@ app.config(function ($routeProvider) {
     })
     .when('/journal', {
       templateUrl: 'pages/journal.html',
-      controller: 'JournalFormCntlr',
+      controller: 'JournalCntlr',
       activetab: 'journal'
     })
     .otherwise({ redirectTo: '/' });
@@ -160,4 +160,8 @@ app.controller('JournalFormCntlr', function ($scope) {
   //     return el.accCode == code;
   //   }).accText;
   // }
+});
+app.controller('JournalCntlr', function ($scope) {
+  $scope.title = "Journal";
+  $scope.journal = lsExGJInit('journalForm', []);
 });
