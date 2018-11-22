@@ -24,12 +24,17 @@
                 </div>
                 <div class="ch-table-content">
                     <table class="w3-table w3-striped w3-white chart-data-table">
-                        <tbody>
-                            <tr ng-repeat="jor in journal track by $index">
-                                <td>{{$index + 1}}</td>
-                                <td>{{comAcc.nature}}</td>
-                                <td>{{comAcc.accCode}}</td>
-                                <td>{{comAcc.accText}}</td>
+                        <tbody ng-repeat="jor in journal track by $index">
+                            <tr ng-repeat="deb in jor.debit track by $index">
+                                <td>{{jor.entryNo}}</td>
+                                <td>{{jor.date}}</td>
+                                <td>{{jor.voucherNo}}</td>
+                                <td>{{deb.partyCode}}</td>
+                                <td>{{deb.partyName}}</td>
+                                <td>{{deb.ACCode}}</td>
+                                <td>{{deb.ACName}}</td>
+                                <td>{{jor.costCenter}}</td>
+                                <td>{{jor.description}}</td>
                             </tr>
                         </tbody>
                     </table>
