@@ -30,7 +30,7 @@ app.config(function ($routeProvider) {
     .when('/costcenter', {
       templateUrl: 'pages/cost_center.html',
       controller: 'CostCenterCntlr',
-      activetab: 'chart'
+      activetab: 'costcenter'
     })
     .when('/trucktractor', {
       templateUrl: 'pages/truck_tractor.html',
