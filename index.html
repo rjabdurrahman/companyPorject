@@ -32,8 +32,8 @@
         <div class="w3-container main-bg-color robo-font" style="padding: 6px 15% 6px 10%;">
             <section style="float: left;">
                 <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
-                <span style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April
-                    18</span>
+                <span style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April 18
+                </span>
             </section>
             <section style="float: right;">
                 <i class="fa fa-phone" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
@@ -51,8 +51,7 @@
             </section>
             <section style="margin-left: auto; font-size: 14px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
-                    <a href="#/" style="margin-right: 10px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
-                        class="w3-bar-item w3-button w3-mobile">HOME</a>
+                    <a href="#/" style="margin-right: 10px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}" class="w3-bar-item w3-button w3-mobile">HOME</a>
                     <div class="w3-dropdown-hover w3-mobile">
                         <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
@@ -75,8 +74,7 @@
                         </div>
                     </div>
                     <div class="w3-dropdown-hover w3-mobile">
-                        <button ng-class="{'w3-border' : $route.current.activetab == 'journal'}" class="w3-button">FORM
-                            ENTRY&nbsp;&nbsp;
+                        <button ng-class="{'w3-border' : $route.current.activetab == 'formentry'}" class="w3-button">FORM ENTRY&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -87,17 +85,8 @@
                             <a href="#salesreturn" class="w3-bar-item w3-button w3-mobile">Sales Return</a>
                         </div>
                     </div>
+                    <a ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal" class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
                     <!-- <div class="w3-dropdown-hover">
-                        <button class="w3-button">JOURNAL&nbsp;&nbsp;
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Here</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Show</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Print</a>
-                        </div>
-                    </div>
-                    <div class="w3-dropdown-hover">
                         <button class="w3-button">LEDGER&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -106,8 +95,8 @@
                             <a href="#" class="w3-bar-item w3-button w3-mobile">Balance Sheets</a>
                         </div>
                     </div> -->
-                    <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
-                        Out</button>
+                    <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log Out
+                    </button>
                 </div>
             </section>
         </div>

@@ -25,75 +25,80 @@ app.config(function ($routeProvider) {
     .when('/companyheads', {
       templateUrl: 'pages/company_heads.html',
       controller: 'CompanyHeadsCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/costcenter', {
       templateUrl: 'pages/cost_center.html',
       controller: 'CostCenterCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/trucktractor', {
       templateUrl: 'pages/truck_tractor.html',
       controller: 'TruckTractorCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/employees', {
       templateUrl: 'pages/employees.html',
       controller: 'EmployeesCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/bank', {
       templateUrl: 'pages/bank.html',
       controller: 'BankCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/contractors', {
       templateUrl: 'pages/contractors.html',
       controller: 'ContractorsCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/paddyraw', {
       templateUrl: 'pages/paddy_raw.html',
       controller: 'PaddyRawCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/paddydry', {
       templateUrl: 'pages/paddy_dry.html',
       controller: 'PaddyDryCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/rice', {
       templateUrl: 'pages/rice.html',
       controller: 'RiceCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/byproducts', {
       templateUrl: 'pages/by_products.html',
       controller: 'ByProductsCntlr',
-      activetab : 'chart'
+      activetab: 'chart'
     })
     .when('/journalform', {
       templateUrl: 'pages/forms/journal_form.html',
       controller: 'JournalFormCntlr',
-      activetab: 'journal'
+      activetab: 'formentry'
     })
     .when('/purchase', {
       templateUrl: 'pages/forms/purchase.html',
       controller: 'JournalFormCntlr',
-      activetab: 'journal'
+      activetab: 'formentry'
     })
     .when('/purchasereturn', {
       templateUrl: 'pages/forms/purchase_return.html',
       controller: 'JournalFormCntlr',
-      activetab: 'journal'
+      activetab: 'formentry'
     })
     .when('/sales', {
       templateUrl: 'pages/forms/sales.html',
       controller: 'JournalFormCntlr',
-      activetab: 'journal'
+      activetab: 'formentry'
     })
     .when('/salesreturn', {
       templateUrl: 'pages/forms/sales_return.html',
+      controller: 'JournalFormCntlr',
+      activetab: 'formentry'
+    })
+    .when('/journal', {
+      templateUrl: 'pages/journal.html',
       controller: 'JournalFormCntlr',
       activetab: 'journal'
     })
