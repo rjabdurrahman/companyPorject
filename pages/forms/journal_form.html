@@ -252,40 +252,42 @@
         let voucherNo = $js('voucherNo');
         let costCenter = $js('costCenter');
         let description = $js('description');
-        let debitDetails = [];
-        let creditDetails = [];
-        $sn('crPartyCode').forEach(function (element) {
-            let partyCodeEl = element;
-            let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
-            let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-            let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-            let credit = {
-                partyCode: partyCodeEl.value,
-                partyName: partyNameEl.value,
-                ACCode: ACCodeEl.value,
-                ACName: ACNameEl.value
+        let debitCredit = [];
+        let drPartyCodeEls = $sn('drPartyCode');
+        let crPartyCodeEls = $sn('crPartyCode');
+        for (index in drPartyCodeEls) {
+            if (drPartyCodeEls.hasOwnProperty(index)) {
+                let partyCodeEl = drPartyCodeEls[index];
+                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let debit = {
+                    partyCode: partyCodeEl.value,
+                    partyName: partyNameEl.value,
+                    ACCode: ACCodeEl.value,
+                    ACName: ACNameEl.value
+                }
+                debitCredit.push(debit);
             }
-            creditDetails.push(credit);
-        });
-        $sn('drPartyCode').forEach(function (element) {
-            let partyCodeEl = element;
-            let partyNameEl = element.parentElement.nextElementSibling.firstElementChild;
-            let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-            let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-            let debit = {
-                partyCode: partyCodeEl.value,
-                partyName: partyNameEl.value,
-                ACCode: ACCodeEl.value,
-                ACName: ACNameEl.value
+            if (crPartyCodeEls.hasOwnProperty(index)) {
+                let partyCodeEl = crPartyCodeEls[index];
+                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let credit = {
+                    partyCode: partyCodeEl.value,
+                    partyName: partyNameEl.value,
+                    ACCode: ACCodeEl.value,
+                    ACName: ACNameEl.value
+                }
+                debitCredit.push(credit);
             }
-            debitDetails.push(debit);
-        });
+        }
         let jorurnal = {
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
-            debit: debitDetails,
-            credit: creditDetails,
+            debitCredit : debitCredit,
             costCenter: costCenter.value,
             description: description.value
         }
