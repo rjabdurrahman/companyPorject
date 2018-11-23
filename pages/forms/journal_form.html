@@ -50,14 +50,14 @@
                                 onkeyup="partyNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
                                 onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="" disabled>
+                            <input class="w3-input w3-border" type="text" style="text-align: center" value="-----" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
@@ -91,8 +91,8 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="ACNameComplete(event)"
-                                onkeyup="ACNameComplete(event)" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="partyNameComplete(event)"
+                                onkeyup="partyNameComplete(event)" style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
@@ -173,7 +173,8 @@
         else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     function partyNameComplete(event) {
-        let data = lsExGJInit('comAccounts', []).find(function (el) {
+        let alldata = [...lsExGJInit('comEmps', []), ...lsExGJInit('comContractors', [])];
+        let data = alldata.find(function (el) {
             if (el.hasOwnProperty('accCode')) {
                 return el.accCode == event.target.value;
             }
@@ -183,7 +184,7 @@
         });
         $print(data);
         if (data) {
-            event.target.parentElement.nextElementSibling.firstElementChild.value = data.accText;
+            event.target.parentElement.nextElementSibling.firstElementChild.value = data.name;
         }
         else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
