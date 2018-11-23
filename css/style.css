@@ -201,6 +201,10 @@ input#userPasswordField {
 
 /* Data Table Style */
 
+.w3-table-all{
+    border: none !important;
+}
+
 .table-main-cotainer {
     margin: 20px 30px;
 }

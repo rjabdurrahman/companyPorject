@@ -6,60 +6,56 @@
             </section>
             <div class="w3-card-4 table-container">
                 <div class="ch-table-header">
-                    <table class="w3-table w3-striped w3-white chart-data-table">
-                        <thead>
-                            <tr class="main-bg-color">
-                                <th>Entry No</th>
-                                <th>Date</th>
-                                <th>Voucher No</th>
-                                <th>Party Code</th>
-                                <th>Party Name</th>
-                                <th>AC Code</th>
-                                <th>AC Name</th>
-                                <th>Dr/Cr</th>
-                                <th>Dr. Amount</th>
-                                <th>Cr. Amount</th>
-                                <th>Cost Center</th>
-                                <th>Description</th>
-                                <th>Primary Unit</th>
-                                <th>Quantity</th>
-                                <th>Primary Unit Price</th>
-                                <th>No of Packs</th>
-                                <th>Standard Unit Price</th>
-                                <th>Total Price (TK)</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="ch-table-content">
-                    <table class="w3-table w3-striped w3-white chart-data-table">
-                        <tbody ng-repeat="jor in journal track by $index">
-                            <tr ng-repeat="deb in jor.debitCredit track by $index">
-                                <td>{{jor.entryNo}}</td>
-                                <td>{{jor.date}}</td>
-                                <td>{{jor.voucherNo}}</td>
-                                <td>{{deb.partyCode}}</td>
-                                <td>{{deb.partyName}}</td>
-                                <td>{{deb.ACCode}}</td>
-                                <td>{{deb.ACName}}</td>
-                                <td>{{deb.type}}</td>
-                                <td>{{deb.drAmount}}</td>
-                                <td>{{deb.crAmount}}</td>
-                                <td>{{jor.costCenter}}</td>
-                                <td>{{jor.description}}</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div ng-show="!journal.length" class="w3-pale-blue" style="padding: 12px; text-align: center;">No Records Found!</div>
+                    <div class="w3-responsive">
+                        <table class="w3-table-all">
+                            <thead>
+                                <tr class="main-bg-color">
+                                    <th>Entry No</th>
+                                    <th>Date</th>
+                                    <th>Voucher No</th>
+                                    <th>Party Code</th>
+                                    <th>Party Name</th>
+                                    <th>AC Code</th>
+                                    <th>AC Name</th>
+                                    <th>Dr/Cr</th>
+                                    <th>Dr. Amount</th>
+                                    <th>Cr. Amount</th>
+                                    <th>Cost Center</th>
+                                    <th>Description</th>
+                                    <th>Primary Unit</th>
+                                    <th>Quantity</th>
+                                    <th>Primary Unit Price</th>
+                                    <th>No of Packs</th>
+                                    <th>Standard Unit Price</th>
+                                    <th>Total Price (TK)</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="jor in journal track by $index">
+                                <tr ng-repeat="deb in jor.debitCredit track by $index">
+                                    <td>{{jor.entryNo}}</td>
+                                    <td>{{jor.date}}</td>
+                                    <td>{{jor.voucherNo}}</td>
+                                    <td>{{deb.partyCode}}</td>
+                                    <td>{{deb.partyName}}</td>
+                                    <td>{{deb.ACCode}}</td>
+                                    <td>{{deb.ACName}}</td>
+                                    <td>{{deb.type}}</td>
+                                    <td>{{deb.drAmount}}</td>
+                                    <td>{{deb.crAmount}}</td>
+                                    <td>{{jor.costCenter}}</td>
+                                    <td>{{jor.description}}</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!-- End of the Journy -->
         </div>
-        <!-- End of the Journy -->
     </div>
-</div>
