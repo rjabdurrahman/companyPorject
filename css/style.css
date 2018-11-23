@@ -60,7 +60,7 @@ ul.ui-autocomplete {
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 9999;
-    position: absolute;
+    position: fixed;
 }
 
 ul.ui-autocomplete li {
