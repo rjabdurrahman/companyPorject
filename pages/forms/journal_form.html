@@ -72,7 +72,7 @@
                     </tr>
                     <tr id="debitLine">
                         <td id="addDebitField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addDebitField')">+</td>
+                            onclick="addField()">+</td>
                         <td class="tab-warn" colspan="6">To Submit form debit & credit amount must be same.</td>
                     </tr>
                     <tr class="primary">
@@ -119,7 +119,7 @@
                     </tr>
                     <tr>
                         <td id="addCreditField" class="main-bg-color w3-btn" style="text-align: center; cursor: pointer; padding-left: 8px;"
-                            onclick="addField('addCreditField')">+</td>
+                            onclick="addField()">+</td>
                         <td class="tab-warn" colspan="6"></td>
                     </tr>
                     <tr class="primary">
@@ -191,7 +191,7 @@
         else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     // autoCompleteAC();
-    function addField(field) {
+    function addField() {
         let chartTable = $js('chartTable');
         let debitAdderRow = $js('addDebitField');
         let creditAdderRow = $js('addCreditField');
