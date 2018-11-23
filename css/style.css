@@ -59,6 +59,8 @@ ul.ui-autocomplete {
     max-height: 110px;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 9999;
+    position: absolute;
 }
 
 ul.ui-autocomplete li {
