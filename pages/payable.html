@@ -29,8 +29,8 @@
                         <tbody>
                             <tr ng-repeat="pay in comPayables track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{pay.acCode}}</td>
-                                <td>{{pay.partyName}}</td>
+                                <td>{{pay.code}}</td>
+                                <td>{{pay.name}}</td>
                                 <td>{{pay.partyType}}</td>
                                 <td>{{pay.proprietor}}</td>
                                 <td>{{pay.mobile}}</td>
@@ -125,8 +125,8 @@
         var payMObileNo = $js('payMObileNo').value;
         var payAddress = $js('payAddress').value;
         var pay = {
-            acCode: payACCode,
-            partyName: payPartyName,
+            code: payACCode,
+            name: payPartyName,
             partyType: payPartyType,
             proprietor: payProprietor,
             mobile: payMObileNo,

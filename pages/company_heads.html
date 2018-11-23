@@ -25,8 +25,8 @@
                         <tbody>
                             <tr ng-repeat="ch in comCh track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{ch.acCode}}</td>
-                                <td>{{ch.partyName}}</td>
+                                <td>{{ch.code}}</td>
+                                <td>{{ch.name}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,8 +75,8 @@
         var chACCode = $js('chACCode').value;
         var chPartyName = $js('chPartyName').value;
         var ch = {
-            acCode: chACCode,
-            partyName: chPartyName
+            code: chACCode,
+            name: chPartyName
         };
         if (chACCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);

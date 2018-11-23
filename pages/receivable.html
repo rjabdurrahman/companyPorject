@@ -29,8 +29,8 @@
                         <tbody>
                             <tr ng-repeat="rec in comReceivables track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{rec.acCode}}</td>
-                                <td>{{rec.partyName}}</td>
+                                <td>{{rec.code}}</td>
+                                <td>{{rec.name}}</td>
                                 <td>{{rec.cusType}}</td>
                                 <td>{{rec.recProprietor}}</td>
                                 <td>{{rec.mobile}}</td>
@@ -126,8 +126,8 @@
         var recMObileNo = $js('recMObileNo').value;
         var recAddress = $js('recAddress').value;
         var receive = {
-            acCode: recACCode,
-            partyName: recPartyName,
+            code: recACCode,
+            name: recPartyName,
             cusType: recCustomerType,
             recProprietor: recProprietor,
             mobile: recMObileNo,
