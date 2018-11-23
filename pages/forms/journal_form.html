@@ -75,9 +75,10 @@
                             <button class="main-bg-color w3-btn journal-csbtn" onclick="addField()">+</button>
                         </td>
                         <td style="border-right: none;">
-                            <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="addField()">-</button>
+                            <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="rmField()">-</button>
                         </td>
-                        <td class="tab-warn" style="border-left: none;" colspan="5">To Submit form debit & credit amount must be same.</td>
+                        <td class="tab-warn" style="border-left: none;" colspan="5">To Submit form debit & credit
+                            amount must be same.</td>
                     </tr>
                     <tr class="primary">
                         <td></td>
@@ -126,7 +127,7 @@
                             <button class="main-bg-color w3-btn journal-csbtn" onclick="addField()">+</button>
                         </td>
                         <td style="border-right: none;">
-                            <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="addField()">-</button>
+                            <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="rmField()">-</button>
                         </td>
                         <td style="border-left: none;" class="tab-warn" colspan="5"></td>
                     </tr>
@@ -233,6 +234,16 @@
         chartTable.children[0].insertBefore(newCreditRow, creditAdderRow.parentElement);
         // autoCompleteAC();
     }
+
+    function rmField() {
+        let debitAdderRow = $js('addDebitField');
+        let creditAdderRow = $js('addCreditField');
+        if (!(debitAdderRow.parentElement.previousElementSibling.firstElementChild.innerHTML == "1")) {
+            chartTable.children[0].removeChild(debitAdderRow.parentElement.previousElementSibling);
+            chartTable.children[0].removeChild(creditAdderRow.parentElement.previousElementSibling);
+        }
+    }
+
     function submitValid() {
         var debits = document.getElementsByName('debitTotalAmount');
         var credits = document.getElementsByName('creditAmount');
@@ -242,6 +253,7 @@
         }
         return true;
     }
+
     function findTotal(fname) {
         // $print(fname.target.value);
         var field = this.name;
