@@ -184,7 +184,7 @@
         else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     function partyNameComplete(event) {
-        let alldata = [...lsExGJInit('comEmps', []), ...lsExGJInit('comContractors', [])];
+        let alldata = [...lsExGJInit('comReceivables', []), ...lsExGJInit('comPayables', []), ...lsExGJInit('comCh', []), ...lsExGJInit('comTrs', []), ...lsExGJInit('comEmps', []), ...lsExGJInit('comBanks', []), ...lsExGJInit('comContractors', []), ...lsExGJInit('comPaddyRaws', []), ...lsExGJInit('comPaddyDrys', []), ...lsExGJInit('comRices', []), ...lsExGJInit('comByProducts', [])];
         let data = alldata.find(function (el) {
             if (el.hasOwnProperty('accCode')) {
                 return el.accCode == event.target.value;
