@@ -279,11 +279,6 @@
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
-        if (!(date.value).match(regEx)) {
-            $('#notification').html("<h6>Error Date Format</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            $js('date').focus();
-            return;
-        }
         let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
         let costCenter = $js('costCenter');
@@ -291,6 +286,37 @@
         let debitCredit = [];
         let drPartyCodeEls = $sn('drPartyCode');
         let crPartyCodeEls = $sn('crPartyCode');
+        // Warning for Empty
+        if (entryNo.value == "") {
+            $('#notification').html("<h6>Entry No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            entryNo.focus()
+            return;
+        }
+        else if (voucherNo.value == "") {
+            $('#notification').html("<h6>Voucher No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            voucherNo.focus()
+            return;
+        }
+        else if (date.value == "") {
+            $('#notification').html("<h6>Date Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            date.focus()
+            return;
+        }
+        else if (!(date.value).match(regEx)) {
+            $('#notification').html("<h6>Error Date Format</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            $js('date').focus();
+            return;
+        }
+        else if (costCenter.value == "") {
+            $('#notification').html("<h6>Cost Center Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            costCenter.focus()
+            return;
+        }
+        else if (description.value == "") {
+            $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus()
+            return;
+        }
         for (index in drPartyCodeEls) {
             if (drPartyCodeEls.hasOwnProperty(index)) {
                 let partyCodeEl = drPartyCodeEls[index];
@@ -299,6 +325,26 @@
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
                 let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                // if (partyCodeEl.value == "") {
+                //     $('#notification').html("<h6>Party Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     partyCodeEl.focus();
+                //     return;
+                // }
+                // else if (partyNameEl.value == "") {
+                //     $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     partyCodeEl.focus();
+                //     return;
+                // }
+                // else if (ACCodeEl.value == "") {
+                //     $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     ACCodeEl.focus();
+                //     return;
+                // }
+                // else if (ACNameEl.value == "") {
+                //     $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     ACCodeEl.focus();
+                //     return;
+                // }
                 let debit = {
                     type: 'Dr',
                     partyCode: partyCodeEl.value,
@@ -317,6 +363,26 @@
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
                 let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                // if (partyCodeEl.value == "") {
+                //     $('#notification').html("<h6>Party Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     partyCodeEl.focus();
+                //     return;
+                // }
+                // else if (partyNameEl.value == "") {
+                //     $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     partyCodeEl.focus();
+                //     return;
+                // }
+                // else if (ACCodeEl.value == "") {
+                //     $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     ACCodeEl.focus();
+                //     return;
+                // }
+                // else if (ACNameEl.value == "") {
+                //     $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                //     ACCodeEl.focus();
+                //     return;
+                // }
                 let credit = {
                     type: 'Cr',
                     partyCode: partyCodeEl.value,
