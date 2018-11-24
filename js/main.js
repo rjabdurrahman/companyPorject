@@ -44,6 +44,13 @@ function $html(tag, atts, text) {
     return node;
 }
 
+// Clearer
+function clearer(...fields){
+    for(field in fields){
+        fields[field].value = "";
+    }
+}
+
 function numValidate(evt) {
     var theEvent = evt || window.event;
 

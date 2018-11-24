@@ -308,6 +308,7 @@
                     drAmount: parseFloat(drAmount.value)
                 }
                 debitCredit.push(debit);
+                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, drAmount);
             }
             if (crPartyCodeEls.hasOwnProperty(index)) {
                 let partyCodeEl = crPartyCodeEls[index];
@@ -325,6 +326,7 @@
                     crAmount: parseFloat(crAmount.value)
                 }
                 debitCredit.push(credit);
+                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
             }
         }
         let jorurnal = {
@@ -340,5 +342,6 @@
         journalForm.push(jorurnal);
         lsSetJ('journalForm', journalForm);
         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        clearer(entryNo, voucherNo, date, costCenter, description);
     });
 </script>
