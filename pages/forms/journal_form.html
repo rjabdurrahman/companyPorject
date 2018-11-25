@@ -289,32 +289,22 @@
         // Warning for Empty
         if (entryNo.value == "") {
             $('#notification').html("<h6>Entry No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            entryNo.focus()
+            entryNo.focus();
             return;
         }
         else if (voucherNo.value == "") {
             $('#notification').html("<h6>Voucher No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            voucherNo.focus()
+            voucherNo.focus();
             return;
         }
         else if (date.value == "") {
             $('#notification').html("<h6>Date Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            date.focus()
+            date.focus();
             return;
         }
         else if (!(date.value).match(regEx)) {
             $('#notification').html("<h6>Error Date Format</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
             $js('date').focus();
-            return;
-        }
-        else if (costCenter.value == "") {
-            $('#notification').html("<h6>Cost Center Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            costCenter.focus()
-            return;
-        }
-        else if (description.value == "") {
-            $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            description.focus()
             return;
         }
         for (index in drPartyCodeEls) {
@@ -393,21 +383,16 @@
                 debitCredit.push(credit);
             }
         }
-        let jorurnal = {
-            entryNo: parseInt(entryNo.value),
-            voucherNo: parseInt(voucherNo.value),
-            date: date.value,
-            debitCredit: debitCredit,
-            costCenter: costCenter.value,
-            description: description.value
+        if (costCenter.value == "") {
+            $('#notification').html("<h6>Cost Center Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            costCenter.focus();
+            return;
         }
-        console.log(jorurnal);
-        let journalForm = lsExGJInit('journalForm', []);
-        journalForm.push(jorurnal);
-        lsSetJ('journalForm', journalForm);
-        clearer(entryNo, voucherNo, date, costCenter, description);
-        $js('totalDebit').innerHTML = "";
-        $js('totalCredit').innerHTML = "";
+        else if (description.value == "") {
+            $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
         for (index in drPartyCodeEls) {
             if (drPartyCodeEls.hasOwnProperty(index)) {
                 let partyCodeEl = drPartyCodeEls[index];
@@ -428,6 +413,21 @@
                 clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
             }
         }
+        let jorurnal = {
+            entryNo: parseInt(entryNo.value),
+            voucherNo: parseInt(voucherNo.value),
+            date: date.value,
+            debitCredit: debitCredit,
+            costCenter: costCenter.value,
+            description: description.value
+        }
+        console.log(jorurnal);
+        let journalForm = lsExGJInit('journalForm', []);
+        journalForm.push(jorurnal);
+        lsSetJ('journalForm', journalForm);
+        clearer(entryNo, voucherNo, date, costCenter, description);
+        $js('totalDebit').innerHTML = "";
+        $js('totalCredit').innerHTML = "";
         $js('submitBtn').disabled = true;
         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
     });
