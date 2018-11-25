@@ -140,23 +140,23 @@
                     <tr>
                         <td class="secondary" colspan="2">Primary Unit</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" id="primaryUnit" style="text-align: center">
                         </td>
                     </tr>
                     <tr>
                         <td class="secondary" colspan="2">Unit Quantity</td>
                         <td>
                             <input ng-model="unitQuantity" class="w3-input w3-border" type="text" style="text-align: center"
-                                onkeypress="numValidate(event)">
+                                id="primaryQuantity" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Unit Price</td>
                         <td>
                             <input ng-model="unitPrice" class="w3-input w3-border" type="text" style="text-align: center"
-                                onkeypress="numValidate(event)">
+                                id="primaryUnitPrice" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Total Price</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="{{unitPrice*unitQuantity | number}}">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="totalPriceTK" value="{{unitPrice*unitQuantity | number}}">
                         </td>
                     </tr>
                     <tr>
@@ -168,12 +168,12 @@
                     <tr>
                         <td class="secondary" colspan="2">Unit Quantity</td>
                         <td>
-                            <input ng-model="SUnitQuantity" class="w3-input w3-border" type="text" style="text-align: center"
+                            <input ng-model="SUnitQuantity" class="w3-input w3-border" type="text" id="totalQuantity" style="text-align: center"
                                 id="unitQuantity" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Unit Price</td>
                         <td>
-                            <input ng-model="SUnitPrice" class="w3-input w3-border" type="text" style="text-align: center"
+                            <input ng-model="SUnitPrice" class="w3-input w3-border" type="text" id="stdUnitPrice" style="text-align: center"
                                 id="unitPrice" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Total Price</td>

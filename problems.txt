@@ -11,3 +11,7 @@
 *ASK
 1. Form Entry auto field creation respectively
 2. Date and Time
+
+????
+3. Total Price double in Purchase and Purchase Return
+4. Standard Unit not in table
