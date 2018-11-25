@@ -156,7 +156,8 @@
                         </td>
                         <td class="secondary">Total Price</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="totalPriceTK" value="{{unitPrice*unitQuantity | number}}">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="totalPriceTK"
+                                value="{{unitPrice*unitQuantity | number}}">
                         </td>
                     </tr>
                     <tr>
@@ -168,8 +169,8 @@
                     <tr>
                         <td class="secondary" colspan="2">Unit Quantity</td>
                         <td>
-                            <input ng-model="SUnitQuantity" class="w3-input w3-border" type="text" id="totalQuantity" style="text-align: center"
-                                id="unitQuantity" onkeypress="numValidate(event)">
+                            <input ng-model="SUnitQuantity" class="w3-input w3-border" type="text" id="totalQuantity"
+                                style="text-align: center" id="unitQuantity" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Unit Price</td>
                         <td>
@@ -424,7 +425,37 @@
                 debitCredit.push(credit);
             }
         }
-        if (description.value == "") {
+        if (primaryUnit.value == "") {
+            $('#notification').html("<h6>Primary Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (primaryQuantity.value == "") {
+            $('#notification').html("<h6>Primary Quantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (primaryUnitPrice.value == "") {
+            $('#notification').html("<h6>Primary Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (totalQuantity.value == "") {
+            $('#notification').html("<h6>Total Quantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (stdUnitPrice.value == "") {
+            $('#notification').html("<h6>Standard Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (totalPriceTK.value == "") {
+            $('#notification').html("<h6>Total Pirce Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        else if (description.value == "") {
             $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
             description.focus();
             return;
