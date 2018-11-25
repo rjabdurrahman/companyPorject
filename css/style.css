@@ -41,7 +41,6 @@ a {
     *zoom: 1;
 }
 
-
 .w3-dropdown-content a {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -201,8 +200,21 @@ input#userPasswordField {
 
 /* Data Table Style */
 
-.w3-table-all{
+.w3-table-all {
     border: none !important;
+}
+
+.w3-table-all th, .w3-table-all td {
+    white-space: nowrap !important;
+}
+
+.w3-table-all td {
+    border-left: 1px solid lightgray !important;
+    border-right: 1px solid lightgray !important;
+}
+
+.w3-table-all th {
+    text-align: center !important;
 }
 
 .table-main-cotainer {
