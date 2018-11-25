@@ -208,12 +208,12 @@ input#userPasswordField {
     white-space: nowrap !important;
 }
 
-.w3-table-all td {
-    border-left: 1px solid lightgray !important;
+.w3-table-all td:not(:last-child) {
     border-right: 1px solid lightgray !important;
 }
 
-.w3-table-all th {
+.w3-table-all th:not(:last-child) {
+    border-right: 1px solid rgba(211, 211, 211, 0.3);
     text-align: center !important;
 }
 
