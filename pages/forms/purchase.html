@@ -317,6 +317,12 @@
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
         let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
+        let primaryUnit = $js('primaryUnit');
+        let primaryQuantity = $js('primaryQuantity');
+        let primaryUnitPrice = $js('primaryUnitPrice');
+        let totalQuantity = $js('totalQuantity');
+        let stdUnitPrice = $js('stdUnitPrice');
+        let totalPriceTK = $js('totalPriceTK');
         let description = $js('description');
         let debitCredit = [];
         var drPartyCodeEls = $sn('drPartyCode');
@@ -451,9 +457,9 @@
             description: description.value
         }
         console.log(jorurnal);
-        let journalForm = lsExGJInit('journalForm', []);
-        journalForm.push(jorurnal);
-        lsSetJ('journalForm', journalForm);
+        // let journalForm = lsExGJInit('journalForm', []);
+        // journalForm.push(jorurnal);
+        // lsSetJ('journalForm', journalForm);
         clearer(entryNo, voucherNo, date, description);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
