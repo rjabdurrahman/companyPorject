@@ -163,5 +163,5 @@ app.controller('JournalFormCntlr', function ($scope) {
 });
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
-  $scope.journal = lsExGJInit('journalForm', []);
+  $scope.journal = [...lsExGJInit('journalForm', []), ...lsExGJInit('purchaseForm', [])];
 });
