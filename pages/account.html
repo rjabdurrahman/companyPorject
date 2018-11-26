@@ -15,8 +15,8 @@
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
-                                <th>A/C Code</th>
-                                <th>Account Text</th>
+                                <th>Account Code</th>
+                                <th>Account Head</th>
                             </tr>
                         </thead>
                     </table>
@@ -45,7 +45,7 @@
                     </header>
                     <div class="w3-container">
                         <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:100px; padding: 10px;">
+                            <div class="w3-col" style="width:130px; padding: 10px;">
                                 <label class="w3-medium">Nature</label>
                             </div>
                             <div class="w3-rest">
@@ -56,8 +56,8 @@
                             </div>
                         </div>
                         <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:100px; padding: 10px;">
-                                <label class="w3-medium">A/C Code</label>
+                            <div class="w3-col" style="width:130px; padding: 10px;">
+                                <label class="w3-medium">Account Code</label>
                             </div>
                             <div class="w3-rest" style="display: flex">
                                 <section id="accCodeInit" ng-switch="natureSelection">
@@ -66,19 +66,19 @@
                                         <option value="RE">RE</option>
                                     </select>
                                     <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}"
-                                        style="width: 70px; text-align: center" disabled>
+                                        style="width: 50px; text-align: center" disabled>
                                 </section>
                                 <label style="padding: 8px;">-</label>
                                 <input id="accCodeFirst" class="w3-input w3-border" maxlength="3" style="text-align: center"
                                     onkeypress="numValidate(event)">
                                 <label style="padding: 8px;">-</label>
-                                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 60px; text-align: center"
+                                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 50px; text-align: center"
                                     onkeypress="numValidate(event)">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:100px; padding: 10px;">
-                                <label class="w3-medium">Accounts</label>
+                            <div class="w3-col" style="width:130px; padding: 10px;">
+                                <label class="w3-medium">Account Head</label>
                             </div>
                             <div class="w3-rest">
                                 <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
