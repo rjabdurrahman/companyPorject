@@ -59,20 +59,20 @@
                             <div class="w3-col" style="width:130px; padding: 10px;">
                                 <label class="w3-medium">Account Code</label>
                             </div>
-                            <div class="w3-rest" style="display: flex">
+                            <div class="w3-rest flex">
                                 <section id="accCodeInit" ng-switch="natureSelection">
-                                    <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 70px; color: gray;">
+                                    <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 65px; color: gray;">
                                         <option value="SE">SE</option>
                                         <option value="RE">RE</option>
                                     </select>
                                     <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}"
-                                        style="width: 50px; text-align: center" disabled>
+                                        style="width: 65px; text-align: center" disabled>
                                 </section>
                                 <label style="padding: 8px;">-</label>
-                                <input id="accCodeFirst" class="w3-input w3-border" maxlength="3" style="text-align: center"
+                                <input id="accCodeFirst" class="w3-input w3-border" maxlength="3" style="text-align: center; width: calc(100% - 180px);"
                                     onkeypress="numValidate(event)">
                                 <label style="padding: 8px;">-</label>
-                                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 50px; text-align: center"
+                                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 65px; text-align: center"
                                     onkeypress="numValidate(event)">
                             </div>
                         </div>
