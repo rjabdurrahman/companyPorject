@@ -267,7 +267,7 @@ input#userPasswordField {
     line-height: 1.2;
 }
 
-.chart-data-table thead tr th:first-child, .chart-data-table tbody tr td:first-child{
+.chart-data-table thead tr th:first-child, .chart-data-table tbody tr td:first-child {
     padding-left: 50px !important;
 }
 
@@ -380,3 +380,10 @@ input#userPasswordField {
 }
 
 /* Form Date Tooltip style End*/
+
+/* Journal Table */
+.flipped, .flipped .content {
+    transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+}
