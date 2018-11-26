@@ -77,11 +77,11 @@ var accounts = {
     EQTY: { name: 'Equity', min: 5000, max: 5999 },
     EX: { name: 'Experience', min: 6000, max: 6999 },
     REV: { name: 'Revenue', min: 7000, max: 7999 },
-    WD: { name: 'Withdrawal', min: 800, max: 900 },
-    SD: { name: 'Contra Revenue', min: 800, max: 899 },
+    WD: { name: 'Withdrawal', min: 9500, max: 900 },
+    SD: { name: 'Contra Revenue', min: 9500, max: 9999 },
     COGS: { name: 'Cost of Goods Sold', min: 8000, max: 8500 },
     WIP: { name: 'Production', min: 8501, max: 9000 },
-    CN: { name: 'Contra', min: 0, max: 0 }
+    CN: { name: 'Contra', min: 9000, max: 9500 }
 }
 
 // Account Codes for Suggesitions
