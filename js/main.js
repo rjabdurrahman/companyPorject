@@ -62,7 +62,7 @@ function numValidate(evt) {
         var key = theEvent.keyCode || theEvent.which;
     }
     var regex = /[0-9]|\./;
-    if (!regex.test(String.fromCharCode(key)) && key != 8) {
+    if (!regex.test(String.fromCharCode(key)) && key != 8  && key != 37  && key != 39) {
         theEvent.returnValue = false;
         if (theEvent.preventDefault) theEvent.preventDefault();
     }
