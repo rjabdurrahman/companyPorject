@@ -265,10 +265,12 @@ input#userPasswordField {
 .chart-data-table thead {
     font-size: 18px;
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .chart-data-table thead tr th:first-child, .chart-data-table tbody tr td:first-child {
     padding-left: 50px !important;
+    width: 200px !important;
 }
 
 .ch-table-content {
