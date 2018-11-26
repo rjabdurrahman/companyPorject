@@ -267,6 +267,10 @@ input#userPasswordField {
     line-height: 1.2;
 }
 
+.chart-data-table thead tr th:first-child, .chart-data-table tbody tr td:first-child{
+    padding-left: 50px !important;
+}
+
 .ch-table-content {
     max-height: calc(100vh - 250px);
     overflow: auto;
