@@ -47,7 +47,7 @@
                         <td>1</td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="drPartyCode" onpaste="partyNameComplete(event)"
-                                onkeyup="partyNameComplete(event)" style="text-align: center">
+                                onkeyup="partyNameComplete(event)" style="text-align: center;">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="-----"
@@ -160,6 +160,13 @@
     </div>
 </div>
 <script>
+    // let inputTds = $('td:has(input)');
+    // inputTds.each(function (index, element) {
+    //     $print(element.firstElementChild.disabled);
+    //     if (element.firstElementChild.disabled != true) {
+    //         element.style.border = "1px solid #4268a2b3";
+    //     }
+    // });
     // function autoCompleteAC() {
     //     $('[name="ACCode"]').autocomplete({
     //         source: accountCodes,
