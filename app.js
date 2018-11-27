@@ -97,6 +97,11 @@ app.config(function ($routeProvider) {
       controller: 'JournalFormCntlr',
       activetab: 'formentry'
     })
+    .when('/prdoutput', {
+      templateUrl: 'pages/forms/prd_output.html',
+      controller: 'PrdOutputCntlr',
+      activetab: 'formentry'
+    })
     .when('/journal', {
       templateUrl: 'pages/journal.html',
       controller: 'JournalCntlr',
@@ -160,6 +165,9 @@ app.controller('JournalFormCntlr', function ($scope) {
   //     return el.accCode == code;
   //   }).accText;
   // }
+});
+app.controller('PrdOutputCntlr', function ($scope) {
+  $scope.title = "Product Output";
 });
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
