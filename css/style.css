@@ -320,9 +320,8 @@ input#userPasswordField {
     background-color: #f1f1f1;
 } */
 
-#chartTable tr.primary {
+#chartTable tr.primary, .chart-table tr.primary {
     background-color: #4e706d;
-    /* background-color: #009688; */
     color: white;
     text-transform: uppercase;
     font-size: 18px;
@@ -339,7 +338,7 @@ input#userPasswordField {
 }
 
 #chartTable td, #chartTable th, .chart-table th, .chart-table td {
-    vertical-align: middle;
+    vertical-align: middle !important;
 }
 
 .chart-table tr .tab-warn {
