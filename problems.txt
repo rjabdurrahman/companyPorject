@@ -15,3 +15,6 @@
 ????
 3. Total Price double in Purchase and Purchase Return
 4. Standard Unit not in table
+
+????
+1. RM Code RW Materials not in Journal table
