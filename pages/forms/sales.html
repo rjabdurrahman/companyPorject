@@ -162,7 +162,7 @@
                     <tr>
                         <td colspan="2" class="secondary">Standard Unit</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input id="stdUnit" class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td class="secondary">Packet Size</td>
                         <td>
@@ -186,7 +186,7 @@
                                 id="unitPrice" onkeypress="numValidate(event)">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
+                            <input id="totalPriceDum" class="w3-input w3-border" type="text" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
                         </td>
                         <td colspan="2"></td>
                     </tr>
@@ -332,9 +332,11 @@
         let primaryUnit = $js('primaryUnit');
         let primaryQuantity = $js('primaryQuantity');
         let primaryUnitPrice = $js('primaryUnitPrice');
+        let stdUnit = $js('stdUnit');
         let totalQuantity = $js('totalQuantity');
         let stdUnitPrice = $js('stdUnitPrice');
         let totalPriceTK = $js('totalPriceTK');
+        let totalPriceDum = $js('totalPriceDum');
         let packSize = $js('packSize');
         let description = $js('description');
         let debitCredit = [];
@@ -452,6 +454,11 @@
             primaryUnitPrice.focus();
             return;
         }
+        else if (packSize.value == "") {
+            $('#notification').html("<h6>PackSize Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            primaryUnitPrice.focus();
+            return;
+        }
         else if (totalQuantity.value == "") {
             $('#notification').html("<h6>Total Quantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
             totalQuantity.focus();
@@ -501,7 +508,7 @@
             primaryQuantity: parseFloat(primaryQuantity.value),
             primaryUnitPrice: parseFloat(primaryUnitPrice.value),
             totalQuantity: parseFloat(totalQuantity.value),
-            packSize: parseFloat(packSize),
+            packSize: parseFloat(packSize.value),
             stdUnitPrice: parseFloat(stdUnitPrice.value),
             totalPriceTK: parseFloat(totalPriceTK.value),
             description: description.value
@@ -510,7 +517,7 @@
         let salesForm = lsExGJInit('salesForm', []);
         salesForm.push(sales);
         lsSetJ('salesForm', salesForm);
-        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, totalQuantity, packSize, stdUnitPrice, totalPriceTK);
+        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, stdUnit, totalQuantity, packSize, stdUnitPrice, totalPriceTK, totalPriceDum);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
         $js('submitBtn').disabled = true;
