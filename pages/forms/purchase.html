@@ -147,17 +147,16 @@
                         <td class="secondary" colspan="2">Unit Quantity</td>
                         <td>
                             <input ng-model="unitQuantity" class="w3-input w3-border" type="text" style="text-align: center"
-                                id="primaryQuantity" onkeypress="numValidate(event)">
+                                id="primaryQuantity" onkeyup="submitValid()" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Unit Price</td>
                         <td>
                             <input ng-model="unitPrice" class="w3-input w3-border" type="text" style="text-align: center"
-                                id="primaryUnitPrice" onkeypress="numValidate(event)">
+                                id="primaryUnitPrice" onkeyup="submitValid()" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Total Price</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="totalPriceTK"
-                                value="{{unitPrice*unitQuantity | number}}">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="totalPriceTK" value="{{unitPrice*unitQuantity | number}}" disabled>
                         </td>
                     </tr>
                     <tr>
@@ -170,16 +169,17 @@
                         <td class="secondary" colspan="2">Unit Quantity</td>
                         <td>
                             <input ng-model="SUnitQuantity" class="w3-input w3-border" type="text" id="totalQuantity"
-                                style="text-align: center" id="unitQuantity" onkeypress="numValidate(event)">
+                                style="text-align: center" id="unitQuantity" onkeyup="submitValid()" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Unit Price</td>
                         <td>
                             <input ng-model="SUnitPrice" class="w3-input w3-border" type="text" id="stdUnitPrice" style="text-align: center"
-                                id="unitPrice" onkeypress="numValidate(event)">
+                                id="unitPrice" onkeyup="submitValid()" onkeypress="numValidate(event)">
                         </td>
                         <td class="secondary">Total Price</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" id="totalPriceA" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
+                            <input class="w3-input w3-border" type="text" id="totalPriceA" style="text-align: center"
+                                value="{{SUnitPrice*SUnitQuantity | number}}" disabled>
                         </td>
                     </tr>
                     <tr>
@@ -277,15 +277,31 @@
             chartTable.children[0].removeChild(creditAdderRow.parentElement.previousElementSibling);
         }
     }
-
+    var totalPriceTK = $js('totalPriceTK');
+    var totalPriceA = $js('totalPriceA');
     function submitValid() {
+        $print(totalPriceTK.value);
+        $print(totalPriceA.value);
         var debits = document.getElementsByName('debitTotalAmount');
         var credits = document.getElementsByName('creditAmount');
-        if (debits.length != credits.length) return false;
+        if (debits.length != credits.length) {
+            $js('submitBtn').disabled = true;
+            return;
+        };
         for (i = 0; i < debits.length; i++) {
-            if (debits[i].value != credits[i].value) return false;
+            if (debits[i].value != credits[i].value) {
+                $js('submitBtn').disabled = true;
+                return;
+            }
         }
-        return true;
+        if (totalPriceTK.value != "" && totalPriceA.value != "" && totalPriceTK.value == totalPriceA.value) {
+            $js('submitBtn').disabled = false;
+            return;
+        }
+        else{
+            $js('submitBtn').disabled = true;
+            return;
+        }
     }
 
     function findTotal(fname) {
@@ -306,8 +322,7 @@
         else if (field == "creditAmount") {
             $js('totalCredit').textContent = parseFloat(total.toFixed(2));
         }
-
-        $js('submitBtn').disabled = !submitValid();
+        submitValid();
     }
 
     $js('submitBtn').addEventListener('click', function () {
@@ -321,8 +336,6 @@
         let totalQuantity = $js('totalQuantity');
         let stdUnit = $js('stdUnit');
         let stdUnitPrice = $js('stdUnitPrice');
-        let totalPriceTK = $js('totalPriceTK');
-        let totalPriceA = $js('totalPriceA');
         let description = $js('description');
         let debitCredit = [];
         var drPartyCodeEls = $sn('drPartyCode');
