@@ -319,6 +319,7 @@
         let primaryQuantity = $js('primaryQuantity');
         let primaryUnitPrice = $js('primaryUnitPrice');
         let totalQuantity = $js('totalQuantity');
+        let stdUnit = $js('stdUnit');
         let stdUnitPrice = $js('stdUnitPrice');
         let totalPriceTK = $js('totalPriceTK');
         let description = $js('description');
@@ -437,6 +438,11 @@
             primaryUnitPrice.focus();
             return;
         }
+        else if (stdUnit.value == "") {
+            $('#notification').html("<h6>Standard Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            stdUnit.focus();
+            return;
+        }
         else if (totalQuantity.value == "") {
             $('#notification').html("<h6>Total Quantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
             totalQuantity.focus();
@@ -494,7 +500,7 @@
         let purchaseForm = lsExGJInit('purchaseForm', []);
         purchaseForm.push(purshase);
         lsSetJ('purchaseForm', purchaseForm);
-        clearer(entryNo, voucherNo, date, description);
+        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, totalPriceTK, stdUnit, totalQuantity, stdUnitPrice);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
         $js('submitBtn').disabled = true;
