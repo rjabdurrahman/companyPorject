@@ -179,7 +179,7 @@
                         </td>
                         <td class="secondary">Total Price</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
+                            <input class="w3-input w3-border" type="text" id="totalPriceA" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
                         </td>
                     </tr>
                     <tr>
@@ -322,6 +322,7 @@
         let stdUnit = $js('stdUnit');
         let stdUnitPrice = $js('stdUnitPrice');
         let totalPriceTK = $js('totalPriceTK');
+        let totalPriceA = $js('totalPriceA');
         let description = $js('description');
         let debitCredit = [];
         var drPartyCodeEls = $sn('drPartyCode');
@@ -500,7 +501,7 @@
         let purchaseForm = lsExGJInit('purchaseForm', []);
         purchaseForm.push(purshase);
         lsSetJ('purchaseForm', purchaseForm);
-        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, totalPriceTK, stdUnit, totalQuantity, stdUnitPrice);
+        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, totalPriceTK, stdUnit, totalQuantity, stdUnitPrice, totalPriceA);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
         $js('submitBtn').disabled = true;
