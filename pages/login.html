@@ -33,7 +33,7 @@
         }
     }
     $js('loginBtn').addEventListener('click', function () {
-        let email = $js('userEmailField').value;
+        let email = $js('userEmailField').value + '@gmail.com';
         let password = $js('userPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
             var code = error.code;
