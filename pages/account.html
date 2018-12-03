@@ -85,12 +85,8 @@
                                 <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
                             </div>
                         </div>
-                        <p class="clearFix">
+                        <p class="clearfix">
                             <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            <button onclick="clearAccFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
-                            <!-- <button onclick="printAccounts()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
-                                All</button> -->
-                            <br style="clear: both;">
                         </p>
                     </div>
                 </div>
@@ -129,7 +125,7 @@
             return;
         }
         else if ($js('accTxt').value == '') {
-            $('#notification').html("<h6>Input Text Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            $('#notification').html("<h6>Account Head Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
