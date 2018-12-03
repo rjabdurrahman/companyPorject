@@ -8,15 +8,16 @@
     <title>Company</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/w3.css">
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script src="js/login.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo+2|Montserrat:300|Roboto|Lato:400,700|Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/jquery-ui.js"></script>
     <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
@@ -50,7 +51,8 @@
         <div class="w3-container main-bg-color robo-font" style="padding: 6px 15% 6px 10%;">
             <section style="float: left;">
                 <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 13px; color: yellow;"></i>&nbsp;&nbsp;
-                <span style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April 18
+                <span style="font-size: 14px;">8:00 AM&nbsp;&nbsp;-&nbsp;&nbsp;Monday&nbsp;&nbsp;-&nbsp;&nbsp;23 April
+                    18
                 </span>
             </section>
             <section style="float: right;">
@@ -69,7 +71,8 @@
             </section>
             <section style="margin-left: auto; font-size: 13px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
-                    <a href="#/" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}" class="w3-bar-item w3-button w3-mobile">HOME</a>
+                    <a href="#/" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
+                        class="w3-bar-item w3-button w3-mobile">HOME</a>
                     <div class="w3-dropdown-hover w3-mobile">
                         <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
@@ -90,9 +93,11 @@
                             <a onclick="printAll()" class="w3-bar-item w3-button w3-mobile">Export In Excel</a>
                         </div>
                     </div>
-                    <a href="#costcenter" ng-class="{'w3-border' : $route.current.activetab == 'costcenter'}" class="w3-bar-item w3-button w3-mobile" style="margin-right: 5px;">CENTERS</a>
+                    <a href="#costcenter" ng-class="{'w3-border' : $route.current.activetab == 'costcenter'}" class="w3-bar-item w3-button w3-mobile"
+                        style="margin-right: 5px;">CENTERS</a>
                     <div class="w3-dropdown-hover w3-mobile">
-                        <button ng-class="{'w3-border' : $route.current.activetab == 'formentry'}" class="w3-button">FORM ENTRY&nbsp;&nbsp;
+                        <button ng-class="{'w3-border' : $route.current.activetab == 'formentry'}" class="w3-button">FORM
+                            ENTRY&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -114,7 +119,8 @@
                             <a href="#" class="w3-bar-item w3-button w3-mobile">Balance Sheets</a>
                         </div>
                     </div> -->
-                    <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log Out
+                    <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
+                        Out
                     </button>
                 </div>
             </section>
