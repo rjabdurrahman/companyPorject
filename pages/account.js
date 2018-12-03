@@ -4,9 +4,13 @@ app.controller('AccountCntlr', function ($scope, $firebaseArray) {
     $scope.accounts = accounts;
     lsSetJ('accCodes', $scope.accounts);
     $scope.load = false;
+    $scope.nodata = false;
     $scope.comAccounts = $firebaseArray(ref);
     $scope.comAccounts.$loaded().then(function () {
         $scope.load = true;
+        if ($scope.comAccounts.length == 0) {
+            $scope.nodata = true;
+        }
     });
     // var accs = lsExGJInit('comAccounts', []);
     // var accLength = lsExGJInit('comAccounts', []).length;
