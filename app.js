@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['firebase','ngRoute']);
+var app = angular.module('myApp', ['firebase', 'ngRoute']);
 
 app.config(function ($routeProvider) {
   $routeProvider
@@ -119,26 +119,40 @@ app.controller('PayableCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Payable";
   var ref = firebase.database().ref().child('payables');
   dbPayables = $scope.comPayables = $firebaseArray(ref);
-    $scope.comPayables.$loaded().then(function () {
-        $scope.load = true;
-        if ($scope.comPayables.length == 0) {
-            $scope.nodata = true;
-        }
-    });
+  $scope.comPayables.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comPayables.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
-app.controller('CompanyHeadsCntlr', function ($scope) {
+app.controller('CompanyHeadsCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Company Head";
-  $scope.comCh = lsExGJInit('comCh', []);
+  var ref = firebase.database().ref().child('companyHeads');
+  dbCh = $scope.comCh = $firebaseArray(ref);
+  $scope.comCh.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comCh.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
-app.controller('CostCenterCntlr', function ($scope) {
+app.controller('CostCenterCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Cost Center";
   $scope.comCostCenters = lsExGJInit('comCostCenters', []);
 });
-app.controller('TruckTractorCntlr', function ($scope) {
+app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Truck Tractor";
-  $scope.comTrs = lsExGJInit('comTrs', []);
+  var ref = firebase.database().ref().child('truckTrackors');
+  dbTr = $scope.comTrs = $firebaseArray(ref);
+  $scope.comTrs.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comTrs.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
-app.controller('EmployeesCntlr', function ($scope) {
+app.controller('EmployeesCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Employee";
   $scope.comEmps = lsExGJInit('comEmps', []);
 });
@@ -163,7 +177,7 @@ app.controller('RiceCntlr', function ($scope) {
   $scope.comRices = lsExGJInit('comRices', []);
 });
 app.controller('ByProductsCntlr', function ($scope) {
-  $scope.title = "By Product";
+  $scope.title = "Buy Product";
   $scope.comByProducts = lsExGJInit('comByProducts', []);
 });
 app.controller('JournalFormCntlr', function ($scope) {
