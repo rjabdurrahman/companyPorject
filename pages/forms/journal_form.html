@@ -160,31 +160,22 @@
     </div>
 </div>
 <script>
-    // let inputTds = $('td:has(input)');
-    // inputTds.each(function (index, element) {
-    //     $print(element.firstElementChild.disabled);
-    //     if (element.firstElementChild.disabled != true) {
-    //         element.style.border = "1px solid #4268a2b3";
-    //     }
-    // });
-    // function autoCompleteAC() {
-    //     $('[name="ACCode"]').autocomplete({
-    //         source: accountCodes,
-    //         minLength: 0,
-    //         change: function (event, ui) { ACNameComplete(this); }
-    //     }).focus(function () {
-    //         $(this).autocomplete("search");
-    //     });
-    // }
     function ACNameComplete(event) {
-        let data = lsExGJInit('comAccounts', []).find(function (el) {
-            return el.accCode == event.target.value;
-        });
-        // $print(data);
-        if (data) {
-            event.target.parentElement.nextElementSibling.firstElementChild.value = data.accText;
-        }
-        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
+        // All accounts from firebase
+        var mData = null;
+        firebase.database().ref().child('accounts').once("value")
+            .then(function (snapshot) {
+                let allData = snapshot.val();
+                for (i in allData) {
+                    if (allData[i].accCode == event.target.value) {
+                        $print(allData[i].accText);
+                        event.target.parentElement.nextElementSibling.firstElementChild.value = allData[i].accText;
+                        break;
+                    }
+                    else
+                        event.target.parentElement.nextElementSibling.firstElementChild.value = '';
+                }
+            });;
     }
     function partyNameComplete(event) {
         let alldata = [...lsExGJInit('comReceivables', []), ...lsExGJInit('comPayables', []), ...lsExGJInit('comCh', []), ...lsExGJInit('comTrs', []), ...lsExGJInit('comEmps', []), ...lsExGJInit('comBanks', []), ...lsExGJInit('comContractors', []), ...lsExGJInit('comPaddyRaws', []), ...lsExGJInit('comPaddyDrys', []), ...lsExGJInit('comRices', []), ...lsExGJInit('comByProducts', [])];
