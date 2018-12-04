@@ -3,7 +3,7 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="exitModel();clearFields();" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -42,7 +42,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
                     <div class="w3-container main-bg-color div-title">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>{{title}}</h2>
                     </div>
                     <div class="w3-container">
@@ -72,7 +72,7 @@
                         </div>
                         <p>
                             <button id="submitConBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            <button onclick="clearConFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="clearFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
                         </p>
                         <div style="clear: both;height: 16px;"></div>
                     </div>
@@ -87,11 +87,6 @@
         var conCode = $js('conCode').value;
         var conName = $js('conName').value;
         var conContact = $js('conContact').value;
-        var contractor = {
-            code: conCode,
-            name: conName,
-            contact: conContact
-        };
         if (conCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -104,16 +99,30 @@
             $('#notification').html("<h6>Contact Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(contractor);
-        var comContractors = lsExGJInit('comContractors', []);
-        comContractors.push(contractor);
-        lsSetJ('comContractors', comContractors);
-        clearConFields();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var contractor = {
+            code: conCode,
+            name: conName,
+            contact: conContact
+        };
+        db.child('contractors').push(contractor, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearFields();
+            }
+        });
+        // $print(contractor);
+        // var comContractors = lsExGJInit('comContractors', []);
+        // comContractors.push(contractor);
+        // lsSetJ('comContractors', comContractors);
+        // clearFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
-    function clearConFields() {
+    function clearFields() {
         $js('conCode').value = $js('conName').value = $js('conContact').value = "";
     }
 
