@@ -115,9 +115,16 @@ app.run(function ($rootScope, $location, $route) {
 app.controller('LoginCntlr', function ($scope) {
   $scope.message = "Login Cntl";
 });
-app.controller('PayableCntlr', function ($scope) {
+app.controller('PayableCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Payable";
-  $scope.comPayables = lsExGJInit('comPayables', []);
+  var ref = firebase.database().ref().child('payables');
+  dbPayables = $scope.comPayables = $firebaseArray(ref);
+    $scope.comPayables.$loaded().then(function () {
+        $scope.load = true;
+        if ($scope.comPayables.length == 0) {
+            $scope.nodata = true;
+        }
+    });
 });
 app.controller('CompanyHeadsCntlr', function ($scope) {
   $scope.title = "Company Head";
