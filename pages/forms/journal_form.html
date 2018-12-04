@@ -173,20 +173,13 @@
     }
     var partyArray = null;
     function partyNameComplete(event) {
-        // $print(partyArray);
-        let data = partyArray.find(function (el) {
-            if (el.hasOwnProperty('accCode')) {
-                return el.accCode == event.target.value;
+        for (i = 0; i < partyArray.length; i++) {
+            for (j = 0; j < partyArray[i].length; j++) {
+                if(partyArray[i][j].code == event.target.value){
+                    event.target.parentElement.nextElementSibling.firstElementChild.value = partyArray[i][j].name;
+                }
             }
-            else if (el.hasOwnProperty('code')) {
-                return el.code == event.target.value;
-            }
-        });
-        $print(data);
-        if (data) {
-            event.target.parentElement.nextElementSibling.firstElementChild.value = data.name;
         }
-        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     // autoCompleteAC();
     function addField() {

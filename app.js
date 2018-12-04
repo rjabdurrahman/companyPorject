@@ -233,7 +233,7 @@ app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
   accArray = $firebaseArray(getRef('accounts'));
-  partyArray = $firebaseArray(getRef('banks'));
+  partyArray = [$firebaseArray(getRef('banks'))];
   partyArray.push($firebaseArray(getRef('buyProducts')));
   partyArray.push($firebaseArray(getRef('companyHeads')));
   partyArray.push($firebaseArray(getRef('contractors')));
