@@ -164,9 +164,16 @@ app.controller('EmployeesCntlr', function ($scope, $firebaseArray) {
     }
   });
 });
-app.controller('BankCntlr', function ($scope) {
+app.controller('BankCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Bank";
-  $scope.comBanks = lsExGJInit('comBanks', []);
+  var ref = firebase.database().ref().child('banks');
+  dbBanks = $scope.comBanks = $firebaseArray(ref);
+  $scope.comBanks.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comBanks.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('ContractorsCntlr', function ($scope) {
   $scope.title = "Contractor";
