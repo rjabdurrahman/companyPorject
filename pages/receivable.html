@@ -38,7 +38,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div ng-show="!comReceivables.length" class="w3-pale-blue" style="padding: 12px; text-align: center;">No Records Found!</div>
+                    <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
+                    <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                        Data Found!</div>
                 </div>
             </div>
         </div>
@@ -46,7 +48,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
                     <div class="w3-container main-bg-color div-title">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearRecFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>Receivable</h2>
                     </div>
                     <div class="w3-container">
@@ -112,6 +114,7 @@
     </div>
 </div>
 <script>
+    var dbReceivables = null;
     $('#recACCode').autocomplete({
         source: accountCodes,
         minLength: 0
@@ -125,14 +128,6 @@
         var recProprietor = $js('recProprietor').value;
         var recMObileNo = $js('recMObileNo').value;
         var recAddress = $js('recAddress').value;
-        var receive = {
-            code: recACCode,
-            name: recPartyName,
-            cusType: recCustomerType,
-            recProprietor: recProprietor,
-            mobile: recMObileNo,
-            address: recAddress
-        };
         if (recACCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -145,6 +140,10 @@
             $('#notification').html("<h6>Customer Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (recProprietor == "") {
+            $('#notification').html("<h6>Proprietor Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
         else if (recMObileNo == "") {
             $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -153,17 +152,35 @@
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(receive);
-        var comReceivables = lsExGJInit('comReceivables', []);
-        comReceivables.push(receive);
-        lsSetJ('comReceivables', comReceivables);
-        clearRecFields();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var receive = {
+            code: recACCode,
+            name: recPartyName,
+            cusType: recCustomerType,
+            recProprietor: recProprietor,
+            mobile: recMObileNo,
+            address: recAddress
+        };
+        // Store
+        db.child('receivables').push(receive, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearRecFields();
+            }
+        });
+        // $print(receive);
+        // var comReceivables = lsExGJInit('comReceivables', []);
+        // comReceivables.push(receive);
+        // lsSetJ('comReceivables', comReceivables);
+        // clearRecFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
     function clearRecFields() {
-        $js('recACCode').value = $js('recPartyName').value = $js('recCustomerType').value = $js('recMObileNo').value = $js('recAddress').value = "";
+        clearer(recACCode, recPartyName, recCustomerType, recProprietor, recMObileNo, recAddress);
     }
 
     function printReceivables() {

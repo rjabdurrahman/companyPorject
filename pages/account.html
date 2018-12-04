@@ -145,7 +145,7 @@
             accCode: accNumber,
             accText: accTxt,
         }
-        // Store in Firebase
+        // Store
         db.child('accounts').push(account, function (error) {
             if (error) {
                 $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
