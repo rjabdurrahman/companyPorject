@@ -126,14 +126,6 @@
         var payProprietor = $js('payProprietor').value;
         var payMObileNo = $js('payMObileNo').value;
         var payAddress = $js('payAddress').value;
-        var pay = {
-            code: payACCode,
-            name: payPartyName,
-            partyType: payPartyType,
-            proprietor: payProprietor,
-            mobile: payMObileNo,
-            address: payAddress
-        };
         if (payACCode == "") {
             $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -158,13 +150,31 @@
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(pay);
-        var comPayables = lsExGJInit('comPayables', []);
-        comPayables.push(pay);
-        lsSetJ('comPayables', comPayables);
-        clearPayFields();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var pay = {
+            code: payACCode,
+            name: payPartyName,
+            partyType: payPartyType,
+            proprietor: payProprietor,
+            mobile: payMObileNo,
+            address: payAddress
+        };
+        // Store
+        db.child('payables').push(pay, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearPayFields();
+            }
+        });
+        // $print(pay);
+        // var comPayables = lsExGJInit('comPayables', []);
+        // comPayables.push(pay);
+        // lsSetJ('comPayables', comPayables);
+        // clearPayFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
     function clearPayFields() {
