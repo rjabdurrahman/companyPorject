@@ -144,7 +144,7 @@ app.controller('CostCenterCntlr', function ($scope, $firebaseArray) {
 app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Truck Tractor";
   var ref = firebase.database().ref().child('truckTrackors');
-  dbTr = $scope.comTrs = $firebaseArray(ref);
+  dbTrs = $scope.comTrs = $firebaseArray(ref);
   $scope.comTrs.$loaded().then(function () {
     $scope.load = true;
     if ($scope.comTrs.length == 0) {
@@ -155,6 +155,14 @@ app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
 app.controller('EmployeesCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Employee";
   $scope.comEmps = lsExGJInit('comEmps', []);
+  var ref = firebase.database().ref().child('employees');
+  dbEmps = $scope.comEmps = $firebaseArray(ref);
+  $scope.comEmps.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comEmps.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('BankCntlr', function ($scope) {
   $scope.title = "Bank";
