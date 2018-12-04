@@ -232,7 +232,18 @@ app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
-  partyArray = $scope.comContractors = [...$firebaseArray(getRef('contractors')), ...$firebaseArray(getRef('contractors'))];
+  accArray = $firebaseArray(getRef('accounts'));
+  partyArray = $firebaseArray(getRef('banks'));
+  partyArray.push($firebaseArray(getRef('buyProducts')));
+  partyArray.push($firebaseArray(getRef('companyHeads')));
+  partyArray.push($firebaseArray(getRef('contractors')));
+  partyArray.push($firebaseArray(getRef('employees')));
+  partyArray.push($firebaseArray(getRef('paddyDry')));
+  partyArray.push($firebaseArray(getRef('paddyRaw')));
+  partyArray.push($firebaseArray(getRef('payables')));
+  partyArray.push($firebaseArray(getRef('receivables')));
+  partyArray.push($firebaseArray(getRef('rice')));
+  partyArray.push($firebaseArray(getRef('truckTrackors')));
 });
 app.controller('PrdOutputCntlr', function ($scope) {
   $scope.title = "Product Output";

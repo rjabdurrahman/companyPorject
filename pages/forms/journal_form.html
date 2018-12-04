@@ -160,25 +160,13 @@
     </div>
 </div>
 <script>
+    var accArray = null;
     function ACNameComplete(event) {
-        // All accounts from firebase
-        firebase.database().ref().child('accounts').once("value")
-            .then(function (snapshot) {
-                let allData = snapshot.val();
-                for (i in allData) {
-                    if (allData[i].accCode == event.target.value) {
-                        $print(allData[i].accText);
-                        event.target.parentElement.nextElementSibling.firstElementChild.value = allData[i].accText;
-                        break;
-                    }
-                    else
-                        event.target.parentElement.nextElementSibling.firstElementChild.value = '';
-                }
-            });;
+        $print(accArray);
     }
     var partyArray = null;
     function partyNameComplete(event) {
-        $print(partyArray);
+        // $print(partyArray);
         let data = partyArray.find(function (el) {
             if (el.hasOwnProperty('accCode')) {
                 return el.accCode == event.target.value;
