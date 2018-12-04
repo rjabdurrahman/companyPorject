@@ -175,23 +175,31 @@ app.controller('BankCntlr', function ($scope, $firebaseArray) {
     }
   });
 });
-app.controller('ContractorsCntlr', function ($scope) {
+app.controller('ContractorsCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Contractor";
   $scope.comContractors = lsExGJInit('comContractors', []);
+  var ref = firebase.database().ref().child('contractors');
+  dbContractors = $scope.comContractors = $firebaseArray(ref);
+  $scope.comContractors.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comContractors.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
-app.controller('PaddyRawCntlr', function ($scope) {
+app.controller('PaddyRawCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Paddy Raw";
   $scope.comPaddyRaws = lsExGJInit('comPaddyRaws', []);
 });
-app.controller('PaddyDryCntlr', function ($scope) {
+app.controller('PaddyDryCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Paddy Dry";
   $scope.comPaddyDrys = lsExGJInit('comPaddyDrys', []);
 });
-app.controller('RiceCntlr', function ($scope) {
+app.controller('RiceCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Rice";
   $scope.comRices = lsExGJInit('comRices', []);
 });
-app.controller('ByProductsCntlr', function ($scope) {
+app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Buy Product";
   $scope.comByProducts = lsExGJInit('comByProducts', []);
 });
