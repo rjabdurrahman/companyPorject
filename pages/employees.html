@@ -102,7 +102,7 @@
                         </div>
                         <p>
                             <button id="submitEmpBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            <button onclick="clearEmpFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="clearFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
                         </p>
                         <div style="clear: both;height: 16px;"></div>
                     </div>
@@ -165,12 +165,12 @@
         // var comEmps = lsExGJInit('comEmps', []);
         // comEmps.push(emp);
         // lsSetJ('comEmps', comEmps);
-        // clearEmpFields();
+        // clearFields();
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
     });
 
-    function clearEmpFields() {
+    function clearFields() {
         $js('empCode').value = $js('empName').value = $js('empType').value = $js('empPost').value = $js('empDes').value = $js('empSalary').value = "";
     }
 
