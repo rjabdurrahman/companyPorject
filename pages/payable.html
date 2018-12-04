@@ -48,7 +48,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
                     <div class="w3-container main-bg-color div-title">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>Payable</h2>
                     </div>
                     <div class="w3-container">
@@ -102,7 +102,7 @@
                         </div>
                         <p>
                             <button id="submitPayBtn" class="w3-btn main-bg-color div-title" style="float: right;">Submit</button>
-                            <button onclick="clearPayFields()" class="w3-btn main-bg-color div-title" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="clearFields()" class="w3-btn main-bg-color div-title" style="float: right; margin-right: 10px;">Clear</button>
                         </p>
                         <div style="clear: both;height: 16px;"></div>
                     </div>
@@ -165,19 +165,19 @@
             } else {
                 $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
                 $js('nodata').style.display = "none";
-                clearPayFields();
+                clearFields();
             }
         });
         // $print(pay);
         // var comPayables = lsExGJInit('comPayables', []);
         // comPayables.push(pay);
         // lsSetJ('comPayables', comPayables);
-        // clearPayFields();
+        // clearF();
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
     });
 
-    function clearPayFields() {
+    function clearFields() {
         $js('payACCode').value = $js('payPartyName').value = $js('payPartyType').value = $js('payProprietor').value = $js('payMObileNo').value = $js('payAddress').value = "";
     }
 
