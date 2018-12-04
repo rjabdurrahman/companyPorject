@@ -211,11 +211,25 @@ app.controller('PaddyDryCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('RiceCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Rice";
-  $scope.comRices = lsExGJInit('comRices', []);
+  var ref = firebase.database().ref().child('rice');
+  dbRices = $scope.comRices = $firebaseArray(ref);
+  $scope.comRices.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comRices.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Buy Product";
-  $scope.comByProducts = lsExGJInit('comByProducts', []);
+  var ref = firebase.database().ref().child('buyProducts');
+  dbByProducts = $scope.comByProducts = $firebaseArray(ref);
+  $scope.comByProducts.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comByProducts.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('JournalFormCntlr', function ($scope) {
   // $scope.accName = function (code) {
