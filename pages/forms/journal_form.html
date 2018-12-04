@@ -162,7 +162,14 @@
 <script>
     var accArray = null;
     function ACNameComplete(event) {
-        $print(accArray);
+        let data = accArray.find(function (el) {
+            return el.accCode == event.target.value;
+        });
+        // $print(data);
+        if (data) {
+            event.target.parentElement.nextElementSibling.firstElementChild.value = data.accText;
+        }
+        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
     }
     var partyArray = null;
     function partyNameComplete(event) {
