@@ -3,7 +3,7 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="exitModel();clearFields();" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                             <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -40,7 +40,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
                     <div class="w3-container main-bg-color div-title">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>{{title}}</h2>
                     </div>
                     <div class="w3-container">
@@ -62,7 +62,7 @@
                         </div>
                         <p>
                             <button id="byProductSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            <button onclick="byProductClear()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
+                            <button onclick="clearFields()" class="w3-btn main-bg-color" style="float: right; margin-right: 10px;">Clear</button>
                             <button onclick="byProductPrint()" class="w3-btn main-bg-color" style="float: left; margin-right: 10px;">Print
                                 All</button>
                         </p>
@@ -78,10 +78,6 @@
     $js('byProductSubmit').addEventListener('click', function () {
         var byProductCode = $js('byProductCode').value;
         var byProductName = $js('byProductName').value;
-        var byProduct = {
-            code: byProductCode,
-            name: byProductName
-        };
         if (byProductCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -90,16 +86,30 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(byProduct);
-        var comByProducts = lsExGJInit('comByProducts', []);
-        comByProducts.push(byProduct);
-        lsSetJ('comByProducts', comByProducts);
-        byProductClear();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var byProduct = {
+            code: byProductCode,
+            name: byProductName
+        };
+        // Store
+        db.child('buyProducts').push(byProduct, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearFields();
+            }
+        });
+        // $print(byProduct);
+        // var comByProducts = lsExGJInit('comByProducts', []);
+        // comByProducts.push(byProduct);
+        // lsSetJ('comByProducts', comByProducts);
+        // clearFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
-    function byProductClear() {
+    function clearFields() {
         $js('byProductCode').value = $js('byProductName').value = "";
     }
 
