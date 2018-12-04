@@ -212,42 +212,6 @@
     </div>
 </div>
 <script>
-    // function autoCompleteAC() {
-    //     $('[name="ACCode"]').autocomplete({
-    //         source: accountCodes,
-    //         minLength: 0,
-    //         change: function (event, ui) { ACNameComplete(this); }
-    //     }).focus(function () {
-    //         $(this).autocomplete("search");
-    //     });
-    // }
-    function ACNameComplete(event) {
-        let data = lsExGJInit('comAccounts', []).find(function (el) {
-            return el.accCode == event.target.value;
-        });
-        // $print(data);
-        if (data) {
-            event.target.parentElement.nextElementSibling.firstElementChild.value = data.accText;
-        }
-        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
-    }
-    function partyNameComplete(event) {
-        let alldata = [...lsExGJInit('comReceivables', []), ...lsExGJInit('comPayables', []), ...lsExGJInit('comCh', []), ...lsExGJInit('comTrs', []), ...lsExGJInit('comEmps', []), ...lsExGJInit('comBanks', []), ...lsExGJInit('comContractors', []), ...lsExGJInit('comPaddyRaws', []), ...lsExGJInit('comPaddyDrys', []), ...lsExGJInit('comRices', []), ...lsExGJInit('comByProducts', [])];
-        let data = alldata.find(function (el) {
-            if (el.hasOwnProperty('accCode')) {
-                return el.accCode == event.target.value;
-            }
-            else if (el.hasOwnProperty('code')) {
-                return el.code == event.target.value;
-            }
-        });
-        $print(data);
-        if (data) {
-            event.target.parentElement.nextElementSibling.firstElementChild.value = data.name;
-        }
-        else event.target.parentElement.nextElementSibling.firstElementChild.value = '';
-    }
-    // autoCompleteAC();
     function addField() {
         let chartTable = $js('chartTable');
         let debitAdderRow = $js('addDebitField');
