@@ -231,12 +231,9 @@ app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
     }
   });
 });
-app.controller('JournalFormCntlr', function ($scope) {
-  // $scope.accName = function (code) {
-  //   return lsExGJInit('comAccounts', []).find(function (el) {
-  //     return el.accCode == code;
-  //   }).accText;
-  // }
+app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
+  var ref = firebase.database().ref().child('contractors');
+  partyArray = $scope.comContractors = $firebaseArray(ref);
 });
 app.controller('PrdOutputCntlr', function ($scope) {
   $scope.title = "Product Output";
