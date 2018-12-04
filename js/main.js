@@ -45,6 +45,9 @@ function $html(tag, atts, text) {
 }
 
 // Clearer
+function exitModel(){
+    document.getElementById('id01').style.display='none';
+}
 function clearer(...fields) {
     for (field in fields) {
         fields[field].value = "";
