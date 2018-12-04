@@ -3,7 +3,7 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="exitModel();clearFields();" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -30,7 +30,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div ng-show="!comRices.length" class="w3-pale-blue" style="padding: 12px; text-align: center;">No Records Found!</div>
+                    <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
+                    <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                        Data Found!</div>
                 </div>
             </div>
         </div>
@@ -38,7 +40,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
                     <div class="w3-container main-bg-color div-title">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>Rice</h2>
                     </div>
                     <div class="w3-container">
@@ -74,10 +76,6 @@
     $js('submitRiceBtn').addEventListener('click', function () {
         var riceCode = $js('riceCode').value;
         var riceName = $js('riceName').value;
-        var rice = {
-            code: riceCode,
-            name: riceName
-        };
         if (riceCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -86,13 +84,27 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(rice);
-        var comRices = lsExGJInit('comRices', []);
-        comRices.push(rice);
-        lsSetJ('comRices', comRices);
-        clearFields();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var rice = {
+            code: riceCode,
+            name: riceName
+        };
+        // Store
+        db.child('rice').push(rice, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearFields();
+            }
+        });
+        // $print(rice);
+        // var comRices = lsExGJInit('comRices', []);
+        // comRices.push(rice);
+        // lsSetJ('comRices', comRices);
+        // clearFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
     function clearFields() {
