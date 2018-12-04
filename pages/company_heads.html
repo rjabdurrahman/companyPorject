@@ -76,10 +76,6 @@
     $js('submitChBtn').addEventListener('click', function () {
         var chACCode = $js('chACCode').value;
         var chPartyName = $js('chPartyName').value;
-        var ch = {
-            code: chACCode,
-            name: chPartyName
-        };
         if (chACCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -88,13 +84,26 @@
             $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        $print(ch);
-        var comCh = lsExGJInit('comCh', []);
-        comCh.push(ch);
-        lsSetJ('comCh', comCh);
-        clearChFields();
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        location.reload();
+        var ch = {
+            code: chACCode,
+            name: chPartyName
+        };
+        db.child('companyHeads').push(ch, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            } else {
+                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                $js('nodata').style.display = "none";
+                clearChFields();
+            }
+        });
+        // $print(ch);
+        // var comCh = lsExGJInit('comCh', []);
+        // comCh.push(ch);
+        // lsSetJ('comCh', comCh);
+        // clearChFields();
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // location.reload();
     });
 
     function clearChFields() {
