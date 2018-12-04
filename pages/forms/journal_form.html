@@ -162,7 +162,6 @@
 <script>
     function ACNameComplete(event) {
         // All accounts from firebase
-        var mData = null;
         firebase.database().ref().child('accounts').once("value")
             .then(function (snapshot) {
                 let allData = snapshot.val();
