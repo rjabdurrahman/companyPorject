@@ -232,8 +232,7 @@ app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
-  var ref = firebase.database().ref().child('contractors');
-  partyArray = $scope.comContractors = $firebaseArray(ref);
+  partyArray = $scope.comContractors = [...$firebaseArray(getRef('contractors')), ...$firebaseArray(getRef('contractors'))];
 });
 app.controller('PrdOutputCntlr', function ($scope) {
   $scope.title = "Product Output";
