@@ -177,7 +177,6 @@ app.controller('BankCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('ContractorsCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Contractor";
-  $scope.comContractors = lsExGJInit('comContractors', []);
   var ref = firebase.database().ref().child('contractors');
   dbContractors = $scope.comContractors = $firebaseArray(ref);
   $scope.comContractors.$loaded().then(function () {
@@ -189,11 +188,26 @@ app.controller('ContractorsCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('PaddyRawCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Paddy Raw";
-  $scope.comPaddyRaws = lsExGJInit('comPaddyRaws', []);
+  var ref = firebase.database().ref().child('paddyRaw');
+  dbPaddyRaws = $scope.comPaddyRaws = $firebaseArray(ref);
+  $scope.comPaddyRaws.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comPaddyRaws.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('PaddyDryCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Paddy Dry";
   $scope.comPaddyDrys = lsExGJInit('comPaddyDrys', []);
+  var ref = firebase.database().ref().child('paddyDry');
+  dbPaddyDrys = $scope.comPaddyDrys = $firebaseArray(ref);
+  $scope.comPaddyDrys.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comPaddyDrys.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('RiceCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Rice";
