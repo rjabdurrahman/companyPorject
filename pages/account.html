@@ -33,7 +33,8 @@
                         </tbody>
                     </table>
                     <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
-                    <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No Data Found!</div>
+                    <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                        Data Found!</div>
                 </div>
             </div>
         </div>
@@ -95,7 +96,8 @@
     </div>
 </div>
 <script>
-    // lsSetJ('comAccounts', []);
+    var dbAccounts = null;
+    lsSetJ('comAccounts', []);
     $js('submitAccBtn').addEventListener('click', function () {
         let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
@@ -131,6 +133,12 @@
         var accNumber = accCodeInit + "-" + accCodeFirst;
         if (accCodeSecond != '') {
             accNumber += "-" + accCodeSecond;
+        }
+        for (i = 0; i < dbAccounts.length; i++) {
+            if (accNumber == dbAccounts[i].accCode) {
+                $('#notification').html("<h6>Account Already Exist!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                return;
+            }
         }
         let account = {
             nature: accNature,

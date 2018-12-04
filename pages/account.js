@@ -5,7 +5,7 @@ app.controller('AccountCntlr', function ($scope, $firebaseArray) {
     lsSetJ('accCodes', $scope.accounts);
     $scope.load = false;
     $scope.nodata = false;
-    $scope.comAccounts = $firebaseArray(ref);
+    dbAccounts = $scope.comAccounts = $firebaseArray(ref);
     $scope.comAccounts.$loaded().then(function () {
         $scope.load = true;
         if ($scope.comAccounts.length == 0) {
