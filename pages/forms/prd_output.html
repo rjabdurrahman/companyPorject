@@ -82,7 +82,7 @@
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input id="totalPrice" class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
+                            <input id="totalPrice" class="w3-input w3-border" type="number" value="{{packSize*packs*unitPrice | number}}"
                                 style="text-align: center" disabled>
                         </td>
                         <td>
@@ -288,80 +288,42 @@
             if (drPartyCodeEls.hasOwnProperty(index)) {
                 let partyCodeEl = drPartyCodeEls[index];
                 let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let packSize = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let packSize = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let packs = packSize.parentElement.nextElementSibling.firstElementChild;
                 let unitPrice = packs.parentElement.nextElementSibling.firstElementChild;
                 let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = totalPrice.parentElement.nextElementSibling.firstElementChild;
-                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-                if (partyCodeEl.value == "") {
-                    $('#notification').html("<h6>Party Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    partyCodeEl.focus();
-                    return;
-                }
-                else if (partyNameEl.value == "") {
-                    $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    partyCodeEl.focus();
-                    return;
-                }
-                else if (ACCodeEl.value == "") {
-                    $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                else if (ACNameEl.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                else if (packSize.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    packSize.focus();
-                    return;
-                }
-                else if (packs.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    packs.focus();
-                    return;
-                }
-                else if (unitPrice.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    unitPrice.focus();
-                    return;
-                }
-                else if (totalPrice.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    totalPrice.focus();
-                    return;
-                }
-                
-                let debit = {
-                    type: 'Dr',
-                    partyCode: partyCodeEl.value,
-                    partyName: partyNameEl.value,
-                    ACCode: ACCodeEl.value,
-                    ACName: ACNameEl.value,
-                    drAmount: parseFloat(drAmount.value)
-                }
-                debitCredit.push(debit);
-            }
-            if (crPartyCodeEls.hasOwnProperty(index)) {
-                let partyCodeEl = crPartyCodeEls[index];
-                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = totalPrice.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
                 let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
                 if (partyCodeEl.value == "") {
-                    $('#notification').html("<h6>Party Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    $('#notification').html("<h6>FG Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
                     partyCodeEl.focus();
                     return;
                 }
                 else if (partyNameEl.value == "") {
-                    $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    $('#notification').html("<h6>Finished Good Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
                     partyCodeEl.focus();
+                    return;
+                }
+                else if (packSize.value == "") {
+                    $('#notification').html("<h6>Pack Size Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    packSize.focus();
+                    return;
+                }
+                else if (packs.value == "") {
+                    $('#notification').html("<h6>Packs Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    packs.focus();
+                    return;
+                }
+                else if (unitPrice.value == "") {
+                    $('#notification').html("<h6>Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    unitPrice.focus();
+                    return;
+                }
+                else if (totalPrice.value == "") {
+                    $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    totalPrice.focus();
                     return;
                 }
                 else if (ACCodeEl.value == "") {
@@ -375,65 +337,103 @@
                     return;
                 }
 
-                let credit = {
-                    type: 'Cr',
+                let debit = {
+                    type: 'Dr',
                     partyCode: partyCodeEl.value,
                     partyName: partyNameEl.value,
+                    packSize: parseFloat(packSize.value),
+                    packs: parseFloat(packs.value),
+                    unitPrice: parseFloat(unitPrice.value),
+                    totalPrice: parseFloat(totalPrice.value),
                     ACCode: ACCodeEl.value,
                     ACName: ACNameEl.value,
-                    crAmount: parseFloat(crAmount.value)
+                    drAmount: parseFloat(drAmount.value)
                 }
-                debitCredit.push(credit);
+                debitCredit.push(debit);
+                $print(debit);
             }
+            // if (crPartyCodeEls.hasOwnProperty(index)) {
+            //     let partyCodeEl = crPartyCodeEls[index];
+            //     let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+            //     let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+            //     let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+            //     let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+            //     let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+            //     if (partyCodeEl.value == "") {
+            //         $('#notification').html("<h6>Product Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            //         partyCodeEl.focus();
+            //         return;
+            //     }
+            //     else if (partyNameEl.value == "") {
+            //         $('#notification').html("<h6>Product Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            //         partyCodeEl.focus();
+            //         return;
+            //     }
+            //     else if (ACCodeEl.value == "") {
+            //         $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            //         ACCodeEl.focus();
+            //         return;
+            //     }
+            //     else if (ACNameEl.value == "") {
+            //         $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            //         ACCodeEl.focus();
+            //         return;
+            //     }
+
+            //     let credit = {
+            //         type: 'Cr',
+            //         partyCode: partyCodeEl.value,
+            //         partyName: partyNameEl.value,
+            //         ACCode: ACCodeEl.value,
+            //         ACName: ACNameEl.value,
+            //         crAmount: parseFloat(crAmount.value)
+            //     }
+            //     debitCredit.push(credit);
+            // }
         }
-        if (costCenter.value == "") {
-            $('#notification').html("<h6>Cost Center Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            costCenter.focus();
-            return;
-        }
-        else if (description.value == "") {
-            $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-            description.focus();
-            return;
-        }
-        for (index in drPartyCodeEls) {
-            if (drPartyCodeEls.hasOwnProperty(index)) {
-                let partyCodeEl = drPartyCodeEls[index];
-                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, drAmount);
-            }
-            if (crPartyCodeEls.hasOwnProperty(index)) {
-                let partyCodeEl = crPartyCodeEls[index];
-                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
-            }
-        }
-        let prdOutput = {
-            entryNo: parseInt(entryNo.value),
-            voucherNo: parseInt(voucherNo.value),
-            date: date.value,
-            psNo: parseInt(psNo.value),
-            seqNo: parseInt(seqNo.value),
-            debitCredit: debitCredit,
-            costCenter: costCenter.value,
-            description: description.value
-        }
-        console.log(prdOutput);
-        let prdOutputForm = lsExGJInit('prdOutputForm', []);
-        prdOutputForm.push(prdOutput);
-        lsSetJ('prdOutputForm', prdOutputForm);
-        clearer(entryNo, voucherNo, date, psNo, seqNo, costCenter, description);
-        $js('totalDebit').innerHTML = "";
-        $js('totalCredit').innerHTML = "";
-        $js('submitBtn').disabled = true;
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // if (description.value == "") {
+        //     $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+        //     description.focus();
+        //     return;
+        // }
+        // for (index in drPartyCodeEls) {
+        //     if (drPartyCodeEls.hasOwnProperty(index)) {
+        //         let partyCodeEl = drPartyCodeEls[index];
+        //         let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+        //         let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+        //         let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+        //         let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+        //         let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+        //         clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, drAmount);
+        //     }
+        //     if (crPartyCodeEls.hasOwnProperty(index)) {
+        //         let partyCodeEl = crPartyCodeEls[index];
+        //         let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+        //         let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+        //         let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+        //         let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+        //         let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+        //         clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
+        //     }
+        // }
+        // let prdOutput = {
+        //     entryNo: parseInt(entryNo.value),
+        //     voucherNo: parseInt(voucherNo.value),
+        //     date: date.value,
+        //     psNo: parseInt(psNo.value),
+        //     seqNo: parseInt(seqNo.value),
+        //     debitCredit: debitCredit,
+        //     costCenter: costCenter.value,
+        //     description: description.value
+        // }
+        // console.log(prdOutput);
+        // let prdOutputForm = lsExGJInit('prdOutputForm', []);
+        // prdOutputForm.push(prdOutput);
+        // lsSetJ('prdOutputForm', prdOutputForm);
+        // clearer(entryNo, voucherNo, date, psNo, seqNo, costCenter, description);
+        // $js('totalDebit').innerHTML = "";
+        // $js('totalCredit').innerHTML = "";
+        // $js('submitBtn').disabled = true;
+        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
     });
 </script>
