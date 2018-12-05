@@ -99,12 +99,12 @@ app.config(function ($routeProvider) {
     })
     .when('/prdoutput', {
       templateUrl: 'pages/forms/prd_output.html',
-      controller: 'PrdOutputCntlr',
+      controller: 'JournalFormCntlr',
       activetab: 'formentry'
     })
     .when('/prdinput', {
       templateUrl: 'pages/forms/prd_input.html',
-      controller: 'PrdInputCntlr',
+      controller: 'JournalFormCntlr',
       activetab: 'formentry'
     })
     .when('/journal', {
@@ -249,12 +249,6 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
   partyArray.push($firebaseArray(getRef('receivables')));
   partyArray.push($firebaseArray(getRef('rice')));
   partyArray.push($firebaseArray(getRef('truckTrackors')));
-});
-app.controller('PrdOutputCntlr', function ($scope) {
-  $scope.title = "Product Output";
-});
-app.controller('PrdInputCntlr', function ($scope) {
-  $scope.title = "Product Input";
 });
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
