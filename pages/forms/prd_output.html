@@ -70,16 +70,16 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input id="packSize" ng-model="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input id="packs" ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input id="unitPrice" ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center">
+                            <input class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}" style="text-align: center" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
