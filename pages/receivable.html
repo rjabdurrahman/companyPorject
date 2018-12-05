@@ -149,6 +149,13 @@
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        for (i = 0; i < dbReceivables.length; i++) {
+            if (recACCode == dbReceivables[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('recACCode').focus();
+                return;
+            }
+        }
         var receive = {
             code: recACCode,
             name: recPartyName,
