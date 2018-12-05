@@ -188,6 +188,7 @@
         // let adderRow = $js(field);
         let serial = parseInt(debitAdderRow.parentElement.previousElementSibling.firstElementChild.innerHTML);
         let newDebitRow = document.createElement('tr');
+        let newCreditRow = document.createElement('tr');
         m.render(newDebitRow,
             [
                 m("td", ++serial),
@@ -203,7 +204,19 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
+        m.render(newCreditRow,
+            [
+                m("td", serial),
+                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
+                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
+                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
+            ]
+        );
         chartTable.children[0].insertBefore(newDebitRow, debitAdderRow.parentElement);
+        chartTable.children[0].insertBefore(newCreditRow, creditAdderRow.parentElement);
     }
 
     function rmField() {
