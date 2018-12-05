@@ -102,6 +102,11 @@ app.config(function ($routeProvider) {
       controller: 'PrdOutputCntlr',
       activetab: 'formentry'
     })
+    .when('/prdinput', {
+      templateUrl: 'pages/forms/prd_input.html',
+      controller: 'PrdInputCntlr',
+      activetab: 'formentry'
+    })
     .when('/journal', {
       templateUrl: 'pages/journal.html',
       controller: 'JournalCntlr',
@@ -247,6 +252,9 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('PrdOutputCntlr', function ($scope) {
   $scope.title = "Product Output";
+});
+app.controller('PrdInputCntlr', function ($scope) {
+  $scope.title = "Product Input";
 });
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
