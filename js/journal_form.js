@@ -15,7 +15,9 @@ function partyNameComplete(event) {
         for (j = 0; j < partyArray[i].length; j++) {
             if (partyArray[i][j].code == event.target.value) {
                 event.target.parentElement.nextElementSibling.firstElementChild.value = partyArray[i][j].name;
+                return;
             }
         }
     }
+    event.target.parentElement.nextElementSibling.firstElementChild.value = '';
 }
