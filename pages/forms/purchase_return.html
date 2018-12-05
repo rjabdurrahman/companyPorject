@@ -62,8 +62,8 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
@@ -119,7 +119,7 @@
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                     </tr>
                     <tr>
@@ -246,26 +246,14 @@
     var totalPriceTK = $js('totalPriceTK');
     var totalPriceA = $js('totalPriceA');
     function submitValid() {
-        var debits = document.getElementsByName('debitTotalAmount');
-        var credits = document.getElementsByName('creditAmount');
-        if (debits.length != credits.length) {
-            $js('submitBtn').disabled = true;
-            return;
-        };
-        for (i = 0; i < debits.length; i++) {
-            if (debits[i].value != credits[i].value) {
-                $js('submitBtn').disabled = true;
-                return;
-            }
-        }
-        if (totalPriceTK.value != "" && totalPriceA.value != "" && totalPriceTK.value == totalPriceA.value) {
+        let totalDebit = parseFloat($js('totalDebit').textContent);
+        let totalCredit = parseFloat($js('totalCredit').textContent);
+        let totalPriceANum = parseFloat(totalPriceA.value);
+        let totalPriceTKNum = parseFloat(totalPriceTK.value)
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit && totalPriceANum > 0 && totalPriceTKNum > 0 && totalPriceANum == totalPriceTKNum) {
             $js('submitBtn').disabled = false;
-            return;
         }
-        else {
-            $js('submitBtn').disabled = true;
-            return;
-        }
+        else $js('submitBtn').disabled = true;
     }
 
     $js('submitBtn').addEventListener('click', function () {
@@ -449,7 +437,7 @@
             primaryQuantity: parseFloat(primaryQuantity.value),
             primaryUnitPrice: parseFloat(primaryUnitPrice.value),
             totalQuantity: parseFloat(totalQuantity.value),
-            stdUnit: stdUnit.value,            
+            stdUnit: stdUnit.value,
             stdUnitPrice: parseFloat(stdUnitPrice.value),
             totalPriceTK: parseFloat(totalPriceTK.value),
             description: description.value
