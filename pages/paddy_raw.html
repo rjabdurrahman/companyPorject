@@ -86,7 +86,7 @@
         for (i = 0; i < dbPaddyRaws.length; i++) {
             if (paddyRawCode == dbPaddyRaws[i].code) {
                 $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('empCode').focus();
+                $js('paddyRawCode').focus();
                 return;
             }
         }
