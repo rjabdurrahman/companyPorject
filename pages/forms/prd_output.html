@@ -29,13 +29,13 @@
                             <span>PS No</span>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="psNo">
                         </td>
                         <td class="secondary">
                             <span>SEQ No</span>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="seqNo">
                         </td>
                     </tr>
                 </table>
@@ -70,16 +70,20 @@
                                 disabled>
                         </td>
                         <td>
-                            <input id="packSize" ng-model="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)" style="text-align: center">
+                            <input id="packSize" ng-model="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
+                                style="text-align: center">
                         </td>
                         <td>
-                            <input id="packs" ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)" type="text" style="text-align: center">
+                            <input id="packs" ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)"
+                                type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input id="unitPrice" ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)" type="text" style="text-align: center">
+                            <input id="unitPrice" ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
+                                type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}" style="text-align: center" disabled>
+                            <input class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
+                                style="text-align: center" disabled>
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
@@ -207,10 +211,10 @@
         m.render(newCreditRow,
             [
                 m("td", serial),
-                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
-                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
-                m("td", {colspan : "2"}, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
+                m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
+                m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
             ]
@@ -242,6 +246,8 @@
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
         let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
+        let psNo = $js('psNo');
+        let seqNo = $js('seqNo');
         let costCenter = $js('costCenter');
         let description = $js('description');
         let debitCredit = [];
@@ -266,6 +272,16 @@
         else if (!(date.value).match(regEx)) {
             $('#notification').html("<h6>Error Date Format</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
             $js('date').focus();
+            return;
+        }
+        else if (psNo.value == "") {
+            $('#notification').html("<h6>PS NO Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            psNo.focus();
+            return;
+        }
+        else if (seqNo.value == "") {
+            $('#notification').html("<h6>SEQ NO Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            seqNo.focus();
             return;
         }
         for (index in drPartyCodeEls) {
@@ -378,6 +394,8 @@
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
+            psNo: parseInt(psNo.value),
+            seqNo: parseInt(seqNo.value),
             debitCredit: debitCredit,
             costCenter: costCenter.value,
             description: description.value
@@ -386,7 +404,7 @@
         let journalForm = lsExGJInit('journalForm', []);
         journalForm.push(jorurnal);
         lsSetJ('journalForm', journalForm);
-        clearer(entryNo, voucherNo, date, costCenter, description);
+        clearer(entryNo, voucherNo, date, psNo, seqNo, costCenter, description);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
         $js('submitBtn').disabled = true;
