@@ -143,6 +143,13 @@
             $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        for (i = 0; i < dbEmps.length; i++) {
+            if (empCode == dbEmps[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('empCode').focus();
+                return;
+            }
+        }
         var emp = {
             code: empCode,
             name: empName,
