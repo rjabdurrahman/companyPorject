@@ -90,8 +90,8 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
@@ -139,7 +139,7 @@
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                     </tr>
                     <tr>
@@ -185,13 +185,13 @@
                 m("td", ++serial),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'drPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
@@ -208,13 +208,12 @@
     }
 
     function submitValid() {
-        var debits = document.getElementsByName('debitTotalAmount');
-        var credits = document.getElementsByName('creditAmount');
-        if (debits.length != credits.length) return false;
-        for (i = 0; i < debits.length; i++) {
-            if (debits[i].value != credits[i].value) return false;
+        let totalDebit = parseFloat($js('totalDebit').textContent);
+        let totalCredit = parseFloat($js('totalCredit').textContent);
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit) {
+            $js('submitBtn').disabled = false;
         }
-        return true;
+        else $js('submitBtn').disabled = true;
     }
 
     $js('submitBtn').addEventListener('click', function () {
