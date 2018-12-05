@@ -112,12 +112,12 @@
 </div>
 <script>
     var dbPayables = null;
-    $('#payACCode').autocomplete({
-        source: accountCodes,
-        minLength: 0
-    }).focus(function () {
-        $(this).autocomplete("search");
-    });
+    // $('#payACCode').autocomplete({
+    //     source: accountCodes,
+    //     minLength: 0
+    // }).focus(function () {
+    //     $(this).autocomplete("search");
+    // });
     $js('submitPayBtn').addEventListener('click', function () {
         var payACCode = $js('payACCode').value;
         var payPartyName = $js('payPartyName').value;
@@ -148,6 +148,13 @@
         else if (payAddress == "") {
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
+        }
+        for (i = 0; i < dbPayables.length; i++) {
+            if (payACCode == dbPayables[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('payACCode').focus();
+                return;
+            }
         }
         var pay = {
             code: payACCode,
