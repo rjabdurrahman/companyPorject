@@ -249,7 +249,10 @@
         let totalCredit = parseFloat($js('totalCredit').textContent);
         let totalPriceANum = parseFloat(totalPriceA.value);
         let totalPriceTKNum = parseFloat(totalPriceTK.value)
-        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit && totalPriceANum > 0 && totalPriceTKNum > 0 && totalPriceANum == totalPriceTKNum) return true;
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit && totalPriceANum > 0 && totalPriceTKNum > 0 && totalPriceANum == totalPriceTKNum) {
+            $js('submitBtn').disabled = false;
+        }
+        else $js('submitBtn').disabled = true;
     }
 
     $js('submitBtn').addEventListener('click', function () {
