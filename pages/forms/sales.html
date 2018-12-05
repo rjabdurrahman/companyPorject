@@ -62,8 +62,8 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitTotalAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
@@ -119,7 +119,7 @@
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(this.name)" style="text-align: right">
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                     </tr>
                     <tr>
@@ -166,7 +166,8 @@
                         </td>
                         <td class="secondary">Packet Size</td>
                         <td>
-                            <input id="packSize" class="w3-input w3-border" type="text" style="text-align: center" onkeypress="numValidate(event)">
+                            <input id="packSize" class="w3-input w3-border" type="text" style="text-align: center"
+                                onkeypress="numValidate(event)">
                         </td>
                         <td colspan="2"></td>
                     </tr>
@@ -186,7 +187,8 @@
                                 id="unitPrice" onkeyup="submitValid()" onkeypress="numValidate(event)">
                         </td>
                         <td>
-                            <input id="totalPriceA" class="w3-input w3-border" type="text" style="text-align: center" value="{{SUnitPrice*SUnitQuantity | number}}">
+                            <input id="totalPriceA" class="w3-input w3-border" type="text" style="text-align: center"
+                                value="{{SUnitPrice*SUnitQuantity | number}}">
                         </td>
                         <td colspan="2"></td>
                     </tr>
@@ -227,7 +229,7 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
@@ -259,48 +261,14 @@
     var totalPriceTK = $js('totalPriceTK');
     var totalPriceA = $js('totalPriceA');
     function submitValid() {
-        var debits = document.getElementsByName('debitTotalAmount');
-        var credits = document.getElementsByName('creditAmount');
-        if (debits.length != credits.length) {
-            $js('submitBtn').disabled = true;
-            return;
-        };
-        for (i = 0; i < debits.length; i++) {
-            if (debits[i].value != credits[i].value) {
-                $js('submitBtn').disabled = true;
-                return;
-            }
-        }
-        if (totalPriceTK.value != "" && totalPriceA.value != "" && totalPriceTK.value == totalPriceA.value) {
+        let totalDebit = parseFloat($js('totalDebit').textContent);
+        let totalCredit = parseFloat($js('totalCredit').textContent);
+        let totalPriceANum = parseFloat(totalPriceA.value);
+        let totalPriceTKNum = parseFloat(totalPriceTK.value)
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit && totalPriceANum > 0 && totalPriceTKNum > 0 && totalPriceANum == totalPriceTKNum) {
             $js('submitBtn').disabled = false;
-            return;
         }
-        else{
-            $js('submitBtn').disabled = true;
-            return;
-        }
-    }
-
-    function findTotal(fname) {
-        // $print(fname.target.value);
-        var field = this.name;
-        if (typeof (fname) == "string") {
-            field = fname;
-        }
-        let amountsEl = document.getElementsByName(field);
-        let total = 0;
-        for (var amountEl in amountsEl) {
-            if (parseFloat(amountsEl[amountEl].value))
-                total += parseFloat(amountsEl[amountEl].value);
-        }
-        if (field == "debitTotalAmount") {
-            $js('totalDebit').textContent = parseFloat(total.toFixed(2));
-        }
-        else if (field == "creditAmount") {
-            $js('totalCredit').textContent = parseFloat(total.toFixed(2));
-        }
-        
-        submitValid();
+        else $js('submitBtn').disabled = true;
     }
 
     $js('submitBtn').addEventListener('click', function () {
