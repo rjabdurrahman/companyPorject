@@ -82,7 +82,7 @@
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
+                            <input id="totalPrice" class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
                                 style="text-align: center" disabled>
                         </td>
                         <td>
@@ -290,7 +290,11 @@
                 let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
                 let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
                 let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let packSize = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let packs = packSize.parentElement.nextElementSibling.firstElementChild;
+                let unitPrice = packs.parentElement.nextElementSibling.firstElementChild;
+                let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = totalPrice.parentElement.nextElementSibling.firstElementChild;
                 let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
                 if (partyCodeEl.value == "") {
                     $('#notification').html("<h6>Party Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
@@ -390,7 +394,7 @@
                 clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
             }
         }
-        let jorurnal = {
+        let prdOutput = {
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
@@ -400,10 +404,10 @@
             costCenter: costCenter.value,
             description: description.value
         }
-        console.log(jorurnal);
-        let journalForm = lsExGJInit('journalForm', []);
-        journalForm.push(jorurnal);
-        lsSetJ('journalForm', journalForm);
+        console.log(prdOutput);
+        let prdOutputForm = lsExGJInit('prdOutputForm', []);
+        prdOutputForm.push(prdOutput);
+        lsSetJ('prdOutputForm', prdOutputForm);
         clearer(entryNo, voucherNo, date, psNo, seqNo, costCenter, description);
         $js('totalDebit').innerHTML = "";
         $js('totalCredit').innerHTML = "";
