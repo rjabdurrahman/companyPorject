@@ -83,6 +83,13 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        for (i = 0; i < dbByProducts.length; i++) {
+            if (byProductCode == dbByProducts[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('byProductCode').focus();
+                return;
+            }
+        }
         var byProduct = {
             code: byProductCode,
             name: byProductName
