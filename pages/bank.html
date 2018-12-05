@@ -83,6 +83,13 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        for (i = 0; i < dbBanks.length; i++) {
+            if (bankCode == dbBanks[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('bankCode').focus();
+                return;
+            }
+        }
         var bank = {
             code: bankCode,
             name: bankName

@@ -136,7 +136,8 @@
         }
         for (i = 0; i < dbAccounts.length; i++) {
             if (accNumber == dbAccounts[i].accCode) {
-                $('#notification').html("<h6>Account Already Exist!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('accCodeSecond').focus();
                 return;
             }
         }
