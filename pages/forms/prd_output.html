@@ -186,6 +186,10 @@
                 m("td", ++serial),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'drPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center'})]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
@@ -226,7 +230,7 @@
         }
         return true;
     }
-    
+
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
