@@ -1,3 +1,18 @@
+function findTotal(e) {
+    let amountsEl = document.getElementsByName(e.target.name);
+    let total = 0;
+    for (var amountEl in amountsEl) {
+        if (parseFloat(amountsEl[amountEl].value))
+            total += parseFloat(amountsEl[amountEl].value);
+    }
+    if (e.target.name == "debitAmount") {
+        $js('totalDebit').textContent = parseFloat(total.toFixed(2));
+    }
+    else if (e.target.name == "creditAmount") {
+        $js('totalCredit').textContent = parseFloat(total.toFixed(2));
+    }
+    $js('submitBtn').disabled = !submitValid();
+}
 var accArray = null;
 function ACNameComplete(event) {
     let data = accArray.find(function (el) {

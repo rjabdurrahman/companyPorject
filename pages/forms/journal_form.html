@@ -205,29 +205,11 @@
     }
 
     function submitValid() {
-        var debits = document.getElementsByName('debitTotalAmount');
-        var credits = document.getElementsByName('creditAmount');
-        if (debits.length != credits.length) return false;
-        for (i = 0; i < debits.length; i++) {
-            if (debits[i].value != credits[i].value) return false;
-        }
-        return true;
+        let totalDebit = parseFloat($js('totalDebit').textContent);
+        let totalCredit = parseFloat($js('totalCredit').textContent);
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit) return true;
     }
-
-    function findTotal(e) {
-        let amountsEl = document.getElementsByName(e.target.name);
-        let total = 0;
-        for (var amountEl in amountsEl) {
-            if (parseFloat(amountsEl[amountEl].value))
-                total += parseFloat(amountsEl[amountEl].value);
-        }
-        if (e.target.name == "debitAmount") {
-            $js('totalDebit').textContent = parseFloat(total.toFixed(2));
-        }
-        else if (e.target.name == "creditAmount") {
-            $js('totalCredit').textContent = parseFloat(total.toFixed(2));
-        }
-    }
+    // Here is Find Total
 
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date');
