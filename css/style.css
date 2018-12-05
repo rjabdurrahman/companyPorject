@@ -41,6 +41,19 @@ a {
     *zoom: 1;
 }
 
+span.phone {
+    position: absolute;
+    display: block;
+    left: 8px;
+    top: 9px;
+    z-index: 9;
+    color: gray;
+}
+
+input.phone {
+    padding-left: 58px;
+}
+
 .w3-dropdown-content a {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
