@@ -11,7 +11,7 @@ function findTotal(e) {
     else if (e.target.name == "creditAmount") {
         $js('totalCredit').textContent = parseFloat(total.toFixed(2));
     }
-    $js('submitBtn').disabled = !submitValid();
+    submitValid();
 }
 var accArray = null;
 function ACNameComplete(event) {

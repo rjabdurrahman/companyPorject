@@ -214,7 +214,7 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitTotalAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
@@ -266,27 +266,6 @@
             $js('submitBtn').disabled = true;
             return;
         }
-    }
-
-    function findTotal(fname) {
-        // $print(fname.target.value);
-        var field = this.name;
-        if (typeof (fname) == "string") {
-            field = fname;
-        }
-        let amountsEl = document.getElementsByName(field);
-        let total = 0;
-        for (var amountEl in amountsEl) {
-            if (parseFloat(amountsEl[amountEl].value))
-                total += parseFloat(amountsEl[amountEl].value);
-        }
-        if (field == "debitTotalAmount") {
-            $js('totalDebit').textContent = parseFloat(total.toFixed(2));
-        }
-        else if (field == "creditAmount") {
-            $js('totalCredit').textContent = parseFloat(total.toFixed(2));
-        }
-        submitValid();
     }
 
     $js('submitBtn').addEventListener('click', function () {

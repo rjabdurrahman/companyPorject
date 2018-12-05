@@ -207,7 +207,10 @@
     function submitValid() {
         let totalDebit = parseFloat($js('totalDebit').textContent);
         let totalCredit = parseFloat($js('totalCredit').textContent);
-        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit) return true;
+        if (totalDebit > 0 && totalCredit > 0 && totalDebit == totalCredit){
+            $js('submitBtn').disabled = false;
+        }
+        else $js('submitBtn').disabled = true;
     }
     // Here is Find Total
 
