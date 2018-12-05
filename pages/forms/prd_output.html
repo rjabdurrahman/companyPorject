@@ -316,6 +316,27 @@
                     ACCodeEl.focus();
                     return;
                 }
+                else if (packSize.value == "") {
+                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    packSize.focus();
+                    return;
+                }
+                else if (packs.value == "") {
+                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    packs.focus();
+                    return;
+                }
+                else if (unitPrice.value == "") {
+                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    unitPrice.focus();
+                    return;
+                }
+                else if (totalPrice.value == "") {
+                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    totalPrice.focus();
+                    return;
+                }
+                
                 let debit = {
                     type: 'Dr',
                     partyCode: partyCodeEl.value,
@@ -353,27 +374,7 @@
                     ACCodeEl.focus();
                     return;
                 }
-                else if (ACNameEl.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                else if (ACNameEl.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                else if (ACNameEl.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                else if (ACNameEl.value == "") {
-                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    ACCodeEl.focus();
-                    return;
-                }
-                
+
                 let credit = {
                     type: 'Cr',
                     partyCode: partyCodeEl.value,
