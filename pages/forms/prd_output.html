@@ -39,25 +39,28 @@
                         </td>
                     </tr>
                 </table>
-                <table class="w3-table chart-table" style="font-size: 16px;">
+                <!-- <table class="w3-table chart-table" style="font-size: 16px;">
+
+                </table> -->
+                <table id="chartTable" class="w3-table chart-table" style="font-size: 16px;">
                     <tr class="primary">
                         <td style="width: 45px;"></td>
-                        <td colspan="10" style="text-align: center;">Debit Info</td>
+                        <td colspan="8" style="text-align: center;">Debit Info</td>
+                        <td>Dr Amount</td>
+                        <td>Cr Amount</td>
                     </tr>
-                </table>
-                <table id="chartTable" class="w3-table chart-table" style="font-size: 16px;">
                     <tr class="secondary">
                         <td style="width: 45px;"></td>
-                        <td style="width: 90px;">FG Code</td>
+                        <td>FG Code</td>
                         <td>Finished Good</td>
                         <td>Pack Size(KG)</td>
-                        <td style="width: 80px;">Packs</td>
+                        <td>Packs</td>
                         <td>Unit Price(TK)</td>
                         <td>Total(TK)</td>
                         <td>A/C Code</td>
                         <td>A/C Name</td>
-                        <td>Dr Amount</td>
-                        <td>Cr Amount</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -74,12 +77,12 @@
                                 style="text-align: center">
                         </td>
                         <td>
-                            <input ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)"
-                                type="text" style="text-align: center">
+                            <input ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)" type="text"
+                                style="text-align: center">
                         </td>
                         <td>
-                            <input ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
-                                type="text" style="text-align: center">
+                            <input ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)" type="text"
+                                style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
