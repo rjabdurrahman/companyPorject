@@ -51,8 +51,10 @@
                                     <td>{{jor.primaryQuantity}}</td>
                                     <td>{{jor.primaryUnitPrice}}</td>
                                     <td>{{jor.stdUnit}}</td>
-                                    <td>{{jor.packSize}}</td>
-                                    <td></td>
+                                    <td ng-hide="deb.packSize">{{jor.packSize}}</td>
+                                    <td ng-show="deb.packSize">{{deb.packSize}}</td>
+                                    <td ng-hide="deb.packs">{{jor.packs}}</td>
+                                    <td ng-show="deb.packs">{{deb.packs}}</td>
                                     <td>{{jor.totalQuantity}}</td>
                                     <td>{{jor.stdUnitPrice}}</td>
                                     <td>{{jor.totalPriceTK}}</td>
