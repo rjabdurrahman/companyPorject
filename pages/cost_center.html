@@ -24,7 +24,7 @@
                         <tbody>
                             <tr ng-repeat="costCenter in comCostCenters track by $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{costCenter}}</td>
+                                <td>{{costCenter.$value}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,11 +61,19 @@
     </div>
 </div>
 <script>
+    var dbCostCenters = null;
     $js('submitCostCenterBtn').addEventListener('click', function () {
         var costCenterName = $js('costCenterName').value;
         if (costCenterName == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
+        }
+        for (i = 0; i < dbCostCenters.length; i++) {
+            if (costCenterName == dbCostCenters[i]) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('accCodeSecond').focus();
+                return;
+            }
         }
         db.child('costCenters').push(costCenterName, function (error) {
             if (error) {

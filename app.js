@@ -144,7 +144,14 @@ app.controller('CompanyHeadsCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('CostCenterCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Cost Center";
-  $scope.comCostCenters = lsExGJInit('comCostCenters', []);
+  var ref = firebase.database().ref().child('costCenters');
+  dbCostCenters = $scope.comCostCenters = $firebaseArray(ref);
+  $scope.comCostCenters.$loaded().then(function () {
+    $scope.load = true;
+    if ($scope.comCostCenters.length == 0) {
+      $scope.nodata = true;
+    }
+  });
 });
 app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Truck Tractor";
