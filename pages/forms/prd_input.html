@@ -121,19 +121,18 @@
                                 disabled>
                         </td>
                         <td>
-                            <input ng-model="packSize" id="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
-                                style="text-align: center">
+                            <input ng-model="stdUnit" class="w3-input w3-border" type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input ng-model="packs" id="packs" class="w3-input w3-border" onkeypress="numValidate(event)"
+                            <input ng-model="unitQuantity" class="w3-input w3-border" onkeypress="numValidate(event)"
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input ng-model="unitPrice" id="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
+                            <input ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input id="totalPrice" class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
+                            <input id="totalPrice" class="w3-input w3-border" type="text" value="{{unitQuantity*unitPrice | number}}"
                                 style="text-align: center" disabled>
                         </td>
                         <td>
