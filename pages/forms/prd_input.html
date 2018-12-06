@@ -42,7 +42,7 @@
                 <table id="chartTable" class="w3-table chart-table" style="font-size: 16px;">
                     <tr class="primary">
                         <td style="width: 45px;"></td>
-                        <td colspan="8" style="text-align: center;">Debit Info</td>
+                        <td colspan="9" style="text-align: center;">Debit Info</td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -51,7 +51,7 @@
                         <td colspan="2">Product Code</td>
                         <td colspan="2">Product Title</td>
                         <td colspan="2">A/C Code</td>
-                        <td colspan="2">A/C Title</td>
+                        <td colspan="3">A/C Title</td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -69,7 +69,7 @@
                             <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
                                 onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
-                        <td colspan="2">
+                        <td colspan="3">
                             <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center"
                                 value="-----" disabled>
                         </td>
@@ -89,22 +89,23 @@
                         <td style="border-right: none;">
                             <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="rmField()">-</button>
                         </td>
-                        <td style="border-left: none;" class="tab-warn" colspan="9"></td>
+                        <td style="border-left: none;" class="tab-warn" colspan="10"></td>
                     </tr>
                     <tr class="primary">
                         <td></td>
-                        <td colspan="8" style="text-align: center;">Credit Info</td>
+                        <td colspan="9" style="text-align: center;">Credit Info</td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr class="secondary">
-                        <td style="width: 45px;"></td>
-                        <td style="width: 90px;">FG Code</td>
-                        <td>Finished Good</td>
-                        <td>Pack Size-KG</td>
-                        <td style="width: 80px;">Packs</td>
-                        <td>Unit Price-Tk</td>
-                        <td>Total-Tk</td>
+                        <td></td>
+                        <td>RM Code</td>
+                        <td>Raw Material</td>
+                        <td>Standard Unit</td>
+                        <td>Unit Quantity</td>
+                        <td>Unit Price(TK)</td>
+                        <td>Unit Price(TK)</td>
+                        <td>Total(TK)</td>
                         <td>A/C Code</td>
                         <td>A/C Name</td>
                         <td>Dr Amount</td>
@@ -119,6 +120,10 @@
                         <td>
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="-----"
                                 disabled>
+                        </td>
+                        <td>
+                            <input ng-model="packSize" id="dfe" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
+                                style="text-align: center">
                         </td>
                         <td>
                             <input ng-model="packSize" id="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
@@ -160,18 +165,18 @@
                         <td style="border-right: none;">
                             <button class="main-bg-color w3-btn journal-csbtn" style="margin-left: -8px;" onclick="rmField()">-</button>
                         </td>
-                        <td class="tab-warn" style="border-left: none;" colspan="9">To Submit form debit & credit
+                        <td class="tab-warn" style="border-left: none;" colspan="10">To Submit form debit & credit
                             amount must be same.</td>
                     </tr>
                     <tr class="primary">
                         <td></td>
-                        <td colspan="8" style="text-align: center;">Total</td>
+                        <td colspan="9" style="text-align: center;">Total</td>
                         <td id="totalDebit" style="text-align: right">0</td>
                         <td id="totalCredit" style="text-align: right">0</td>
                     </tr>
                     <tr>
                         <td class="secondary" colspan="2">Description</td>
-                        <td colspan="8">
+                        <td colspan="9">
                             <textarea class="w3-input" name="" id="description" rows="2"></textarea>
                         </td>
                         <td class="main-bg-color" style="text-align: center; cursor: pointer;">
