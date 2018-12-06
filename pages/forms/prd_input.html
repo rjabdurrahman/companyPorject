@@ -58,7 +58,7 @@
                     <tr>
                         <td>1</td>
                         <td colspan="2">
-                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="partyNameComplete(event)"
+                            <input class="w3-input w3-border" type="text" name="drPartyCode" onpaste="partyNameComplete(event)"
                                 onkeyup="partyNameComplete(event)" style="text-align: center">
                         </td>
                         <td colspan="2">
@@ -83,7 +83,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id="addCreditField">
+                        <td id="addDebitField">
                             <button class="main-bg-color w3-btn journal-csbtn" onclick="addField()">+</button>
                         </td>
                         <td style="border-right: none;">
@@ -114,7 +114,7 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="drPartyCode" onpaste="partyNameComplete(event)"
+                            <input class="w3-input w3-border" type="text" name="crPartyCode" onpaste="partyNameComplete(event)"
                                 onkeyup="partyNameComplete(event)" style="text-align: center;">
                         </td>
                         <td>
@@ -158,8 +158,8 @@
                                 value="x" disabled>
                         </td>
                     </tr>
-                    <tr id="debitLine">
-                        <td id="addDebitField">
+                    <tr>
+                        <td id="addCreditField">
                             <button class="main-bg-color w3-btn journal-csbtn" onclick="addField()">+</button>
                         </td>
                         <td style="border-right: none;">
@@ -198,11 +198,12 @@
         let serial = parseInt(debitAdderRow.parentElement.previousElementSibling.firstElementChild.innerHTML);
         let newDebitRow = document.createElement('tr');
         let newCreditRow = document.createElement('tr');
-        m.render(newDebitRow,
+        m.render(newCreditRow,
             [
                 m("td", ++serial),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'drPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
@@ -213,13 +214,13 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
-        m.render(newCreditRow,
+        m.render(newDebitRow,
             [
                 m("td", serial),
                 m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'crPartyCode', onpaste: partyNameComplete, onkeyup: partyNameComplete, style: 'text-align: center' })]),
                 m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
-                m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
+                m("td", { colspan: "3" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
             ]
