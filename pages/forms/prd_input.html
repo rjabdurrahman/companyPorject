@@ -74,12 +74,12 @@
                                 value="-----" disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
-                                value="x" disabled>
+                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(event)" style="text-align: right">
+                            <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
+                                value="x" disabled>
                         </td>
                     </tr>
                     <tr>
@@ -150,12 +150,12 @@
                                 disabled>
                         </td>
                         <td>
-                            <input class="w3-input w3-border" type="text" name="debitAmount" onkeypress="numValidate(event)"
-                                onkeyup="findTotal(event)" style="text-align: right">
-                        </td>
-                        <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
                                 value="x" disabled>
+                        </td>
+                        <td>
+                            <input class="w3-input w3-border" type="text" name="creditAmount" onkeypress="numValidate(event)"
+                                onkeyup="findTotal(event)" style="text-align: right">
                         </td>
                     </tr>
                     <tr>
@@ -210,8 +210,8 @@
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', onkeypress: numValidate, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
             ]
         );
         m.render(newDebitRow,
@@ -221,8 +221,8 @@
                 m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
                 m("td", { colspan: "2" }, [m('input', { class: 'w3-input w3-border', type: 'text', name: 'ACCode', onpaste: ACNameComplete, onkeyup: ACNameComplete, style: 'text-align: center' })]),
                 m("td", { colspan: "3" }, [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: '-----', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })]),
-                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'creditAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })])
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', name: 'debitAmount', onkeypress: numValidate, onkeyup: findTotal, style: 'text-align: right' })]),
+                m("td", [m('input', { class: 'w3-input w3-border', type: 'text', style: 'text-align: center', value: 'x', disabled: true })])
             ]
         );
         chartTable.children[0].insertBefore(newDebitRow, debitAdderRow.parentElement);
