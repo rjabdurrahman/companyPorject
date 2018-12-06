@@ -128,8 +128,8 @@
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
-                                type="text" style="text-align: center">
+                            <input ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)" type="text"
+                                style="text-align: center">
                         </td>
                         <td>
                             <input class="w3-input w3-border" type="text" value="{{unitQuantity*unitPrice | number}}"
@@ -322,119 +322,119 @@
                 }
                 debitCredit.push(debit);
             }
-        }
-        if (crPartyCodeEls.hasOwnProperty(index)) {
-            let partyCodeEl = crPartyCodeEls[index];
-            let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-            let stdUnit = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-            let unitQuantity = stdUnit.parentElement.nextElementSibling.firstElementChild;
-            let unitPrice = unitQuantity.parentElement.nextElementSibling.firstElementChild;
-            let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
-            let ACCodeEl = totalPrice.parentElement.nextElementSibling.firstElementChild;
-            let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-            let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-            let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-            if (partyCodeEl.value == "") {
-                $('#notification').html("<h6>FG Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                partyCodeEl.focus();
-                return;
-            }
-            else if (partyNameEl.value == "") {
-                $('#notification').html("<h6>Finished Good Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                partyCodeEl.focus();
-                return;
-            }
-            else if (packSize.value == "") {
-                $('#notification').html("<h6>Pack Size Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                packSize.focus();
-                return;
-            }
-            else if (packs.value == "") {
-                $('#notification').html("<h6>Packs Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                packs.focus();
-                return;
-            }
-            else if (unitPrice.value == "") {
-                $('#notification').html("<h6>Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                unitPrice.focus();
-                return;
-            }
-            else if (totalPrice.value == "") {
-                $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                return;
-            }
-            else if (ACCodeEl.value == "") {
-                $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                ACCodeEl.focus();
-                return;
-            }
-            else if (ACNameEl.value == "") {
-                $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                ACCodeEl.focus();
-                return;
-            }
+            if (crPartyCodeEls.hasOwnProperty(index)) {
+                let partyCodeEl = crPartyCodeEls[index];
+                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let stdUnit = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let unitQuantity = stdUnit.parentElement.nextElementSibling.firstElementChild;
+                let unitPrice = unitQuantity.parentElement.nextElementSibling.firstElementChild;
+                let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = totalPrice.parentElement.nextElementSibling.firstElementChild;
+                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                if (partyCodeEl.value == "") {
+                    $('#notification').html("<h6>RM Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    partyCodeEl.focus();
+                    return;
+                }
+                else if (partyNameEl.value == "") {
+                    $('#notification').html("<h6>Raw Material Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    partyCodeEl.focus();
+                    return;
+                }
+                else if (stdUnit.value == "") {
+                    $('#notification').html("<h6>Standard Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    stdUnit.focus();
+                    return;
+                }
+                else if (unitQuantity.value == "") {
+                    $('#notification').html("<h6>Unit Quantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    unitQuantity.focus();
+                    return;
+                }
+                else if (unitPrice.value == "") {
+                    $('#notification').html("<h6>Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    unitPrice.focus();
+                    return;
+                }
+                else if (totalPrice.value == "") {
+                    $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    return;
+                }
+                else if (ACCodeEl.value == "") {
+                    $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    ACCodeEl.focus();
+                    return;
+                }
+                else if (ACNameEl.value == "") {
+                    $('#notification').html("<h6>Account Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+                    ACCodeEl.focus();
+                    return;
+                }
 
-            let credit = {
-                type: 'Cr',
-                partyCode: partyCodeEl.value,
-                partyName: partyNameEl.value,
-                packSize: parseFloat(packSize.value),
-                packs: parseFloat(packs.value),
-                unitPrice: parseFloat(unitPrice.value),
-                totalPrice: parseFloat(totalPrice.value),
-                ACCode: ACCodeEl.value,
-                ACName: ACNameEl.value,
-                crAmount: parseFloat(drAmount.value)
+                let credit = {
+                    type: 'Cr',
+                    partyCode: partyCodeEl.value,
+                    partyName: partyNameEl.value,
+                    stdUnit: parseFloat(stdUnit.value),
+                    unitQuantity: parseFloat(unitQuantity.value),
+                    unitPrice: parseFloat(unitPrice.value),
+                    totalPrice: parseFloat(totalPrice.value),
+                    ACCode: ACCodeEl.value,
+                    ACName: ACNameEl.value,
+                    crAmount: parseFloat(drAmount.value)
+                }
+                $print(credit);
+                debitCredit.push(credit);
             }
-            $print(credit);
-            debitCredit.push(credit);
         }
-        // if (description.value == "") {
-        //     $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-        //     description.focus();
-        //     return;
-        // }
-        // for (index in drPartyCodeEls) {
-        //     if (drPartyCodeEls.hasOwnProperty(index)) {
-        //         let partyCodeEl = drPartyCodeEls[index];
-        //         let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-        //         let packSize = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-        //         let packs = packSize.parentElement.nextElementSibling.firstElementChild;
-        //         let unitPrice = packs.parentElement.nextElementSibling.firstElementChild;
-        //         let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
-        //         let ACCodeEl = totalPrice.parentElement.nextElementSibling.firstElementChild;
-        //         let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-        //         let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-        //         let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-        //         clearer(partyCodeEl, partyNameEl, packSize, packs, unitPrice, totalPrice, ACCodeEl, ACNameEl, drAmount);
-        //     }
-        //     if (crPartyCodeEls.hasOwnProperty(index)) {
-        //         let partyCodeEl = crPartyCodeEls[index];
-        //         let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-        //         let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-        //         let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-        //         let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-        //         let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-        //         clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
-        //     }
-        // }
-        // let prdOutput = {
-        //     entryNo: parseInt(entryNo.value),
-        //     voucherNo: parseInt(voucherNo.value),
-        //     date: date.value,
-        //     psNo: parseInt(psNo.value),
-        //     seqNo: parseInt(seqNo.value),
-        //     debitCredit: debitCredit,
-        //     description: description.value
-        // }
-        // console.log(prdOutput);
-        // let prdOutputForm = lsExGJInit('prdOutputForm', []);
-        // prdOutputForm.push(prdOutput);
-        // lsSetJ('prdOutputForm', prdOutputForm);
-        // clearer(entryNo, voucherNo, date, psNo, seqNo, description);
-        // $js('totalDebit').innerHTML = "";
-        // $js('totalCredit').innerHTML = "";
-        // $js('submitBtn').disabled = true;
-        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        if (description.value == "") {
+            $('#notification').html("<h6>Description Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
+            description.focus();
+            return;
+        }
+        for (index in crPartyCodeEls) {
+            if (crPartyCodeEls.hasOwnProperty(index)) {
+                let partyCodeEl = crPartyCodeEls[index];
+                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let stdUnit = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let unitQuantity = stdUnit.parentElement.nextElementSibling.firstElementChild;
+                let unitPrice = unitQuantity.parentElement.nextElementSibling.firstElementChild;
+                let totalPrice = unitPrice.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = totalPrice.parentElement.nextElementSibling.firstElementChild;
+                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                clearer(partyCodeEl, partyNameEl, stdUnit, unitQuantity, unitPrice, totalPrice, ACCodeEl, ACNameEl, drAmount);
+            }
+            if (drPartyCodeEls.hasOwnProperty(index)) {
+                let partyCodeEl = drPartyCodeEls[index];
+                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
+            }
+        }
+        let prdInput = {
+            entryNo: parseInt(entryNo.value),
+            voucherNo: parseInt(voucherNo.value),
+            date: date.value,
+            psNo: parseInt(psNo.value),
+            seqNo: parseInt(seqNo.value),
+            debitCredit: debitCredit,
+            description: description.value
+        }
+        console.log(prdInput);
+        let prdInputForm = lsExGJInit('prdInputForm', []);
+        prdInputForm.push(prdInput);
+        lsSetJ('prdInputForm', prdInputForm);
+        clearer(entryNo, voucherNo, date, psNo, seqNo, description);
+        $js('totalDebit').innerHTML = "";
+        $js('totalCredit').innerHTML = "";
+        $js('submitBtn').disabled = true;
+        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
     });
 </script>
