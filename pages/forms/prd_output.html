@@ -70,19 +70,19 @@
                                 disabled>
                         </td>
                         <td>
-                            <input id="packSize" ng-model="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
+                            <input ng-model="packSize" id="packSize" class="w3-input w3-border" type="text" onkeypress="numValidate(event)"
                                 style="text-align: center">
                         </td>
                         <td>
-                            <input id="packs" ng-model="packs" class="w3-input w3-border" onkeypress="numValidate(event)"
+                            <input ng-model="packs" id="packs" class="w3-input w3-border" onkeypress="numValidate(event)"
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input id="unitPrice" ng-model="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
+                            <input ng-model="unitPrice" id="unitPrice" class="w3-input w3-border" onkeypress="numValidate(event)"
                                 type="text" style="text-align: center">
                         </td>
                         <td>
-                            <input id="totalPrice" class="w3-input w3-border" type="number" value="{{packSize*packs*unitPrice | number}}"
+                            <input id="totalPrice" class="w3-input w3-border" type="text" value="{{packSize*packs*unitPrice | number}}"
                                 style="text-align: center" disabled>
                         </td>
                         <td>
@@ -129,22 +129,22 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td colspan="2">
+                        <!-- <td colspan="2">
                             <input class="w3-input w3-border" type="text" name="drPartyCode" onpaste="partyNameComplete(event)"
                                 onkeyup="partyNameComplete(event)" style="text-align: center;">
                         </td>
                         <td colspan="2">
                             <input class="w3-input w3-border" type="text" style="text-align: center" value="-----"
                                 disabled>
-                        </td>
-                        <td colspan="2">
+                        </td> -->
+                        <!-- <td colspan="2">
                             <input class="w3-input w3-border" type="text" name="ACCode" onpaste="ACNameComplete(event)"
                                 onkeyup="ACNameComplete(event)" style="text-align: center">
                         </td>
                         <td colspan="2">
                             <input class="w3-input w3-border" type="text" name="ACName" style="text-align: center"
                                 value="-----" disabled>
-                        </td>
+                        </td> -->
                         <td>
                             <input class="w3-input w3-border" type="text" name="partyName" style="text-align: center"
                                 value="x" disabled>
@@ -323,7 +323,6 @@
                 }
                 else if (totalPrice.value == "") {
                     $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
-                    totalPrice.focus();
                     return;
                 }
                 else if (ACCodeEl.value == "") {
@@ -349,7 +348,7 @@
                     ACName: ACNameEl.value,
                     drAmount: parseFloat(drAmount.value)
                 }
-                debitCredit.push(debit);
+                // debitCredit.push(debit);
                 $print(debit);
             }
             // if (crPartyCodeEls.hasOwnProperty(index)) {
