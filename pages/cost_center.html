@@ -28,7 +28,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">No Data Found!</div>
+                    <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
                     <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
                         Data Found!</div>
                 </div>
@@ -69,8 +69,8 @@
             return;
         }
         for (i = 0; i < dbCostCenters.length; i++) {
-            if (costCenterName == dbCostCenters[i]) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            if (costCenterName == dbCostCenters[i].$value) {
+                $('#notification').html("<h6>Cost Center Already Exists!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 $js('accCodeSecond').focus();
                 return;
             }
