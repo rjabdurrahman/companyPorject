@@ -31,6 +31,8 @@
                                     <th>Total Quantity</th>
                                     <th>Standard Unit Price (TK)</th>
                                     <th>Total Price (TK)</th>
+                                    <th>PS No</th>
+                                    <th>SEQ No</th>
                                 </tr>
                             </thead>
                             <tbody ng-repeat="jor in journal track by $index">
@@ -55,9 +57,14 @@
                                     <td ng-show="deb.packSize">{{deb.packSize}}</td>
                                     <td ng-hide="deb.packs">{{jor.packs}}</td>
                                     <td ng-show="deb.packs">{{deb.packs}}</td>
-                                    <td>{{jor.totalQuantity}}</td>
-                                    <td>{{jor.stdUnitPrice}}</td>
-                                    <td>{{jor.totalPriceTK}}</td>
+                                    <td ng-hide="deb.unitQuantity">{{jor.totalQuantity}}</td>
+                                    <td ng-show="deb.unitQuantity">{{deb.unitQuantity}}</td>
+                                    <td ng-hide="deb.unitPrice">{{jor.stdUnitPrice}}</td>
+                                    <td ng-show="deb.unitPrice">{{deb.unitPrice}}</td>
+                                    <td ng-hide="deb.totalPrice">{{jor.totalPriceTK}}</td>
+                                    <td ng-show="deb.totalPrice">{{deb.totalPrice}}</td>
+                                    <td>{{jor.psNo}}</td>
+                                    <td>{{jor.seqNo}}</td>
                                 </tr>
                             </tbody>
                         </table>
