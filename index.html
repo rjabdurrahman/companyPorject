@@ -30,6 +30,16 @@
             padding-top: 3px;
             padding-bottom: 3px;
         }
+        .nav-icon{
+            display: none !important;
+        }
+        @media screen and (max-width: 600px){
+            .nav-icon{
+                display: block !important;
+                position: absolute;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -58,6 +68,9 @@
             </section>
             <section style="margin-left: auto; font-size: 13px; box-sizing: border-box;">
                 <div class="w3-bar w3-white">
+                    <a href="javascript:void(0);" class="nav-icon w3-bar-item w3-button" onclick="myFunction()">
+                        <i style="font-size: 18px;" class="fa fa-bars"></i>
+                    </a>
                     <a href="#/" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
                         class="w3-bar-item w3-button w3-mobile">HOME</a>
                     <div class="w3-dropdown-hover w3-mobile">
