@@ -411,11 +411,3 @@ input#userPasswordField {
 }
 
 /* Form Date Tooltip style End*/
-
-/* Journal Table */
-
-.flipped, .flipped .content {
-    transform: rotateX(180deg);
-    -ms-transform: rotateX(180deg);
-    -webkit-transform: rotateX(180deg);
-}
