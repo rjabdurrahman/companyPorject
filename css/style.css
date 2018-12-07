@@ -282,26 +282,6 @@ input#userPasswordField {
     margin-bottom: 15px;
 }
 
-.chart-data-table {
-    table-layout: fixed !important;
-}
-
-.chart-data-table td, .chart-data-table th {
-    text-align: center;
-    border-bottom: 1px solid lightgray;
-}
-
-.chart-data-table thead {
-    font-size: 18px;
-    line-height: 1.2;
-    white-space: nowrap;
-}
-
-.chart-data-table thead tr th:first-child, .chart-data-table tbody tr td:first-child {
-    padding-left: 50px !important;
-    width: 200px !important;
-}
-
 .ch-table-content {
     max-height: calc(100vh - 150px);
     overflow: auto;
@@ -321,6 +301,14 @@ input#userPasswordField {
 }
 
 /* Chart Table Style */
+
+.chart-tables td:first-child, .chart-tables th:first-child{
+    padding-left: 40px !important;
+    width: 100px !important;
+}
+.chart-tables td, .chart-tables th{
+    padding-left: 30px !important;
+}
 
 #chartTable, .chart-table {
     background-color: white;
