@@ -9,30 +9,28 @@
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
             <div class="w3-card-4 table-container">
-                <div class="ch-table-header">
-                    <table class="w3-table w3-striped w3-white chart-data-table">
-                        <thead>
-                            <tr class="main-bg-color">
-                                <th>ID</th>
-                                <th>A/C Code</th>
-                                <th>Party Name</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
                 <div class="ch-table-content">
-                    <table class="w3-table w3-striped w3-white chart-data-table">
-                        <tbody>
-                            <tr ng-repeat="ch in comCh track by $index">
-                                <td>{{$index + 1}}</td>
-                                <td>{{ch.code}}</td>
-                                <td>{{ch.name}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
-                    <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
-                        Data Found!</div>
+                    <div class="w3-responsive">
+                        <table class="w3-table-all chart-tables">
+                            <thead>
+                                <tr class="main-bg-color">
+                                    <th>ID</th>
+                                    <th>A/C Code</th>
+                                    <th>Party Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ch in comCh track by $index">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{ch.code}}</td>
+                                    <td>{{ch.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;">Loading...</div>
+                        <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                            Data Found!</div>
+                    </div>
                 </div>
             </div>
         </div>
