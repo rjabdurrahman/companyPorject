@@ -303,7 +303,7 @@ input#userPasswordField {
 }
 
 .ch-table-content {
-    max-height: calc(100vh - 250px);
+    max-height: calc(100vh - 150px);
     overflow: auto;
 }
 
