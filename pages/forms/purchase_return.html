@@ -439,7 +439,7 @@
             totalQuantity: parseFloat(totalQuantity.value),
             stdUnit: stdUnit.value,
             stdUnitPrice: parseFloat(stdUnitPrice.value),
-            totalPriceTK: totalPriceTK.value,
+            totalPriceTK: parseFloat(totalPriceTK.value.split(',').join("")),
             description: description.value
         }
         console.log(purshaseRet);

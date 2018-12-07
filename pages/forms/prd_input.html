@@ -380,7 +380,7 @@
                     stdUnit: parseFloat(stdUnit.value),
                     unitQuantity: parseFloat(unitQuantity.value),
                     unitPrice: parseFloat(unitPrice.value),
-                    totalPrice: totalPrice.value,
+                    totalPrice: parseFloat(totalPrice.value.split(',').join("")),
                     ACCode: ACCodeEl.value,
                     ACName: ACNameEl.value,
                     crAmount: parseFloat(crAmount.value)
