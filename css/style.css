@@ -244,7 +244,6 @@ input#userPasswordField {
 
 .w3-table-all th:not(:last-child) {
     border-right: 1px solid rgba(211, 211, 211, 0.3);
-    text-align: center !important;
 }
 
 .table-main-cotainer {
