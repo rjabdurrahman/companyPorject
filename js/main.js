@@ -146,3 +146,11 @@ var db = firebase.database().ref();
 function getRef(name) {
     return firebase.database().ref().child(name);
 }
+
+// Initialize Cloud Firestore through Firebase
+var fsDb = firebase.firestore();
+
+// Disable deprecated features
+fsDb.settings({
+  timestampsInSnapshots: true
+});
