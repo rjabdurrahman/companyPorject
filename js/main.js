@@ -152,9 +152,15 @@ var fsDb = firebase.firestore();
 
 // Disable deprecated features
 fsDb.settings({
-  timestampsInSnapshots: true
+    timestampsInSnapshots: true
 });
 
-function getFsRef(cname, dname) {
-    return fsDb.collection(cname).doc(dname);
+function formDataToFire(cname, dname, data) {
+    fsDb.collection(cname).doc(dname).set(data)
+        .then(function () {
+            console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
 }
