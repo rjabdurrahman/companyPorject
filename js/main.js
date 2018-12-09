@@ -155,12 +155,13 @@ fsDb.settings({
     timestampsInSnapshots: true
 });
 
-function formDataToFire(cname, dname, data) {
+function formDataToFire(cname, dname, data, cleardata) {
     fsDb.collection(cname).doc(dname).set(data)
         .then(function () {
-            console.log("Document successfully written!");
+            $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+            cleardata();
         })
         .catch(function (error) {
-            console.error("Error writing document: ", error);
+            $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
         });
 }
