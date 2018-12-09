@@ -144,7 +144,7 @@ firebase.initializeApp(config);
 var db = firebase.database().ref();
 
 function getRef(name) {
-    return firebase.database().ref().child(name);
+    return db.child(name);
 }
 
 // Initialize Cloud Firestore through Firebase
@@ -154,3 +154,7 @@ var fsDb = firebase.firestore();
 fsDb.settings({
   timestampsInSnapshots: true
 });
+
+function getFsRef(cname, dname) {
+    return fsDb.collection(cname).doc(dname);
+}

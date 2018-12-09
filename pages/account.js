@@ -1,5 +1,5 @@
 app.controller('AccountCntlr', function ($scope, $firebaseArray) {
-    var ref = firebase.database().ref().child('accounts');
+    var ref = getRef('accounts');
     $scope.title = "Account";
     $scope.accounts = accounts;
     lsSetJ('accCodes', $scope.accounts);
