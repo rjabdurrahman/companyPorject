@@ -99,7 +99,7 @@
     $js('submitAccBtn').addEventListener('click', function () {
         let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
-        var accCodeInit = '';
+        var accCodeInit = null;
         let accCodeInitNode = $js('accCodeInit').firstElementChild;
         if (accCodeInitNode.tagName == 'INPUT') {
             accCodeInit = accCodeInitNode.value;
@@ -165,12 +165,12 @@
         $js('accNature').selectedIndex = 0;
         accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
         let accCodeInitNode = $js('accCodeInit').firstElementChild;
-        if (accCodeInitNode.tagName == 'INPUT') {
-            accCodeInitNode.value = "";
-        }
-        else if (accCodeInitNode.tagName == 'SELECT') {
-            accCodeInitNode.selectedIndex = 0;
-        }
+        // if (accCodeInitNode.tagName == 'INPUT') {
+        //     accCodeInitNode.value = "";
+        // }
+        // else if (accCodeInitNode.tagName == 'SELECT') {
+        //     accCodeInitNode.selectedIndex = 0;
+        // }
     }
 
     function printAccounts() {
