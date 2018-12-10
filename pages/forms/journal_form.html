@@ -11,8 +11,7 @@
                             <span>Entry No</span>
                         </td>
                         <td class="border">
-                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo"
-                                onkeypress="numValidate(event)">
+                            <input class="w3-input w3-border" type="text" style="text-align: center" id="entryNo">
                         </td>
                         <td class="secondary" style="width: 115px; text-align: center;">Voucher No</td>
                         <td>
@@ -213,11 +212,11 @@
         else $js('submitBtn').disabled = true;
     }
     // Here is Find Total
-
+    var entryNo = $js('entryNo');
+    // $print(getLastEntry());
     $js('submitBtn').addEventListener('click', function () {
         let date = $js('date');
         let regEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
-        let entryNo = $js('entryNo');
         let voucherNo = $js('voucherNo');
         let costCenter = $js('costCenter');
         let description = $js('description');

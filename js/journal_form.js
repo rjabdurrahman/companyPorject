@@ -36,10 +36,3 @@ function partyNameComplete(event) {
     }
     event.target.parentElement.nextElementSibling.firstElementChild.value = '';
 }
-// Form last value
-function getLastEntry() {
-    getRef('lastFormEntry').on('value', function (snapshot) {
-        $print(snapshot.val());
-    });;
-}
-getLastEntry();
