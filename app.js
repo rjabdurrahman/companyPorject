@@ -244,6 +244,8 @@ app.controller('ByProductsCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
+  $scope.lastEntry = $firebaseArray(getRef('lastFormEntry'));
+  // $print($scope.lastEntry);
   accArray = $firebaseArray(getRef('accounts'));
   partyArray = [$firebaseArray(getRef('banks'))];
   partyArray.push($firebaseArray(getRef('buyProducts')));
