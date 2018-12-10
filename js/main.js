@@ -155,9 +155,13 @@ fsDb.settings({
     timestampsInSnapshots: true
 });
 
+// Last Entry for For Form Entry
+var lastEntryNo = null;
+
 function formDataToFire(cname, dname, data, cleardata) {
     fsDb.collection(cname).doc(dname).set(data)
         .then(function () {
+            db.chile('lastFormEntry').set({value: lastEntryNo++});
             $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
             cleardata();
         })
