@@ -1,39 +1,36 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
-            <header class="w3-container main-bg-color div-title">
-                <span onclick="exitModel();clearAccFields();" class="w3-button w3-display-topright">&times;</span>
-                <h2>{{title}}</h2>
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 75%; margin-top: 18px;">
+            <header class="w3-container main-bg-color div-title clearfix">
+                <h2>Debit Ledger</h2>
             </header>
-            <div class="w3-container">
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:130px; padding: 10px;">
-                        <label class="w3-medium">Account Code</label>
-                    </div>
-                    <div class="w3-rest flex">
-                        <input class="w3-input w3-border" type="text" style="width: 65px; text-align: center">
-                    </div>
+            <div class="w3-container ledger-header flex">
+                <div>
+                    <label style="display: block">&nbsp;</label>
+                    <label for="">Date</label>
                 </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:130px; padding: 10px;">
-                        <label class="w3-medium">Account Head</label>
-                    </div>
-                    <div class="w3-rest">
-                        <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
-                    </div>
+                <div>
+                    <label for="">From</label>
+                    <input class="w3-input w3-border" type="text">
                 </div>
-                <p class="clearfix">
-                    <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                </p>
+                <div>
+                    <label for="">To</label>
+                    <input class="w3-input w3-border" type="text">
+                </div>
+                <div>
+                    <label for="">Account Code</label>
+                    <input class="w3-input w3-border" type="text">
+                </div>
+                <div>
+                    <label style="display: block">&nbsp;</label>
+                    <button class="w3-btn main-bg-color">Submit</button>
+                </div>
             </div>
+            <div class="clearfix" style="height: 18px;"></div>
         </div>
         <div class="margin-auto chart-box">
             <section class="clearfix">
-                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
-                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
-                    <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
+                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Debits</label>
             </section>
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
@@ -41,9 +38,9 @@
                         <table class="w3-table-all chart-tables">
                             <thead>
                                 <tr class="main-bg-color">
-                                    <th>ID</th>
-                                    <th>Nature</th>
-                                    <th>Account Code</th>
+                                    <th>No</th>
+                                    <th>Date</th>
+                                    <th>Party Name</th>
                                     <th>Account Head</th>
                                 </tr>
                             </thead>
