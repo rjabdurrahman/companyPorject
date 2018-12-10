@@ -162,7 +162,6 @@ function formDataToFire(cname, dname, data, cleardata) {
     fsDb.collection(cname).doc(dname).set(data)
         .then(function () {
             db.child('lastFormEntry').set({value: ++lastEntryNo[0].$value});
-            // $print(++lastEntryNo[0].$value);
             $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
             cleardata();
         })
