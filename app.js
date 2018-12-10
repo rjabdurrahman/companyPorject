@@ -112,6 +112,16 @@ app.config(function ($routeProvider) {
       controller: 'JournalCntlr',
       activetab: 'journal'
     })
+    .when('/debitledger', {
+      templateUrl: 'pages/ledger/debit.html',
+      controller: 'JournalCntlr',
+      activetab: 'ledger'
+    })
+    .when('/creditledger', {
+      templateUrl: 'pages/ledger/credit.html',
+      controller: 'JournalCntlr',
+      activetab: 'ledger'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {

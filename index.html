@@ -112,15 +112,18 @@
                             </div>
                         </div>
                         <a ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal" class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
-                        <!-- <div class="w3-dropdown-hover">
-                        <button class="w3-button">LEDGER&nbsp;&nbsp;
+                        <div class="w3-dropdown-hover">
+                        <button ng-class="{'w3-border' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#account" class="w3-bar-item w3-button w3-mobile">Main Account</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Balance Sheets</a>
+                            <a href="#debitledger" class="w3-bar-item w3-button w3-mobile">Debit Ledger</a>
+                            <a href="#creditledger" class="w3-bar-item w3-button w3-mobile">Credit Ledger</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Expense Ledger</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Debitor Ledger</a>
+                            <a href="#" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
                         </div>
-                    </div> -->
+                    </div>
                         <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
                             Out
                         </button>
