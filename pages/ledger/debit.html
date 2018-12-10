@@ -41,7 +41,12 @@
                                     <th>No</th>
                                     <th>Date</th>
                                     <th>Party Name</th>
-                                    <th>Account Head</th>
+                                    <th>A/C Code</th>
+                                    <th>Particulars</th>
+                                    <th>Party Code</th>
+                                    <th>Debit Amount</th>
+                                    <th>Credit Amount</th>
+                                    <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +55,11 @@
                                     <td>{{comAcc.nature}}</td>
                                     <td>{{comAcc.accCode}}</td>
                                     <td>{{comAcc.accText}}</td>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{comAcc.nature}}</td>
+                                    <td>{{comAcc.accCode}}</td>
+                                    <td>{{comAcc.accText}}</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
