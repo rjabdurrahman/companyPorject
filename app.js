@@ -274,9 +274,11 @@ app.controller('JournalCntlr', function ($scope, $firebaseArray) {
   $scope.journal = [];
   fsDb.collection("JournalForm").get()
   .then(function(snapshot){
-    $print(snapshot.docs);
-    $scope.journal = snapshot.docs;
-    $firebaseArray(snapshot);
+    snapshot.docs.forEach(element => {
+      $print(element.data());
+      $scope.journal.push(element.data());
+      $scope.$applyAsync();
+    });
   })
   .catch(function(err){
     $print(err);
