@@ -18,6 +18,8 @@
                                     <th>Nature</th>
                                     <th>Account Code</th>
                                     <th>Account Head</th>
+                                    <th style="width: 120px;">Edit</th>
+                                    <th style="width: 130px;">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,10 +28,17 @@
                                     <td>{{comAcc.nature}}</td>
                                     <td>{{comAcc.accCode}}</td>
                                     <td>{{comAcc.accText}}</td>
+                                    <td>
+                                        <button class="w3-btn w3-blue">Edit</button>
+                                    </td>
+                                    <td>
+                                        <button class="w3-btn w3-deep-orange">Delete</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif" alt="Loading..." style="height: 25px; width: 25px;"></div>
+                        <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
+                                alt="Loading..." style="height: 25px; width: 25px;"></div>
                         <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
                             Data Found!</div>
                     </div>
