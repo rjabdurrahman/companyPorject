@@ -128,8 +128,18 @@
                                 <!-- <a onclick="printAll()" class="w3-bar-item w3-button w3-mobile">Export In Excel</a> -->
                             </div>
                         </div>
-                        <a href="#costcenter" ng-class="{'w3-border' : $route.current.activetab == 'costcenter'}" class="w3-bar-item w3-button w3-mobile"
-                            style="margin-right: 5px;">CENTERS</a>
+                        <div class="w3-dropdown-hover w3-mobile">
+                            <button ng-class="{'w3-border' : $route.current.activetab == 'centers'}" class="w3-button">CENTERS&nbsp;&nbsp;
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a href="#costcenter" class="w3-bar-item w3-button w3-mobile">Cost Center</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Revenue Center</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Profit Center</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Investment Center</a>
+                            </div>
+                        </div>
+
                         <div class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'formentry'}" class="w3-button">FORM
                                 ENTRY&nbsp;&nbsp;
