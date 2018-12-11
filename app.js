@@ -269,9 +269,18 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
   partyArray.push($firebaseArray(getRef('rice')));
   partyArray.push($firebaseArray(getRef('truckTrackors')));
 });
-app.controller('JournalCntlr', function ($scope) {
+app.controller('JournalCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Journal";
-  $scope.journal = [...lsExGJInit('journalForm', []), ...lsExGJInit('purchaseForm', []), ...lsExGJInit('purchaseReturnForm', []), ...lsExGJInit('salesForm', []), ...lsExGJInit('salesReturnForm', []), ...lsExGJInit('prdInputForm', []), ...lsExGJInit('prdOutputForm', [])];
+  $scope.journal = [];
+  fsDb.collection("JournalForm").get()
+  .then(function(snapshot){
+    $print(snapshot.docs);
+    $scope.journal = snapshot.docs;
+  })
+  .catch(function(err){
+    $print(err);
+  });
+
   $scope.changerDC = function (code) {
     if (code == 'Dr') return 'Debit';
     if (code == 'Cr') return 'Credit';
