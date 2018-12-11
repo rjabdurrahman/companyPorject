@@ -339,7 +339,7 @@
             costCenter: costCenter.value,
             description: description.value
         }
-        function journalClearer() {
+        function clearFields() {
             for (index in drPartyCodeEls) {
                 if (drPartyCodeEls.hasOwnProperty(index)) {
                     let partyCodeEl = drPartyCodeEls[index];
@@ -367,7 +367,7 @@
         }
         console.log(jorurnal);
         // Firestore Store
-        formDataToFire("JournalForm", entryNo.value, jorurnal, journalClearer);
+        formDataToFire("JournalForm", entryNo.value, jorurnal, clearFields);
         // let journalForm = lsExGJInit('journalForm', []);
         // journalForm.push(jorurnal);
         // lsSetJ('journalForm', journalForm);
