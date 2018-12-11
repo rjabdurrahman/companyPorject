@@ -272,4 +272,8 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
   $scope.journal = [...lsExGJInit('journalForm', []), ...lsExGJInit('purchaseForm', []), ...lsExGJInit('purchaseReturnForm', []), ...lsExGJInit('salesForm', []), ...lsExGJInit('salesReturnForm', []), ...lsExGJInit('prdInputForm', []), ...lsExGJInit('prdOutputForm', [])];
+  $scope.changerDC = function (code) {
+    if (code == 'Dr') return 'Debit';
+    if (code == 'Cr') return 'Credit';
+  }
 });
