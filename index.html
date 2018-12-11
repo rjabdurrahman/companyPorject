@@ -21,18 +21,28 @@
     <script src="xlsx.full.min.js"></script>
     <script src="FileSaver.js/src/FileSaver.js"></script>
     <style>
-        .ledger-header div{
+        .ledger-header div {
             width: 100%;
             box-sizing: border-box;
             margin-left: 10px;
             margin-right: 10px;
         }
-        .ledger-header div:first-child{
-            width: 300px;
+
+        .ledger-header div:first-child {
+            width: 480px;
         }
-        .ledger-header div:last-child{
+
+        .ledger-header div:last-child {
             width: 300px;
             margin-left: 0;
+        }
+
+        .ledger-header div label {
+            padding-left: 5px;
+        }
+
+        .ledger-header div input {
+            text-align: center;
         }
 
         .journal-csbtn {
@@ -55,7 +65,8 @@
                 position: absolute;
                 right: 10px;
             }
-            .nav-menus{
+
+            .nav-menus {
                 display: none;
             }
         }
@@ -127,17 +138,17 @@
                         </div>
                         <a ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal" class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
                         <div class="w3-dropdown-hover">
-                        <button ng-class="{'w3-border' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="#debitledger" class="w3-bar-item w3-button w3-mobile">Debit Ledger</a>
-                            <a href="#creditledger" class="w3-bar-item w3-button w3-mobile">Credit Ledger</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Expense Ledger</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Debitor Ledger</a>
-                            <a href="#" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
+                            <button ng-class="{'w3-border' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a href="#debitledger" class="w3-bar-item w3-button w3-mobile">Debit Ledger</a>
+                                <a href="#creditledger" class="w3-bar-item w3-button w3-mobile">Credit Ledger</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Expense Ledger</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Debitor Ledger</a>
+                                <a href="#" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
+                            </div>
                         </div>
-                    </div>
                         <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
                             Out
                         </button>
