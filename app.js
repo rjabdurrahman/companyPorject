@@ -273,16 +273,15 @@ app.controller('JournalCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Journal";
   $scope.journal = [];
   fsDb.collection("JournalForm").get()
-  .then(function(snapshot){
-    snapshot.docs.forEach(element => {
-      $print(element.data());
-      $scope.journal.push(element.data());
-      $scope.$applyAsync();
+    .then(function (snapshot) {
+      snapshot.docs.forEach(element => {
+        $scope.journal.push(element.data());
+        $scope.$applyAsync();
+      });
+    })
+    .catch(function (err) {
+      $print(err);
     });
-  })
-  .catch(function(err){
-    $print(err);
-  });
 
   $scope.changerDC = function (code) {
     if (code == 'Dr') return 'Debit';
