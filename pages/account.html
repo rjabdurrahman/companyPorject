@@ -32,7 +32,7 @@
                                         <button class="w3-btn w3-blue">Edit</button>
                                     </td>
                                     <td>
-                                        <button class="w3-btn w3-red">Delete</button>
+                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -180,6 +180,11 @@
         // else if (accCodeInitNode.tagName == 'SELECT') {
         //     accCodeInitNode.selectedIndex = 0;
         // }
+    }
+
+    // Delete data
+    function removeItem(e){
+        getRef('accounts').child(e.target.id).remove();
     }
 
     function printAccounts() {
