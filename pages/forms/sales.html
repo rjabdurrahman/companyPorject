@@ -428,26 +428,6 @@
             description.focus();
             return;
         }
-        for (index in drPartyCodeEls) {
-            if (drPartyCodeEls.hasOwnProperty(index)) {
-                let partyCodeEl = drPartyCodeEls[index];
-                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, drAmount);
-            }
-            if (crPartyCodeEls.hasOwnProperty(index)) {
-                let partyCodeEl = crPartyCodeEls[index];
-                let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
-                let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
-                let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
-                let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
-                clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
-            }
-        }
         let sales = {
             entryNo: parseInt(entryNo.value),
             voucherNo: parseInt(voucherNo.value),
@@ -463,14 +443,37 @@
             totalPriceTK: parseFloat(totalPriceTK.value.split(',').join("")),
             description: description.value
         }
+        function clearFields() {
+            for (index in drPartyCodeEls) {
+                if (drPartyCodeEls.hasOwnProperty(index)) {
+                    let partyCodeEl = drPartyCodeEls[index];
+                    let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                    let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                    let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                    let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                    let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                    clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, drAmount);
+                }
+                if (crPartyCodeEls.hasOwnProperty(index)) {
+                    let partyCodeEl = crPartyCodeEls[index];
+                    let partyNameEl = partyCodeEl.parentElement.nextElementSibling.firstElementChild;
+                    let ACCodeEl = partyNameEl.parentElement.nextElementSibling.firstElementChild;
+                    let ACNameEl = ACCodeEl.parentElement.nextElementSibling.firstElementChild;
+                    let drAmount = ACNameEl.parentElement.nextElementSibling.firstElementChild;
+                    let crAmount = drAmount.parentElement.nextElementSibling.firstElementChild;
+                    clearer(partyCodeEl, partyNameEl, ACCodeEl, ACNameEl, crAmount);
+                }
+            }
+            clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, stdUnit, totalQuantity, packSize, stdUnitPrice, totalPriceTK, totalPriceA);
+            $js('totalDebit').innerHTML = "";
+            $js('totalCredit').innerHTML = "";
+            $js('submitBtn').disabled = true;
+        }
         console.log(sales);
-        let salesForm = lsExGJInit('salesForm', []);
-        salesForm.push(sales);
-        lsSetJ('salesForm', salesForm);
-        clearer(entryNo, voucherNo, date, description, primaryUnit, primaryQuantity, primaryUnitPrice, stdUnit, totalQuantity, packSize, stdUnitPrice, totalPriceTK, totalPriceA);
-        $js('totalDebit').innerHTML = "";
-        $js('totalCredit').innerHTML = "";
-        $js('submitBtn').disabled = true;
-        $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // Firestore Store
+        formDataToFire("Sales", entryNo.value, sales, clearFields);
+        // let salesForm = lsExGJInit('salesForm', []);
+        // salesForm.push(sales);
+        // lsSetJ('salesForm', salesForm);
     });
 </script>
