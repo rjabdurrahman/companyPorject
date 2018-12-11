@@ -276,6 +276,7 @@ app.controller('JournalCntlr', function ($scope, $firebaseArray) {
   .then(function(snapshot){
     $print(snapshot.docs);
     $scope.journal = snapshot.docs;
+    $firebaseArray(snapshot);
   })
   .catch(function(err){
     $print(err);
