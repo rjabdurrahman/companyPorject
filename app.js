@@ -317,7 +317,7 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
   }
   // Debit Taker End
   $scope.total = function (arr, index) {
-    if (index == 0) return;
+    if (index == -1) return;
     let total = 0;
     for (i = 0; i <= index; i++) {
       total += arr[i].debitCredit[0].drAmount;
