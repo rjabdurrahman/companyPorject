@@ -296,10 +296,13 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
   $scope.recShow = false;
   $scope.begBalance = $firebaseArray(getRef('begBalance'));
   $scope.debitTaker = function (e) {
-    let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild.value;
-    $print(code);
+    let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild;
+    let dateTo = code.parentElement.previousElementSibling.lastElementChild;
+    let dateFrom = dateTo.parentElement.previousElementSibling.lastElementChild;
+    $print(dateTo.value);
+    $print(dateFrom.value);
     $scope.records = [];
-    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code).where("date", "==", 1544551200000).get()
+    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code.value).where("date", "==", 1544551200000).get()
       .then(function (snapshot) {
         snapshot.docs.forEach(element => {
           $scope.records.push(element.data());
