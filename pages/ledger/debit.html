@@ -97,7 +97,7 @@
                                     <td>{{rec.debitCredit[1].partyCode}}</td>
                                     <td style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
                                     <td style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
-                                    <td ng-if="$index == 0" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value + rec.debitCredit[0].drAmount}}</td>
                                     <td ng-if="$index > 0" style="text-align: right;">{{records[$index - 1].debitCredit[0].drAmount + rec.debitCredit[0].drAmount}}</td>
                                 </tr>
                             </tbody>
