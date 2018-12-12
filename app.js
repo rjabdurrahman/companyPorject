@@ -114,12 +114,12 @@ app.config(function ($routeProvider) {
     })
     .when('/debitledger', {
       templateUrl: 'pages/ledger/debit.html',
-      controller: 'JournalCntlr',
+      controller: 'LedgerCntlr',
       activetab: 'ledger'
     })
     .when('/creditledger', {
       templateUrl: 'pages/ledger/credit.html',
-      controller: 'JournalCntlr',
+      controller: 'LedgerCntlr',
       activetab: 'ledger'
     })
     .otherwise({ redirectTo: '/' });
@@ -269,7 +269,7 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
   partyArray.push($firebaseArray(getRef('rice')));
   partyArray.push($firebaseArray(getRef('truckTrackors')));
 });
-app.controller('JournalCntlr', function ($scope, $firebaseArray) {
+app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
   $scope.journal = [];
   fsDb.collection("JournalForm").get()
@@ -287,4 +287,9 @@ app.controller('JournalCntlr', function ($scope, $firebaseArray) {
     if (code == 'Dr') return 'Debit';
     if (code == 'Cr') return 'Credit';
   }
+});
+// LedgerCntlr
+app.controller('LedgerCntlr', function ($scope) {
+  $scope.title = "Debit Ledger";
+  $print('is ok');
 });
