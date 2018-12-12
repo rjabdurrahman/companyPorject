@@ -35,7 +35,7 @@
                                     <th>SEQ No</th>
                                 </tr>
                             </thead>
-                            <tbody ng-repeat="jor in journal track by $index">
+                            <tbody ng-repeat="jor in journal | orderBy : 'entryNo' : true track by $index">
                                 <tr ng-repeat="deb in jor.debitCredit track by $index">
                                     <td>{{jor.entryNo}}</td>
                                     <td>{{jor.date}}</td>
