@@ -287,6 +287,11 @@ app.controller('JournalCntlr', function ($scope) {
     if (code == 'Dr') return 'Debit';
     if (code == 'Cr') return 'Credit';
   }
+  $scope.numToDate = function (num) {
+    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let date = new Date(num);
+    return date.getDate().toString() + mon[date.getMonth()] + date.getFullYear().toString();
+  }
 });
 // LedgerCntlr
 app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
