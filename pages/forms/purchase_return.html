@@ -269,6 +269,8 @@
         let stdUnitPrice = $js('stdUnitPrice');
         let description = $js('description');
         let debitCredit = [];
+        let dACCodes = [];
+        let cACCodes = [];
         var drPartyCodeEls = $sn('drPartyCode');
         var crPartyCodeEls = $sn('crPartyCode');
         // Warning for Empty
@@ -328,6 +330,7 @@
                     ACName: ACNameEl.value,
                     drAmount: parseFloat(drAmount.value)
                 }
+                dACCodes.push(ACCodeEl.value);
                 debitCredit.push(debit);
             }
             if (crPartyCodeEls.hasOwnProperty(index)) {
@@ -365,6 +368,7 @@
                     ACName: ACNameEl.value,
                     crAmount: parseFloat(crAmount.value)
                 }
+                cACCodes.push(ACCodeEl.value);
                 debitCredit.push(credit);
             }
         }
@@ -413,6 +417,8 @@
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
             debitCredit: debitCredit,
+            dACCodes: dACCodes,
+            cACCodes: cACCodes,
             primaryUnit: primaryUnit.value,
             primaryQuantity: parseFloat(primaryQuantity.value),
             primaryUnitPrice: parseFloat(primaryUnitPrice.value),
