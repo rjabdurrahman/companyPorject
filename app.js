@@ -292,6 +292,7 @@ app.controller('JournalCntlr', function ($scope) {
 // LedgerCntlr
 app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Debit Ledger";
+  $scope.numToDate = numToDateConv;
   $scope.recShow = false;
   $scope.begBalance = $firebaseArray(getRef('begBalance'));
   $scope.debitTaker = function (e) {
