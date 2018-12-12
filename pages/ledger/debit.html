@@ -133,6 +133,7 @@
 </div>
 <script>
     function initBalSubmit(){
-        getRef('begBalance').set({value : 10});
+        let inBal = parseFloat($js('initBalance').value);
+        getRef('begBalance').set({value : inBal});
     }
 </script>
