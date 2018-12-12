@@ -172,13 +172,13 @@ function formDataToFire(cname, dname, data, cleardata) {
 // Date to Number function
 function dateToNum(dateStr) {
     let dateArr = dateStr.split('-');
-    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let date = new Date(parseInt('20' + dateArr[2]), parseInt(mon.indexOf(dateArr[1])), parseInt(dateArr[0]));
     return Date.parse(date);
 }
 
 var numToDateConv = function (num) {
-    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let date = new Date(num);
     return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString().slice(-2);
 }
