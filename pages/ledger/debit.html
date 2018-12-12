@@ -114,7 +114,7 @@
 <script>
     function claculateDebit() {
         let code = $js('accCode').value;
-        fsDb.collection("JournalForm").where('debitCredit', 'array-contains', {ACCode : 'CA-1111-11'}).get()
+        fsDb.collection("JournalForm").where('ACCodes', 'array-contains', 'CA-1111-11').get()
             .then(function (snapshot) {
                 snapshot.docs.forEach(element => {
                     $print(element.data())
