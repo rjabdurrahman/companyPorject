@@ -302,7 +302,7 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
     $print(dateToNum(dateTo.value));
     $print(dateToNum(dateFrom.value));
     $scope.records = [];
-    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code.value).where("date", "==", dateToNum(dateFrom.value)).get()
+    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
       .then(function (snapshot) {
         snapshot.docs.forEach(element => {
           $scope.records.push(element.data());
