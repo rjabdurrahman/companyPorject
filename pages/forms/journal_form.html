@@ -222,7 +222,8 @@
         let costCenter = $js('costCenter');
         let description = $js('description');
         let debitCredit = [];
-        let ACCodes = [];
+        let dACCodes = [];
+        let cACCodes = [];
         var drPartyCodeEls = $sn('drPartyCode');
         var crPartyCodeEls = $sn('crPartyCode');
         // Warning for Empty
@@ -282,7 +283,7 @@
                     ACName: ACNameEl.value,
                     drAmount: parseFloat(drAmount.value)
                 }
-                ACCodes.push(ACCodeEl.value);
+                dACCodes.push(ACCodeEl.value);
                 debitCredit.push(debit);
             }
             if (crPartyCodeEls.hasOwnProperty(index)) {
@@ -320,7 +321,7 @@
                     ACName: ACNameEl.value,
                     crAmount: parseFloat(crAmount.value)
                 }
-                ACCodes.push(ACCodeEl.value);
+                cACCodes.push(ACCodeEl.value);
                 debitCredit.push(credit);
             }
         }
@@ -338,7 +339,8 @@
             entryNo: parseInt(lastEntryNo[0].$value),
             voucherNo: parseInt(voucherNo.value),
             date: date.value,
-            ACCodes : ACCodes,
+            dACCodes : dACCodes,
+            cACCodes : cACCodes,
             debitCredit: debitCredit,
             costCenter: costCenter.value,
             description: description.value
