@@ -169,3 +169,11 @@ function formDataToFire(cname, dname, data, cleardata) {
             $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
         });
 }
+// Date to Number function
+function dateToNum(dateStr) {
+    let dateArr = dateStr.split('-');
+    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let date = new Date(parseInt('20' + dateArr[2]), parseInt(mon.indexOf(dateArr[1])), parseInt(dateArr[0]));
+    return Date.parse(date);
+}
+$print(dateToNum('12-Apr-18'));
