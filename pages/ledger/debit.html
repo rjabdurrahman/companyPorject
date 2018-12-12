@@ -11,11 +11,11 @@
                 </div>
                 <div style="width: 500px;">
                     <label>Date From</label>
-                    <input class="w3-input w3-border" type="text">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
                 </div>
                 <div style="width: 500px;">
                     <label>Date To</label>
-                    <input class="w3-input w3-border" type="text">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
                 </div>
                 <div>
                     <label>Account Code</label>
@@ -57,7 +57,8 @@
                                     <td>Total</td>
                                     <td style="text-align: right;">{{total(records, records.length - 1)}}</td>
                                     <td style="text-align: right;">_____</td>
-                                    <td style="text-align: right;">{{begBalance[0].$value + total(records, records.length - 1)}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + total(records,
+                                        records.length - 1)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,8 +98,10 @@
                                     <td>{{rec.debitCredit[1].partyCode}}</td>
                                     <td style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
                                     <td style="text-align: right;">_____</td> <!-- {{rec.debitCredit[1].crAmount}} -->
-                                    <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value + rec.debitCredit[0].drAmount}}</td>
-                                    <td ng-if="$index > 0" style="text-align: right;">{{begBalance[0].$value + total(records, $index)}}</td>
+                                    <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value +
+                                        rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="$index > 0" style="text-align: right;">{{begBalance[0].$value +
+                                        total(records, $index)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -133,8 +136,8 @@
     </div>
 </div>
 <script>
-    function initBalSubmit(){
+    function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
-        getRef('begBalance').set({value : inBal});
+        getRef('begBalance').set({ value: inBal });
     }
 </script>
