@@ -296,7 +296,7 @@ app.controller('LedgerCntlr', function ($scope) {
     let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild.value;
     $print(code);
     $scope.records = [];
-    fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code).get()
+    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code).get()
       .then(function (snapshot) {
         snapshot.docs.forEach(element => {
           $scope.records.push(element.data());
