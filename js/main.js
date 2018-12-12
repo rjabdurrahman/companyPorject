@@ -180,5 +180,5 @@ function dateToNum(dateStr) {
 var numToDateConv = function (num) {
     let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     let date = new Date(num);
-    return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString();
+    return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString().slice(-2);
 }
