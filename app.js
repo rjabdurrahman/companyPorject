@@ -299,7 +299,7 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
     let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild.value;
     $print(code);
     $scope.records = [];
-    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code).get()
+    fsDb.collection("JournalForm").where('dACCodes', 'array-contains', code).where("date", "==", 1544551200000).get()
       .then(function (snapshot) {
         snapshot.docs.forEach(element => {
           $scope.records.push(element.data());
