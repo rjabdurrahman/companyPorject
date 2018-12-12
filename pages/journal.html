@@ -38,7 +38,7 @@
                             <tbody ng-repeat="jor in journal | orderBy : 'entryNo' : true track by $index">
                                 <tr ng-repeat="deb in jor.debitCredit track by $index">
                                     <td>{{jor.entryNo}}</td>
-                                    <td>{{jor.date}}</td>
+                                    <td>{{numToDate(jor.date)}}</td>
                                     <td>{{jor.voucherNo}}</td>
                                     <td>{{deb.partyCode}}</td>
                                     <td>{{deb.partyName}}</td>

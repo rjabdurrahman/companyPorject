@@ -161,7 +161,7 @@ var lastEntryNo = null;
 function formDataToFire(cname, dname, data, cleardata) {
     fsDb.collection(cname).doc(dname).set(data)
         .then(function () {
-            db.child('lastFormEntry').set({value: ++lastEntryNo[0].$value});
+            db.child('lastFormEntry').set({ value: ++lastEntryNo[0].$value });
             $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
             cleardata();
         })
@@ -175,4 +175,10 @@ function dateToNum(dateStr) {
     let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     let date = new Date(parseInt('20' + dateArr[2]), parseInt(mon.indexOf(dateArr[1])), parseInt(dateArr[0]));
     return Date.parse(date);
+}
+
+var numToDateConv = function (num) {
+    let mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let date = new Date(num);
+    return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString();
 }
