@@ -114,6 +114,14 @@
 <script>
     function claculateDebit() {
         let code = $js('accCode').value;
-        $print(code);
+        fsDb.collection("JournalForm").where("entryNo", "==", 11).get()
+            .then(function (snapshot) {
+                snapshot.docs.forEach(element => {
+                    $print(element.data())
+                });
+            })
+            .catch(function (err) {
+                $print(err);
+            });
     }
 </script>
