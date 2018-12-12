@@ -176,4 +176,3 @@ function dateToNum(dateStr) {
     let date = new Date(parseInt('20' + dateArr[2]), parseInt(mon.indexOf(dateArr[1])), parseInt(dateArr[0]));
     return Date.parse(date);
 }
-$print(dateToNum('12-Apr-18'));
