@@ -33,7 +33,7 @@
             <div class="clearfix" style="height: 18px;"></div>
         </div>
         <!-- Head Table -->
-        <div class="margin-auto" style="width: 75%; margin-top: 18px; margin-bottom: 18px;">
+        <div ng-show="recShow" class="margin-auto" style="width: 75%; margin-top: 18px; margin-bottom: 18px;">
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
                     <div class="w3-responsive">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <!-- Debits Table -->
-        <div class="margin-auto chart-box">
+        <div ng-show="recShow" class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Debit Records</label>
             </section>
@@ -101,10 +101,10 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
+                        <!-- <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
                                 alt="Loading..." style="height: 25px; width: 25px;"></div>
                         <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
-                            Data Found!</div>
+                            Data Found!</div> -->
                     </div>
                 </div>
             </div>
