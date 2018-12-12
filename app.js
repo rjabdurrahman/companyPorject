@@ -291,8 +291,10 @@ app.controller('JournalCntlr', function ($scope) {
 // LedgerCntlr
 app.controller('LedgerCntlr', function ($scope) {
   $scope.title = "Debit Ledger";
-  $scope.debitTaker = function (code) {
-    fsDb.collection("JournalForm").where('ACCodes', 'array-contains', 'CA-1111-11').get()
+  $scope.debitTaker = function (e) {
+    let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild.value;
+    $print(code);
+    fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code).get()
       .then(function (snapshot) {
         snapshot.docs.forEach(element => {
           $print(element.data())
