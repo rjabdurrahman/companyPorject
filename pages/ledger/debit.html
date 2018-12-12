@@ -56,8 +56,8 @@
                                 <tr>
                                     <td>Total</td>
                                     <td style="text-align: right;">{{total(records, records.length - 1)}}</td>
-                                    <td style="text-align: right;">{{total(records, records.length - 1)}}</td>
                                     <td style="text-align: right;">_____</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + total(records, records.length - 1)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -96,7 +96,7 @@
                                     <td>{{rec.debitCredit[1].ACName}}</td>
                                     <td>{{rec.debitCredit[1].partyCode}}</td>
                                     <td style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
-                                    <td style="text-align: right;"></td> <!-- {{rec.debitCredit[1].crAmount}} -->
+                                    <td style="text-align: right;">_____</td> <!-- {{rec.debitCredit[1].crAmount}} -->
                                     <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value + rec.debitCredit[0].drAmount}}</td>
                                     <td ng-if="$index > 0" style="text-align: right;">{{begBalance[0].$value + total(records, $index)}}</td>
                                 </tr>
