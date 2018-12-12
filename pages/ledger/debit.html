@@ -88,15 +88,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
+                                <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
-                                    <td>{{comAcc.nature}}</td>
-                                    <td>{{comAcc.accCode}}</td>
-                                    <td>{{comAcc.accText}}</td>
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{comAcc.nature}}</td>
-                                    <td>{{comAcc.accCode}}</td>
-                                    <td>{{comAcc.accText}}</td>
+                                    <td>{{rec.date}}</td>
+                                    <td>{{rec.debitCredit[1].partyName}}</td>
+                                    <td>{{rec.debitCredit[1].ACCode}}</td>
+                                    <td>{{rec.debitCredit[1].ACName}}</td>
+                                    <td>{{rec.debitCredit[1].partyCode}}</td>
+                                    <td>{{rec.debitCredit[0].drAmount}}</td>
+                                    <td>{{rec.debitCredit[1].crAmount}}</td>
                                     <td></td>
                                 </tr>
                             </tbody>
