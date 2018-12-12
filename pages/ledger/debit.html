@@ -109,7 +109,30 @@
                 </div>
             </div>
         </div>
+        <!-- Debit Table End -->
+        <div ng-show="begBalance[0].$value == -1" class="div-box w3-light-gray w3-card-4 margin-auto" style="position: fixed; top: calc((100vh - 300px)/2); left: calc((100% - 500px)/2);">
+            <div class="w3-container main-bg-color div-title">
+                <h2>Begining Balance</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Begining Balance</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" style="text-align: right" id="initBalance">
+                    </div>
+                </div>
+                <p class="clearfix">
+                    <button onclick="initBalSubmit()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                </p>
+            </div>
+        </div>
+        <!-- Begining Balence Taker End -->
     </div>
 </div>
 <script>
+    function initBalSubmit(){
+        getRef('begBalance').set({value : 10});
+    }
 </script>
