@@ -7,22 +7,12 @@
 4. Journal form description responsive
 5. Menubar responsive
 6. Homepage login flexer
-7. Form entry minus button
-*8. Edit/Delete for chart table
+*8. Edit for chart table
 9. Account Code Firefox flex
-10. Receivables AC Code autocomplete action not working.
 
 *ASK
-1. Form Entry auto field creation respectively
 2. Date and Time
 
 ????
-3. Total Price double in Purchase and Purchase Return
-4. Standard Unit not in table
-
-
-* Problem Found
-Journal table two column not exist
-
-????
-1. RM Code RW Materials not in Journal table
+1. Code already exist notice on type
+2. Space Remove in paste code or write code
