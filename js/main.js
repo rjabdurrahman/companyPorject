@@ -185,3 +185,10 @@ var numToDateConv = function (num) {
     let date = new Date(num);
     return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString().slice(-2);
 }
+
+// JSX Alernative
+function jsx(html) {
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = html;
+    return wrapper.firstElementChild;
+}
