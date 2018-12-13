@@ -142,8 +142,8 @@ input.w3-input:hover, input.w3-input:focus, textarea.w3-input:hover, textarea.w3
 }
 
 input[type="text"]:disabled {
-    background: white;
-    color: gray;
+    background: #fdf5e6 ;
+    color: black;
 }
 
 input[type="text"]:disabled:hover {
