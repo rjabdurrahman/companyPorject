@@ -250,8 +250,7 @@
         let seqNo = $js('seqNo');
         let description = $js('description');
         let debitCredit = [];
-        let dACCodes = [];
-        let cACCodes = [];
+        let ACCodes = [];
         var drPartyCodeEls = $sn('drPartyCode');
         var crPartyCodeEls = $sn('crPartyCode');
         // Warning for Empty
@@ -322,7 +321,7 @@
                     ACName: ACNameEl.value,
                     drAmount: parseFloat(drAmount.value)
                 }
-                dACCodes.push(ACCodeEl.value);
+                ACCodes.push(ACCodeEl.value);
                 debitCredit.push(debit);
             }
             if (crPartyCodeEls.hasOwnProperty(index)) {
@@ -389,7 +388,7 @@
                     crAmount: parseFloat(crAmount.value)
                 }
                 $print(credit);
-                cACCodes.push(ACCodeEl.value);
+                ACCodes.push(ACCodeEl.value);
                 debitCredit.push(credit);
             }
         }
@@ -405,8 +404,7 @@
             psNo: parseInt(psNo.value),
             seqNo: parseInt(seqNo.value),
             debitCredit: debitCredit,
-            dACCodes: dACCodes,
-            cACCodes: cACCodes,
+            ACCodes: ACCodes,
             description: description.value
         }
         function clearFields() {
