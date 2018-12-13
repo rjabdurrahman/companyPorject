@@ -54,6 +54,9 @@ function clearer(...fields) {
     }
 }
 
+// Date Expression
+var dateEx = /^\d{1,2}-(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-\d{2}$/i;
+
 function numValidate(evt) {
     var theEvent = evt || window.event;
 
