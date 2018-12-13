@@ -48,7 +48,7 @@
         <div id="confirmDel" class="w3-modal">
             <div class="w3-modal-content w3-animate-zoom w3-card-4" style="width: 450px;">
                 <header class="w3-container main-bg-color">
-                    <span onclick="document.getElementById('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                     <h2>Confirm Delete?</h2>
                 </header>
                 <div class="w3-container">
@@ -57,8 +57,8 @@
                 </div>
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
-                        <button class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Delete</button>
-                        <button class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                        <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Delete</button>
+                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
             </div>
@@ -202,7 +202,12 @@
 
     // Delete data
     function removeItem(e) {
-        getRef('accounts').child(e.target.id).remove();
+        $js('confirmDel').style.display = 'block';
+        $js('delAcBtn').addEventListener('click', function () {
+            getRef('accounts').child(e.target.id).remove();
+            $js('confirmDel').style.display = 'none';
+            $('#notification').html("<h6>Deleted Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        });
     }
 
     function printAccounts() {
