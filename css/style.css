@@ -120,7 +120,6 @@ a.w3-button, button.w3-button {
 
 input, select, option, textarea {
     outline: none;
-    border-radius: 4px;
 }
 
 .w3-btn {
@@ -147,7 +146,7 @@ input[type="text"]:disabled {
     color: gray;
 }
 
-input[type="text"]:disabled:hover{
+input[type="text"]:disabled:hover {
     border: 1px solid #ccc !important;
 }
 
@@ -306,11 +305,12 @@ input#userPasswordField {
 
 /* Chart Table Style */
 
-.chart-tables td:first-child, .chart-tables th:first-child{
+.chart-tables td:first-child, .chart-tables th:first-child {
     padding-left: 40px !important;
     width: 100px !important;
 }
-.chart-tables td, .chart-tables th{
+
+.chart-tables td, .chart-tables th {
     padding-left: 30px !important;
 }
 
