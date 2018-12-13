@@ -295,11 +295,12 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
   $scope.numToDate = numToDateConv;
   $scope.recShow = false;
   $scope.begBalance = $firebaseArray(getRef('begBalance'));
+  accArrayA = $firebaseArray(getRef('accounts'));
   $scope.debitTaker = function (e) {
     let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild;
     let dateTo = code.parentElement.previousElementSibling.lastElementChild;
     let dateFrom = dateTo.parentElement.previousElementSibling.lastElementChild;
-    
+
     if (dateFrom.value == "") {
       $('#notification').html("<h6>Input Date From</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
       dateFrom.focus();
