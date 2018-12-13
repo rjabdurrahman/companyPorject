@@ -186,6 +186,16 @@ var numToDateConv = function (num) {
     return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString().slice(-2);
 }
 
+// Index wise array total
+function arrTotal(arr, index) {
+    if (index == -1) return;
+    let total = 0;
+    for (i = 0; i <= index; i++) {
+        total += arr[i].debitCredit[0].drAmount;
+    }
+    return total;
+}
+
 // JSX Alernative
 function jsx(html) {
     var wrapper = document.createElement('div');
