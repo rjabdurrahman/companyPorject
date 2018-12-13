@@ -92,14 +92,14 @@
                                 <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{numToDate(rec.date)}}</td>
-                                    <td>{{rec.debitCredit[1].partyName}}</td>
-                                    <td>{{rec.debitCredit[1].ACCode}}</td>
-                                    <td>{{rec.debitCredit[1].ACName}}</td>
-                                    <td>{{rec.debitCredit[1].partyCode}}</td>
-                                    <td style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
-                                    <td style="text-align: right;">_____</td> <!-- {{rec.debitCredit[1].crAmount}} -->
+                                    <td>{{rec.debitCredit[0].partyName}}</td>
+                                    <td>{{rec.debitCredit[0].ACCode}}</td>
+                                    <td>{{rec.debitCredit[0].ACName}}</td>
+                                    <td>{{rec.debitCredit[0].partyCode}}</td>
+                                    <td style="text-align: right;">_____</td>
+                                    <td style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
                                     <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value +
-                                        rec.debitCredit[0].drAmount}}</td>
+                                        rec.debitCredit[1].crAmount}}</td>
                                     <td ng-if="$index > 0" style="text-align: right;">{{begBalance[0].$value +
                                         total(records, $index)}}</td>
                                 </tr>

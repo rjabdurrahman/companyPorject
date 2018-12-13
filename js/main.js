@@ -191,7 +191,7 @@ function arrTotal(arr, index) {
     if (index == -1) return;
     let total = 0;
     for (i = 0; i <= index; i++) {
-        total += arr[i].debitCredit[0].drAmount;
+        total += arr[i].debitCredit[1].crAmount;
     }
     return total;
 }
