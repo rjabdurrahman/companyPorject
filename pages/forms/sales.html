@@ -284,8 +284,7 @@
         let packSize = $js('packSize');
         let description = $js('description');
         let debitCredit = [];
-        let dACCodes = [];
-        let cACCodes = [];
+        let ACCodes = [];
         var drPartyCodeEls = $sn('drPartyCode');
         var crPartyCodeEls = $sn('crPartyCode');
         // Warning for Empty
@@ -383,7 +382,7 @@
                     ACName: ACNameEl.value,
                     crAmount: parseFloat(crAmount.value)
                 }
-                cACCodes.push(ACCodeEl.value);
+                ACCodes.push(ACCodeEl.value);
                 debitCredit.push(credit);
             }
         }
@@ -437,8 +436,7 @@
             voucherNo: parseInt(voucherNo.value),
             date: dateToNum(date.value),
             debitCredit: debitCredit,
-            dACCodes: dACCodes,
-            cACCodes: cACCodes,
+            ACCodes: ACCodes,
             primaryUnit: primaryUnit.value,
             primaryQuantity: parseFloat(primaryQuantity.value),
             primaryUnitPrice: parseFloat(primaryUnitPrice.value),
