@@ -147,6 +147,10 @@ input[type="text"]:disabled {
     color: gray;
 }
 
+input[type="text"]:disabled:hover{
+    border: 1px solid #ccc !important;
+}
+
 .margin-auto {
     margin: auto;
 }
