@@ -297,12 +297,19 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
   $scope.begBalance = $firebaseArray(getRef('begBalance'));
   accArrayA = $firebaseArray(getRef('accounts'));
   $scope.debitTaker = function (e) {
-    let code = e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild;
+    let name = e.target.parentElement.previousElementSibling.lastElementChild;
+    let code = name.parentElement.previousElementSibling.lastElementChild;
     let dateTo = code.parentElement.previousElementSibling.lastElementChild;
     let dateFrom = dateTo.parentElement.previousElementSibling.lastElementChild;
+    $print(name);
 
     if (dateFrom.value == "") {
       $('#notification').html("<h6>Input Date From</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+      dateFrom.focus();
+      return;
+    }
+    else if (!(dateFrom.value).match(dateEx)) {
+      $('#notification').html("<h6>Date From Format Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
       dateFrom.focus();
       return;
     }
@@ -316,13 +323,13 @@ app.controller('LedgerCntlr', function ($scope, $firebaseArray) {
       dateTo.focus();
       return;
     }
-    else if (!(dateFrom.value).match(dateEx)) {
-      $('#notification').html("<h6>Date From Format Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-      dateFrom.focus();
-      return;
-    }
     else if (code.value == "") {
       $('#notification').html("<h6>Input Account Code</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+      code.focus();
+      return;
+    }
+    else if (name.value == "") {
+      $('#notification').html("<h6>Account Code Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
       code.focus();
       return;
     }
