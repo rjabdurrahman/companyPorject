@@ -212,7 +212,11 @@
 
     function editItem(e){
         let id = e.target.id.slice(0, -1);;
-        $print(id);
+        let head = e.target.parentElement.previousElementSibling;
+        let code = head.previousElementSibling;
+        let nature = code.previousElementSibling;
+        head.innerHTML = '<input type="text" value="'+ head.textContent +'">';
+        $print(nature);
     }
 
     function printAccounts() {
