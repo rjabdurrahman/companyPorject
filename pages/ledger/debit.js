@@ -48,7 +48,10 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
         fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 snapshot.docs.forEach(element => {
-                    $scope.records.push(element.data());
+                    let obj = element.data();
+                    obj.sCode = code.value;
+                    $print(obj);
+                    $scope.records.push(obj);
                     $scope.$applyAsync();
                     $scope.recShow = true;
                     $print($scope.records);
