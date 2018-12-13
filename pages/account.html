@@ -30,6 +30,7 @@
                                     <td>{{comAcc.accText}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
                                     </td>
                                     <td>
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
@@ -216,8 +217,10 @@
         let code = head.previousElementSibling;
         let nature = code.previousElementSibling;
         head.innerHTML = '<input type="text" value="'+ head.textContent +'">';
-        $print(nature);
+        code.innerHTML = '<input type="text" value="'+ code.textContent +'">';
+        nature.innerHTML = '<input type="text" value="'+ nature.textContent +'">';
         e.target.style.display = 'none';
+        e.target.nextElementSibling.style.display = 'block';
     }
 
     function printAccounts() {
