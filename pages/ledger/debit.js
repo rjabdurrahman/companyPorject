@@ -61,4 +61,11 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
                 $print(err);
             });
     }
+
+    var mainTotal = 100;
+    $scope.adder = function (some) {
+        // mainTotal = mainTotal + some;
+        $print('called');
+        // return mainTotal;
+    }
 });

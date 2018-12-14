@@ -110,8 +110,8 @@
                                     <td ng-if="$index == 0 && rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{(begBalance[0].$value
                                         -
                                         rec.debitCredit[1].crAmount)}}</td>
-                                    <td ng-if="$index > 0 && rec.sCode == rec.ACCodes[0]" style="text-align: right;">{{(rec.debitCredit[0].drAmount)}}</td>
-                                    <td ng-if="$index > 0 && rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{(rec.debitCredit[1].crAmount)}}</td>
+                                    <td ng-if="$index > 0 && rec.sCode == rec.ACCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="$index > 0 && rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
                                 </tr>
                             </tbody>
                         </table>
