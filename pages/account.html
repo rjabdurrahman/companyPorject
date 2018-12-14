@@ -235,11 +235,11 @@
             accText: head.value,
         }
         getRef('accounts/' + id).update(uData);
-        // head.innerHTML = '<input type="text" value="'+ head.textContent +'">';
-        // code.innerHTML = '<input type="text" value="'+ code.textContent +'">';
-        // nature.innerHTML = '<input type="text" value="'+ nature.textContent +'">';
-        // e.target.style.display = 'none';
-        // e.target.nextElementSibling.style.display = 'block';
+        head.parentElement.innerHTML = head.value;
+        code.parentElement.innerHTML = code.value;
+        nature.parentElement.innerHTML = nature.value;
+        e.target.style.display = 'none';
+        e.target.previousElementSibling.style.display = 'block';
     }
 
     function printAccounts() {
