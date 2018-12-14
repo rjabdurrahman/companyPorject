@@ -81,7 +81,7 @@ var accounts = {
     CL: { name: 'Current Liability', min: 3001, max: 3999 },
     NCL: { name: 'Non-Current Liability', min: 4001, max: 4999 },
     EQTY: { name: 'Equity', min: 5001, max: 5999 },
-    EX: { name: 'Experience', min: 6001, max: 6999 },
+    EX: { name: 'Expense', min: 6001, max: 6999 },
     REV: { name: 'Revenue', min: 7001, max: 7999 },
     WD: { name: 'Withdrawal', min: 9501, max: 9749 },
     SD: { name: 'Contra Revenue', min: 9750, max: 9999 },
