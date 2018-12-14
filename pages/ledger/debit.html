@@ -55,10 +55,10 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td style="text-align: right;">{{arrTotal(records, records.length - 1)}}</td>
-                                    <td style="text-align: right;">_____</td>
+                                    <td style="text-align: right;">{{arrTotal(records, records.length - 1, 1)}}</td>
+                                    <td style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 2)}}</td>
                                     <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
-                                        records.length - 1)}}</td>
+                                        records.length - 1, 0)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -104,7 +104,7 @@
                                     <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
-                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index)}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index, 0)}}</td>
                                 </tr>
                             </tbody>
                         </table>
