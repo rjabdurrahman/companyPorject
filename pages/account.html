@@ -229,7 +229,12 @@
         let head = e.target.parentElement.previousElementSibling.firstElementChild;
         let code = head.parentElement.previousElementSibling.firstElementChild;
         let nature = code.parentElement.previousElementSibling.firstElementChild;
-        // getRef('accounts').child(id).set({});
+        let uData = {
+            nature: nature.value,
+            accCode: code.value,
+            accText: head.value,
+        }
+        getRef('accounts/' + id).update(uData);
         // head.innerHTML = '<input type="text" value="'+ head.textContent +'">';
         // code.innerHTML = '<input type="text" value="'+ code.textContent +'">';
         // nature.innerHTML = '<input type="text" value="'+ nature.textContent +'">';
