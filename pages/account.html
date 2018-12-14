@@ -30,7 +30,8 @@
                                     <td>{{comAcc.accText}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                            style="display: none;">Update</button>
                                     </td>
                                     <td>
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
@@ -58,7 +59,8 @@
                 </div>
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
-                        <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm Delete</button>
+                        <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
+                            Delete</button>
                         <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
@@ -211,19 +213,19 @@
         });
     }
 
-    function editItem(e){
+    function editItem(e) {
         let id = e.target.id.slice(0, -1);
         let head = e.target.parentElement.previousElementSibling;
         let code = head.previousElementSibling;
         let nature = code.previousElementSibling;
-        head.innerHTML = '<input type="text" value="'+ head.textContent +'">';
-        code.innerHTML = '<input type="text" value="'+ code.textContent +'">';
-        nature.innerHTML = '<input type="text" value="'+ nature.textContent +'">';
+        head.innerHTML = '<input type="text" value="' + head.textContent + '">';
+        code.innerHTML = '<input type="text" value="' + code.textContent + '">';
+        nature.innerHTML = '<input type="text" value="' + nature.textContent + '">';
         e.target.style.display = 'none';
         e.target.nextElementSibling.style.display = 'block';
     }
-    
-    function editConfirm(e){
+
+    function editConfirm(e) {
         let id = e.target.id.slice(0, -2);
         $print(id);
         let head = e.target.parentElement.previousElementSibling.firstElementChild;
@@ -234,7 +236,14 @@
             accCode: code.value,
             accText: head.value,
         }
-        getRef('accounts/' + id).update(uData);
+        getRef('accounts/' + id).update(uData, function (error) {
+            if (error) {
+                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+            }
+            else {
+                $('#notification').html("<h6>Updated Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+            }
+        });
         head.parentElement.innerHTML = head.value;
         code.parentElement.innerHTML = code.value;
         nature.parentElement.innerHTML = nature.value;
