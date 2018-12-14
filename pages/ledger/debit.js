@@ -62,5 +62,5 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             });
     }
     // Debit Taker End
-    $scope.total = arrTotal;
+    $scope.total = 0;
 });

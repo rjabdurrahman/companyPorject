@@ -186,20 +186,15 @@ var numToDateConv = function (num) {
     return date.getDate().toString() + '-' + mon[date.getMonth()] + '-' + date.getFullYear().toString().slice(-2);
 }
 
-// Index wise array total for ledger
-function arrTotal(arr, index, toggle) {
-    if (index == -1) return;
-    let total = 0;
-    for (i = 0; i <= index; i++) {
-        if (toggle == 0) {
-            total += arr[i].debitCredit[0].drAmount;
-        }
-        if (toggle == 1) {
-            total += arr[i].debitCredit[1].crAmount;
-        }
-    }
-    return total;
-}
+// Index wise array total
+// function arrTotal(arr, index, toggle) {
+//     if (index == -1) return;
+//     let total = 0;
+//     for (i = 0; i <= index; i++) {
+//         total += arr[i].debitCredit[1].crAmount;
+//     }
+//     return total;
+// }
 
 // JSX Alernative
 function jsx(html) {
