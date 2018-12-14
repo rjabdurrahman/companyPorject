@@ -119,7 +119,7 @@ app.config(function ($routeProvider) {
     })
     .when('/creditledger', {
       templateUrl: 'pages/ledger/credit.html',
-      controller: 'CreditLedgerCntlr',
+      controller: 'DebitLedgerCntlr',
       activetab: 'ledger'
     })
     .otherwise({ redirectTo: '/' });

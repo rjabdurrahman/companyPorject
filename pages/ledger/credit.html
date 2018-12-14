@@ -2,12 +2,12 @@
     <div class="overlay">
         <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 75%; margin-top: 18px;">
             <header class="w3-container main-bg-color div-title clearfix">
-                <h2>{{title}}</h2>
+                <h2>Credit Ledger</h2>
             </header>
             <div class="w3-container ledger-header flex" style="overflow: auto; white-space: nowrap;">
                 <div>
                     <label>Account Type</label>
-                    <input class="w3-input w3-border" type="text" value="Debit" disabled>
+                    <input class="w3-input w3-border" type="text" value="Credit" disabled>
                 </div>
                 <div style="width: 500px;">
                     <label>Date From</label>
@@ -92,16 +92,19 @@
                                 <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{numToDate(rec.date)}}</td>
-                                    <td>{{rec.debitCredit[1].partyName}}</td>
-                                    <td>{{rec.debitCredit[1].ACCode}}</td>
-                                    <td>{{rec.debitCredit[1].ACName}}</td>
-                                    <td>{{rec.debitCredit[1].partyCode}}</td>
-                                    <td style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
-                                    <td style="text-align: right;">_____</td> <!-- {{rec.debitCredit[1].crAmount}} -->
-                                    <td ng-if="$index == 0" style="text-align: right;">{{begBalance[0].$value +
-                                        rec.debitCredit[0].drAmount}}</td>
-                                    <td ng-if="$index > 0" style="text-align: right;">{{begBalance[0].$value +
-                                        total(records, $index)}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index)}}</td>
                                 </tr>
                             </tbody>
                         </table>
