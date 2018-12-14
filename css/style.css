@@ -136,7 +136,7 @@ input, select, option, textarea {
     width: 52px;
 }
 
-input.w3-input:hover, input.w3-input:focus, textarea.w3-input:hover, textarea.w3-input:focus, select:hover, select:focus {
+input.w3-input:focus, textarea.w3-input:focus, select:focus {
     border: none;
     border: 1px solid #014387 !important;
 }

@@ -64,7 +64,9 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
     // Debit Taker End
     $scope.total = 0;
     $scope.adder = function(amount){
+        $print(amount);
         $scope.total += amount;
+        $print($scope.total);
         return $scope.total;
     }
 });
