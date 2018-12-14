@@ -5,6 +5,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.begBalance = $firebaseArray(getRef('begBalance'));
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
+        e.target.disabled = true;
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
         let code = name.parentElement.previousElementSibling.lastElementChild;
         let dateTo = code.parentElement.previousElementSibling.lastElementChild;
@@ -55,10 +56,12 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
                     $scope.$applyAsync();
                     $scope.recShow = true;
                     $print($scope.records);
+                    e.target.disabled = false;
                 });
             })
             .catch(function (err) {
                 $print(err);
+                e.target.disabled = false;
             });
     }
 
