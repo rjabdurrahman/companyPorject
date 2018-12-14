@@ -63,9 +63,17 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
     }
 
     var mainTotal = 100;
-    $scope.adder = function (some) {
-        // mainTotal = mainTotal + some;
-        $print('called');
-        // return mainTotal;
+    $scope.arrTotal = function (arr, index) {
+        if (index == -1) return;
+        let total = 0;
+        for (i = 0; i <= index; i++) {
+            if (arr[i].sCode == arr[i].ACCodes[0]) {
+                total += arr[i].debitCredit[0].drAmount;
+            }
+            if (arr[i].sCode == arr[i].ACCodes[1]) {
+                total -= arr[i].debitCredit[1].crAmount;
+            }
+        }
+        return total;
     }
 });
