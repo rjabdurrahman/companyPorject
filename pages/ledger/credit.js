@@ -31,6 +31,11 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
             dateTo.focus();
             return;
         }
+        else if (dateToNum(dateFrom.value) > dateToNum(dateTo.value)) {
+            $('#notification').html("<h6>From Date is Greater than To Date</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            dateFrom.focus();
+            return;
+        }
         else if (code.value == "") {
             $('#notification').html("<h6>Input Account Code</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             code.focus();
