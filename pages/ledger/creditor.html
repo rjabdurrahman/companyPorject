@@ -1,0 +1,158 @@
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 75%; margin-top: 18px;">
+            <header class="w3-container main-bg-color div-title clearfix">
+                <h2>Debitor Ledger</h2>
+            </header>
+            <div class="w3-container ledger-header flex" style="overflow: auto; white-space: nowrap;">
+                <div>
+                    <label>Account Type</label>
+                    <input class="w3-input w3-border" type="text" value="Debit" disabled>
+                </div>
+                <div style="width: 500px;">
+                    <label>Date From</label>
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                </div>
+                <div style="width: 500px;">
+                    <label>Date To</label>
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                </div>
+                <div>
+                    <label>Account Code</label>
+                    <input class="w3-input w3-border" type="text" onkeyup="ACNameComplete(event)" onpaste="ACNameComplete(event)">
+                </div>
+                <div>
+                    <label>Account Name</label>
+                    <input class="w3-input w3-border" type="text" disabled>
+                </div>
+                <div>
+                    <label style="display: block">&nbsp;</label>
+                    <button ng-click="debitTaker($event);" class="w3-btn main-bg-color">Calculate</button>
+                </div>
+            </div>
+            <div class="clearfix" style="height: 18px;"></div>
+        </div>
+        <!-- Head Table -->
+        <div ng-show="recShow" class="margin-auto" style="width: 75%; margin-top: 18px; margin-bottom: 18px;">
+            <div class="w3-card-4 table-container">
+                <div class="ch-table-content">
+                    <div class="w3-responsive">
+                        <table class="w3-table-all ledger-table">
+                            <thead>
+                                <tr class="main-bg-color">
+                                    <th></th>
+                                    <th>Debit</th>
+                                    <th>Credit</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Begining Balance</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value}}</td>
+                                    <td style="text-align: right;">_____</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td style="text-align: right;">{{arrTotal(records, records.length - 1, 1)}}</td>
+                                    <td style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 2)}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
+                                        records.length - 1, 0)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Debits Table -->
+        <div ng-show="recShow" class="margin-auto chart-box">
+            <section class="clearfix">
+                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Records</label>
+            </section>
+            <div class="w3-card-4 table-container">
+                <div class="ch-table-content">
+                    <div class="w3-responsive">
+                        <table class="w3-table-all ledger-table">
+                            <thead>
+                                <tr class="main-bg-color">
+                                    <th>No</th>
+                                    <th>Date</th>
+                                    <th>Party Name</th>
+                                    <th>A/C Code</th>
+                                    <th>Particulars</th>
+                                    <th>Party Code</th>
+                                    <th>Debit Amount</th>
+                                    <th>Credit Amount</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="rec in records track by $index">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{numToDate(rec.date)}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index,
+                                        0)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
+                                alt="Loading..." style="height: 25px; width: 25px;"></div>
+                        <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
+                            Data Found!</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Debit Table End -->
+        <div ng-show="begBalance[0].$value == -1" class="div-box w3-light-gray w3-card-4 margin-auto" style="position: fixed; top: calc((100vh - 300px)/2); left: calc((100% - 500px)/2);">
+            <div class="w3-container main-bg-color div-title">
+                <h2>Begining Balance</h2>
+            </div>
+            <div class="w3-container">
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:150px; padding: 10px;">
+                        <label class="w3-medium">Begining Balance</label>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" type="text" style="text-align: right" id="initBalance">
+                    </div>
+                </div>
+                <p class="clearfix">
+                    <button onclick="initBalSubmit()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                </p>
+            </div>
+        </div>
+        <!-- Begining Balence Taker End -->
+    </div>
+</div>
+<script>
+    function initBalSubmit() {
+        let inBal = parseFloat($js('initBalance').value);
+        getRef('begBalance').set({ value: inBal });
+    }
+    var accArrayA = null;
+    function ACNameComplete(event) {
+        let data = accArrayA.find(function (el) {
+            return el.accCode == event.target.value;
+        });
+        // $print(data);
+        if (data) {
+            event.target.parentElement.nextElementSibling.lastElementChild.value = data.accText;
+        }
+        else event.target.parentElement.nextElementSibling.lastElementChild.value = '';
+    }
+</script>
