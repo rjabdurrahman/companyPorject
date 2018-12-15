@@ -49,14 +49,14 @@
                             <tbody>
                                 <tr>
                                     <td>Begining Balance</td>
-                                    <td style="text-align: right;">{{begBalance[0].$value}}</td>
                                     <td style="text-align: right;">_____</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value}}</td>
                                     <td style="text-align: right;">{{begBalance[0].$value}}</td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td style="text-align: right;">{{arrTotal(records, records.length - 1, 1)}}</td>
-                                    <td style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 2)}}</td>
+                                    <td style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 1)}}</td>
+                                    <td style="text-align: right;">{{arrTotal(records, records.length - 1, 2)}}</td>
                                     <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
                                         records.length - 1, 0)}}</td>
                                 </tr>
@@ -142,7 +142,7 @@
 <script>
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
-        getRef('begBalance').set({ value: inBal });
+        getRef('begBalanceCr').set({ value: inBal });
     }
     var accArrayA = null;
     function ACNameComplete(event) {
