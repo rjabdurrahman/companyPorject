@@ -5,8 +5,6 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.begBalance = $firebaseArray(getRef('begBalanceCr'));
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
-        e.target.disabled = true;
-        e.target.textContent = 'Loading...';
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
         let code = name.parentElement.previousElementSibling.lastElementChild;
         let dateTo = code.parentElement.previousElementSibling.lastElementChild;
@@ -43,7 +41,8 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
             code.focus();
             return;
         }
-
+        e.target.disabled = true;
+        e.target.textContent = 'Loading...';
         $print(dateToNum(dateTo.value));
         $print(dateToNum(dateFrom.value));
         $scope.records = [];
