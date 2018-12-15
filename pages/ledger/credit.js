@@ -1,8 +1,8 @@
 app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
-    $scope.title = "Debit Ledger";
+    $scope.title = "Credit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
-    $scope.begBalance = $firebaseArray(getRef('begBalance'));
+    $scope.begBalance = $firebaseArray(getRef('begBalanceCr'));
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
         e.target.disabled = true;
