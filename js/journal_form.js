@@ -15,6 +15,7 @@ function findTotal(e) {
 }
 var accArray = null;
 function ACNameComplete(event) {
+    event.target.value = $.trim(event.target.value);
     let data = accArray.find(function (el) {
         return el.accCode == event.target.value;
     });
@@ -26,6 +27,7 @@ function ACNameComplete(event) {
 }
 var partyArray = null;
 function partyNameComplete(event) {
+    event.target.value = $.trim(event.target.value);
     for (i = 0; i < partyArray.length; i++) {
         for (j = 0; j < partyArray[i].length; j++) {
             if (partyArray[i][j].code == event.target.value) {
