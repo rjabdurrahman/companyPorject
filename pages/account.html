@@ -142,21 +142,22 @@
         let accCodeSecond = $js('accCodeSecond').value;
         let accTxt = $js('accTxt').value;
         if (accNature == '' || accNature == 'Choose Nature') {
-            $('#notification').html("<h6>Select Nature</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            // alert('select Nature');
+            notify('Select Nature!', 2);
             return;
         }
         else if ($js('accCodeFirst').value == '') {
-            $('#notification').html("<h6>Input Account Code</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            notify('Input Account Code!', 2);
+            $js('accCodeFirst').focus();
             return;
         }
         else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
-            $('#notification').html("<h6>Code Must Between " + accounts[accNatureCode].min + " to " + accounts[accNatureCode].max + "</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            notify('Code Must Between ' + accounts[accNatureCode].min + ' to ' + accounts[accNatureCode].max, 2);
             $js('accCodeFirst').focus();
             return;
         }
         else if ($js('accTxt').value == '') {
-            $('#notification').html("<h6>Account Head Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            notify('Account Head Empty!', 2);
+            $js('accTxt').focus();
             return;
         }
         var accNumber = accCodeInit + "-" + accCodeFirst;
@@ -165,7 +166,7 @@
         }
         for (i = 0; i < dbAccounts.length; i++) {
             if (accNumber == dbAccounts[i].accCode) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                notify('Code Already Used in Another Account!', 2);
                 $js('accCodeSecond').focus();
                 return;
             }
@@ -178,9 +179,9 @@
         // Store
         db.child('accounts').push(account, function (error) {
             if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                notify('Something Went Wrong in Database!', 2);
             } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                notify('Added Sucessfully', 1);
                 $js('nodata').style.display = "none";
                 clearAccFields();
             }
@@ -210,7 +211,7 @@
         $js('delAcBtn').addEventListener('click', function () {
             getRef('accounts').child(e.target.id).remove();
             $js('confirmDel').style.display = 'none';
-            $('#notification').html("<h6>Deleted Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+            notify('Deleted Sucessfully', 1);
         });
     }
 
