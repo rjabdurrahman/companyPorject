@@ -141,7 +141,7 @@
 <script>
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
-        getRef('begBalance').set({ value: inBal });
+        getRef('begBalance').set(inBal);
     }
     var accArrayA = null;
     function ACNameComplete(event) {
