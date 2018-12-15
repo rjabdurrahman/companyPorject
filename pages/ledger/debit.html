@@ -11,11 +11,13 @@
                 </div>
                 <div style="width: 500px;">
                     <label>Date From</label>
-                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY" onkeyup="this.value = $.trim(this.value)"
+                        onpaste="this.value = $.trim(this.value)">
                 </div>
                 <div style="width: 500px;">
                     <label>Date To</label>
-                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY" onkeyup="this.value = $.trim(this.value)"
+                        onpaste="this.value = $.trim(this.value)">
                 </div>
                 <div>
                     <label>Account Code</label>
@@ -104,7 +106,8 @@
                                     <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
-                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index, 0)}}</td>
+                                    <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index,
+                                        0)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -141,7 +144,7 @@
 <script>
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
-        getRef('begBalance').set({value : inBal});
+        getRef('begBalance').set({ value: inBal });
     }
     var accArrayA = null;
     function ACNameComplete(event) {
