@@ -21,6 +21,11 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             dateFrom.focus();
             return;
         }
+        else if (dateToNum(dateFrom.value) > dateToNum(dateTo.value)) {
+            $('#notification').html("<h6>From Date is Greater than To Date</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            dateFrom.focus();
+            return;
+        }
         else if (dateTo.value == "") {
             $('#notification').html("<h6>Input Date To</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             dateTo.focus();
