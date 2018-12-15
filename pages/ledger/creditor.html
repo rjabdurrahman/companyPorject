@@ -146,6 +146,7 @@
     }
     var accArrayA = null;
     function ACNameComplete(event) {
+        event.target.value = $.trim(event.target.value);
         let data = accArrayA.find(function (el) {
             return el.accCode == event.target.value;
         });
