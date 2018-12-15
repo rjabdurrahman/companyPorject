@@ -74,10 +74,10 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
         let total = 0;
         for (i = 0; i <= index; i++) {
             if (arr[i].sCode == arr[i].ACCodes[0] && (t == 0 || t == 1)) {
-                total += arr[i].debitCredit[0].drAmount;
+                total -= arr[i].debitCredit[0].drAmount;
             }
             if (arr[i].sCode == arr[i].ACCodes[1] && (t == 0 || t == 2)) {
-                total -= arr[i].debitCredit[1].crAmount;
+                total += arr[i].debitCredit[1].crAmount;
             }
         }
         return total;
