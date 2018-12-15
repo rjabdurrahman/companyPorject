@@ -142,7 +142,7 @@ input.w3-input:focus, textarea.w3-input:focus, select:focus {
 }
 
 input[type="text"]:disabled {
-    background: #fdf5e6 ;
+    background: #fdf5e6;
     color: black;
 }
 
@@ -372,19 +372,27 @@ input#userPasswordField {
 
 /* Form Date Tooltip style */
 
-#date+label {
+#date+label, .warn-lab {
     display: none;
     position: absolute;
     padding: 5px;
-    margin-left: -9px;
-    margin-top: 10px;
     color: black;
     background-color: orange;
     text-shadow: none;
     border-radius: 5px;
 }
 
-#date+label::before {
+.warn-lab{
+    margin-top: 48px;
+    margin-left: 110px;
+}
+
+#date+label {
+    margin-left: -9px;
+    margin-top: 10px;
+}
+
+#date+label::before, .warn-lab::before {
     content: '';
     position: absolute;
     bottom: 100%;
