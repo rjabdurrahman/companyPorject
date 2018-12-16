@@ -76,19 +76,19 @@ function numValidate(evt) {
 
 //Company Accounts
 var accounts = {
-    CA: { name: 'Current Asset', min: 1001, max: 1999 },
-    NCA: { name: 'Non-Current Asset', min: 2001, max: 2999 },
-    CL: { name: 'Current Liability', min: 3001, max: 3999 },
-    NCL: { name: 'Non-Current Liability', min: 4001, max: 4999 },
-    EQTY: { name: 'Equity', min: 5001, max: 5999 },
-    EX: { name: 'Expense', min: 6001, max: 6999 },
-    REV: { name: 'Revenue', min: 7001, max: 7999 },
-    WD: { name: 'Withdrawal', min: 9501, max: 9749 },
-    SD: { name: 'Contra Revenue', min: 9750, max: 9999 },
-    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500 },
-    WIP: { name: 'Production', min: 9001, max: 9500 },
-    CN: { name: 'Contra', min: 8501, max: 8999 },
-    PD: { name: 'Contra Expense', min: 9800, max: 9999 }
+    CA: { name: 'Current Asset', min: 1001, max: 1999, flag: 1 },
+    NCA: { name: 'Non-Current Asset', min: 2001, max: 2999, flag: 2 },
+    CL: { name: 'Current Liability', min: 3001, max: 3999, flag: 3 },
+    NCL: { name: 'Non-Current Liability', min: 4001, max: 4999, flag: 4 },
+    EQTY: { name: 'Equity', min: 5001, max: 5999, flag: 5 },
+    EX: { name: 'Expense', min: 6001, max: 6999, flag: 6 },
+    REV: { name: 'Revenue', min: 7001, max: 7999, flag: 7 },
+    WD: { name: 'Withdrawal', min: 9501, max: 9749, flag: 8 },
+    SD: { name: 'Contra Revenue', min: 9750, max: 9999, flag: 9 },
+    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 1 },
+    WIP: { name: 'Production', min: 9001, max: 9500, flag: 11 },
+    CN: { name: 'Contra', min: 8501, max: 8999, flag: 12 },
+    PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13 }
 }
 
 // Account Codes for Suggesitions
