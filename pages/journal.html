@@ -85,8 +85,8 @@
                 </tr>
                 <tr ng-repeat="(key, value) in journal | groupBy: 'date'">
                     <td>{{key}}</td>
-                    <td>{{value}}</td>
-                    <!-- <td>{{totalDrCr()}}</td> -->
+                    <td>{{totalDrCr(value, 1)}}</td>
+                    <td>{{totalDrCr(value, 2)}}</td>
                 </tr>
             </table>
         </div>
