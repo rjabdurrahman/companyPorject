@@ -315,4 +315,7 @@ app.controller('JournalCntlr', function ($scope) {
     }
     return dailyTotal;
   }
+  $scope.intMk = function(date){
+    return parseInt(date);
+  }
 });
