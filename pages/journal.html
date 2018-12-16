@@ -77,5 +77,18 @@
                 </div>
             </div>
             <!-- End of the Journy -->
+            <table class="w3-table w3-white w3-striped w3-border">
+                <tr>
+                    <th>Date</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                </tr>
+                <tr ng-repeat="(key, value) in journal | groupBy: 'date'">
+                    <td>{{value}}</td>
+                    <td>{{key}}</td>
+                    <!-- <td>{{value}}</td> -->
+                    <td>50</td>
+                </tr>
+            </table>
         </div>
     </div>
