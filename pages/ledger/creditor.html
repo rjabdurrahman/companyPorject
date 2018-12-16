@@ -11,11 +11,13 @@
                 </div>
                 <div style="width: 500px;">
                     <label>Date From</label>
-                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY" onkeyup="this.value = $.trim(this.value)"
+                        onpaste="this.value = $.trim(this.value)">
                 </div>
                 <div style="width: 500px;">
                     <label>Date To</label>
-                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                    <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY" onkeyup="this.value = $.trim(this.value)"
+                        onpaste="this.value = $.trim(this.value)">
                 </div>
                 <div>
                     <label>Account Code</label>
