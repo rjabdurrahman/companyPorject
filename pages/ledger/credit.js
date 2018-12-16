@@ -54,6 +54,7 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
         $scope.records = [];
         fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
+                $scope.recShow = true;
                 if (snapshot.size == 0) {
                     e.target.disabled = false;
                     e.target.textContent = 'Calculate';
@@ -68,7 +69,6 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
                         $scope.records.push(obj);
                         $scope.nodata = false;
                         $scope.$applyAsync();
-                        $scope.recShow = true;
                         $print($scope.records);
                         e.target.disabled = false;
                         e.target.textContent = 'Calculate';
@@ -76,7 +76,7 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
                 }
             })
             .catch(function (err) {
-                $print(err);
+                notify('Something went wrong in Database', 2);
                 e.target.disabled = false;
                 e.target.textContent = 'Calculate';
             });
