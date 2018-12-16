@@ -2,6 +2,7 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.title = "Credit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
+    $scope.nodata = false;
     $scope.begBalance = $firebaseArray(getRef('begBalanceCr'));
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
@@ -53,17 +54,26 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
         $scope.records = [];
         fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
-                snapshot.docs.forEach(element => {
-                    let obj = element.data();
-                    obj.sCode = code.value;
-                    $print(obj);
-                    $scope.records.push(obj);
-                    $scope.$applyAsync();
-                    $scope.recShow = true;
-                    $print($scope.records);
+                if (snapshot.size == 0) {
                     e.target.disabled = false;
                     e.target.textContent = 'Calculate';
-                });
+                    $scope.nodata = true;
+                    $scope.$applyAsync();
+                }
+                else {
+                    snapshot.docs.forEach(element => {
+                        let obj = element.data();
+                        obj.sCode = code.value;
+                        $print(obj);
+                        $scope.records.push(obj);
+                        $scope.nodata = false;
+                        $scope.$applyAsync();
+                        $scope.recShow = true;
+                        $print($scope.records);
+                        e.target.disabled = false;
+                        e.target.textContent = 'Calculate';
+                    });
+                }
             })
             .catch(function (err) {
                 $print(err);
