@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="comAcc in comAccounts | orderBy : 'accCode' track by $index">
+                                <tr ng-repeat="comAcc in comAccounts | orderBy : 'flag' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
                                     <td>{{comAcc.accCode}}</td>
