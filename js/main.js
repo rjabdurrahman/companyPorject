@@ -91,6 +91,12 @@ var accounts = {
     PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13 }
 }
 
+function accountFlag(nat){
+    for(ac in accounts){
+        if(accounts[ac].name == nat) return accounts[ac].flag;
+    }
+}
+
 // Account Codes for Suggesitions
 var accountCodes = [];
 lsExGJInit('comAccounts', []).forEach(element => {

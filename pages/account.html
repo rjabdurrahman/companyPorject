@@ -175,6 +175,7 @@
             nature: accNature,
             accCode: accNumber,
             accText: accTxt,
+            flag: accountFlag(accNature)
         }
         // Store
         db.child('accounts').push(account, function (error) {
