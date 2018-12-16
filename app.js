@@ -303,4 +303,16 @@ app.controller('JournalCntlr', function ($scope) {
     if (code == 'Cr') return 'Credit';
   }
   $scope.numToDate = numToDateConv;
+  $scope.totalDrCr = function(arr, type){
+    var dailyTotal = 0;
+    for(i=0;i< arr.length; i++){
+      if(type == 1){
+        dailyTotal += arr.debitCredit[0].drAmount;
+      }
+      if(type == 1){
+        dailyTotal += arr.debitCredit[1].crAmount;
+      }
+    }
+    return dailyTotal;
+  }
 });

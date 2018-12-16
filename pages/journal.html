@@ -84,10 +84,9 @@
                     <th>Credit</th>
                 </tr>
                 <tr ng-repeat="(key, value) in journal | groupBy: 'date'">
-                    <td>{{value}}</td>
                     <td>{{key}}</td>
-                    <!-- <td>{{value}}</td> -->
-                    <td>50</td>
+                    <td>{{value}}</td>
+                    <!-- <td>{{totalDrCr()}}</td> -->
                 </tr>
             </table>
         </div>
