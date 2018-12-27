@@ -382,7 +382,7 @@ input#userPasswordField {
     border-radius: 5px;
 }
 
-.warn-lab{
+.warn-lab {
     margin-top: 48px;
     margin-left: 110px;
 }
@@ -410,3 +410,40 @@ input#userPasswordField {
 }
 
 /* Form Date Tooltip style End*/
+
+/* Ledger Style */
+
+.ledger-header div {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ledger-header div:first-child {
+    width: 480px;
+}
+
+.ledger-header div:last-child {
+    width: 300px;
+    margin-left: 0;
+}
+
+.ledger-header div label {
+    padding-left: 5px;
+    font-family: 'Exo 2', sans-serif;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    display: block;
+    color: #014387 !important;
+}
+
+.ledger-header div input {
+    text-align: center;
+}
+
+.ledger-table th {
+    text-align: center;
+}
+
+/* Ledger Style End */
