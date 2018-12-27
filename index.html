@@ -137,9 +137,13 @@
                                 <a href="#creditorledger" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
                             </div>
                         </div>
-                        <button onclick="logOut()" style="margin-left: 50px;" class="w3-bar-item w3-button w3-mobile w3-border">Log
-                            Out
-                        </button>
+                        <div class="w3-dropdown-hover">
+                            <button ng-class="{'w3-border' : $route.current.activetab == 'user'}" class="w3-button"><i style="font-size: 16px;" class="fa fa-user"></i>&nbsp;&nbsp;
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a onclick="logOut()" href="#/" class="w3-bar-item w3-button w3-mobile">Logout</a>
+                        </div>
                     </section>
                 </div>
             </section>
