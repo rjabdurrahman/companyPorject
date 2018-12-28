@@ -137,6 +137,11 @@ app.config(function ($routeProvider) {
       controller: 'CreditLedgerCntlr',
       activetab: 'ledger'
     })
+    .when('/dashboard', {
+      templateUrl: 'pages/user/dash.html',
+      controller: 'CreditLedgerCntlr',
+      activetab: 'user'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {
