@@ -36,18 +36,21 @@
         let email = $js('userEmailField').value + '@gmail.com';
         let password = $js('userPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function(sucess){
-            let user = {
-                email: email,
-                pass: password
-            }
-            lsSetJ('user', user);
-        })
-        .catch(function (error) {
-            var code = error.code;
-            var message = error.message;
-            alert(message);
-        });
+            .then(function (sucess) {
+                let user = {
+                    email: email,
+                    pass: password
+                }
+                lsSetJ('user', user);
+                window.location.href = '#dashboard';
+                $('#dashboard').css('display', 'block');
+                $('#loginboard').css('display', 'none');
+            })
+            .catch(function (error) {
+                var code = error.code;
+                var message = error.message;
+                alert(message);
+            });
         $print(auth);
     });
     // Typing
