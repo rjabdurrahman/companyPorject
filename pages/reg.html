@@ -122,20 +122,20 @@
         }
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then(function (success) {
-                let user = { 
-                    email : email.value,
-                    name : name.value
+                let user = {
+                    email: email.value,
+                    name: name.value
                 }
-                db.child('accounts').push(account, function (error) {
+                db.child('users').push(user, function (error) {
                     if (error) {
                         notify('Something Went Wrong in Database!', 2);
-                    } else {
+                    }
+                    else {
                         notify('User Added Sucessfully', 1);
-                        $js('nodata').style.display = "none";
-                        clearAccFields();
+                        clearFields();
+                        exitModel();
                     }
                 });
-                exitModel();
             })
             .catch(function (error) {
                 // Handle Errors here.
