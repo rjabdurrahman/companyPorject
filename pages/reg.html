@@ -14,12 +14,10 @@
                         <table class="w3-table-all chart-tables">
                             <thead>
                                 <tr class="main-bg-color">
-                                    <th>ID</th>
-                                    <th>Nature</th>
-                                    <th>Account Code</th>
-                                    <th>Account Head</th>
-                                    <th style="width: 120px;">Edit</th>
-                                    <th style="width: 130px;">Delete</th>
+                                    <th>No</th>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th style="width: 220px;">Permission</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,7 +122,19 @@
         }
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then(function (success) {
-                notify('User Registered Sucessfully!', 1);
+                let user = { 
+                    email : email.value,
+                    name : name.value
+                }
+                db.child('accounts').push(account, function (error) {
+                    if (error) {
+                        notify('Something Went Wrong in Database!', 2);
+                    } else {
+                        notify('User Added Sucessfully', 1);
+                        $js('nodata').style.display = "none";
+                        clearAccFields();
+                    }
+                });
                 exitModel();
             })
             .catch(function (error) {
