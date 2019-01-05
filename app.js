@@ -156,6 +156,10 @@ app.config(function ($routeProvider) {
 });
 app.run(function ($rootScope, $location, $route) {
   $rootScope.$route = $route;
+  $rootScope.logged = function () {
+    if (lsGet('user')) return true;
+    else return false;
+  }
 });
 app.controller('LoginCntlr', function ($scope) {
   $scope.message = "Login Cntl";
@@ -330,7 +334,7 @@ app.controller('JournalCntlr', function ($scope) {
     }
     return dailyTotal;
   }
-  $scope.intMk = function(date){
+  $scope.intMk = function (date) {
     return parseInt(date);
   }
 });
@@ -365,7 +369,7 @@ app.controller('NewJournalCntlr', function ($scope) {
     }
     return dailyTotal;
   }
-  $scope.intMk = function(date){
+  $scope.intMk = function (date) {
     return parseInt(date);
   }
 });
@@ -376,9 +380,9 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
   $scope.nodata = false;
   $scope.users = $firebaseArray(ref);
   $scope.users.$loaded().then(function () {
-      $scope.load = true;
-      if ($scope.users.length == 0) {
-          $scope.nodata = true;
-      }
+    $scope.load = true;
+    if ($scope.users.length == 0) {
+      $scope.nodata = true;
+    }
   });
 });
