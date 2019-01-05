@@ -147,6 +147,11 @@ app.config(function ($routeProvider) {
       controller: 'NewJournalCntlr',
       activetab: 'user'
     })
+    .when('/reg', {
+      templateUrl: 'pages/reg.html',
+      controller: 'NewJournalCntlr',
+      activetab: 'user'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {
