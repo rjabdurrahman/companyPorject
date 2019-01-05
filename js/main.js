@@ -132,9 +132,9 @@ const auth = firebase.auth();
 auth.onAuthStateChanged(function (fuser) {
     if (fuser) {
         $print(fuser);
-        window.location.href = '#account';
-        $('#dashboard').css('display', 'block');
-        $('#loginboard').css('display', 'none');
+        // window.location.href = '#account';
+        // $('#dashboard').css('display', 'block');
+        // $('#loginboard').css('display', 'none');
         // var user = firebase.auth().currentUser;
         // if (user != null) {
         //     name = user.displayName;
