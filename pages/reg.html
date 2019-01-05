@@ -117,6 +117,7 @@
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then(function (success) {
                 let user = {
+                    id: auth.currentUser.uid,
                     email: email.value,
                     name: name.value
                 }

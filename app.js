@@ -377,7 +377,7 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
   $scope.users = $firebaseArray(ref);
   $scope.users.$loaded().then(function () {
       $scope.load = true;
-      if ($scope.comAccounts.length == 0) {
+      if ($scope.users.length == 0) {
           $scope.nodata = true;
       }
   });
