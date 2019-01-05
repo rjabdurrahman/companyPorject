@@ -70,7 +70,7 @@
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
                     <header class="w3-container main-bg-color div-title">
-                        <span onclick="exitModel();clearAccFields();" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                         <h2>Register User</h2>
                     </header>
                     <div class="w3-container">
@@ -92,11 +92,11 @@
     </div>
 </div>
 <script>
+    let email = $js('emailField');
+    let password = $js('passwordField');
+    let rePassword = $js('rePasswordField');
+    let name = $js('nameField');
     $js('regBtn').addEventListener('click', function () {
-        let email = $js('emailField');
-        let password = $js('passwordField');
-        let rePassword = $js('rePasswordField');
-        let name = $js('nameField');
         if (email.value == "") {
             notify('Empty Email!', 2);
             email.focus();
@@ -125,6 +125,7 @@
         firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
             .then(function (success) {
                 notify('User Registered Sucessfully!', 1);
+                exitModel();
             })
             .catch(function (error) {
                 // Handle Errors here.
@@ -134,4 +135,7 @@
             });
         $print('ok');
     });
+    function clearFields() {
+        clearer(email, password, rePassword, name);
+    }
 </script>
