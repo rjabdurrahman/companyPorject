@@ -179,7 +179,11 @@
     <script src="pages/ledger/credit.js"></script>
     <script>
         function logOut() {
-            auth.signOut().catch(function (error) {
+            auth.signOut()
+            .then(function(success){
+                localStorage.removeItem('user');
+            })
+            .catch(function (error) {
                 alert(error);
             });
         }
