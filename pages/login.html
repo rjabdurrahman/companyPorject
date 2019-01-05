@@ -37,10 +37,11 @@
         let password = $js('userPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(sucess){
-            var logged = {
+            let user = {
                 email: email,
-                pass: pass
+                pass: password
             }
+            lsSetJ('user', user);
         })
         .catch(function (error) {
             var code = error.code;
