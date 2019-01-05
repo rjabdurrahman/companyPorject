@@ -77,6 +77,8 @@
                     <section class="nav-menus">
                         <a href="#/" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
                             class="w3-bar-item w3-button w3-mobile">HOME</a>
+                        <a href="#newjournal" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
+                            class="w3-bar-item w3-button w3-mobile">New Journal</a>
                         <div class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
@@ -138,13 +140,14 @@
                             </div>
                         </div>
                         <div class="w3-dropdown-hover">
-                            <button ng-class="{'w3-border' : $route.current.activetab == 'user'}" class="w3-button"><i style="font-size: 16px;" class="fa fa-user"></i>&nbsp;&nbsp;
+                            <button ng-class="{'w3-border' : $route.current.activetab == 'user'}" class="w3-button"><i
+                                    style="font-size: 16px;" class="fa fa-user"></i>&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="w3-dropdown-content w3-bar-block w3-card-4">
                                 <a onclick="logOut()" href="#/" class="w3-bar-item w3-button w3-mobile">Logout</a>
                                 <a href="#dashboard" class="w3-bar-item w3-button w3-mobile">Dashboard</a>
-                        </div>
+                            </div>
                     </section>
                 </div>
             </section>

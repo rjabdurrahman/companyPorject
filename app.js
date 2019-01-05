@@ -142,6 +142,11 @@ app.config(function ($routeProvider) {
       controller: 'CreditLedgerCntlr',
       activetab: 'user'
     })
+    .when('/newjournal', {
+      templateUrl: 'pages/forms/nj.html',
+      controller: 'NewJournalCntlr',
+      activetab: 'user'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route) {
@@ -291,6 +296,41 @@ app.controller('JournalFormCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('JournalCntlr', function ($scope) {
   $scope.title = "Journal";
+  $scope.journal = [];
+  fsDb.collection("JournalForm").get()
+    .then(function (snapshot) {
+      snapshot.docs.forEach(element => {
+        $scope.journal.push(element.data());
+        $scope.$applyAsync();
+      });
+    })
+    .catch(function (err) {
+      $print(err);
+    });
+
+  $scope.changerDC = function (code) {
+    if (code == 'Dr') return 'Debit';
+    if (code == 'Cr') return 'Credit';
+  }
+  $scope.numToDate = numToDateConv;
+  $scope.totalDrCr = function (arr, type) {
+    var dailyTotal = 0;
+    for (i = 0; i < arr.length; i++) {
+      if (type == 1) {
+        dailyTotal += arr[i].debitCredit[0].drAmount;
+      }
+      if (type == 2) {
+        dailyTotal += arr[i].debitCredit[1].crAmount;
+      }
+    }
+    return dailyTotal;
+  }
+  $scope.intMk = function(date){
+    return parseInt(date);
+  }
+});
+app.controller('NewJournalCntlr', function ($scope) {
+  $scope.title = "New Journal";
   $scope.journal = [];
   fsDb.collection("JournalForm").get()
     .then(function (snapshot) {
