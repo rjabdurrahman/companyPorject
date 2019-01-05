@@ -14,12 +14,12 @@
             <div class="w3-container" style="padding-bottom: 18px;">
                 <input id="emailField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
                     placeholder="Email">
-                <input id="passwordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password"
-                    style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Password">
-                <input id="rePasswordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password"
-                    style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Re-enter Password">
-                <input id="nameField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text"
-                    style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Name">
+                <input id="passwordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password" style="width: 100%; margin-top: 22px; padding: 10px;"
+                    placeholder="Password">
+                <input id="rePasswordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password" style="width: 100%; margin-top: 22px; padding: 10px;"
+                    placeholder="Re-enter Password">
+                <input id="nameField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 22px; padding: 10px;"
+                    placeholder="Name">
                 <p style="padding: 6px;">
                     <button id="regBtn" style="float: right;" class="w3-btn main-bg-color">Register</button>
                 </p>
@@ -29,5 +29,20 @@
     </div>
 </div>
 <script>
-
+    $js('regBtn').addEventListener('click', function () {
+        let email = $js('emailField').value;
+        let password = $js('passwordField').value;
+        let rePassword = $js('rePasswordField').value;
+        let name = $js('nameField').value;
+        $print(email);
+        $print(password);
+        $print(rePassword);
+        $print(name);
+        // firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+        //     var code = error.code;
+        //     var message = error.message;
+        //     alert(message);
+        // });
+        $print('ok');
+    });
 </script>
