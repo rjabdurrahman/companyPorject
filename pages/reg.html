@@ -21,18 +21,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="comAcc in comAccounts | orderBy : 'flag' track by $index">
+                                <tr ng-repeat="user in users track by $index">
                                     <td>{{$index + 1}}</td>
-                                    <td>{{comAcc.nature}}</td>
-                                    <td>{{comAcc.accCode}}</td>
-                                    <td>{{comAcc.accText}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.name}}</td>
                                     <td>
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td>
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        <button id="{{user.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Permission</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -132,6 +126,7 @@
                     }
                     else {
                         notify('User Added Sucessfully', 1);
+                        $js('nodata').style.display = "none";
                         clearFields();
                         exitModel();
                     }

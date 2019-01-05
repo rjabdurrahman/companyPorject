@@ -149,7 +149,7 @@ app.config(function ($routeProvider) {
     })
     .when('/reg', {
       templateUrl: 'pages/reg.html',
-      controller: 'NewJournalCntlr',
+      controller: 'RegCntlr',
       activetab: 'user'
     })
     .otherwise({ redirectTo: '/' });
@@ -368,4 +368,17 @@ app.controller('NewJournalCntlr', function ($scope) {
   $scope.intMk = function(date){
     return parseInt(date);
   }
+});
+app.controller('RegCntlr', function ($scope, $firebaseArray) {
+  var ref = getRef('users');
+  $scope.title = "Register";
+  $scope.load = false;
+  $scope.nodata = false;
+  $scope.users = $firebaseArray(ref);
+  $scope.users.$loaded().then(function () {
+      $scope.load = true;
+      if ($scope.comAccounts.length == 0) {
+          $scope.nodata = true;
+      }
+  });
 });
