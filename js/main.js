@@ -143,7 +143,7 @@ auth.onAuthStateChanged(function (fuser) {
     }
     else {
         $print('You are not logged!');
-        window.location.href = '#login';
+        // window.location.href = '#login';
     }
 });
 
