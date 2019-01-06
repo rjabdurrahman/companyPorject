@@ -447,3 +447,12 @@ input#userPasswordField {
 }
 
 /* Ledger Style End */
+
+/* Permission Styles */
+.w3-check{
+    height: 18px !important;
+    width: 18px !important;
+}
+.w3-check + label{
+    font-size: 14px !important;
+}
