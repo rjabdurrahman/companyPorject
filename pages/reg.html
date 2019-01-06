@@ -39,15 +39,76 @@
                 </div>
             </div>
         </div>
-        <div id="permissionWin" class="w3-modal">
+        <div id="permissionWin">
             <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 650px;">
                 <header class="w3-container main-bg-color div-title">
                     <span onclick="$js('permissionWin').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                     <h2>User Permission</h2>
                 </header>
                 <div class="w3-container">
-                    <p>User: <span id="pUserName"></span></p>
-                    <p>Email: <span id="pUserEmail"></span></p>
+                    <section class="w3-panel w3-bottombar w3-border-blue w3-pale-blue">
+                        <p>User: <span id="pUserName"></span></p>
+                        <p>Email: <span id="pUserEmail"></span></p>
+                    </section>
+                    <section class="w3-panel w3-leftbar w3-border-blue w3-light-gray">
+                        <p>Chart</p>
+                    </section>
+                    <section style="display: flex;">
+                        <div>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Main Account</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Receivable</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Payable</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Company Heads</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Truck Tracktor</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Employees</label>
+                            </p>
+
+                        </div>
+                        <div>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Bank</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Contractors</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Paddy Raw</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Paddy Dry</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Rice</label>
+                            </p>
+                            <p>
+                                <input class="w3-check" type="checkbox">
+                                <label>Buy Products</label>
+                            </p>
+
+                        </div>
+                    </section>
                 </div>
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
