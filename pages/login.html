@@ -45,6 +45,9 @@
         }
     }
     $js('loginBtn').addEventListener('click', function () {
+        this.disabled = true;
+        this.textContent = 'Logging...';
+        let btn = this;
         let email = $js('userEmailField').value + '@gmail.com';
         let password = $js('userPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -60,6 +63,8 @@
                 var code = error.code;
                 var message = error.message;
                 alert(message);
+                btn.disabled = false;
+                btn.textContent = 'Login';
             });
         $print(auth);
     });
