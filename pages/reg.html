@@ -39,21 +39,21 @@
                 </div>
             </div>
         </div>
-        <div id="permissionWin" class="w3-modal">
+        <div id="permissionWin">
             <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 650px;">
                 <header class="w3-container main-bg-color div-title">
                     <span onclick="$js('permissionWin').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                     <h2>User Permission</h2>
                 </header>
                 <div class="w3-container">
-                    <section class="w3-panel w3-bottombar w3-border-blue w3-pale-blue">
+                    <section class="w3-container w3-bottombar w3-border-blue w3-pale-blue">
                         <p>User: <span id="pUserName"></span></p>
                         <p>Email: <span id="pUserEmail"></span></p>
                     </section>
-                    <section class="w3-panel w3-leftbar w3-border-blue w3-light-gray">
+                    <section class="w3-container w3-leftbar w3-border-blue w3-light-gray" style="margin-top: 12px;">
                         <p>Chart</p>
                     </section>
-                    <section style="display: flex;">
+                    <section class="w3-container w3-border" style="display: flex; justify-content: space-between;">
                         <div>
                             <p>
                                 <input class="w3-check" type="checkbox" id="c_1" name="perCheck">
