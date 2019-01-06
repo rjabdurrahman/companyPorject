@@ -56,54 +56,54 @@
                     <section style="display: flex;">
                         <div>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-1" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_1" name="perCheck">
                                 <label>Main Account</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-2" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_2" name="perCheck">
                                 <label>Receivable</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-3" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_3" name="perCheck">
                                 <label>Payable</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-4" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_4" name="perCheck">
                                 <label>Company Heads</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-5" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_5" name="perCheck">
                                 <label>Truck Tracktor</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-6" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_6" name="perCheck">
                                 <label>Employees</label>
                             </p>
 
                         </div>
                         <div>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-7" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_7" name="perCheck">
                                 <label>Bank</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-8" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_8" name="perCheck">
                                 <label>Contractors</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-9" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_9" name="perCheck">
                                 <label>Paddy Raw</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-10" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_10" name="perCheck">
                                 <label>Paddy Dry</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-11" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_11" name="perCheck">
                                 <label>Rice</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c-12" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_12" name="perCheck">
                                 <label>Buy Products</label>
                             </p>
                         </div>
@@ -111,7 +111,7 @@
                 </div>
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
-                        <button id="delAcBtn" class="w3-btn w3-green" style="margin-left: 20px; margin-right: 20px;">Submit</button>
+                        <button id="confirmPermission" class="w3-btn w3-green" style="margin-left: 20px; margin-right: 20px;">Submit</button>
                         <button onclick="$js('permissionWin').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
@@ -222,14 +222,20 @@
     // Delete data
     function permission(e) {
         $js('permissionWin').style.display = 'block';
+        let cId = e.target.id;
         let userName = e.target.parentElement.previousElementSibling.textContent;
         let userEmail = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
         $js('pUserName').textContent = userName;
         $js('pUserEmail').textContent = userEmail;
-        $js('delAcBtn').addEventListener('click', function () {
-            getRef('accounts').child(e.target.id).remove();
-            $js('permissionWin').style.display = 'none';
-            notify('Deleted Sucessfully', 1);
+        $js('confirmPermission').addEventListener('click', function () {
+            let allPerEl = $sn('perCheck');
+            // $print(allPerEl);
+            $print(cId);
+            allPerEl.forEach(function (el) {
+                $print(el.id);
+                $print(el.checked);
+                // db.child('users').child(cId).child().update()
+            })
         });
     }
 </script>
