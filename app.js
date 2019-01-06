@@ -163,7 +163,10 @@ app.run(function ($rootScope, $location, $route) {
 });
 app.controller('LoginCntlr', function ($scope) {
   $scope.message = "Login Cntl";
-  $scope.email = lsGetJ('user').email;
+  // if (auth.currentUser){
+  //   $scope.email = auth.currentUser.email;
+  //   $scope.$applyAsync();
+  // }
 });
 app.controller('PayableCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Payable";
