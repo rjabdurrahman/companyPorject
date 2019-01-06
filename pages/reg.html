@@ -88,6 +88,14 @@
     let password = $js('passwordField');
     let rePassword = $js('rePasswordField');
     let name = $js('nameField');
+    function login(uEmail, uPass) {
+        firebase.auth().signInWithEmailAndPassword(uEmail, uPass)
+            .catch(function (error) {
+                var code = error.code;
+                var message = error.message;
+                alert(message + "Login Again!");
+            });
+    }
     $js('regBtn').addEventListener('click', function () {
         if (email.value == "") {
             notify('Empty Email!', 2);
@@ -132,7 +140,7 @@
                         exitModel();
                         auth.signOut()
                             .then(function (success) {
-                                // localStorage.removeItem('user');
+                                login(lsGetJ('user').email, lsGetJ('user').pass);
                             })
                             .catch(function (error) {
                                 alert(error);
