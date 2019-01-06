@@ -42,9 +42,7 @@
                     pass: password
                 }
                 lsSetJ('user', user);
-                window.location.href = '#dashboard';
-                $('#dashboard').css('display', 'block');
-                $('#loginboard').css('display', 'none');
+                window.location.href = '#';
             })
             .catch(function (error) {
                 var code = error.code;
