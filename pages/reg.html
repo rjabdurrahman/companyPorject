@@ -26,7 +26,7 @@
                                     <td>{{user.email}}</td>
                                     <td>{{user.name}}</td>
                                     <td>
-                                        <button id="{{user.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Permission</button>
+                                        <button id="{{user.$id}}" onclick="permission(event)" class="w3-btn w3-blue">Permission</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -39,21 +39,20 @@
                 </div>
             </div>
         </div>
-        <div id="confirmDel" class="w3-modal">
-            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
+        <div id="permissionWin" class="w3-modal">
+            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 650px;">
                 <header class="w3-container main-bg-color div-title">
-                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <h2>Confirm Delete?</h2>
+                    <span onclick="$js('permissionWin').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>User Permission</h2>
                 </header>
                 <div class="w3-container">
-                    <p>Deleting this account will not remove name from journal account name.</p>
-                    <p>And no more suggestion is available for this account code until you create new one.</p>
+                    <p>User: <span id="pUserName"></span></p>
+                    <p>Email: <span id="pUserEmail"></span></p>
                 </div>
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
-                        <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
-                            Delete</button>
-                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                        <button id="delAcBtn" class="w3-btn w3-green" style="margin-left: 20px; margin-right: 20px;">Submit</button>
+                        <button onclick="$js('permissionWin').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
             </div>
@@ -158,5 +157,18 @@
     });
     function clearFields() {
         clearer(email, password, rePassword, name);
+    }
+    // Delete data
+    function permission(e) {
+        $js('permissionWin').style.display = 'block';
+        let userName = e.target.parentElement.previousElementSibling.textContent;
+        let userEmail = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+        $js('pUserName').textContent = userName;
+        $js('pUserEmail').textContent = userEmail;
+        $js('delAcBtn').addEventListener('click', function () {
+            getRef('accounts').child(e.target.id).remove();
+            $js('permissionWin').style.display = 'none';
+            notify('Deleted Sucessfully', 1);
+        });
     }
 </script>
