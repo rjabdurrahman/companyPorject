@@ -229,13 +229,17 @@
         $js('pUserEmail').textContent = userEmail;
         $js('confirmPermission').addEventListener('click', function () {
             let allPerEl = $sn('perCheck');
-            // $print(allPerEl);
-            $print(cId);
+            let newPer = {};
             allPerEl.forEach(function (el) {
-                $print(el.id);
-                $print(el.checked);
-                // db.child('users').child(cId).child().update()
+                newPer[el.id] = el.checked;
             })
+            db.child('users').child(cId).update(newPer)
+                .then(function (success) {
+                    notify('Permission Sucessfully Updated', 1);
+                })
+                .catch(function (err) {
+                    notify('Something Went Wrong!', 2);
+                });
         });
     }
 </script>
