@@ -74,11 +74,14 @@
                     <a href="javascript:void(0);" class="nav-icon w3-bar-item w3-button" onclick="myFunction()">
                         <i style="font-size: 18px;" class="fa fa-bars"></i>
                     </a>
-                    <section class="nav-menus">
+                    <section ng-show="!logged()" class="nav-menus">
+                        <span style="font-size: 15px;">Please login to get access.</span>
+                    </section>
+                    <section ng-show="logged()" class="nav-menus">
                         <a href="#/" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home'}"
                             class="w3-bar-item w3-button w3-mobile">HOME</a>
-                        <a href="#newjournal" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home12'}"
-                            class="w3-bar-item w3-button w3-mobile">New Journal</a>
+                        <!-- <a href="#newjournal" style="margin-right: 5px;" ng-class="{'w3-border' : $route.current.activetab == 'home12'}"
+                            class="w3-bar-item w3-button w3-mobile">New Journal</a> -->
                         <div class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'chart'}" class="w3-button">CHART&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
