@@ -130,6 +130,13 @@
                         $js('nodata').style.display = "none";
                         clearFields();
                         exitModel();
+                        auth.signOut()
+                            .then(function (success) {
+                                // localStorage.removeItem('user');
+                            })
+                            .catch(function (error) {
+                                alert(error);
+                            });
                     }
                 });
             })
