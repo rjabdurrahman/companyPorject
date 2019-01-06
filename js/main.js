@@ -206,3 +206,33 @@ function notify(msg, t) {
         $('#notification').html("<h6>" + msg + "</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(300).fadeOut(200);
     }
 }
+
+// User Default Permissions
+var dPermission = {
+    c_1 : false,
+    c_2 : false,
+    c_3 : false,
+    c_4 : false,
+    c_5 : false,
+    c_6 : false,
+    c_7 : false,
+    c_8 : false,
+    c_9 : false,
+    c_10 : false,
+    c_11 : false,
+    c_12 : false,
+    fe_1 : false,
+    fe_2 : false,
+    fe_3 : false,
+    fe_4 : false,
+    fe_5 : false,
+    fe_6 : false,
+    fe_7 : false,
+    j_1 : false,
+    j_2 : false,
+    l_1: false,
+    l_2: false,
+    l_3: false,
+    l_4: false,
+    l_5: false
+}
