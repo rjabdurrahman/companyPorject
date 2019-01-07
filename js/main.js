@@ -91,9 +91,9 @@ var accounts = {
     PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13 }
 }
 
-function accountFlag(nat){
-    for(ac in accounts){
-        if(accounts[ac].name == nat) return accounts[ac].flag;
+function accountFlag(nat) {
+    for (ac in accounts) {
+        if (accounts[ac].name == nat) return accounts[ac].flag;
     }
 }
 
@@ -117,7 +117,12 @@ function s2ab(s) {
     for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
     return buf;
 }
-
+// User Info
+var userInfo = null;
+if (lsGet('user')) {
+    userInfo = lsGetJ('user');
+    $print(userInfo);
+}
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCcl2jCPFCebAgYpfygKlXraqy4N0lrN8o",
@@ -132,7 +137,13 @@ const auth = firebase.auth();
 auth.onAuthStateChanged(function (fuser) {
     if (fuser) {
         $print(fuser);
-        // var user = firebase.auth().currentUser;
+        var user = firebase.auth().currentUser;
+        // $print(user.uid);
+        getRef('users/' + user.uid).once('value').then(function (snapshot) {
+            let userIn = snapshot.val();
+            Object.assign(userInfo, userIn);
+            $print(userInfo);
+        });
         // if (user != null) {
         //     name = user.displayName;
         //     email = user.email;
@@ -209,27 +220,27 @@ function notify(msg, t) {
 
 // User Default Permissions
 var dPermission = {
-    c_1 : false,
-    c_2 : false,
-    c_3 : false,
-    c_4 : false,
-    c_5 : false,
-    c_6 : false,
-    c_7 : false,
-    c_8 : false,
-    c_9 : false,
-    c_10 : false,
-    c_11 : false,
-    c_12 : false,
-    fe_1 : false,
-    fe_2 : false,
-    fe_3 : false,
-    fe_4 : false,
-    fe_5 : false,
-    fe_6 : false,
-    fe_7 : false,
-    j_1 : false,
-    j_2 : false,
+    c_1: false,
+    c_2: false,
+    c_3: false,
+    c_4: false,
+    c_5: false,
+    c_6: false,
+    c_7: false,
+    c_8: false,
+    c_9: false,
+    c_10: false,
+    c_11: false,
+    c_12: false,
+    fe_1: false,
+    fe_2: false,
+    fe_3: false,
+    fe_4: false,
+    fe_5: false,
+    fe_6: false,
+    fe_7: false,
+    j_1: false,
+    j_2: false,
     l_1: false,
     l_2: false,
     l_3: false,
