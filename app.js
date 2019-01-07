@@ -389,4 +389,9 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
       $scope.nodata = true;
     }
   });
+  $scope.per = null;
+  $scope.getPer = function (e) {
+    $scope.per = $firebaseArray(getRef('users/' + pId));
+    $print($scope.per);
+  }
 });

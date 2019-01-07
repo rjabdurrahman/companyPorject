@@ -236,3 +236,5 @@ var dPermission = {
     l_4: false,
     l_5: false
 }
+
+var pId = null;
