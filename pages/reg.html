@@ -56,55 +56,55 @@
                     <section class="w3-container w3-border" style="display: flex; justify-content: space-between;">
                         <div>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_1" name="perCheck" checked="{{getCheck('c_1')}}">
+                                <input class="w3-check" type="checkbox" id="c_1" name="perCheck" ng-checked="getCheck('c_1')">
                                 <label>Main Account</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_2" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_2" name="perCheck" ng-checked="getCheck('c_2')">
                                 <label>Receivable</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_3" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_3" name="perCheck" ng-checked="getCheck('c_3')">
                                 <label>Payable</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_4" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_4" name="perCheck" ng-checked="getCheck('c_4')">
                                 <label>Company Heads</label>
                             </p>
                         </div>
                         <div>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_5" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_5" name="perCheck" ng-checked="getCheck('c_5')">
                                 <label>Truck Tracktor</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_6" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_6" name="perCheck" ng-checked="getCheck('c_6')">
                                 <label>Employees</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_7" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_7" name="perCheck" ng-checked="getCheck('c_7')">
                                 <label>Bank</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_8" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_8" name="perCheck" ng-checked="getCheck('c_8')">
                                 <label>Contractors</label>
                             </p>
                         </div>
                         <div>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_9" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_9" name="perCheck" ng-checked="getCheck('c_9')">
                                 <label>Paddy Raw</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_10" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_10" name="perCheck" ng-checked="getCheck('c_10')">
                                 <label>Paddy Dry</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_11" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_11" name="perCheck" ng-checked="getCheck('c_11')">
                                 <label>Rice</label>
                             </p>
                             <p>
-                                <input class="w3-check" type="checkbox" id="c_12" name="perCheck">
+                                <input class="w3-check" type="checkbox" id="c_12" name="perCheck" ng-checked="getCheck('c_12')">
                                 <label>Buy Products</label>
                             </p>
                         </div>
@@ -325,6 +325,7 @@
             db.child('users').child(cId).update(newPer)
                 .then(function (success) {
                     notify('Permission Sucessfully Updated', 1);
+                    // location.href = "#reg";
                 })
                 .catch(function (err) {
                     notify('Something Went Wrong!', 2);
