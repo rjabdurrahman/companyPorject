@@ -395,7 +395,6 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
   }
   $scope.getCheck = function (id) {
     if ($scope.per.length == 0) return false;
-    if(!$scope.per[i].hasOwnProperty(id)) return false;
     else {
       for (i = 0; i < $scope.per.length; i++) {
         if ($scope.per[i].$id == id){
