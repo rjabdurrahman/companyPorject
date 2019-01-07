@@ -142,6 +142,11 @@ auth.onAuthStateChanged(function (fuser) {
             Object.assign(userInfo, userIn);
             $print(userInfo);
             lsSetJ('user', userInfo);
+            var $body = angular.element(document.body);
+            var $rootScope = $body.scope().$root;
+            $rootScope.$apply(function () {
+                $rootScope.userInfo = userInfo;
+            });
         });
         // if (user != null) {
         //     name = user.displayName;
