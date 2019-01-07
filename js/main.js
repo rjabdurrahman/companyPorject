@@ -121,7 +121,6 @@ function s2ab(s) {
 var userInfo = null;
 if (lsGet('user')) {
     userInfo = lsGetJ('user');
-    $print(userInfo);
 }
 // Initialize Firebase
 var config = {

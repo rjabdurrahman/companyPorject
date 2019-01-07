@@ -160,6 +160,8 @@ app.run(function ($rootScope, $location, $route) {
     if (lsGet('user')) return true;
     else return false;
   }
+  $rootScope.userInfo = userInfo;
+  $rootScope.$applyAsync();
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
