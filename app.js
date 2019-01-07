@@ -161,8 +161,9 @@ app.run(function ($rootScope, $location, $route) {
     else return false;
   }
 });
-app.controller('LoginCntlr', function ($scope) {
+app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
+  $scope.cUser = $firebaseObject(getRef('users/kVq8vdSkUzMA08ns4RKsECBa7TX2/name'));
   // if (auth.currentUser){
   //   $scope.email = auth.currentUser.email;
   //   $scope.$applyAsync();
