@@ -161,6 +161,7 @@ app.run(function ($rootScope, $location, $route) {
     else return false;
   }
   $rootScope.userInfo = userInfo;
+  $print($rootScope.userInfo);
   $rootScope.$applyAsync();
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
