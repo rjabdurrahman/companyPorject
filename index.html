@@ -120,26 +120,26 @@
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                                <a href="#journalform" class="w3-bar-item w3-button w3-mobile">Journal Form</a>
-                                <a href="#purchase" class="w3-bar-item w3-button w3-mobile">Purchase</a>
-                                <a href="#purchasereturn" class="w3-bar-item w3-button w3-mobile">Puchase Return</a>
-                                <a href="#sales" class="w3-bar-item w3-button w3-mobile">Sales</a>
-                                <a href="#salesreturn" class="w3-bar-item w3-button w3-mobile">Sales Return</a>
-                                <a href="#prdinput" class="w3-bar-item w3-button w3-mobile">Production Input</a>
-                                <a href="#prdoutput" class="w3-bar-item w3-button w3-mobile">Production Output</a>
+                                <a ng-show="userInfo.fe_1" href="#journalform" class="w3-bar-item w3-button w3-mobile">Journal Form</a>
+                                <a ng-show="userInfo.fe_2" href="#purchase" class="w3-bar-item w3-button w3-mobile">Purchase</a>
+                                <a ng-show="userInfo.fe_3" href="#purchasereturn" class="w3-bar-item w3-button w3-mobile">Puchase Return</a>
+                                <a ng-show="userInfo.fe_4" href="#sales" class="w3-bar-item w3-button w3-mobile">Sales</a>
+                                <a ng-show="userInfo.fe_5" href="#salesreturn" class="w3-bar-item w3-button w3-mobile">Sales Return</a>
+                                <a ng-show="userInfo.fe_6" href="#prdinput" class="w3-bar-item w3-button w3-mobile">Production Input</a>
+                                <a ng-show="userInfo.fe_7" href="#prdoutput" class="w3-bar-item w3-button w3-mobile">Production Output</a>
                             </div>
                         </div>
-                        <a ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal" class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
+                        <a ng-show="userInfo.j_2" ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal" class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
                         <div class="w3-dropdown-hover">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                                <a href="#debitledger" class="w3-bar-item w3-button w3-mobile">Debit Ledger</a>
-                                <a href="#creditledger" class="w3-bar-item w3-button w3-mobile">Credit Ledger</a>
-                                <a href="#expenseledger" class="w3-bar-item w3-button w3-mobile">Expense Ledger</a>
-                                <a href="#debitorledger" class="w3-bar-item w3-button w3-mobile">Debitor Ledger</a>
-                                <a href="#creditorledger" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
+                                <a ng-show="userInfo.l_1" href="#debitledger" class="w3-bar-item w3-button w3-mobile">Debit Ledger</a>
+                                <a ng-show="userInfo.l_2" href="#creditledger" class="w3-bar-item w3-button w3-mobile">Credit Ledger</a>
+                                <a ng-show="userInfo.l_3" href="#expenseledger" class="w3-bar-item w3-button w3-mobile">Expense Ledger</a>
+                                <a ng-show="userInfo.l_4" href="#debitorledger" class="w3-bar-item w3-button w3-mobile">Debitor Ledger</a>
+                                <a ng-show="userInfo.l_5" href="#creditorledger" class="w3-bar-item w3-button w3-mobile">Creditor Ledger</a>
                             </div>
                         </div>
                         <div class="w3-dropdown-hover">
