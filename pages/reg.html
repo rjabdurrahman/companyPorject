@@ -42,7 +42,7 @@
         <div id="permissionWin" class="w3-modal">
             <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 650px;">
                 <header class="w3-container main-bg-color div-title">
-                    <span onclick="$js('permissionWin').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <span onclick="$js('permissionWin').style.display='none';location.href = '#reg';" class="w3-button w3-display-topright">&times;</span>
                     <h2>User Permission</h2>
                 </header>
                 <div class="w3-container">
@@ -200,7 +200,7 @@
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
                         <button id="confirmPermission" class="w3-btn w3-green" style="margin-left: 20px; margin-right: 20px;">Submit</button>
-                        <button onclick="$js('permissionWin').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                        <button onclick="$js('permissionWin').style.display='none';location.href = '#reg';" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
             </div>
@@ -325,7 +325,7 @@
             db.child('users').child(cId).update(newPer)
                 .then(function (success) {
                     notify('Permission Sucessfully Updated', 1);
-                    // location.href = "#reg";
+                    location.href = "#reg";
                 })
                 .catch(function (err) {
                     notify('Something Went Wrong!', 2);
