@@ -389,9 +389,20 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
       $scope.nodata = true;
     }
   });
-  $scope.per = null;
+  $scope.per = [];
   $scope.getPer = function (e) {
     $scope.per = $firebaseArray(getRef('users/' + pId));
     $print($scope.per);
   }
+  $scope.getCheck = function (id) {
+    if ($scope.per.length == 0) return false;
+    else {
+      for (i = 0; i < $scope.per.length; i++) {
+        if ($scope.per[i].$id == id){
+          return $scope.per[i].$value;
+        }
+      }
+    }
+  }
+  $scope.$applyAsync();
 });
