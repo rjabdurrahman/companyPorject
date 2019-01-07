@@ -392,7 +392,6 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
   $scope.per = [];
   $scope.getPer = function (e) {
     $scope.per = $firebaseArray(getRef('users/' + pId));
-    $print($scope.per);
   }
   $scope.getCheck = function (id) {
     if ($scope.per.length == 0) return false;
