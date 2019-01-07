@@ -118,7 +118,7 @@ function s2ab(s) {
     return buf;
 }
 // User Info
-var userInfo = null;
+var userInfo = {};
 if (lsGet('user')) {
     userInfo = lsGetJ('user');
 }
@@ -141,6 +141,7 @@ auth.onAuthStateChanged(function (fuser) {
         getRef('users/' + user.uid).once('value').then(function (snapshot) {
             let userIn = snapshot.val();
             Object.assign(userInfo, userIn);
+            $print(userInfo);
             lsSetJ('user', userInfo);
         });
         // if (user != null) {
