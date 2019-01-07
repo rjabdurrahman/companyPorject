@@ -161,18 +161,13 @@ app.run(function ($rootScope, $location, $route) {
     else return false;
   }
   $rootScope.userInfo = userInfo;
-  $rootScope.chart = false;
-  $rootScope.fe = false;
-  $rootScope.ledger = false;
+  $rootScope.chart = true;
+  $rootScope.fe = true;
+  $rootScope.ledger = true;
   $print($rootScope.userInfo);
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
-  $scope.cUser = $firebaseObject(getRef('users/kVq8vdSkUzMA08ns4RKsECBa7TX2/name'));
-  // if (auth.currentUser){
-  //   $scope.email = auth.currentUser.email;
-  //   $scope.$applyAsync();
-  // }
 });
 app.controller('PayableCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Payable";
