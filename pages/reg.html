@@ -26,7 +26,8 @@
                                     <td>{{user.email}}</td>
                                     <td>{{user.name}}</td>
                                     <td>
-                                        <button id="{{user.$id}}" onclick="permission(event)" ng-click="getPer($event)" class="w3-btn w3-blue">Permission</button>
+                                        <button ng-if="user.uc" class="w3-btn w3-blue" disabled>Admin</button>
+                                        <button ng-if="!user.uc" id="{{user.$id}}" onclick="permission(event)" ng-click="getPer($event)" class="w3-btn w3-blue">Permission</button>
                                     </td>
                                 </tr>
                             </tbody>
