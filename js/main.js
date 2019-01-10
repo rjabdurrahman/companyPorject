@@ -141,7 +141,11 @@ auth.onAuthStateChanged(function (fuser) {
             let userIn = snapshot.val();
             Object.assign(userInfo, userIn);
             $print(userInfo);
-            lsSetJ('user', userInfo);
+            if (userInfo.uc) {
+                lsSetJ('admin', userInfo);
+            }
+            else
+                lsSetJ('user', userInfo);
             var $body = angular.element(document.body);
             var $rootScope = $body.scope().$root;
             $rootScope.$apply(function () {
