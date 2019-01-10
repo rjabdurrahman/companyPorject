@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="dcoll">
+                                <tr ng-show="load" class="dcoll">
                                     <td style="background-color: bisque; cursor: pointer;" colspan="6">Current Asset</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in comAccounts track by $index">
@@ -40,7 +40,7 @@
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
-                                <tr class="dcoll">
+                                <tr ng-show="load" class="dcoll">
                                     <td style="background-color: bisque; cursor: pointer;" colspan="6">Non-Current
                                         Asset</td>
                                 </tr>
