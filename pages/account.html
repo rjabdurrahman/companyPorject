@@ -24,7 +24,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-show="load" class="dcoll">
-                                    <td style="background-color: bisque; cursor: pointer;" colspan="6">Current Asset</td>
+                                    <td class="acc_group_header" colspan="6">Current Asset</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in comAccounts track by $index">
                                     <td ng-if="comAcc.flag == 1">{{$index + 1}}</td>
@@ -41,7 +41,7 @@
                                     </td>
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
-                                    <td style="background-color: bisque; cursor: pointer;" colspan="6">Non-Current
+                                    <td class="acc_group_header" colspan="6">Non-Current
                                         Asset</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in comAccounts track by $index">
@@ -59,7 +59,7 @@
                                     </td>
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
-                                    <td style="background-color: bisque; cursor: pointer;" colspan="6">Current
+                                    <td class="acc_group_header" colspan="6">Current
                                         Liability</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in comAccounts track by $index">

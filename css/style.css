@@ -449,10 +449,19 @@ input#userPasswordField {
 /* Ledger Style End */
 
 /* Permission Styles */
-.w3-check{
+
+.w3-check {
     height: 18px !important;
     width: 18px !important;
 }
-.w3-check + label{
+
+.w3-check+label {
     font-size: 14px !important;
+}
+
+/* Account Group Header */
+
+.acc_group_header {
+    background-color: bisque;
+    cursor: pointer;
 }
