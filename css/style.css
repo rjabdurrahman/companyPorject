@@ -463,5 +463,6 @@ input#userPasswordField {
 
 .acc_group_header {
     background-color: bisque;
+    background-image: linear-gradient(bisque, #fff0e0);
     cursor: pointer;
 }
