@@ -161,9 +161,6 @@ app.run(function ($rootScope, $location, $route) {
     else return false;
   }
   $rootScope.userInfo = userInfo;
-  $rootScope.chart = true;
-  $rootScope.fe = true;
-  $rootScope.ledger = true;
   $print($rootScope.userInfo);
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
