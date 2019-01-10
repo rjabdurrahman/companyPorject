@@ -146,6 +146,7 @@
     </div>
 </div>
 <script>
+    $('.dcoll').nextUntil('tr.dcoll').hide();
     $('.dcoll').click(function () {
         $(this).nextUntil('tr.dcoll').slideToggle(100);
     });
