@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="dcoll">
                                     <td style="background-color: bisque; cursor: pointer;" colspan="6">Current Asset</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in comAccounts track by $index">
@@ -40,7 +40,7 @@
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="dcoll">
                                     <td style="background-color: bisque; cursor: pointer;" colspan="6">Non-Current
                                         Asset</td>
                                 </tr>
@@ -146,6 +146,9 @@
     </div>
 </div>
 <script>
+    $('.dcoll').click(function () {
+        $(this).nextUntil('tr.dcoll').slideToggle(100);
+    });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);
     $js('submitAccBtn').addEventListener('click', function () {
