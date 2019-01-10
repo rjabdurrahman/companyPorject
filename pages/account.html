@@ -41,7 +41,22 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="background-color: bisque; cursor: pointer;" colspan="6">Non-Current Asset</td>
+                                    <td style="background-color: bisque; cursor: pointer;" colspan="6">Non-Current
+                                        Asset</td>
+                                </tr>
+                                <tr ng-repeat="comAcc in comAccounts track by $index">
+                                    <td ng-if="comAcc.flag == 2">{{$index + 1}}</td>
+                                    <td ng-if="comAcc.flag == 2">{{comAcc.nature}}</td>
+                                    <td ng-if="comAcc.flag == 2">{{comAcc.accCode}}</td>
+                                    <td ng-if="comAcc.flag == 2">{{comAcc.accText}}</td>
+                                    <td ng-if="comAcc.flag == 2">
+                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                            style="display: none;">Update</button>
+                                    </td>
+                                    <td ng-if="comAcc.flag == 2">
+                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
