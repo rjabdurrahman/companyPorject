@@ -139,13 +139,11 @@ auth.onAuthStateChanged(function (fuser) {
         var user = firebase.auth().currentUser;
         getRef('users/' + user.uid).once('value').then(function (snapshot) {
             let userIn = snapshot.val();
-            Object.assign(userInfo, userIn);
-            $print(userInfo);
-            if (userInfo.uc) {
-                lsSetJ('admin', userInfo);
-            }
-            else
+            if(!localStorage.user.uc){
+                Object.assign(userInfo, userIn);
+                $print(userInfo);
                 lsSetJ('user', userInfo);
+            }
             var $body = angular.element(document.body);
             var $rootScope = $body.scope().$root;
             $rootScope.$apply(function () {
