@@ -290,7 +290,7 @@
                         exitModel();
                         auth.signOut()
                             .then(function (success) {
-                                login(lsGetJ('user').email, lsGetJ('user').pass);
+                                login(lsGetJ('admin').email, lsGetJ('admin').pass);
                             })
                             .catch(function (error) {
                                 alert(error);
