@@ -13,7 +13,7 @@
             </div>
             <div class="w3-container" style="padding-bottom: 18px;">
                 <input id="userEmailField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
-                    placeholder="Email">
+                    placeholder="Username">
                 <input id="userPasswordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password"
                     style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Password">
                 <p style="padding: 6px;">
@@ -48,7 +48,7 @@
         this.disabled = true;
         this.textContent = 'Logging...';
         let btn = this;
-        let email = $js('userEmailField').value;
+        let email = $js('userEmailField').value + '@gmail.com';
         let password = $js('userPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function (sucess) {
