@@ -408,10 +408,10 @@ app.controller('SearchCnt', function ($scope, $firebaseArray) {
   $scope.searchres = [];
   $scope.searchdata = function (e) {
     $scope.searchres = [];
-    let sKey = e.target.value;
+    let sKey = e.target.value.toLowerCase();
     if (sKey != '') {
       let sRes = $scope.students.find(function (el) {
-        return el.first.includes(sKey.toLowerCase()) || el.last.includes(sKey.toLowerCase()) || el.class.includes(sKey.toLowerCase()) || el.status.includes(sKey.toLowerCase());
+        return el.first.toLowerCase().includes(sKey) || el.last.toLowerCase().includes(sKey) || el.class.toLowerCase().includes(sKey.toLowerCase()) || el.status.toLowerCase().includes(sKey);
       });
       if (sRes) {
         $scope.searchres.push(sRes);
