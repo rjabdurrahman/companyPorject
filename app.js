@@ -411,7 +411,7 @@ app.controller('SearchCnt', function ($scope, $firebaseArray) {
     let sKey = e.target.value;
     if (sKey != '') {
       let sRes = $scope.students.find(function (el) {
-        return el.first.includes(sKey) || el.last.includes(sKey) || el.class.includes(sKey);
+        return el.first.includes(sKey.toLowerCase()) || el.last.includes(sKey.toLowerCase()) || el.class.includes(sKey.toLowerCase()) || el.status.includes(sKey.toLowerCase());
       });
       if (sRes) {
         $scope.searchres.push(sRes);
