@@ -20,6 +20,7 @@
                                     <th>Party Type</th>
                                     <th>Propritor Name</th>
                                     <th>Mobile</th>
+                                    <th>Email</th>
                                     <th>Address</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
@@ -33,6 +34,7 @@
                                     <td>{{pay.partyType}}</td>
                                     <td>{{pay.proprietor}}</td>
                                     <td>{{pay.mobile}}</td>
+                                    <td>{{pay.email}}</td>
                                     <td>{{pay.address}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
@@ -104,6 +106,14 @@
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Email</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="payEmail">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
                                 <label class="w3-medium">Address</label>
                             </div>
                             <div class="w3-rest">
@@ -134,6 +144,7 @@
         var payPartyType = $js('payPartyType').value;
         var payProprietor = $js('payProprietor').value;
         var payMObileNo = $js('payMObileNo').value;
+        var payEmail = $js('payEmail').value;
         var payAddress = $js('payAddress').value;
         if (payACCode == "") {
             $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
@@ -155,6 +166,11 @@
             $('#notification').html("<h6>Mobile No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (payEmail == "" || payEmail.indexOf('@') == -1 || payEmail.indexOf('.') == -1) {
+            notify('Email Empty or Not Currect!', 2);
+            $js('recEmail').focus();
+            return;
+        }
         else if (payAddress == "") {
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -172,6 +188,7 @@
             partyType: payPartyType,
             proprietor: payProprietor,
             mobile: '+8801' + payMObileNo,
+            email: payEmail,
             address: payAddress
         };
         // Store
