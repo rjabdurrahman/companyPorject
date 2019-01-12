@@ -405,6 +405,19 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
 });
 
 app.controller('SearchCnt', function ($scope, $firebaseArray) {
+  $scope.searchres = [];
+  $scope.searchdata = function(e){
+    $scope.searchres = [];
+    let sKey = e.target.value;
+    let sRes = $scope.students.find(function(el){
+      return el.first.includes(sKey) || el.last.includes(sKey) || el.class.includes(sKey);
+    });
+    if(sRes){
+      $scope.searchres.push(sRes);
+      $print($scope.searchres);
+    }
+    $scope.$applyAsync();
+  }
   $scope.students = [
     {first: 'Aguilar', last: 'Alice', class: '1967', status : 'Not Graduated'},
     {first: 'Clark', last: 'Helen', class: '2015', status : 'Graduated'},    
