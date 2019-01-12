@@ -139,7 +139,7 @@ app.config(function ($routeProvider) {
     })
     .when('/search', {
       templateUrl: 'pages/user/search.html',
-      controller: 'CreditLedgerCntlr',
+      controller: 'SearchCnt',
       activetab: 'user'
     })
     .when('/newjournal', {
@@ -402,4 +402,11 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
     }
   }
   $scope.$applyAsync();
+});
+
+app.controller('SearchCnt', function ($scope, $firebaseArray) {
+  $scope.students = [
+    {first: 'Aguilar', last: 'Alice', class: '1967', status : 'Not Graduated'},
+    {first: 'Clark', last: 'Helen', class: '2015', status : 'Graduated'},    
+  ];
 });
