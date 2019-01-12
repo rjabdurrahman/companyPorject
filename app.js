@@ -137,8 +137,8 @@ app.config(function ($routeProvider) {
       controller: 'CreditLedgerCntlr',
       activetab: 'ledger'
     })
-    .when('/dashboard', {
-      templateUrl: 'pages/user/dash.html',
+    .when('/search', {
+      templateUrl: 'pages/user/search.html',
       controller: 'CreditLedgerCntlr',
       activetab: 'user'
     })
