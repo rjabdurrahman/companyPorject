@@ -156,6 +156,10 @@ app.config(function ($routeProvider) {
 });
 app.run(function ($rootScope, $location, $route) {
   $rootScope.$route = $route;
+  $rootScope.clogged = function () {
+    if (lsGet('company')) return true;
+    else return false;
+  }
   $rootScope.logged = function () {
     if (lsGet('user')) return true;
     else return false;
