@@ -341,6 +341,7 @@
         // $print(this.textContent);
         $('.dcoll').nextUntil('tr.dcoll').hide();
         $(this).nextUntil('tr.dcoll').slideToggle(100);
+        $js('accNature').selectedIndex = 4;
     });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);
