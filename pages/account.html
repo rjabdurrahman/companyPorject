@@ -26,7 +26,7 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Current Asset</td>
                                 </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
+                                <tr ng-repeat="comAcc in comAccounts | orderBy : 'accCode' track by $index">
                                     <td ng-if="comAcc.flag == 1">{{$index + 1}}</td>
                                     <td ng-if="comAcc.flag == 1">{{comAcc.nature}}</td>
                                     <td ng-if="comAcc.flag == 1">{{comAcc.accCode}}</td>
