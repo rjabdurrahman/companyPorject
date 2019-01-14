@@ -338,6 +338,8 @@
 <script>
     $('.dcoll').nextUntil('tr.dcoll').hide();
     $('.dcoll').click(function () {
+        // $print(this.textContent);
+        $('.dcoll').nextUntil('tr.dcoll').hide();
         $(this).nextUntil('tr.dcoll').slideToggle(100);
     });
     var dbAccounts = null;
