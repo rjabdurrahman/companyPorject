@@ -43,6 +43,9 @@
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
+                                <tr class="minimize">
+                                    <td colspan="6">Minimize</td>
+                                </tr>
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Non-Current
                                         Asset</td>
@@ -377,6 +380,10 @@
 <script>
     $('#table-headm').hide();
     $('.dcoll').nextUntil('tr.dcoll').hide();
+    $('.minimize').click(function(){
+        $(this).slideToggle();
+        $(this).prevUntil('tr.dcoll').slideToggle();
+    });
     $('.dcoll').click(function () {
         // $print(this.textContent);
         if ($(this).nextUntil('tr.dcoll').is(":visible")) {
