@@ -342,9 +342,14 @@
     $('.dcoll').nextUntil('tr.dcoll').hide();
     $('.dcoll').click(function () {
         // $print(this.textContent);
-        $('.dcoll').nextUntil('tr.dcoll').hide();
-        $(this).nextUntil('tr.dcoll').slideToggle(100);
-        $js('accNature').selectedIndex = 4;
+        if ($(this).nextUntil('tr.dcoll').is(":visible")) {
+            $(this).nextUntil('tr.dcoll').slideToggle(100);
+        }
+        else {
+            $('.dcoll').nextUntil('tr.dcoll').hide();
+            $(this).nextUntil('tr.dcoll').slideToggle(100);
+        }
+        // $js('accNature').selectedIndex = 4;
     });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);
