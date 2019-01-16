@@ -417,6 +417,7 @@
     $('#table-headm').hide();
     $('.dcoll').nextUntil('tr.dcoll').hide();
     $('.minimize').click(function () {
+        $('#table-headm').hide();
         $(this).slideToggle();
         $(this).prevUntil('tr.dcoll').slideToggle();
     });
