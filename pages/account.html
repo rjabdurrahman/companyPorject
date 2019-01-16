@@ -199,6 +199,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Production</td>
                                 </tr>
+                                <tr ng-show="getAccArr(11).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(11) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
