@@ -22,232 +22,24 @@
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Current Asset</td>
+                            <tbody ng-repeat="(key,value) in comAccounts | groupBy : 'flag'">
+                                <tr class="grow">
+                                    <td class="acc_group_header" colspan="6">{{value[0].nature}}</td>
                                 </tr>
-                                <tr ng-repeat="comAcc in comAccounts | orderBy : 'accCode' track by $index">
-                                    <td ng-if="comAcc.flag == 1">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 1">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 1">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 1">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 1">
+                                <tr ng-repeat="comAcc in value track by $index">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{comAcc.nature}}</td>
+                                    <td>{{comAcc.accCode}}</td>
+                                    <td>{{comAcc.accText}}</td>
+                                    <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
-                                    <td ng-if="comAcc.flag == 1">
+                                    <td>
                                         <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Non-Current
-                                        Asset</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 2">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 2">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 2">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 2">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 2">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 2">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Current
-                                        Liability</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 3">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 3">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 3">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 3">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 3">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 3">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Non-Current
-                                        Liability</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 4">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 4">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 4">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 4">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 4">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 4">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Equity</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 5">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 5">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 5">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 5">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 5">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 5">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Expense</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 6">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 6">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 6">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 6">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 6">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 6">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Revenue</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 7">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 7">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 7">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 7">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 7">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 7">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Withdrawal</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 8">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 8">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 8">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 8">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 8">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 8">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Contra Revenue</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 9">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 9">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 9">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 9">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 9">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 9">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Cost of Goods Sold</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 10">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 10">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 10">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 10">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 10">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 10">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Production</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 11">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 11">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 11">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 11">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 11">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 11">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Contra</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 12">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 12">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 12">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 12">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 12">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 12">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr ng-show="load" class="dcoll">
-                                    <td class="acc_group_header" colspan="6">Contra Expense</td>
-                                </tr>
-                                <tr ng-repeat="comAcc in comAccounts track by $index">
-                                    <td ng-if="comAcc.flag == 13">{{$index + 1}}</td>
-                                    <td ng-if="comAcc.flag == 13">{{comAcc.nature}}</td>
-                                    <td ng-if="comAcc.flag == 13">{{comAcc.accCode}}</td>
-                                    <td ng-if="comAcc.flag == 13">{{comAcc.accText}}</td>
-                                    <td ng-if="comAcc.flag == 13">
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td ng-if="comAcc.flag == 13">
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr class="dcoll" style="display: none;"></tr>
                             </tbody>
                         </table>
                         <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
@@ -336,12 +128,8 @@
     </div>
 </div>
 <script>
-    $('.dcoll').nextUntil('tr.dcoll').hide();
-    $('.dcoll').click(function () {
-        // $print(this.textContent);
-        $('.dcoll').nextUntil('tr.dcoll').hide();
-        $(this).nextUntil('tr.dcoll').slideToggle(100);
-        $js('accNature').selectedIndex = 4;
+    $('.grow').click(function () {
+        $print('this');
     });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);
