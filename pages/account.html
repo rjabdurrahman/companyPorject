@@ -26,6 +26,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Current Asset</td>
                                 </tr>
+                                <tr ng-show="getAccArr(1).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(1) | orderBy : 'accCode' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -43,6 +46,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Non-Current
                                         Asset</td>
+                                </tr>
+                                <tr ng-show="getAccArr(2).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in getAccArr(2) track by $index">
                                     <td>{{$index + 1}}</td>
@@ -62,6 +68,9 @@
                                     <td class="acc_group_header" colspan="6">Current
                                         Liability</td>
                                 </tr>
+                                <tr ng-show="getAccArr(3).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(3) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -80,6 +89,9 @@
                                     <td class="acc_group_header" colspan="6">Non-Current
                                         Liability</td>
                                 </tr>
+                                <tr ng-show="getAccArr(4).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(4) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -96,6 +108,9 @@
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Equity</td>
+                                </tr>
+                                <tr ng-show="getAccArr(5).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in getAccArr(5) track by $index">
                                     <td>{{$index + 1}}</td>
@@ -114,6 +129,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Expense</td>
                                 </tr>
+                                <tr ng-show="getAccArr(6).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(6) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -130,6 +148,9 @@
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Revenue</td>
+                                </tr>
+                                <tr ng-show="getAccArr(7).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in getAccArr(7) track by $index">
                                     <td>{{$index + 1}}</td>
@@ -148,6 +169,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Withdrawal</td>
                                 </tr>
+                                <tr ng-show="getAccArr(8).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(8) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -165,6 +189,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Contra Revenue</td>
                                 </tr>
+                                <tr ng-show="getAccArr(9).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(9) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -181,6 +208,9 @@
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Cost of Goods Sold</td>
+                                </tr>
+                                <tr ng-show="getAccArr(10).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in getAccArr(10) track by $index">
                                     <td>{{$index + 1}}</td>
@@ -219,6 +249,9 @@
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Contra</td>
                                 </tr>
+                                <tr ng-show="getAccArr(11).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                </tr>
                                 <tr ng-repeat="comAcc in getAccArr(12) track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{comAcc.nature}}</td>
@@ -235,6 +268,9 @@
                                 </tr>
                                 <tr ng-show="load" class="dcoll">
                                     <td class="acc_group_header" colspan="6">Contra Expense</td>
+                                </tr>
+                                <tr ng-show="getAccArr(11).length == 0">
+                                    <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                 </tr>
                                 <tr ng-repeat="comAcc in getAccArr(13) track by $index">
                                     <td>{{$index + 1}}</td>
