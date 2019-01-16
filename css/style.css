@@ -466,3 +466,8 @@ input#userPasswordField {
     background-image: linear-gradient(bisque, #fff0e0);
     cursor: pointer;
 }
+
+.minimize{
+    background-color: #b3cbf2 !important;
+    cursor: pointer;
+}
