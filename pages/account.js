@@ -12,6 +12,10 @@ app.controller('AccountCntlr', function ($scope, $firebaseArray) {
             $scope.nodata = true;
         }
     });
+    $scope.getAccArr = function(){
+        let accArr = [];
+        accArr.push($scope.comAccounts);
+    }
     // var accs = lsExGJInit('comAccounts', []);
     // var accLength = lsExGJInit('comAccounts', []).length;
     // for (acc in $scope.accounts) {
