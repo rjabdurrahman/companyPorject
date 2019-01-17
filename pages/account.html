@@ -425,6 +425,9 @@
         if ($(this).nextUntil('tr.dcoll').is(":visible")) {
             $('#table-headm').hide();
             $(this).nextUntil('tr.dcoll').slideToggle(100);
+            $js('accNature').selectedIndex = 0;
+            $js('natureCodeFill').value = '';
+            return;
         }
         else {
             $('#table-headm').show();
