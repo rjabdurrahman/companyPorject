@@ -384,7 +384,7 @@
                                         <option value="SE">SE</option>
                                         <option value="RE">RE</option>
                                     </select>
-                                    <input ng-switch-default class="w3-input w3-border" type="text" value="{{natureSelection}}"
+                                    <input ng-switch-default class="w3-input w3-border" type="text" id="natureCodeFill" value="{{natureSelection}}"
                                         style="width: 65px; text-align: center" disabled>
                                 </section>
                                 <label style="padding: 8px;">-</label>
@@ -422,7 +422,6 @@
         $(this).prevUntil('tr.dcoll').slideToggle();
     });
     $('.dcoll').click(function () {
-        $print(removeNewlines(this.textContent));
         if ($(this).nextUntil('tr.dcoll').is(":visible")) {
             $('#table-headm').hide();
             $(this).nextUntil('tr.dcoll').slideToggle(100);
@@ -432,7 +431,10 @@
             $('.dcoll').nextUntil('tr.dcoll').hide();
             $(this).nextUntil('tr.dcoll').slideToggle(100);
         }
-        // $js('accNature').selectedIndex = 4;
+        if (removeNewlines(this.textContent) == 'Current Asset') {
+            $js('accNature').selectedIndex = 1;
+            $js('natureCodeFill').value = 'CA';
+        }
     });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);

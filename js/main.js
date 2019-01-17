@@ -262,5 +262,5 @@ function removeNewlines(str) {
     str = str.replace(/\s{2,}/g, ' ');
     str = str.replace(/\t/g, ' ');
     str = str.toString().trim().replace(/(\r\n|\n|\r)/g, "");
-    console.log(str);
+    return str;
 }
