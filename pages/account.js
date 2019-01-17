@@ -13,9 +13,7 @@ app.controller('AccountCntlr', function ($scope, $firebaseArray) {
         }
     });
     $scope.getAccArr = function(fl){
-        let accArr = [];
-        accArr.push($scope.comAccounts);
-        return accArr[0].filter(function(el){
+        return $scope.comAccounts.filter(function(el){
             return el.flag == fl;
         });
     }
