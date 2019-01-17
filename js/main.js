@@ -139,7 +139,7 @@ auth.onAuthStateChanged(function (fuser) {
         var user = firebase.auth().currentUser;
         getRef('users/' + user.uid).once('value').then(function (snapshot) {
             let userIn = snapshot.val();
-            if(!localStorage.user.uc){
+            if (!localStorage.user.uc) {
                 Object.assign(userInfo, userIn);
                 $print(userInfo);
                 lsSetJ('user', userInfo);
@@ -256,3 +256,11 @@ var dPermission = {
 }
 
 var pId = null;
+
+function removeNewlines(str) {
+    //remove line breaks from str
+    str = str.replace(/\s{2,}/g, ' ');
+    str = str.replace(/\t/g, ' ');
+    str = str.toString().trim().replace(/(\r\n|\n|\r)/g, "");
+    console.log(str);
+}
