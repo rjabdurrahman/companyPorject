@@ -435,6 +435,54 @@
             $js('accNature').selectedIndex = 1;
             $js('natureCodeFill').value = 'CA';
         }
+        else if (removeNewlines(this.textContent) == 'Non-Current Asset') {
+            $js('accNature').selectedIndex = 2;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Current Liability') {
+            $js('accNature').selectedIndex = 3;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Non-Current Liability') {
+            $js('accNature').selectedIndex = 4;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Equity') {
+            $js('accNature').selectedIndex = 5;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Expense') {
+            $js('accNature').selectedIndex = 6;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Revenue') {
+            $js('accNature').selectedIndex = 7;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Withdrawal') {
+            $js('accNature').selectedIndex = 8;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Contra Revenue') {
+            $js('accNature').selectedIndex = 9;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
+            $js('accNature').selectedIndex = 10;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Production') {
+            $js('accNature').selectedIndex = 11;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Contra') {
+            $js('accNature').selectedIndex = 12;
+            $js('natureCodeFill').value = 'CA';
+        }
+        else if (removeNewlines(this.textContent) == 'Contra Expense') {
+            $js('accNature').selectedIndex = 13;
+            $js('natureCodeFill').value = 'CA';
+        }
     });
     var dbAccounts = null;
     lsSetJ('comAccounts', []);
