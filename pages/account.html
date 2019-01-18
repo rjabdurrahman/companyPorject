@@ -368,7 +368,8 @@
                                 <label class="w3-medium">Nature</label>
                             </div>
                             <div class="w3-rest">
-                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();$print($js('accCodeFirst').previousElementSibling.previousElementSibling.firstElementChild);" name="option">
+                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();"
+                                    name="option">
                                     <option value="" disabled selected>Choose Nature</option>
                                     <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc.name}}</option>
                                 </select>
@@ -505,12 +506,17 @@
         let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
         let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
         var accCodeInit = null;
-        let accCodeInitNode = $js('accCodeInit').firstElementChild;
-        if (accCodeInitNode.tagName == 'INPUT') {
-            accCodeInit = accCodeInitNode.value;
+        let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
+        if ($js('equitySelector').style.display == 'block') {
+            accCodeInit = $js('equitySelector').options[accCodeInitNode.selectedIndex].text;
         }
-        else if (accCodeInitNode.tagName == 'SELECT') {
-            accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
+        else {
+            if (accCodeInitNode.tagName == 'INPUT') {
+                accCodeInit = accCodeInitNode.value;
+            }
+            else if (accCodeInitNode.tagName == 'SELECT') {
+                accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
+            }
         }
         let accCodeFirst = $js('accCodeFirst').value;
         let accCodeSecond = $js('accCodeSecond').value;
