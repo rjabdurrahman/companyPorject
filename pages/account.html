@@ -438,6 +438,16 @@
             $('.dcoll').nextUntil('tr.dcoll').hide();
             $(this).nextUntil('tr.dcoll').slideToggle(100);
         }
+        // Equity Select
+        if (removeNewlines(this.textContent) == 'Equity') {
+            $js('natureCodeFill').style.display = 'none';
+            $js('equitySelector').style.display = 'block';
+        }
+        else{
+            $js('natureCodeFill').style.display = 'block';
+            $js('equitySelector').style.display = 'none';
+        }
+        // Fill AC Code
         if (removeNewlines(this.textContent) == 'Current Asset') {
             $js('accNature').selectedIndex = 1;
             $js('natureCodeFill').value = 'CA';
@@ -453,11 +463,6 @@
         else if (removeNewlines(this.textContent) == 'Non-Current Liability') {
             $js('accNature').selectedIndex = 4;
             $js('natureCodeFill').value = 'NCL';
-        }
-        else if (removeNewlines(this.textContent) == 'Equity') {
-            // $js('accNature').selectedIndex = 5;
-            $js('natureCodeFill').style.display = 'none';
-            $js('equitySelector').style.display = 'block';
         }
         else if (removeNewlines(this.textContent) == 'Expense') {
             $js('accNature').selectedIndex = 6;
