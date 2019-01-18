@@ -368,7 +368,7 @@
                                 <label class="w3-medium">Nature</label>
                             </div>
                             <div class="w3-rest">
-                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" name="option">
+                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();" name="option">
                                     <option value="" disabled selected>Choose Nature</option>
                                     <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc.name}}</option>
                                 </select>
@@ -424,6 +424,8 @@
         $('#table-headm').hide();
         $(this).slideToggle();
         $(this).prevUntil('tr.dcoll').slideToggle();
+        $js('accNature').selectedIndex = 0;
+        $js('natureCodeFill').value = '';
     });
     $('.dcoll').click(function () {
         if ($(this).nextUntil('tr.dcoll').is(":visible")) {
@@ -443,7 +445,7 @@
             $js('natureCodeFill').style.display = 'none';
             $js('equitySelector').style.display = 'block';
         }
-        else{
+        else {
             $js('natureCodeFill').style.display = 'block';
             $js('equitySelector').style.display = 'none';
         }
