@@ -368,7 +368,8 @@
                                 <label class="w3-medium">Nature</label>
                             </div>
                             <div class="w3-rest">
-                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();" name="option">
+                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();"
+                                    name="option">
                                     <option value="" disabled selected>Choose Nature</option>
                                     <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc.name}}</option>
                                 </select>
@@ -379,18 +380,18 @@
                                 <label class="w3-medium">Account Code</label>
                             </div>
                             <div class="w3-rest flex">
-                                <section id="accCodeInit" ng-switch="natureSelection">
-                                    <select id="equitySelector" class="w3-select w3-border" style="width: 65px; color: gray;display: none;">
+                                <select id="equitySelector" class="w3-select w3-border" style="width: 65px; color: gray;display: none;">
+                                    <option value="SE">SE</option>
+                                    <option value="RE">RE</option>
+                                </select>
+                                <section ng-if="natureSelection == EQTY" id="accCodeInit">
+                                    <select class="w3-select w3-border" style="width: 65px; color: gray;">
                                         <option value="SE">SE</option>
                                         <option value="RE">RE</option>
                                     </select>
-                                    <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 65px; color: gray;">
-                                        <option value="SE">SE</option>
-                                        <option value="RE">RE</option>
-                                    </select>
-                                    <input ng-switch-default class="w3-input w3-border" type="text" id="natureCodeFill"
-                                        value="{{natureSelection}}" style="width: 65px; text-align: center" disabled>
                                 </section>
+                                <input ng-if="!(natureSelection == EQTY)" class="w3-input w3-border" type="text" id="natureCodeFill"
+                                    value="{{natureSelection}}" style="width: 65px; text-align: center" disabled>
                                 <label style="padding: 8px;">-</label>
                                 <input id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);"
                                     onkeypress="numValidate(event)">
