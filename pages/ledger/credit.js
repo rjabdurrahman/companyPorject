@@ -96,4 +96,5 @@ app.controller('CreditLedgerCntlr', function ($scope, $firebaseArray) {
         }
         return total;
     }
+    creditorCodes = $firebaseArray(getRef('payables'));
 });

@@ -142,19 +142,20 @@
     </div>
 </div>
 <script>
+    var creditorCodes = null;
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
         getRef('begBalanceCr').set({ value: inBal });
     }
-    var accArrayA = null;
+    // var accArrayA = null;
     function ACNameComplete(event) {
         event.target.value = $.trim(event.target.value);
-        let data = accArrayA.find(function (el) {
-            return el.accCode == event.target.value;
+        let data = creditorCodes.find(function (el) {
+            return el.code == event.target.value;
         });
         // $print(data);
         if (data) {
-            event.target.parentElement.nextElementSibling.lastElementChild.value = data.accText;
+            event.target.parentElement.nextElementSibling.lastElementChild.value = data.name;
         }
         else event.target.parentElement.nextElementSibling.lastElementChild.value = '';
     }
