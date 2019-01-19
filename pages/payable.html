@@ -30,7 +30,7 @@
                                 <tr ng-repeat="pay in comPayables track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>
-                                        <a href="#creditorledger?code={{pay.code}}" style="color: blue; cursor: pointer;">{{pay.code}}</a>
+                                        <a href="#creditorledger?code={{pay.code}}&email={{pay.email}}" style="color: blue; cursor: pointer;">{{pay.code}}</a>
                                     </td>
                                     <td>{{pay.name}}</td>
                                     <td>{{pay.partyType}}</td>
