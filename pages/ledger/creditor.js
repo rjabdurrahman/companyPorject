@@ -52,7 +52,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         $print(dateToNum(dateTo.value));
         $print(dateToNum(dateFrom.value));
         $scope.records = [];
-        fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
+        fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
                 if (snapshot.size == 0) {
