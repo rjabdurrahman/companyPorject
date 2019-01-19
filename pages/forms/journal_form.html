@@ -223,6 +223,7 @@
         let description = $js('description');
         let debitCredit = [];
         let ACCodes = [];
+        let partyCodes = [];
         var drPartyCodeEls = $sn('drPartyCode');
         var crPartyCodeEls = $sn('crPartyCode');
         // Warning for Empty
@@ -283,6 +284,7 @@
                     drAmount: parseFloat(drAmount.value)
                 }
                 ACCodes.push(ACCodeEl.value);
+                partyCodes.push(partyCodeEl.value);
                 debitCredit.push(debit);
             }
             if (crPartyCodeEls.hasOwnProperty(index)) {
@@ -321,6 +323,7 @@
                     crAmount: parseFloat(crAmount.value)
                 }
                 ACCodes.push(ACCodeEl.value);
+                partyCodes.push(partyCodeEl.value)
                 debitCredit.push(credit);
             }
         }
@@ -339,6 +342,7 @@
             voucherNo: parseInt(voucherNo.value),
             date: dateToNum(date.value),
             ACCodes : ACCodes,
+            partyCodes : partyCodes,
             debitCredit: debitCredit,
             costCenter: costCenter.value,
             description: description.value
