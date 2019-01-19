@@ -89,10 +89,10 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         if (index == -1) return;
         let total = 0;
         for (i = 0; i <= index; i++) {
-            if (arr[i].sCode == arr[i].ACCodes[0] && (t == 0 || t == 1)) {
+            if (arr[i].sCode == arr[i].partyCodes[0] && (t == 0 || t == 1)) {
                 total -= arr[i].debitCredit[0].drAmount;
             }
-            if (arr[i].sCode == arr[i].ACCodes[1] && (t == 0 || t == 2)) {
+            if (arr[i].sCode == arr[i].partyCodes[1] && (t == 0 || t == 2)) {
                 total += arr[i].debitCredit[1].crAmount;
             }
         }
