@@ -171,7 +171,7 @@ app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
 });
 app.controller('PayableCntlr', function ($scope, $firebaseArray) {
-  $scope.title = "Payable";
+  $scope.title = "Creditor";
   var ref = firebase.database().ref().child('payables');
   dbPayables = $scope.comPayables = $firebaseArray(ref);
   $scope.comPayables.$loaded().then(function () {

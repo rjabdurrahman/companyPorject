@@ -1,5 +1,5 @@
 app.controller('ReceivableCntlr', function ($scope, $firebaseArray) {
-    $scope.title = "Receivable";
+    $scope.title = "Debtor";
     var ref = firebase.database().ref().child('receivables');
     dbReceivables = $scope.comReceivables = $firebaseArray(ref);
     $scope.comReceivables.$loaded().then(function () {
