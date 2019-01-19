@@ -2,6 +2,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.title = "Credit Ledger";
     $scope.qCode = getQueryVariable('code') ? getQueryVariable('code') : '';
     $scope.qName = getQueryVariable('name') ? decodeURI(getQueryVariable('name')) : '';
+    $scope.qEmail = getQueryVariable('email') ? getQueryVariable('email') : '';
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
     $scope.nodata = false;
