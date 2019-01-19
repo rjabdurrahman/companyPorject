@@ -89,23 +89,22 @@
                             </button>
                             <div class="w3-dropdown-content w3-bar-block w3-card-4">
                                 <a ng-show="userInfo.c_1" href="#account" class="w3-bar-item w3-button w3-mobile">Main
-                                    Account</a>
-                                <a ng-show="userInfo.c_2" href="#receivable" class="w3-bar-item w3-button w3-mobile">Receivable</a>
-                                <a ng-show="userInfo.c_3" href="#payable" class="w3-bar-item w3-button w3-mobile">Payable</a>
+                                    Accounts</a>
+                                <a ng-show="userInfo.c_2" href="#receivable" class="w3-bar-item w3-button w3-mobile">Debtors</a>
+                                <a ng-show="userInfo.c_3" href="#payable" class="w3-bar-item w3-button w3-mobile">Creditors</a>
                                 <a ng-show="userInfo.c_4" href="#companyheads" class="w3-bar-item w3-button w3-mobile">Company
                                     Heads</a>
-                                <a ng-show="userInfo.c_5" href="#trucktractor" class="w3-bar-item w3-button w3-mobile">Truck
-                                    & Tractor</a>
+                                <a ng-show="userInfo.c_5" href="#trucktractor" class="w3-bar-item w3-button w3-mobile">Vehicles</a>
                                 <a ng-show="userInfo.c_6" href="#employees" class="w3-bar-item w3-button w3-mobile">Employees</a>
-                                <a ng-show="userInfo.c_7" href="#bank" class="w3-bar-item w3-button w3-mobile">Bank</a>
+                                <a ng-show="userInfo.c_7" href="#bank" class="w3-bar-item w3-button w3-mobile">Banks</a>
                                 <a ng-show="userInfo.c_8" href="#contractors" class="w3-bar-item w3-button w3-mobile">Contractors</a>
-                                <a ng-show="userInfo.c_9" href="#paddyraw" class="w3-bar-item w3-button w3-mobile">Paddy
-                                    Raw</a>
-                                <a ng-show="userInfo.c_10" href="#paddydry" class="w3-bar-item w3-button w3-mobile">Paddy
-                                    Dry</a>
-                                <a ng-show="userInfo.c_11" href="#rice" class="w3-bar-item w3-button w3-mobile">Rice</a>
-                                <a ng-show="userInfo.c_12" href="#buyproducts" class="w3-bar-item w3-button w3-mobile">Buy
+                                <a ng-show="userInfo.c_9" href="#paddyraw" class="w3-bar-item w3-button w3-mobile">Raw
+                                    Materials</a>
+                                <a ng-show="userInfo.c_11" href="#rice" class="w3-bar-item w3-button w3-mobile">Finished
+                                    Goods</a>
+                                <a ng-show="userInfo.c_12" href="#buyproducts" class="w3-bar-item w3-button w3-mobile">By
                                     Products</a>
+                                <a ng-show="userInfo.c_10" href="#paddydry" class="w3-bar-item w3-button w3-mobile">Loans</a>
                                 <!-- <a onclick="printAll()" class="w3-bar-item w3-button w3-mobile">Export In Excel</a> -->
                             </div>
                         </div>
@@ -121,7 +120,8 @@
                             </div>
                         </div>
 
-                        <div ng-show="userInfo.fe_1 || userInfo.fe_2 || userInfo.fe_3 || userInfo.fe_4 || userInfo.fe_5 || userInfo.fe_6 || userInfo.fe_7" class="w3-dropdown-hover w3-mobile">
+                        <div ng-show="userInfo.fe_1 || userInfo.fe_2 || userInfo.fe_3 || userInfo.fe_4 || userInfo.fe_5 || userInfo.fe_6 || userInfo.fe_7"
+                            class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'formentry'}" class="w3-button">FORM
                                 ENTRY&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
@@ -143,7 +143,8 @@
                         </div>
                         <a ng-show="userInfo.j_2" ng-class="{'w3-border' : $route.current.activetab == 'journal'}" href="#journal"
                             class="w3-bar-item w3-button w3-mobile">JOURNAL</a>
-                        <div ng-show="userInfo.l_1 || userInfo.l_2 || userInfo.l_3 || userInfo.l_4 || userInfo.l_5" class="w3-dropdown-hover w3-mobile">
+                        <div ng-show="userInfo.l_1 || userInfo.l_2 || userInfo.l_3 || userInfo.l_4 || userInfo.l_5"
+                            class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'w3-border' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
                                 <i class="fa fa-caret-down"></i>
                             </button>
