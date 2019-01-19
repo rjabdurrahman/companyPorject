@@ -101,7 +101,14 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
     }
     creditorCodes = $firebaseArray(getRef('payables'));
 
+    function generateMail(){
+        let msg =  `Your Ledger
+        This is the transaction
+        `;
+        return encodeURIComponent(msg);
+    }
+
     $scope.sendMail = function(){
-        window.open('mailto:' + $scope.qEmail + '?subject=Your Ledger&body=body');
+        window.open('mailto:' + $scope.qEmail + '?subject=Your Ledger&body=' + generateMail());
     }
 });
