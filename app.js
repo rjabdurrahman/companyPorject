@@ -137,11 +137,6 @@ app.config(function ($routeProvider) {
       controller: 'CreditorLedgerCntlr',
       activetab: 'ledger'
     })
-    .when('/search', {
-      templateUrl: 'pages/user/search.html',
-      controller: 'SearchCnt',
-      activetab: 'user'
-    })
     .when('/newjournal', {
       templateUrl: 'pages/forms/nj.html',
       controller: 'NewJournalCntlr',
@@ -406,29 +401,4 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
     }
   }
   $scope.$applyAsync();
-});
-
-app.controller('SearchCnt', function ($scope, $firebaseArray) {
-  $scope.searchres = [];
-  $scope.searchdata = function (e) {
-    $scope.searchres = [];
-    let sKey = e.target.value.toLowerCase();
-    if (sKey != '') {
-      let sRes = $scope.students.find(function (el) {
-        return el.first.toLowerCase().includes(sKey) || el.last.toLowerCase().includes(sKey) || el.class.toLowerCase().includes(sKey.toLowerCase()) || el.status.toLowerCase().includes(sKey);
-      });
-      if (sRes) {
-        $scope.searchres.push(sRes);
-        $print($scope.searchres);
-      }
-    }
-    else{
-      $scope.searchres = [];
-    }
-    $scope.$applyAsync();
-  }
-  $scope.students = [
-    { first: 'Aguilar', last: 'Alice', class: '1967', status: 'Not Graduated' },
-    { first: 'Clark', last: 'Helen', class: '2015', status: 'Graduated' },
-  ];
 });
