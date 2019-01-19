@@ -443,6 +443,7 @@
         }
         // Equity Select
         if (removeNewlines(this.textContent) == 'Equity') {
+            $js('accNature').selectedIndex = 5;
             $js('natureCodeFill').style.display = 'none';
             $js('equitySelector').style.display = 'block';
         }
@@ -508,7 +509,7 @@
         var accCodeInit = null;
         let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
         if ($js('equitySelector').style.display == 'block') {
-            accCodeInit = $js('equitySelector').options[accCodeInitNode.selectedIndex].text;
+            accCodeInit = $js('equitySelector').options[$js('equitySelector').selectedIndex].text;
         }
         else {
             if (accCodeInitNode.tagName == 'INPUT') {
