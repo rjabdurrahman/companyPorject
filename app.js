@@ -134,7 +134,7 @@ app.config(function ($routeProvider) {
     })
     .when('/creditorledger', {
       templateUrl: 'pages/ledger/creditor.html',
-      controller: 'CreditLedgerCntlr',
+      controller: 'CreditorLedgerCntlr',
       activetab: 'ledger'
     })
     .when('/search', {
