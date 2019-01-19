@@ -225,7 +225,7 @@ function notify(msg, t) {
 }
 
 function getQueryVariable(variable) {
-    var query = window.location.hash.substring(1);
+    var query = window.location.hash.substring(window.location.hash.indexOf('?') + 1, window.location.hash.length);
     var vars = query.split("&");
     for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");
