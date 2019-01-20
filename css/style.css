@@ -478,3 +478,12 @@ input#userPasswordField {
     background-color: #b3cbf2 !important;
     cursor: pointer;
 }
+
+.ac-group ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.ac-group ul li div.ac-group-header{
+    padding: 12px 20px;
+}
