@@ -1,7 +1,7 @@
 <div class="overlay-container">
     <div class="overlay">
         <div class="margin-auto chart-box">
-                       
+
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
                 <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
@@ -39,9 +39,9 @@
                                     <td>{{rec.email}}</td>
                                     <td>{{rec.address}}</td>
                                     <td>
-                                        <button id="{{rec.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
+                                        <button id="{{rec.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                                        <!-- <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                            style="display: none;">Update</button> -->
                                     </td>
                                     <td>
                                         <button id="{{rec.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitRecBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button onclick="submitRecBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -161,7 +161,39 @@
     }).focus(function () {
         $(this).autocomplete("search");
     });
-    $js('submitRecBtn').addEventListener('click', function () {
+
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('receivables/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            //console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('recACCode').value = dbData.code;
+            $js('recPartyName').value = dbData.name;
+            $js('recCustomerType').value = dbData.cusType;
+            $js('recProprietor').value = dbData.recProprietor;
+            $js('recMObileNo').value = dbData.mobile.slice(5);
+            $js('recEmail').value = dbData.email;
+            $js('recAddress').value = dbData.address;
+        });
+    }
+
+    /// edit data show in field end........................
+
+
+    function submitRecBtn() {
         var recACCode = $js('recACCode').value;
         var recPartyName = $js('recPartyName').value;
         var recCustomerType = $js('recCustomerType').value;
@@ -198,13 +230,7 @@
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbReceivables.length; i++) {
-            if (recACCode == dbReceivables[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('recACCode').focus();
-                return;
-            }
-        }
+
         var receive = {
             code: recACCode,
             name: recPartyName,
@@ -214,16 +240,87 @@
             email: recEmail,
             address: recAddress
         };
-        // Store
-        db.child('receivables').push(receive, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+        console.log(receive);
+
+        if (editTriget == 1 && dbDataCode == recACCode) {
+            editTriget = 0;
+            db.child('receivables/' + dbID).update(receive, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else if (editTriget == 1 && dbDataCode != recACCode) {
+
+            for (i = 0; i < dbReceivables.length; i++) {
+                if (recACCode == dbReceivables[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('recACCode').focus();
+                    return;
+                }
             }
-        });
+            editTriget = 0;
+            db.child('receivables/' + dbID).update(receive, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbReceivables.length; i++) {
+                if (recACCode == dbReceivables[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('recACCode').focus();
+                    return;
+                }
+            }
+            db.child('receivables').push(receive, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        //     console.log("match with other code");
+
+        // }
+
+
+
+
+        // if (editTriget == 1 ) {
+        //     console.log("do edit");
+        //     console.log(receive);
+
+        // } else {
+        //     editTriget = 0;
+        //     console.log("do save new data");
+
+        // }
+
+        //Store
+        // db.child('receivables').push(receive, function (error) {
+        //     if (error) {
+        //         $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //     } else {
+        //         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //         $js('nodata').style.display = "none";
+        //         clearFields();
+        //     }
+        // });
         // $print(receive);
         // var comReceivables = lsExGJInit('comReceivables', []);
         // comReceivables.push(receive);
@@ -232,7 +329,7 @@
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
         exitModel();
-    });
+    }
 
     function clearFields() {
         clearer(recACCode, recPartyName, recCustomerType, recProprietor, recMObileNo, recEmail, recAddress);
