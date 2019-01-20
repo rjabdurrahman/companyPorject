@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitEmpBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -35,7 +35,7 @@
                                     <td>{{emp.des}}</td>
                                     <td>{{emp.salary}}</td>
                                     <td>
-                                        <button id="{{emp.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{emp.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitEmpBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitEmpBtn" onclick="submitEmpBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -142,7 +142,36 @@
 </div>
 <script>
     var dbEmps = null;
-    $js('submitEmpBtn').addEventListener('click', function () {
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitEmpBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('employees/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('empCode').value = dbData.code;
+            $js('empName').value = dbData.name;
+            $js('empType').value = dbData.type;
+            $js('empPost').value = dbData.post;
+            $js('empDes').value = dbData.des;
+            $js('empSalary').value = dbData.salary;
+        });
+    }
+
+    /// edit data show in field end........................
+    function submitEmpBtn() {
         var empCode = $js('empCode').value;
         var empName = $js('empName').value;
         var empType = $js('empType').value;
@@ -173,13 +202,7 @@
             $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbEmps.length; i++) {
-            if (empCode == dbEmps[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('empCode').focus();
-                return;
-            }
-        }
+
         var emp = {
             code: empCode,
             name: empName,
@@ -188,24 +211,63 @@
             des: empDes,
             salary: empSalary
         };
-        db.child('employees').push(emp, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+
+        if (editTriget == 1 && dbDataCode == empCode) {
+            editTriget = 0;
+            db.child('employees/' + dbID).update(emp, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != empCode) {
+
+            for (i = 0; i < dbEmps.length; i++) {
+                if (empCode == dbEmps[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('empCode').focus();
+                    return;
+                }
             }
-        });
-        // $print(emp);
-        // var comEmps = lsExGJInit('comEmps', []);
-        // comEmps.push(emp);
-        // lsSetJ('comEmps', comEmps);
-        // clearFields();
-        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        // location.reload();
+            editTriget = 0;
+            db.child('employees/' + dbID).update(emp, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbEmps.length; i++) {
+                if (empCode == dbEmps[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('empCode').focus();
+                    return;
+                }
+            }
+            db.child('employees').push(emp, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('empCode').value = $js('empName').value = $js('empType').value = $js('empPost').value = $js('empDes').value = $js('empSalary').value = "";
