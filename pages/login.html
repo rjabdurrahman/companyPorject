@@ -79,7 +79,7 @@
                     pass: cPass
                 }
                 lsSetJ('company', company);
-                window.location.href = '#';
+                window.location.reload();
             })
             .catch(function (error) {
                 var code = error.code;
@@ -88,7 +88,6 @@
                 btn.disabled = false;
                 btn.textContent = 'Login';
             });
-        window.location.href = '#';
     });
     $js('loginBtn').addEventListener('click', function () {
         this.disabled = true;
