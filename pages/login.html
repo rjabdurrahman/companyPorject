@@ -70,13 +70,24 @@
     //     }
     // }
     $js('cLoginBtn').addEventListener('click', function () {
-        let cUser = $js('companyNameField').value;
+        let cUser = $js('companyNameField').value + '@gmail.com';
         let cPass = $js('companyPasswordField').value;
-        let company = {
-            user: cUser,
-            pass: cPass
-        }
-        lsSetJ('company', company);
+        firebase.auth().signInWithEmailAndPassword(cUser, cPass)
+            .then(function (sucess) {
+                let company = {
+                    user: cUser,
+                    pass: cPass
+                }
+                lsSetJ('company', company);
+                window.location.href = '#';
+            })
+            .catch(function (error) {
+                var code = error.code;
+                var message = error.message;
+                alert(message);
+                btn.disabled = false;
+                btn.textContent = 'Login';
+            });
         window.location.href = '#';
     });
     $js('loginBtn').addEventListener('click', function () {
