@@ -477,6 +477,7 @@ input#userPasswordField {
 .minimize {
     background-color: #b3cbf2 !important;
     cursor: pointer;
+    padding: 8px 20px;
 }
 
 .ac-group ul li {
