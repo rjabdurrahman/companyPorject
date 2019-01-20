@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitConBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -29,7 +29,7 @@
                                     <td>{{con.name}}</td>
                                     <td>{{con.contact}}</td>
                                     <td>
-                                        <button id="{{con.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{con.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{con.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitConBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitConBtn" onclick="submitConBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -112,7 +112,33 @@
 </div>
 <script>
     var dbContractors = null;
-    $js('submitConBtn').addEventListener('click', function () {
+    // edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitConBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('contractors/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('conCode').value = dbData.code;
+            $js('conName').value = dbData.name;
+            $js('conContact').value = dbData.contact;
+        });
+    }
+
+    /// edit data show in field end........................
+    function submitConBtn() {
         var conCode = $js('conCode').value;
         var conName = $js('conName').value;
         var conContact = $js('conContact').value;
@@ -128,27 +154,74 @@
             $('#notification').html("<h6>Contact Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbContractors.length; i++) {
-            if (conCode == dbContractors[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('conCode').focus();
-                return;
-            }
-        }
+
         var contractor = {
             code: conCode,
             name: conName,
             contact: conContact
         };
-        db.child('contractors').push(contractor, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+        if (editTriget == 1 && dbDataCode == conCode) {
+            editTriget = 0;
+            db.child('contractors/' + dbID).update(contractor, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != conCode) {
+
+            for (i = 0; i < dbContractors.length; i++) {
+                if (conCode == dbContractors[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('conCode').focus();
+                    return;
+                }
             }
-        });
+            editTriget = 0;
+            db.child('contractors/' + dbID).update(contractor, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbContractors.length; i++) {
+                if (conCode == dbContractors[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('conCode').focus();
+                    return;
+                }
+            }
+            db.child('contractors').push(contractor, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        // db.child('contractors').push(contractor, function (error) {
+        //     if (error) {
+        //         $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //     } else {
+        //         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //         $js('nodata').style.display = "none";
+        //         clearFields();
+        //     }
+        // });
         // $print(contractor);
         // var comContractors = lsExGJInit('comContractors', []);
         // comContractors.push(contractor);
@@ -157,7 +230,7 @@
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('conCode').value = $js('conName').value = $js('conContact').value = "";
