@@ -30,9 +30,9 @@
             </div>
             <div class="w3-container" style="padding-bottom: 18px;">
                 <form id="userLoginForm">
-                    <input id="userEmailField" onkeyup="enterHit(event)" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
+                    <input id="userEmailField" class="w3-input w3-border" type="text" style="width: 100%; margin-top: 28px; padding: 10px;"
                         placeholder="Username">
-                    <input id="userPasswordField" onkeyup="enterHit(event)" class="w3-input w3-border" type="password"
+                    <input id="userPasswordField" class="w3-input w3-border" type="password"
                         style="width: 100%; margin-top: 22px; padding: 10px;" placeholder="Password">
                     <p style="padding: 6px;">
                         <button id="loginBtn" class="w3-btn main-bg-color">Login</button>
@@ -63,13 +63,10 @@
     $js("userLoginForm").addEventListener("submit", function (event) {
         event.preventDefault();
     });
-    // function enterHit(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         document.getElementById("loginBtn").click();
-    //     }
-    // }
     $js('cLoginBtn').addEventListener('click', function () {
+        this.disabled = true;
+        this.textContent = 'Logging...';
+        let btn = this;
         let cUser = $js('companyNameField').value + '@gmail.com';
         let cPass = $js('companyPasswordField').value;
         firebase.auth().signInWithEmailAndPassword(cUser, cPass)
