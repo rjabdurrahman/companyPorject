@@ -13,7 +13,7 @@
                 <ul class="w3-ul">
                     <li>
                         <div class="g-header">Current Assets</div>
-                        <div class="w3-responsive">
+                        <div class="w3-responsive" style="max-height: 600px;">
                             <table class="w3-table-all chart-tables">
                                 <thead id="table-headm">
                                     <tr class="main-bg-color">
@@ -46,6 +46,36 @@
                     </li>
                     <li>
                         <div class="g-header">Non-Current Assets</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(2) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-header">Current Liabilities</div>
@@ -82,7 +112,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="w3-card-4 table-container">
+            <!-- <div class="w3-card-4 table-container">
                 <div style="overflow: auto; max-height: calc(100vh - 50px);">
                     <div class="w3-responsive">
                         <table class="w3-table-all chart-tables">
@@ -409,331 +439,335 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="confirmDel" class="w3-modal">
-            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
-                <header class="w3-container main-bg-color div-title">
-                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <h2>Confirm Delete?</h2>
-                </header>
-                <div class="w3-container">
-                    <p>Deleting this account will not remove name from journal account name.</p>
-                    <p>And no more suggestion is available for this account code until you create new one.</p>
-                </div>
-                <footer class="w3-container w3-white">
-                    <p class="flex" style="justify-content: center;">
-                        <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
-                            Delete</button>
-                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
-                    </p>
-                </footer>
-            </div>
-        </div>
-        <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
-                <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
+        </div> -->
+            <div id="confirmDel" class="w3-modal">
+                <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
                     <header class="w3-container main-bg-color div-title">
-                        <span onclick="exitModel();clearAccFields();" class="w3-button w3-display-topright">&times;</span>
-                        <h2>{{title}}</h2>
+                        <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <h2>Confirm Delete?</h2>
                     </header>
                     <div class="w3-container">
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:130px; padding: 10px;">
-                                <label class="w3-medium">Nature</label>
-                            </div>
-                            <div class="w3-rest">
-                                <select ng-model="natureSelection" id="accNature" class="w3-select w3-border" onchange="$('#equitySelector').hide();"
-                                    name="option">
-                                    <option value="" disabled selected>Choose Nature</option>
-                                    <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc.name}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:130px; padding: 10px;">
-                                <label class="w3-medium">Account Code</label>
-                            </div>
-                            <div class="w3-rest flex">
-                                <section id="accCodeInit" ng-switch="natureSelection">
-                                    <select id="equitySelector" class="w3-select w3-border" style="width: 65px; color: gray;display: none;">
-                                        <option value="SE">SE</option>
-                                        <option value="RE">RE</option>
-                                    </select>
-                                    <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 65px; color: gray;">
-                                        <option value="SE">SE</option>
-                                        <option value="RE">RE</option>
-                                    </select>
-                                    <input ng-switch-default class="w3-input w3-border" type="text" id="natureCodeFill"
-                                        value="{{natureSelection}}" style="width: 65px; text-align: center" disabled>
-                                </section>
-                                <label style="padding: 8px;">-</label>
-                                <input id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);"
-                                    onkeypress="numValidate(event)">
-                                <label class="warn-lab">Ex: 12-Jan-18</label>
-                                <label style="padding: 8px;">-</label>
-                                <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2" style="width: 65px; text-align: center"
-                                    onkeypress="numValidate(event)">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:130px; padding: 10px;">
-                                <label class="w3-medium">Account Head</label>
-                            </div>
-                            <div class="w3-rest">
-                                <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <p class="clearfix">
-                            <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                        <p>Deleting this account will not remove name from journal account name.</p>
+                        <p>And no more suggestion is available for this account code until you create new one.</p>
+                    </div>
+                    <footer class="w3-container w3-white">
+                        <p class="flex" style="justify-content: center;">
+                            <button id="delAcBtn" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
+                                Delete</button>
+                            <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                         </p>
+                    </footer>
+                </div>
+            </div>
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
+                    <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
+                        <header class="w3-container main-bg-color div-title">
+                            <span onclick="exitModel();clearAccFields();" class="w3-button w3-display-topright">&times;</span>
+                            <h2>{{title}}</h2>
+                        </header>
+                        <div class="w3-container">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:130px; padding: 10px;">
+                                    <label class="w3-medium">Nature</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <select ng-model="natureSelection" id="accNature" class="w3-select w3-border"
+                                        onchange="$('#equitySelector').hide();" name="option">
+                                        <option value="" disabled selected>Choose Nature</option>
+                                        <option ng-repeat="(key, acc) in accounts track by $index" value="{{key}}">{{acc.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:130px; padding: 10px;">
+                                    <label class="w3-medium">Account Code</label>
+                                </div>
+                                <div class="w3-rest flex">
+                                    <section id="accCodeInit" ng-switch="natureSelection">
+                                        <select id="equitySelector" class="w3-select w3-border" style="width: 65px; color: gray;display: none;">
+                                            <option value="SE">SE</option>
+                                            <option value="RE">RE</option>
+                                        </select>
+                                        <select ng-switch-when="EQTY" class="w3-select w3-border" style="width: 65px; color: gray;">
+                                            <option value="SE">SE</option>
+                                            <option value="RE">RE</option>
+                                        </select>
+                                        <input ng-switch-default class="w3-input w3-border" type="text" id="natureCodeFill"
+                                            value="{{natureSelection}}" style="width: 65px; text-align: center"
+                                            disabled>
+                                    </section>
+                                    <label style="padding: 8px;">-</label>
+                                    <input id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);"
+                                        onkeypress="numValidate(event)">
+                                    <label class="warn-lab">Ex: 12-Jan-18</label>
+                                    <label style="padding: 8px;">-</label>
+                                    <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2"
+                                        style="width: 65px; text-align: center" onkeypress="numValidate(event)">
+                                </div>
+                            </div>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:130px; padding: 10px;">
+                                    <label class="w3-medium">Account Head</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <p class="clearfix">
+                                <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    $('#table-headm').hide();
-    $('.dcoll').nextUntil('tr.dcoll').hide();
-    $('.minimize').click(function () {
-        $('#table-headm').hide();
-        $(this).slideToggle();
-        $(this).prevUntil('tr.dcoll').slideToggle();
-        $js('accNature').selectedIndex = 0;
-        $js('natureCodeFill').value = '';
-    });
-    $('.dcoll').click(function () {
-        if ($(this).nextUntil('tr.dcoll').is(":visible")) {
-            $('#table-headm').hide();
-            $(this).nextUntil('tr.dcoll').slideToggle(100);
-            $js('accNature').selectedIndex = 0;
-            $js('natureCodeFill').value = '';
-            return;
-        }
-        else {
-            $('#table-headm').show();
-            $('.dcoll').nextUntil('tr.dcoll').hide();
-            $(this).nextUntil('tr.dcoll').slideToggle(100);
-        }
-        // Equity Select
-        if (removeNewlines(this.textContent) == 'Equity') {
-            $js('accNature').selectedIndex = 5;
-            $js('natureCodeFill').style.display = 'none';
-            $js('equitySelector').style.display = 'block';
-        }
-        else {
-            $js('natureCodeFill').style.display = 'block';
-            $js('equitySelector').style.display = 'none';
-        }
-        // Fill AC Code
-        if (removeNewlines(this.textContent) == 'Current Assets') {
-            $js('accNature').selectedIndex = 1;
-            $js('natureCodeFill').value = 'CA';
-        }
-        else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
-            $js('accNature').selectedIndex = 2;
-            $js('natureCodeFill').value = 'NCA';
-        }
-        else if (removeNewlines(this.textContent) == 'Current Liabilities') {
-            $js('accNature').selectedIndex = 3;
-            $js('natureCodeFill').value = 'CL';
-        }
-        else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
-            $js('accNature').selectedIndex = 4;
-            $js('natureCodeFill').value = 'NCL';
-        }
-        else if (removeNewlines(this.textContent) == 'Expenses') {
-            $js('accNature').selectedIndex = 6;
-            $js('natureCodeFill').value = 'EX';
-        }
-        else if (removeNewlines(this.textContent) == 'Revenues') {
-            $js('accNature').selectedIndex = 7;
-            $js('natureCodeFill').value = 'REV';
-        }
-        else if (removeNewlines(this.textContent) == 'Withdrawals') {
-            $js('accNature').selectedIndex = 8;
-            $js('natureCodeFill').value = 'WD';
-        }
-        else if (removeNewlines(this.textContent) == 'Contra Revenues') {
-            $js('accNature').selectedIndex = 9;
-            $js('natureCodeFill').value = 'SD';
-        }
-        else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
-            $js('accNature').selectedIndex = 10;
-            $js('natureCodeFill').value = 'COGS';
-        }
-        else if (removeNewlines(this.textContent) == 'Production') {
-            $js('accNature').selectedIndex = 11;
-            $js('natureCodeFill').value = 'WIP';
-        }
-        else if (removeNewlines(this.textContent) == 'Contras') {
-            $js('accNature').selectedIndex = 12;
-            $js('natureCodeFill').value = 'CN';
-        }
-        else if (removeNewlines(this.textContent) == 'Contra Expenses') {
-            $js('accNature').selectedIndex = 13;
-            $js('natureCodeFill').value = 'PD';
-        }
-    });
-    var dbAccounts = null;
-    lsSetJ('comAccounts', []);
-    $js('submitAccBtn').addEventListener('click', function () {
-        let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
-        let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
-        var accCodeInit = null;
-        let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
-        if ($js('equitySelector').style.display == 'block') {
-            accCodeInit = $js('equitySelector').options[$js('equitySelector').selectedIndex].text;
-        }
-        else {
-            if (accCodeInitNode.tagName == 'INPUT') {
-                accCodeInit = accCodeInitNode.value;
-            }
-            else if (accCodeInitNode.tagName == 'SELECT') {
-                accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
-            }
-        }
-        let accCodeFirst = $js('accCodeFirst').value;
-        let accCodeSecond = $js('accCodeSecond').value;
-        let accTxt = $js('accTxt').value;
-        if (accNature == '' || accNature == 'Choose Nature') {
-            notify('Select Nature!', 2);
-            return;
-        }
-        else if ($js('accCodeFirst').value == '') {
-            notify('Input Account Code!', 2);
-            $js('accCodeFirst').focus();
-            return;
-        }
-        else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
-            notify('Code Must Between ' + accounts[accNatureCode].min + ' to ' + accounts[accNatureCode].max, 2);
-            $js('accCodeFirst').focus();
-            return;
-        }
-        else if ($js('accTxt').value == '') {
-            notify('Account Head Empty!', 2);
-            $js('accTxt').focus();
-            return;
-        }
-        var accNumber = accCodeInit + "-" + accCodeFirst;
-        if (accCodeSecond != '') {
-            accNumber += "-" + accCodeSecond;
-        }
-        for (i = 0; i < dbAccounts.length; i++) {
-            if (accNumber == dbAccounts[i].accCode) {
-                notify('Code Already Used in Another Account!', 2);
-                $js('accCodeSecond').focus();
-                return;
-            }
-        }
-        let account = {
-            nature: accNature,
-            accCode: accNumber,
-            accText: accTxt,
-            flag: accountFlag(accNature)
-        }
-        // Store
-        db.child('accounts').push(account, function (error) {
-            if (error) {
-                notify('Something Went Wrong in Database!', 2);
-            } else {
-                notify('Added Sucessfully', 1);
-                $js('nodata').style.display = "none";
-                accCodeSecond.value = accTxt.value = "";
-            }
+    <script>
+        $('.g-header+div').hide();
+        $('.g-header').click(function () {
+            $('+div', this).slideToggle();
         });
-        // let comAccounts = lsExGJInit('comAccounts', []);
-        // comAccounts.push(account);
-        // lsSetJ('comAccounts', comAccounts);
-        // clearAccFields();
-        // location.reload();
-        exitModel();
-    });
-    function clearAccFields() {
-        $js('accNature').selectedIndex = 0;
-        accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
-        let accCodeInitNode = $js('accCodeInit').firstElementChild;
-        // if (accCodeInitNode.tagName == 'INPUT') {
-        //     accCodeInitNode.value = "";
-        // }
-        // else if (accCodeInitNode.tagName == 'SELECT') {
-        //     accCodeInitNode.selectedIndex = 0;
-        // }
-    }
-
-    // Delete data
-    function removeItem(e) {
-        $js('confirmDel').style.display = 'block';
-        $js('delAcBtn').addEventListener('click', function () {
-            getRef('accounts').child(e.target.id).remove();
-            $js('confirmDel').style.display = 'none';
-            notify('Deleted Sucessfully', 1);
-        });
-    }
-
-    function editItem(e) {
-        let id = e.target.id.slice(0, -1);
-        let head = e.target.parentElement.previousElementSibling;
-        let code = head.previousElementSibling;
-        let nature = code.previousElementSibling;
-        head.innerHTML = '<input type="text" value="' + head.textContent + '">';
-        code.innerHTML = '<input type="text" value="' + code.textContent + '">';
-        nature.innerHTML = '<input type="text" value="' + nature.textContent + '">';
-        e.target.style.display = 'none';
-        e.target.nextElementSibling.style.display = 'block';
-    }
-
-    function editConfirm(e) {
-        let id = e.target.id.slice(0, -2);
-        $print(id);
-        let head = e.target.parentElement.previousElementSibling.firstElementChild;
-        let code = head.parentElement.previousElementSibling.firstElementChild;
-        let nature = code.parentElement.previousElementSibling.firstElementChild;
-        let uData = {
-            nature: nature.value,
-            accCode: code.value,
-            accText: head.value,
-        }
-        getRef('accounts/' + id).update(uData, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        // $('.dcoll').nextUntil('tr.dcoll').hide();
+        // $('.minimize').click(function () {
+        //     $('#table-headm').hide();
+        //     $(this).slideToggle();
+        //     $(this).prevUntil('tr.dcoll').slideToggle();
+        //     $js('accNature').selectedIndex = 0;
+        //     $js('natureCodeFill').value = '';
+        // });
+        // $('.dcoll').click(function () {
+        //     if ($(this).nextUntil('tr.dcoll').is(":visible")) {
+        //         $('#table-headm').hide();
+        //         $(this).nextUntil('tr.dcoll').slideToggle(100);
+        //         $js('accNature').selectedIndex = 0;
+        //         $js('natureCodeFill').value = '';
+        //         return;
+        //     }
+        //     else {
+        //         $('#table-headm').show();
+        //         $('.dcoll').nextUntil('tr.dcoll').hide();
+        //         $(this).nextUntil('tr.dcoll').slideToggle(100);
+        //     }
+        //     // Equity Select
+        //     if (removeNewlines(this.textContent) == 'Equity') {
+        //         $js('accNature').selectedIndex = 5;
+        //         $js('natureCodeFill').style.display = 'none';
+        //         $js('equitySelector').style.display = 'block';
+        //     }
+        //     else {
+        //         $js('natureCodeFill').style.display = 'block';
+        //         $js('equitySelector').style.display = 'none';
+        //     }
+        //     // Fill AC Code
+        //     if (removeNewlines(this.textContent) == 'Current Assets') {
+        //         $js('accNature').selectedIndex = 1;
+        //         $js('natureCodeFill').value = 'CA';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
+        //         $js('accNature').selectedIndex = 2;
+        //         $js('natureCodeFill').value = 'NCA';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Current Liabilities') {
+        //         $js('accNature').selectedIndex = 3;
+        //         $js('natureCodeFill').value = 'CL';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
+        //         $js('accNature').selectedIndex = 4;
+        //         $js('natureCodeFill').value = 'NCL';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Expenses') {
+        //         $js('accNature').selectedIndex = 6;
+        //         $js('natureCodeFill').value = 'EX';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Revenues') {
+        //         $js('accNature').selectedIndex = 7;
+        //         $js('natureCodeFill').value = 'REV';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Withdrawals') {
+        //         $js('accNature').selectedIndex = 8;
+        //         $js('natureCodeFill').value = 'WD';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Contra Revenues') {
+        //         $js('accNature').selectedIndex = 9;
+        //         $js('natureCodeFill').value = 'SD';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
+        //         $js('accNature').selectedIndex = 10;
+        //         $js('natureCodeFill').value = 'COGS';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Production') {
+        //         $js('accNature').selectedIndex = 11;
+        //         $js('natureCodeFill').value = 'WIP';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Contras') {
+        //         $js('accNature').selectedIndex = 12;
+        //         $js('natureCodeFill').value = 'CN';
+        //     }
+        //     else if (removeNewlines(this.textContent) == 'Contra Expenses') {
+        //         $js('accNature').selectedIndex = 13;
+        //         $js('natureCodeFill').value = 'PD';
+        //     }
+        // });
+        var dbAccounts = null;
+        lsSetJ('comAccounts', []);
+        $js('submitAccBtn').addEventListener('click', function () {
+            let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
+            let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
+            var accCodeInit = null;
+            let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
+            if ($js('equitySelector').style.display == 'block') {
+                accCodeInit = $js('equitySelector').options[$js('equitySelector').selectedIndex].text;
             }
             else {
-                $('#notification').html("<h6>Updated Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                if (accCodeInitNode.tagName == 'INPUT') {
+                    accCodeInit = accCodeInitNode.value;
+                }
+                else if (accCodeInitNode.tagName == 'SELECT') {
+                    accCodeInit = accCodeInitNode.options[accCodeInitNode.selectedIndex].text;
+                }
             }
+            let accCodeFirst = $js('accCodeFirst').value;
+            let accCodeSecond = $js('accCodeSecond').value;
+            let accTxt = $js('accTxt').value;
+            if (accNature == '' || accNature == 'Choose Nature') {
+                notify('Select Nature!', 2);
+                return;
+            }
+            else if ($js('accCodeFirst').value == '') {
+                notify('Input Account Code!', 2);
+                $js('accCodeFirst').focus();
+                return;
+            }
+            else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
+                notify('Code Must Between ' + accounts[accNatureCode].min + ' to ' + accounts[accNatureCode].max, 2);
+                $js('accCodeFirst').focus();
+                return;
+            }
+            else if ($js('accTxt').value == '') {
+                notify('Account Head Empty!', 2);
+                $js('accTxt').focus();
+                return;
+            }
+            var accNumber = accCodeInit + "-" + accCodeFirst;
+            if (accCodeSecond != '') {
+                accNumber += "-" + accCodeSecond;
+            }
+            for (i = 0; i < dbAccounts.length; i++) {
+                if (accNumber == dbAccounts[i].accCode) {
+                    notify('Code Already Used in Another Account!', 2);
+                    $js('accCodeSecond').focus();
+                    return;
+                }
+            }
+            let account = {
+                nature: accNature,
+                accCode: accNumber,
+                accText: accTxt,
+                flag: accountFlag(accNature)
+            }
+            // Store
+            db.child('accounts').push(account, function (error) {
+                if (error) {
+                    notify('Something Went Wrong in Database!', 2);
+                } else {
+                    notify('Added Sucessfully', 1);
+                    $js('nodata').style.display = "none";
+                    accCodeSecond.value = accTxt.value = "";
+                }
+            });
+            // let comAccounts = lsExGJInit('comAccounts', []);
+            // comAccounts.push(account);
+            // lsSetJ('comAccounts', comAccounts);
+            // clearAccFields();
+            // location.reload();
+            exitModel();
         });
-        head.parentElement.innerHTML = head.value;
-        code.parentElement.innerHTML = code.value;
-        nature.parentElement.innerHTML = nature.value;
-        e.target.style.display = 'none';
-        e.target.previousElementSibling.style.display = 'block';
-    }
-
-    function printAccounts() {
-        $print("print");
-        var ws = XLSX.utils.table_to_sheet(document.getElementById('accountsTable'), { cellDates: false });
-        var wscols = [
-            { wch: 4 },
-            { wch: 24 },
-            { wch: 12 },
-            { wch: 40 }
-        ];
-        var wsrows = [
-            {
-                hpx: 24,
-                level: 2
-            }
-        ];
-        ws['!cols'] = wscols;
-        ws['!rows'] = wsrows;
-        XLSX.utils.book_append_sheet(wb, ws, 'Accounts');
-        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'binary' });
-        function s2ab(s) {
-            var buf = new ArrayBuffer(s.length);
-            var view = new Uint8Array(buf);
-            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-            return buf;
+        function clearAccFields() {
+            $js('accNature').selectedIndex = 0;
+            accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
+            let accCodeInitNode = $js('accCodeInit').firstElementChild;
+            // if (accCodeInitNode.tagName == 'INPUT') {
+            //     accCodeInitNode.value = "";
+            // }
+            // else if (accCodeInitNode.tagName == 'SELECT') {
+            //     accCodeInitNode.selectedIndex = 0;
+            // }
         }
-        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Accounts.xlsx');
-    }
-</script>
+
+        // Delete data
+        function removeItem(e) {
+            $js('confirmDel').style.display = 'block';
+            $js('delAcBtn').addEventListener('click', function () {
+                getRef('accounts').child(e.target.id).remove();
+                $js('confirmDel').style.display = 'none';
+                notify('Deleted Sucessfully', 1);
+            });
+        }
+
+        function editItem(e) {
+            let id = e.target.id.slice(0, -1);
+            let head = e.target.parentElement.previousElementSibling;
+            let code = head.previousElementSibling;
+            let nature = code.previousElementSibling;
+            head.innerHTML = '<input type="text" value="' + head.textContent + '">';
+            code.innerHTML = '<input type="text" value="' + code.textContent + '">';
+            nature.innerHTML = '<input type="text" value="' + nature.textContent + '">';
+            e.target.style.display = 'none';
+            e.target.nextElementSibling.style.display = 'block';
+        }
+
+        function editConfirm(e) {
+            let id = e.target.id.slice(0, -2);
+            $print(id);
+            let head = e.target.parentElement.previousElementSibling.firstElementChild;
+            let code = head.parentElement.previousElementSibling.firstElementChild;
+            let nature = code.parentElement.previousElementSibling.firstElementChild;
+            let uData = {
+                nature: nature.value,
+                accCode: code.value,
+                accText: head.value,
+            }
+            getRef('accounts/' + id).update(uData, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                }
+                else {
+                    $('#notification').html("<h6>Updated Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                }
+            });
+            head.parentElement.innerHTML = head.value;
+            code.parentElement.innerHTML = code.value;
+            nature.parentElement.innerHTML = nature.value;
+            e.target.style.display = 'none';
+            e.target.previousElementSibling.style.display = 'block';
+        }
+
+        function printAccounts() {
+            $print("print");
+            var ws = XLSX.utils.table_to_sheet(document.getElementById('accountsTable'), { cellDates: false });
+            var wscols = [
+                { wch: 4 },
+                { wch: 24 },
+                { wch: 12 },
+                { wch: 40 }
+            ];
+            var wsrows = [
+                {
+                    hpx: 24,
+                    level: 2
+                }
+            ];
+            ws['!cols'] = wscols;
+            ws['!rows'] = wsrows;
+            XLSX.utils.book_append_sheet(wb, ws, 'Accounts');
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'binary' });
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+            saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Accounts.xlsx');
+        }
+    </script>
