@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitTrBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -27,7 +27,7 @@
                                     <td>{{Tr.code}}</td>
                                     <td>{{Tr.name}}</td>
                                     <td>
-                                        <button id="{{Tr.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{Tr.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{Tr.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitTrBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitTrBtn" onclick="submitTrBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -102,7 +102,30 @@
 </div>
 <script>
     var dbTrs = null;
-    $js('submitTrBtn').addEventListener('click', function () {
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitTrBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('truckTrackors/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('trCode').value = dbData.code;
+            $js('trNo').value = dbData.name;
+        });
+    }
+
+    /// edit data show in field end........................
+    function submitTrBtn() {
         var trCode = $js('trCode').value;
         var trNo = $js('trNo').value;
         if (trCode == "") {
@@ -113,26 +136,73 @@
             $('#notification').html("<h6>Number Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbTrs.length; i++) {
-            if (trCode == dbTrs[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('trCode').focus();
-                return;
-            }
-        }
+
         var tr = {
             code: trCode,
             name: trNo
         };
-        db.child('truckTrackors').push(tr, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+        if (editTriget == 1 && dbDataCode == trCode) {
+            editTriget = 0;
+            db.child('truckTrackors/' + dbID).update(tr, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != trCode) {
+
+            for (i = 0; i < dbTrs.length; i++) {
+                if (trCode == dbTrs[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('trCode').focus();
+                    return;
+                }
             }
-        });
+            editTriget = 0;
+            db.child('truckTrackors/' + dbID).update(tr, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbTrs.length; i++) {
+                if (trCode == dbTrs[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('trCode').focus();
+                    return;
+                }
+            }
+            db.child('truckTrackors/').push(tr, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        // db.child('truckTrackors').push(tr, function (error) {
+        //     if (error) {
+        //         $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //     } else {
+        //         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //         $js('nodata').style.display = "none";
+        //         clearFields();
+        //     }
+        // });
         // $print(tr);
         // var comTrs = lsExGJInit('comTrs', []);
         // comTrs.push(tr);
@@ -141,7 +211,7 @@
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('trCode').value = $js('trNo').value = "";
@@ -180,8 +250,8 @@
     var onDel = '';
     function getDbId(e) {
         console.log("ok click");
-         $js('confirmDel').style.display = 'block';
-         onDel = e.target.id;
+        $js('confirmDel').style.display = 'block';
+        onDel = e.target.id;
     }
     function rmItem(dbId) {
         getRef('truckTrackors').child(dbId).remove()
