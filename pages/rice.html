@@ -27,12 +27,12 @@
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
                                     <td>
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                        <button id="{{rice.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
                                     <td>
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        <button id="{{rice.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -45,6 +45,27 @@
                 </div>
             </div>
         </div>
+        <!-- Confirmation diallog start -->
+        <div id="confirmDel" class="w3-modal">
+            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
+                <header class="w3-container main-bg-color div-title">
+                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Confirm Delete?</h2>
+                </header>
+                <div class="w3-container">
+                    <p>Deleting this account will not remove name from journal account name.</p>
+                    <p>And no more suggestion is available for this account code until you create new one.</p>
+                </div>
+                <footer class="w3-container w3-white">
+                    <p class="flex" style="justify-content: center;">
+                        <button onclick="rmItem(onDel);" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
+                            Delete</button>
+                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                    </p>
+                </footer>
+            </div>
+        </div>
+        <!-- Confirmation diallog end -->
         <div id="id01" class="w3-modal">
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
@@ -156,4 +177,22 @@
         }
         saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Rice.xlsx');
     }
+    // Delete data start......................
+    var onDel = '';
+    function getDbId(e) {
+        console.log("ok click");
+        $js('confirmDel').style.display = 'block';
+        onDel = e.target.id;
+    }
+    function rmItem(dbId) {
+        getRef('rice').child(dbId).remove()
+            .then(function (sucess) {
+                $js('confirmDel').style.display = 'none';
+                notify('Deleted Sucessfully', 1);
+            })
+            .catch(function (err) {
+                notify(err, 2);
+            });
+    }
+    // Delete data end......................
 </script>
