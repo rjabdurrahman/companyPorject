@@ -135,7 +135,7 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 auth.onAuthStateChanged(function (fuser) {
     if (fuser) {
-        $print(fuser);
+        // $print(fuser);
         var user = firebase.auth().currentUser;
         getRef('users/' + user.uid).once('value').then(function (snapshot) {
             let userIn = snapshot.val();
