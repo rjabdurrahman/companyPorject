@@ -526,7 +526,13 @@
     <script>
         $('.g-header+div').hide();
         $('.g-header').click(function () {
-            $('+div', this).slideToggle();
+            if ($('+div', this).is(":visible")) {
+                $('+div', this).slideToggle();
+            }
+            else {
+                $('.g-header+div').hide();
+                $('+div', this).slideToggle();
+            }
         });
         // $('.dcoll').nextUntil('tr.dcoll').hide();
         // $('.minimize').click(function () {
