@@ -1,6 +1,7 @@
 <div class="overlay-container">
     <div class="overlay">
         <div class="margin-auto chart-box">
+                       
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
                 <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
@@ -8,6 +9,7 @@
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                             <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
+
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
                     <div class="w3-responsive">
@@ -259,7 +261,7 @@
         var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
         saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Receivables.xlsx');
     }
-    // Delete data
+    // Delete data start......................
     var onDel = '';
     function getDbId(e) {
         console.log("ok click");
@@ -276,4 +278,6 @@
                 notify(err, 2);
             });
     }
+    // Delete data end......................
+
 </script>
