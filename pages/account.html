@@ -12,40 +12,45 @@
             <div class="w3-card-4 table-container ac-group">
                 <ul class="w3-ul">
                     <li>
-                        <div class="g-header">Current Assets</div>
-                        <div class="w3-responsive" style="max-height: 600px;">
-                            <table class="w3-table-all chart-tables">
-                                <thead id="table-headm">
-                                    <tr class="main-bg-color">
-                                        <th>ID</th>
-                                        <th>Nature</th>
-                                        <th>Account Code</th>
-                                        <th>Account Head</th>
-                                        <th style="width: 120px;">Edit</th>
-                                        <th style="width: 130px;">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="comAcc in getAccArr(1) | orderBy : 'accCode' track by $index">
-                                        <td>{{$index + 1}}</td>
-                                        <td>{{comAcc.nature}}</td>
-                                        <td>{{comAcc.accCode}}</td>
-                                        <td>{{comAcc.accText}}</td>
-                                        <td>
-                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                                style="display: none;">Update</button>
-                                        </td>
-                                        <td>
-                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="g-toggle g-header">Current Assets</div>
+                        <div>
+                            <div class="w3-responsive" style="max-height: 600px;">
+                                <table class="w3-table-all chart-tables">
+                                    <thead id="table-headm">
+                                        <tr class="main-bg-color">
+                                            <th>ID</th>
+                                            <th>Nature</th>
+                                            <th>Account Code</th>
+                                            <th>Account Head</th>
+                                            <th style="width: 120px;">Edit</th>
+                                            <th style="width: 130px;">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="comAcc in getAccArr(1) | orderBy : 'accCode' track by $index">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{comAcc.nature}}</td>
+                                            <td>{{comAcc.accCode}}</td>
+                                            <td>{{comAcc.accText}}</td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                    style="display: none;">Update</button>
+                                            </td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="minimize">
+                                <i class="fa fa-minus"></i> <span>Minimize</span>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <div class="g-header">Non-Current Assets</div>
+                        <div class="g-toggle g-header">Non-Current Assets</div>
                         <div class="w3-responsive" style="max-height: 600px;">
                             <table class="w3-table-all chart-tables">
                                 <thead id="table-headm">
@@ -78,37 +83,37 @@
                         </div>
                     </li>
                     <li>
-                        <div class="g-header">Current Liabilities</div>
+                        <div class="g-toggle g-header">Current Liabilities</div>
                     </li>
                     <li>
-                        <div class="g-header">Non-Current Liabilities</div>
+                        <div class="g-toggle g-header">Non-Current Liabilities</div>
                     </li>
                     <li>
-                        <div class="g-header">Equity</div>
+                        <div class="g-toggle g-header">Equity</div>
                     </li>
                     <li>
-                        <div class="g-header">Expenses</div>
+                        <div class="g-toggle g-header">Expenses</div>
                     </li>
                     <li>
-                        <div class="g-header">Revenues</div>
+                        <div class="g-toggle g-header">Revenues</div>
                     </li>
                     <li>
-                        <div class="g-header">Withdrawals</div>
+                        <div class="g-toggle g-header">Withdrawals</div>
                     </li>
                     <li>
-                        <div class="g-header">Contra Revenues</div>
+                        <div class="g-toggle g-header">Contra Revenues</div>
                     </li>
                     <li>
-                        <div class="g-header">Cost of Goods Sold</div>
+                        <div class="g-toggle g-header">Cost of Goods Sold</div>
                     </li>
                     <li>
-                        <div class="g-header">Production</div>
+                        <div class="g-toggle g-header">Production</div>
                     </li>
                     <li>
-                        <div class="g-header">Contras</div>
+                        <div class="g-toggle g-header">Contras</div>
                     </li>
                     <li>
-                        <div class="g-header">Contra Expenses</div>
+                        <div class="g-toggle g-header">Contra Expenses</div>
                     </li>
                 </ul>
             </div>
@@ -524,24 +529,21 @@
         </div>
     </div>
     <script>
-        $('.g-header+div').hide();
-        $('.g-header').click(function () {
+        $('.g-toggle+div').hide();
+        $('.g-toggle').click(function () {
             if ($('+div', this).is(":visible")) {
                 $('+div', this).slideToggle();
             }
             else {
-                $('.g-header+div').hide();
+                $('.g-toggle+div').hide();
                 $('+div', this).slideToggle();
             }
         });
-        // $('.dcoll').nextUntil('tr.dcoll').hide();
-        // $('.minimize').click(function () {
-        //     $('#table-headm').hide();
-        //     $(this).slideToggle();
-        //     $(this).prevUntil('tr.dcoll').slideToggle();
-        //     $js('accNature').selectedIndex = 0;
-        //     $js('natureCodeFill').value = '';
-        // });
+        $('.minimize').click(function () {
+            $(this).parent().slideToggle();
+            $js('accNature').selectedIndex = 0;
+            $js('natureCodeFill').value = '';
+        });
         // $('.dcoll').click(function () {
         //     if ($(this).nextUntil('tr.dcoll').is(":visible")) {
         //         $('#table-headm').hide();
