@@ -486,7 +486,7 @@ input#userPasswordField {
     border-bottom: 1px solid #6892f8 !important;
 }
 
-.ac-group ul li div{
+.ac-group ul li div.g-header{
     padding: 8px 40px;
     background-color: #0467ce;
     color: white;
