@@ -85,7 +85,7 @@ var accounts = {
     REV: { name: 'Revenue', min: 7001, max: 7999, flag: 7 },
     WD: { name: 'Withdrawal', min: 9501, max: 9749, flag: 8 },
     SD: { name: 'Contra Revenue', min: 9750, max: 9999, flag: 9 },
-    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 1 },
+    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 10 },
     WIP: { name: 'Production', min: 9001, max: 9500, flag: 11 },
     CN: { name: 'Contra', min: 8501, max: 8999, flag: 12 },
     PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13 }
