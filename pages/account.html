@@ -84,36 +84,366 @@
                     </li>
                     <li>
                         <div class="g-toggle g-header">Current Liabilities</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(3) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Non-Current Liabilities</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(4) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Equity</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(5) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Expenses</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(6) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Revenues</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(7) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Withdrawals</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(8) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Contra Revenues</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(9) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Cost of Goods Sold</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(10) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Production</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(11) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Contras</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(12) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <div class="g-toggle g-header">Contra Expenses</div>
+                        <div class="w3-responsive" style="max-height: 600px;">
+                            <table class="w3-table-all chart-tables">
+                                <thead id="table-headm">
+                                    <tr class="main-bg-color">
+                                        <th>ID</th>
+                                        <th>Nature</th>
+                                        <th>Account Code</th>
+                                        <th>Account Head</th>
+                                        <th style="width: 120px;">Edit</th>
+                                        <th style="width: 130px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="comAcc in getAccArr(13) | orderBy : 'accCode' track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{comAcc.nature}}</td>
+                                        <td>{{comAcc.accCode}}</td>
+                                        <td>{{comAcc.accText}}</td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                            <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                style="display: none;">Update</button>
+                                        </td>
+                                        <td>
+                                            <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                 </ul>
             </div>
