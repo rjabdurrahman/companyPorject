@@ -2,12 +2,48 @@
     <div class="overlay">
         <div class="margin-auto chart-box">
             <section class="clearfix">
-                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Main {{title}}s</label>
+                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Main
+                    {{title}}s</label>
                 <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
+            <!-- <div class="w3-card-4 table-container">
+                <ul class="w3-ul">
+                    <li>
+                        <div class="w3-indigo">Current Assets</div>
+                        <table>
+                            <tr ng-repeat="comAcc in getAccArr(1) | orderBy : 'accCode' track by $index">
+                                <td>{{$index + 1}}</td>
+                                <td>{{comAcc.nature}}</td>
+                                <td>{{comAcc.accCode}}</td>
+                                <td>{{comAcc.accText}}</td>
+                                <td>
+                                    <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                        style="display: none;">Update</button>
+                                </td>
+                                <td>
+                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>Non-Current Assets</li>
+                    <li>Current Liabilities</li>
+                    <li>Non-Current Liabilities</li>
+                    <li>Equity</li>
+                    <li>Expenses</li>
+                    <li>Revenues</li>
+                    <li>Withdrawals</li>
+                    <li>Contra Revenues</li>
+                    <li>Cost of Goods Sold</li>
+                    <li>Production</li>
+                    <li>Contras</li>
+                    <li>Contra Expenses</li>
+                </ul>
+            </div> -->
             <div class="w3-card-4 table-container">
                 <div style="overflow: auto; max-height: calc(100vh - 50px);">
                     <div class="w3-responsive">
