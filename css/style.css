@@ -462,12 +462,19 @@ input#userPasswordField {
 /* Account Group Header */
 
 .acc_group_header {
-    background-color: bisque;
-    background-image: linear-gradient(bisque, #fff0e0);
+    background-color: #0467ce;
+    /* border-color: #2C3E50;
+    box-shadow: 0 0 0 3px #27AE60; */
+    color: white;
+    /* background-image: linear-gradient(#014387 75%, #014387); */
     cursor: pointer;
 }
 
-.minimize{
+.dcoll {
+    border-bottom: 1px solid #6892f8 !important;
+}
+
+.minimize {
     background-color: #b3cbf2 !important;
     cursor: pointer;
 }
