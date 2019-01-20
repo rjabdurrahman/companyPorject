@@ -3,8 +3,8 @@
         <div class="margin-auto" style="width: 90%; margin-top: 15px; margin-bottom: 15px;">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitBankBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                             <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -27,7 +27,7 @@
                                     <td>{{bank.code}}</td>
                                     <td>{{bank.name}}</td>
                                     <td>
-                                        <button id="{{bank.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{bank.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{bank.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitBankBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitBankBtn" onclick="submitBankBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -102,7 +102,32 @@
 </div>
 <script>
     var dbBanks = null;
-    $js('submitBankBtn').addEventListener('click', function () {
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitBankBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('banks/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('bankCode').value = dbData.code;
+            $js('bankName').value = dbData.name;
+        });
+    }
+
+    /// edit data show in field end........................
+    function submitBankBtn() {
         var bankCode = $js('bankCode').value;
         var bankName = $js('bankName').value;
         if (bankCode == "") {
@@ -113,26 +138,73 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbBanks.length; i++) {
+        
+        var bank = {
+            code: bankCode,
+            name: bankName
+        };
+        if (editTriget == 1 && dbDataCode == bankCode) {
+            editTriget = 0;
+            db.child('banks/' + dbID).update(bank, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != bankCode) {
+
+            for (i = 0; i < dbBanks.length; i++) {
             if (bankCode == dbBanks[i].code) {
                 $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 $js('bankCode').focus();
                 return;
             }
         }
-        var bank = {
-            code: bankCode,
-            name: bankName
-        };
-        db.child('banks').push(bank, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+            editTriget = 0;
+            db.child('banks/' + dbID).update(bank, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbBanks.length; i++) {
+            if (bankCode == dbBanks[i].code) {
+                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                $js('bankCode').focus();
+                return;
             }
-        });
+        }
+            db.child('banks').push(bank, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        // db.child('banks').push(bank, function (error) {
+        //     if (error) {
+        //         $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //     } else {
+        //         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //         $js('nodata').style.display = "none";
+        //         clearFields();
+        //     }
+        // });
         // $print(bank);
         // var comBanks = lsExGJInit('comBanks', []);
         // comBanks.push(bank);
@@ -141,7 +213,7 @@
         // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
         // location.reload();
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('bankCode').value = $js('bankName').value = "";
