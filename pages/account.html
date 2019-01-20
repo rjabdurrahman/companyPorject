@@ -531,12 +531,75 @@
     <script>
         $('.g-toggle+div').hide();
         $('.g-toggle').click(function () {
+            $print(this.textContent);
             if ($('+div', this).is(":visible")) {
                 $('+div', this).slideToggle();
+                $js('accNature').selectedIndex = 0;
+                $js('natureCodeFill').value = '';
+                return;
             }
             else {
                 $('.g-toggle+div').hide();
                 $('+div', this).slideToggle();
+            }
+            // Equity Select
+            if (removeNewlines(this.textContent) == 'Equity') {
+                $js('accNature').selectedIndex = 5;
+                $js('natureCodeFill').style.display = 'none';
+                $js('equitySelector').style.display = 'block';
+            }
+            else {
+                $js('natureCodeFill').style.display = 'block';
+                $js('equitySelector').style.display = 'none';
+            }
+            // Fill AC Code
+            if (removeNewlines(this.textContent) == 'Current Assets') {
+                $js('accNature').selectedIndex = 1;
+                $js('natureCodeFill').value = 'CA';
+            }
+            else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
+                $js('accNature').selectedIndex = 2;
+                $js('natureCodeFill').value = 'NCA';
+            }
+            else if (removeNewlines(this.textContent) == 'Current Liabilities') {
+                $js('accNature').selectedIndex = 3;
+                $js('natureCodeFill').value = 'CL';
+            }
+            else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
+                $js('accNature').selectedIndex = 4;
+                $js('natureCodeFill').value = 'NCL';
+            }
+            else if (removeNewlines(this.textContent) == 'Expenses') {
+                $js('accNature').selectedIndex = 6;
+                $js('natureCodeFill').value = 'EX';
+            }
+            else if (removeNewlines(this.textContent) == 'Revenues') {
+                $js('accNature').selectedIndex = 7;
+                $js('natureCodeFill').value = 'REV';
+            }
+            else if (removeNewlines(this.textContent) == 'Withdrawals') {
+                $js('accNature').selectedIndex = 8;
+                $js('natureCodeFill').value = 'WD';
+            }
+            else if (removeNewlines(this.textContent) == 'Contra Revenues') {
+                $js('accNature').selectedIndex = 9;
+                $js('natureCodeFill').value = 'SD';
+            }
+            else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
+                $js('accNature').selectedIndex = 10;
+                $js('natureCodeFill').value = 'COGS';
+            }
+            else if (removeNewlines(this.textContent) == 'Production') {
+                $js('accNature').selectedIndex = 11;
+                $js('natureCodeFill').value = 'WIP';
+            }
+            else if (removeNewlines(this.textContent) == 'Contras') {
+                $js('accNature').selectedIndex = 12;
+                $js('natureCodeFill').value = 'CN';
+            }
+            else if (removeNewlines(this.textContent) == 'Contra Expenses') {
+                $js('accNature').selectedIndex = 13;
+                $js('natureCodeFill').value = 'PD';
             }
         });
         $('.minimize').click(function () {
@@ -544,79 +607,6 @@
             $js('accNature').selectedIndex = 0;
             $js('natureCodeFill').value = '';
         });
-        // $('.dcoll').click(function () {
-        //     if ($(this).nextUntil('tr.dcoll').is(":visible")) {
-        //         $('#table-headm').hide();
-        //         $(this).nextUntil('tr.dcoll').slideToggle(100);
-        //         $js('accNature').selectedIndex = 0;
-        //         $js('natureCodeFill').value = '';
-        //         return;
-        //     }
-        //     else {
-        //         $('#table-headm').show();
-        //         $('.dcoll').nextUntil('tr.dcoll').hide();
-        //         $(this).nextUntil('tr.dcoll').slideToggle(100);
-        //     }
-        //     // Equity Select
-        //     if (removeNewlines(this.textContent) == 'Equity') {
-        //         $js('accNature').selectedIndex = 5;
-        //         $js('natureCodeFill').style.display = 'none';
-        //         $js('equitySelector').style.display = 'block';
-        //     }
-        //     else {
-        //         $js('natureCodeFill').style.display = 'block';
-        //         $js('equitySelector').style.display = 'none';
-        //     }
-        //     // Fill AC Code
-        //     if (removeNewlines(this.textContent) == 'Current Assets') {
-        //         $js('accNature').selectedIndex = 1;
-        //         $js('natureCodeFill').value = 'CA';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
-        //         $js('accNature').selectedIndex = 2;
-        //         $js('natureCodeFill').value = 'NCA';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Current Liabilities') {
-        //         $js('accNature').selectedIndex = 3;
-        //         $js('natureCodeFill').value = 'CL';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
-        //         $js('accNature').selectedIndex = 4;
-        //         $js('natureCodeFill').value = 'NCL';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Expenses') {
-        //         $js('accNature').selectedIndex = 6;
-        //         $js('natureCodeFill').value = 'EX';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Revenues') {
-        //         $js('accNature').selectedIndex = 7;
-        //         $js('natureCodeFill').value = 'REV';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Withdrawals') {
-        //         $js('accNature').selectedIndex = 8;
-        //         $js('natureCodeFill').value = 'WD';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Contra Revenues') {
-        //         $js('accNature').selectedIndex = 9;
-        //         $js('natureCodeFill').value = 'SD';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
-        //         $js('accNature').selectedIndex = 10;
-        //         $js('natureCodeFill').value = 'COGS';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Production') {
-        //         $js('accNature').selectedIndex = 11;
-        //         $js('natureCodeFill').value = 'WIP';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Contras') {
-        //         $js('accNature').selectedIndex = 12;
-        //         $js('natureCodeFill').value = 'CN';
-        //     }
-        //     else if (removeNewlines(this.textContent) == 'Contra Expenses') {
-        //         $js('accNature').selectedIndex = 13;
-        //         $js('natureCodeFill').value = 'PD';
-        //     }
-        // });
         var dbAccounts = null;
         lsSetJ('comAccounts', []);
         $js('submitAccBtn').addEventListener('click', function () {
