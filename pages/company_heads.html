@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitChBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -27,7 +27,7 @@
                                     <td>{{ch.code}}</td>
                                     <td>{{ch.name}}</td>
                                     <td>
-                                        <button id="{{ch.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{ch.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{ch.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -45,8 +45,8 @@
                 </div>
             </div>
         </div>
-         <!-- Confirmation diallog start -->
-         <div id="confirmDel" class="w3-modal">
+        <!-- Confirmation diallog start -->
+        <div id="confirmDel" class="w3-modal">
             <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
                 <header class="w3-container main-bg-color div-title">
                     <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitChBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitChBtn" onclick="submitChBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -101,8 +101,33 @@
     </div>
 </div>
 <script>
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitChBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('companyHeads/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+            $js('chACCode').value = dbData.code;
+            $js('chPartyName').value = dbData.name;
+
+        });
+    }
+
+    /// edit data show in field end........................
     var dbCh = null;
-    $js('submitChBtn').addEventListener('click', function () {
+    function submitChBtn() {
         var chACCode = $js('chACCode').value;
         var chPartyName = $js('chPartyName').value;
         if (chACCode == "") {
@@ -113,35 +138,68 @@
             $('#notification').html("<h6>Party Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbCh.length; i++) {
-            if (chACCode == dbCh[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('chACCode').focus();
-                return;
-            }
-        }
+
         var ch = {
             code: chACCode,
             name: chPartyName
         };
-        db.child('companyHeads').push(ch, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+
+        if (editTriget == 1 && dbDataCode == chACCode) {
+            editTriget = 0;
+            db.child('companyHeads/' + dbID).update(ch, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != chACCode) {
+
+            for (i = 0; i < dbCh.length; i++) {
+                if (chACCode == dbCh[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('chACCode').focus();
+                    return;
+                }
             }
-        });
-        // $print(ch);
-        // var comCh = lsExGJInit('comCh', []);
-        // comCh.push(ch);
-        // lsSetJ('comCh', comCh);
-        // clearFields();
-        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        // location.reload();
+            editTriget = 0;
+            db.child('companyHeads/' + dbID).update(ch, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbCh.length; i++) {
+                if (chACCode == dbCh[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('chACCode').focus();
+                    return;
+                }
+            }
+            db.child('companyHeads').push(ch, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('chACCode').value = $js('chPartyName').value = "";
