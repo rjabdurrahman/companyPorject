@@ -47,6 +47,12 @@ a {
     color: white !important;
 }
 
+.top-nav .w3-button{
+    padding: 8px 18px !important;
+    font-size: 12px !important;
+    /* margin: 0 !important; */
+}
+
 span.phone {
     position: absolute;
     display: block;
