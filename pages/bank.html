@@ -17,6 +17,8 @@
                                     <th>ID</th>
                                     <th>Code</th>
                                     <th>Name</th>
+                                    <th>Account No</th>
+                                    <th>Begining Balance</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -26,6 +28,8 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{bank.code}}</td>
                                     <td>{{bank.name}}</td>
+                                    <td>{{bank.accNo}}</td>
+                                    <td>{{bank.accNo}}</td>
                                     <td>
                                         <button id="{{bank.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{bank.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"

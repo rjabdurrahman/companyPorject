@@ -16,7 +16,9 @@
                                 <tr class="main-bg-color">
                                     <th>ID</th>
                                     <th>Code</th>
-                                    <th>Truck No</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Vehicle No</th>
+                                    <th>Balance</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -25,7 +27,9 @@
                                 <tr ng-repeat="Tr in comTrs track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{Tr.code}}</td>
+                                    <td>{{Tr.type}}</td>
                                     <td>{{Tr.name}}</td>
+                                    <td>{{Tr.balance}}</td>
                                     <td>
                                         <button id="{{Tr.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{Tr.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
