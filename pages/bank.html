@@ -90,6 +90,22 @@
                                 <input class="w3-input w3-border" type="text" name="" id="bankName">
                             </div>
                         </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Account No</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="bAccNo">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Begining Balance</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="begBal">
+                            </div>
+                        </div>
                         <p class="clearfix">
                             <button id="submitBankBtn" onclick="submitBankBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
@@ -138,7 +154,7 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        
+
         var bank = {
             code: bankCode,
             name: bankName
@@ -159,12 +175,12 @@
         else if (editTriget == 1 && dbDataCode != bankCode) {
 
             for (i = 0; i < dbBanks.length; i++) {
-            if (bankCode == dbBanks[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('bankCode').focus();
-                return;
+                if (bankCode == dbBanks[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('bankCode').focus();
+                    return;
+                }
             }
-        }
             editTriget = 0;
             db.child('banks/' + dbID).update(bank, function (error) {
                 if (error) {
@@ -179,12 +195,12 @@
         } else {
             editTriget = 0;
             for (i = 0; i < dbBanks.length; i++) {
-            if (bankCode == dbBanks[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('bankCode').focus();
-                return;
+                if (bankCode == dbBanks[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('bankCode').focus();
+                    return;
+                }
             }
-        }
             db.child('banks').push(bank, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
