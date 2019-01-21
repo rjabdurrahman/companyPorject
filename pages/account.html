@@ -569,7 +569,7 @@
                 <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                     <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block;">
                         <header class="w3-container main-bg-color div-title">
-                            <span onclick="exitModel();clearAccFields();" class="w3-button w3-display-topright">&times;</span>
+                            <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
                             <h2>{{title}}</h2>
                         </header>
                         <div class="w3-container">
@@ -729,6 +729,9 @@
             getRef('accounts/' + id).on('value', function (snapshot) {
                 let dbData = snapshot.val();
                 console.log(dbData);
+
+                dbDataCode = dbData.accCode;                   //      
+
                 let codeSp = dbData.accCode.split("-");
                 console.log(codeSp);
                 var codeShortForm = codeSp[0];
@@ -861,8 +864,6 @@
         lsSetJ('comAccounts', []);
 
         function submitAccBtn() {
-
-            Console.log("NO bug!!!!");
             let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
             let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
             var accCodeInit = null;
@@ -904,6 +905,28 @@
             if (accCodeSecond != '') {
                 accNumber += "-" + accCodeSecond;
             }
+            
+            let account = {
+                nature: accNature,
+                accCode: accNumber,
+                accText: accTxt,
+                flag: accountFlag(accNature)
+            };
+
+            if (editTriget == 1 && dbDataCode == accNumber) {
+            editTriget = 0;
+            db.child('accounts/' + dbID).update(account, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != accNumber) {
+
             for (i = 0; i < dbAccounts.length; i++) {
                 if (accNumber == dbAccounts[i].accCode) {
                     notify('Code Already Used in Another Account!', 2);
@@ -911,33 +934,57 @@
                     return;
                 }
             }
-            let account = {
-                nature: accNature,
-                accCode: accNumber,
-                accText: accTxt,
-                flag: accountFlag(accNature)
-            }
-            // Store
-            db.child('accounts').push(account, function (error) {
+            editTriget = 0;
+            db.child('accounts/' + dbID).update(account, function (error) {
                 if (error) {
-                    notify('Something Went Wrong in Database!', 2);
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
-                    notify('Added Sucessfully', 1);
-                    $js('nodata').style.display = "none";
-                    accCodeSecond.value = accTxt.value = "";
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    clearFields();
+
                 }
             });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbAccounts.length; i++) {
+                if (accNumber == dbAccounts[i].accCode) {
+                    notify('Code Already Used in Another Account!', 2);
+                    $js('accCodeSecond').focus();
+                    return;
+                }
+            }
+            db.child('accounts').push(account, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    clearFields();
+
+                }
+            });
+        }
+
+            // Store
+
+            // db.child('accounts').push(account, function (error) {
+            //     if (error) {
+            //         notify('Something Went Wrong in Database!', 2);
+            //     } else {
+            //         notify('Added Sucessfully', 1);
+            //         accCodeSecond.value = accTxt.value = "";
+            //     }
+            // });
             // let comAccounts = lsExGJInit('comAccounts', []);
             // comAccounts.push(account);
             // lsSetJ('comAccounts', comAccounts);
-            // clearAccFields();
+            // clearFields();
             // location.reload();
             exitModel();
         }
 
 
 
-        function clearAccFields() {
+        function clearFields() {
             $js('accNature').selectedIndex = 0;
             accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
             let accCodeInitNode = $js('accCodeInit').firstElementChild;
