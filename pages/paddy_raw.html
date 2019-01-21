@@ -130,6 +130,12 @@
     function paddyRawSubmit() {
         var paddyRawCode = $js('paddyRawCode').value;
         var paddyRawName = $js('paddyRawName').value;
+        var priUnit = $js('priUnit').value;
+        var priUnitPri = $js('priUnitPri').value;
+        var priQu = $js('priQu').value;
+        var stdUnit = $js('stdUnit').value;
+        var stdUnitPri = $js('stdUnitPri').value;
+        var stdQu = $js('stdQu').value;
         if (paddyRawCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -141,7 +147,13 @@
 
         var paddyRaw = {
             code: paddyRawCode,
-            name: paddyRawName
+            name: paddyRawName,
+            priUnit: priUnit,
+            priUnitPri: priUnitPri,
+            priQu: priQu,
+            stdUnit: stdUnit,
+            stdUnitPri: stdUnitPri,
+            stdQu: stdQu
         };
         if (editTriget == 1 && dbDataCode == paddyRawCode) {
             editTriget = 0;
@@ -196,7 +208,7 @@
                 }
             });
         }
- 
+
         exitModel();
     }
 
