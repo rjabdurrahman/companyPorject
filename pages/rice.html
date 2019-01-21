@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitRiceBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -27,7 +27,7 @@
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
                                     <td>
-                                        <button id="{{rice.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitRiceBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitRiceBtn" onclick="submitRiceBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -102,7 +102,34 @@
 </div>
 <script>
     var dbRices = null;
-    $js('submitRiceBtn').addEventListener('click', function () {
+
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitRiceBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        editTriget = 1;
+        console.log(id, editTriget);
+        getRef('rice/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            console.log(dbData);
+
+            dbDataCode = dbData.code;   ///   from database code grip to control notification...............
+
+            $js('riceCode').value = dbData.code;
+            $js('riceName').value = dbData.name;
+        });
+    }
+
+    /// edit data show in field end........................
+
+    function submitRiceBtn() {
         var riceCode = $js('riceCode').value;
         var riceName = $js('riceName').value;
         if (riceCode == "") {
@@ -113,36 +140,68 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbRices.length; i++) {
-            if (riceCode == dbRices[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('riceCode').focus();
-                return;
-            }
-        }
+
         var rice = {
             code: riceCode,
             name: riceName
         };
-        // Store
-        db.child('rice').push(rice, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+
+        if (editTriget == 1 && dbDataCode == riceCode) {
+            editTriget = 0;
+            db.child('rice/' + dbID).update(rice, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        else if (editTriget == 1 && dbDataCode != riceCode) {
+
+            for (i = 0; i < dbRices.length; i++) {
+                if (riceCode == dbRices[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('riceCode').focus();
+                    return;
+                }
             }
-        });
-        // $print(rice);
-        // var comRices = lsExGJInit('comRices', []);
-        // comRices.push(rice);
-        // lsSetJ('comRices', comRices);
-        // clearFields();
-        // $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-        // location.reload();
+            editTriget = 0;
+            db.child('rice/' + dbID).update(rice, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbRices.length; i++) {
+                if (riceCode == dbRices[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('riceCode').focus();
+                    return;
+                }
+            }
+            db.child('rice').push(rice, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+
         exitModel();
-    });
+    }
 
     function clearFields() {
         $js('riceCode').value = $js('riceName').value = "";
