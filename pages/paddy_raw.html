@@ -192,6 +192,7 @@
         var stdUnit = $js('stdUnit').value;
         var stdUnitPri = $js('stdUnitPri').value;
         var stdQu = $js('stdQu').value;
+        var totalPri = $js('totalPri').value;
         if (paddyRawCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -209,7 +210,8 @@
             priQu: priQu,
             stdUnit: stdUnit,
             stdUnitPri: stdUnitPri,
-            stdQu: stdQu
+            stdQu: stdQu,
+            totalPri: totalPri
         };
         if (editTriget == 1 && dbDataCode == paddyRawCode) {
             editTriget = 0;
