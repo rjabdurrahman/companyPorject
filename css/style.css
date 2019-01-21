@@ -215,7 +215,7 @@ input[type="text"]:disabled:hover {
 .overlay-container {
     width: 100%;
     min-height: calc(100vh - 115px);
-    background-image: url(../img/bu-bg.jpg);
+    background-color: #dbe8ff;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -223,7 +223,7 @@ input[type="text"]:disabled:hover {
 .overlay {
     border: 1px solid transparent;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
     min-height: calc(100vh - 115px);
 }
 
