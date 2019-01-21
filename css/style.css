@@ -50,7 +50,7 @@ a {
 .top-nav .w3-button{
     padding: 8px 18px !important;
     font-size: 12px !important;
-    /* margin: 0 !important; */
+    /* box-shadow: 2px 2px 2px lightblue !important; */
 }
 
 span.phone {
@@ -214,7 +214,7 @@ input[type="text"]:disabled:hover {
 
 .overlay-container {
     width: 100%;
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 115px);
     background-image: url(../img/bu-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -224,7 +224,7 @@ input[type="text"]:disabled:hover {
     border: 1px solid transparent;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 115px);
 }
 
 /* Login Input BG */
