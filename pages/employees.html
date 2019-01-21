@@ -20,6 +20,7 @@
                                     <th>Employee Type</th>
                                     <th>Posting</th>
                                     <th>Designation</th>
+                                    <th>Begining Balance</th>
                                     <th>Salary</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
@@ -33,6 +34,7 @@
                                     <td>{{emp.type}}</td>
                                     <td>{{emp.post}}</td>
                                     <td>{{emp.des}}</td>
+                                    <td>{{emp.balance}}</td>
                                     <td>{{emp.salary}}</td>
                                     <td>
                                         <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
@@ -120,6 +122,14 @@
                             </div>
                             <div class="w3-rest">
                                 <input class="w3-input w3-border" type="text" name="" id="empDes">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Begining Balance</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="begBal">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -265,7 +275,7 @@
                 }
             });
         }
-        
+
         exitModel();
     }
 
