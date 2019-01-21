@@ -129,8 +129,8 @@
                                     Output</a>
                             </div>
                         </div>
-                        <a ng-show="userInfo.j_2" ng-class="{'active-menu' : $route.current.activetab == 'journal'}" href="#journal"
-                            class="w3-bar-item w3-button w3-mobile" style="margin-right: 5px;">JOURNAL</a>
+                        <a ng-show="userInfo.j_2" ng-class="{'active-menu' : $route.current.activetab == 'journal'}"
+                            href="#journal" class="w3-bar-item w3-button w3-mobile" style="margin-right: 5px;">JOURNAL</a>
                         <div ng-show="userInfo.l_1 || userInfo.l_2 || userInfo.l_3 || userInfo.l_4 || userInfo.l_5"
                             class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'active-menu' : $route.current.activetab == 'ledger'}" class="w3-button">LEDGER&nbsp;&nbsp;
@@ -151,7 +151,7 @@
                         </div>
                         <div class="w3-dropdown-hover w3-mobile">
                             <button ng-class="{'active-menu' : $route.current.activetab == 'user'}" class="w3-button"><i
-                                    style="font-size: 16px;" class="fa fa-user"></i>&nbsp;&nbsp;{{userInfo.name}}&nbsp;
+                                    style="font-size: 16px;" class="fa fa-user"></i>&nbsp;&nbsp;<span style="text-transform: uppercase;">{{userInfo.name}}</span>&nbsp;
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="w3-dropdown-content w3-bar-block w3-card-4">
