@@ -17,6 +17,7 @@
                                     <th>ID</th>
                                     <th>Code</th>
                                     <th>Name</th>
+                                    <th>Begining Balance</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -26,6 +27,7 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyRaw.code}}</td>
                                     <td>{{paddyRaw.name}}</td>
+                                    <td>{{paddyRaw.totalPri}}</td>
                                     <td>
                                         <button id="{{paddyRaw.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{paddyRaw.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -95,7 +97,7 @@
                                 <label class="w3-medium">Primary Unit</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="priUnit">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -103,7 +105,7 @@
                                 <label class="w3-medium">Primary Quantity</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="priQu">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -111,7 +113,7 @@
                                 <label class="w3-medium">Primary Unit Price</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="priUnitPri">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -119,7 +121,7 @@
                                 <label class="w3-medium">Standard Unit</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="stdUnit">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -127,7 +129,7 @@
                                 <label class="w3-medium">Standard Quantity</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="stdQu">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -135,7 +137,7 @@
                                 <label class="w3-medium">Standard Unit Price</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
@@ -143,7 +145,7 @@
                                 <label class="w3-medium">Total Price</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="">
+                                <input class="w3-input w3-border" type="text" name="" id="totalPri">
                             </div>
                         </div>
                         <p class="clearfix">
