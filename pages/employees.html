@@ -187,6 +187,8 @@
         var empType = $js('empType').value;
         var empPost = $js('empPost').value;
         var empDes = $js('empDes').value;
+        var begBal = $js('begBal').value;
+
         var empSalary = $js('empSalary').value;
         if (empCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
@@ -219,7 +221,9 @@
             type: empType,
             post: empPost,
             des: empDes,
-            salary: empSalary
+            salary: empSalary,
+            balance: begBal
+
         };
 
         if (editTriget == 1 && dbDataCode == empCode) {
