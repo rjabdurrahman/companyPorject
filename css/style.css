@@ -41,6 +41,12 @@ a {
     *zoom: 1;
 }
 
+.active-menu {
+    /* border: 1px solid gray !important; */
+    background-color: #014387 !important;
+    color: white !important;
+}
+
 span.phone {
     position: absolute;
     display: block;
@@ -487,7 +493,7 @@ input#userPasswordField {
     border-bottom: 1px solid #6892f8 !important;
 }
 
-.ac-group ul li div.g-header{
+.ac-group ul li div.g-header {
     padding: 8px 40px;
     background-color: #0467ce;
     color: white;
