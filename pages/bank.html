@@ -146,6 +146,8 @@
     function submitBankBtn() {
         var bankCode = $js('bankCode').value;
         var bankName = $js('bankName').value;
+        var begBal = $js('begBal').value;
+        var vType = $js('bAccNo').value;
         if (bankCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -157,7 +159,9 @@
 
         var bank = {
             code: bankCode,
-            name: bankName
+            name: bankName,
+            balance: begBal,
+            accno: bAccNo
         };
         if (editTriget == 1 && dbDataCode == bankCode) {
             editTriget = 0;

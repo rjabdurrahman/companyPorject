@@ -137,6 +137,7 @@
 
             $js('trCode').value = dbData.code;
             $js('trNo').value = dbData.name;
+
         });
     }
 
@@ -144,6 +145,8 @@
     function submitTrBtn() {
         var trCode = $js('trCode').value;
         var trNo = $js('trNo').value;
+        var begBal = $js('begBal').value;
+        var vType = $js('vType').value;
         if (trCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -155,7 +158,9 @@
 
         var tr = {
             code: trCode,
-            name: trNo
+            name: trNo,
+            balance: begBal,
+            type: vType
         };
         if (editTriget == 1 && dbDataCode == trCode) {
             editTriget = 0;

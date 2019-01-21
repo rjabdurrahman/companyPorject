@@ -210,6 +210,7 @@
         var recMObileNo = $js('recMObileNo').value;
         var recEmail = $js('recEmail').value;
         var recAddress = $js('recAddress').value;
+        var begBal = $js('begBal').value;
         if (recACCode == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -247,7 +248,10 @@
             recProprietor: recProprietor,
             mobile: '+8801' + recMObileNo,
             email: recEmail,
-            address: recAddress
+            address: recAddress,
+            balance: begBal
+
+
         };
         console.log(receive);
 

@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'; $js('submitPayBtn').innerHTML = 'Submit';" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block'; $js('submitPayBtn').innerHTML = 'Submit';"
+                    class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -153,7 +153,8 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitPayBtn" onclick="submitRecBtn()" class="w3-btn main-bg-color div-title" style="float: right;">Submit</button>
+                            <button id="submitPayBtn" onclick="submitRecBtn()" class="w3-btn main-bg-color div-title"
+                                style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -179,7 +180,7 @@
         console.log(id, editTriget);
         getRef('payables/' + id).on('value', function (snapshot) {
             let dbData = snapshot.val();
-            
+
             console.log(dbData);
 
             dbDataCode = dbData.code;   ///   from database code grip to control notification...............
@@ -213,6 +214,8 @@
         var payMObileNo = $js('payMObileNo').value;
         var payEmail = $js('payEmail').value;
         var payAddress = $js('payAddress').value;
+        var begBal = $js('begBal').value;
+
         if (payACCode == "") {
             $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -242,7 +245,7 @@
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        
+
         var pay = {
             code: payACCode,
             name: payPartyName,
@@ -250,9 +253,11 @@
             proprietor: payProprietor,
             mobile: '+8801' + payMObileNo,
             email: payEmail,
-            address: payAddress
+            address: payAddress,
+            balance: begBal
+
         };
-        
+
         if (editTriget == 1 && dbDataCode == payACCode) {
             editTriget = 0;
             db.child('payables/' + dbID).update(pay, function (error) {
@@ -268,12 +273,12 @@
         } else if (editTriget == 1 && dbDataCode != payACCode) {
 
             for (i = 0; i < dbPayables.length; i++) {
-            if (payACCode == dbPayables[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('payACCode').focus();
-                return;
+                if (payACCode == dbPayables[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('payACCode').focus();
+                    return;
+                }
             }
-        }
             editTriget = 0;
             db.child('payables/' + dbID).update(pay, function (error) {
                 if (error) {
@@ -288,12 +293,12 @@
         } else {
             editTriget = 0;
             for (i = 0; i < dbPayables.length; i++) {
-            if (payACCode == dbPayables[i].code) {
-                $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('payACCode').focus();
-                return;
+                if (payACCode == dbPayables[i].code) {
+                    $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('payACCode').focus();
+                    return;
+                }
             }
-        }
             db.child('payables').push(pay, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
