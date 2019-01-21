@@ -244,7 +244,7 @@ app.controller('ContractorsCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('PaddyRawCntlr', function ($scope, $firebaseArray) {
-  $scope.title = "Paddy Raw";
+  $scope.title = "Raw Material";
   var ref = firebase.database().ref().child('paddyRaw');
   dbPaddyRaws = $scope.comPaddyRaws = $firebaseArray(ref);
   $scope.comPaddyRaws.$loaded().then(function () {
