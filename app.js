@@ -199,7 +199,7 @@ app.controller('CostCenterCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
-  $scope.title = "Truck Tractor";
+  $scope.title = "Vehicle";
   var ref = firebase.database().ref().child('truckTrackors');
   dbTrs = $scope.comTrs = $firebaseArray(ref);
   $scope.comTrs.$loaded().then(function () {
