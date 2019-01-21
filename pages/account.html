@@ -969,22 +969,6 @@
                     }
                 });
             }
-
-            // Store
-
-            // db.child('accounts').push(account, function (error) {
-            //     if (error) {
-            //         notify('Something Went Wrong in Database!', 2);
-            //     } else {
-            //         notify('Added Sucessfully', 1);
-            //         accCodeSecond.value = accTxt.value = "";
-            //     }
-            // });
-            // let comAccounts = lsExGJInit('comAccounts', []);
-            // comAccounts.push(account);
-            // lsSetJ('comAccounts', comAccounts);
-            // clearFields();
-            // location.reload();
             exitModel();
         }
 
@@ -993,12 +977,6 @@
         function clearFields() {
             accCodeFirst.value = accCodeSecond.value = accTxt.value = "";
             let accCodeInitNode = $js('accCodeInit').firstElementChild;
-            // if (accCodeInitNode.tagName == 'INPUT') {
-            //     accCodeInitNode.value = "";
-            // }
-            // else if (accCodeInitNode.tagName == 'SELECT') {
-            //     accCodeInitNode.selectedIndex = 0;
-            // }
         }
 
         // Delete data
