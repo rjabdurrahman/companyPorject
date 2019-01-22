@@ -76,19 +76,19 @@ function numValidate(evt) {
 
 //Company Accounts
 var accounts = {
-    CA: { name: 'Current Asset', min: 1001, max: 1999, flag: 1 },
-    NCA: { name: 'Non-Current Asset', min: 2001, max: 2999, flag: 2 },
-    CL: { name: 'Current Liability', min: 3001, max: 3999, flag: 3 },
-    NCL: { name: 'Non-Current Liability', min: 4001, max: 4999, flag: 4 },
-    EQTY: { name: 'Equity', min: 5001, max: 5999, flag: 5 },
-    EX: { name: 'Expense', min: 6001, max: 6999, flag: 6 },
-    REV: { name: 'Revenue', min: 7001, max: 7999, flag: 7 },
-    WD: { name: 'Withdrawal', min: 9501, max: 9749, flag: 8 },
-    SD: { name: 'Contra Revenue', min: 9750, max: 9999, flag: 9 },
-    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 10 },
-    WIP: { name: 'Production', min: 9001, max: 9500, flag: 11 },
-    CN: { name: 'Contra', min: 8501, max: 8999, flag: 12 },
-    PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13 }
+    CA: { name: 'Current Asset', min: 1001, max: 1999, flag: 1, type: 1, begBal: true },
+    NCA: { name: 'Non-Current Asset', min: 2001, max: 2999, flag: 2, type: 1, begBal: true },
+    CL: { name: 'Current Liability', min: 3001, max: 3999, flag: 3, type: 2, begBal: true },
+    NCL: { name: 'Non-Current Liability', min: 4001, max: 4999, flag: 4, type: 2, begBal: true },
+    EQTY: { name: 'Equity', min: 5001, max: 5999, flag: 5, type: 2, begBal: true },
+    EX: { name: 'Expense', min: 6001, max: 6999, flag: 6, type: 1, begBal: false },
+    REV: { name: 'Revenue', min: 7001, max: 7999, flag: 7, type: 2, begBal: false },
+    WD: { name: 'Withdrawal', min: 9501, max: 9749, flag: 8, type: 1, begBal: false },
+    SD: { name: 'Contra Revenue', min: 9750, max: 9999, flag: 9, type: 1, begBal: false },
+    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 10, type: 1, begBal: false },
+    WIP: { name: 'Production', min: 9001, max: 9500, flag: 11, type: 1, begBal: true },
+    CN: { name: 'Contra', min: 8501, max: 8999, flag: 12, type: 2, begBal: true },
+    PD: { name: 'Contra Expense', min: 9800, max: 9999, flag: 13, type: 2, begBal: false }
 }
 
 function accountFlag(nat) {
