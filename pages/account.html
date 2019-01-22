@@ -4,7 +4,7 @@
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Main
                     {{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block';$js('submitAccBtn').innerHTML = 'Submit';"
+                <button id="addAccount" onclick="document.getElementById('id01').style.display='block';$js('submitAccBtn').innerHTML = 'Submit';"
                     class="w3-btn w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -638,6 +638,7 @@
         </div>
     </div>
     <script>
+        $('#addAccount').hide();
         $('.g-toggle+div').hide();
         $('.g-toggle').click(function () {
             $print(this.textContent);
@@ -645,11 +646,13 @@
                 $('+div', this).slideToggle();
                 $js('accNature').selectedIndex = 0;
                 $js('natureCodeFill').value = '';
+                $('#addAccount').hide();
                 return;
             }
             else {
                 $('.g-toggle+div').hide();
                 $('+div', this).slideToggle();
+                $('#addAccount').show();
             }
             // Equity Select
             if (removeNewlines(this.textContent) == 'Equity') {
@@ -928,7 +931,7 @@
                 $js('accTxt').focus();
                 return;
             }
-            else if(accounts[accNatureCode].begBal && balance == ""){
+            else if (accounts[accNatureCode].begBal && balance == "") {
                 notify('Begining Balance Empty!', 2);
                 $js('begBal').focus();
                 return;
@@ -945,7 +948,7 @@
                 flag: accountFlag(accNature)
             };
 
-            if(accounts[accNatureCode].begBal){
+            if (accounts[accNatureCode].begBal) {
                 account['balance'] = balance;
             }
 
