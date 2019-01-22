@@ -620,9 +620,9 @@
                                     <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
                                 </div>
                             </div>
-                            <div ng-if="accounts[natureSelection].begBal" class="w3-row w3-section">
+                            <div class="w3-row w3-section" id="begBalField">
                                 <div class="w3-col" style="width:130px; padding: 0px 10px;">
-                                    <label style="" class="w3-medium">Beginning Balance</label>
+                                    <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
                                     <input id="begBal" class="w3-input w3-border"></input>
@@ -638,7 +638,6 @@
         </div>
     </div>
     <script>
-
         $('.g-toggle+div').hide();
         $('.g-toggle').click(function () {
             $print(this.textContent);
@@ -657,6 +656,7 @@
                 $js('accNature').selectedIndex = 5;
                 $js('natureCodeFill').style.display = 'none';
                 $js('equitySelector').style.display = 'block';
+                $('#begBalField').show();
             }
             else {
                 $js('natureCodeFill').style.display = 'block';
@@ -666,50 +666,62 @@
             if (removeNewlines(this.textContent) == 'Current Assets') {
                 $js('accNature').selectedIndex = 1;
                 $js('natureCodeFill').value = 'CA';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
                 $js('accNature').selectedIndex = 2;
                 $js('natureCodeFill').value = 'NCA';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Current Liabilities') {
                 $js('accNature').selectedIndex = 3;
                 $js('natureCodeFill').value = 'CL';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
                 $js('accNature').selectedIndex = 4;
                 $js('natureCodeFill').value = 'NCL';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Expenses') {
                 $js('accNature').selectedIndex = 6;
                 $js('natureCodeFill').value = 'EX';
+                $('#begBalField').hide();
             }
             else if (removeNewlines(this.textContent) == 'Revenues') {
                 $js('accNature').selectedIndex = 7;
                 $js('natureCodeFill').value = 'REV';
+                $('#begBalField').hide();
             }
             else if (removeNewlines(this.textContent) == 'Withdrawals') {
                 $js('accNature').selectedIndex = 8;
                 $js('natureCodeFill').value = 'WD';
+                $('#begBalField').hide();
             }
             else if (removeNewlines(this.textContent) == 'Contra Revenues') {
                 $js('accNature').selectedIndex = 9;
                 $js('natureCodeFill').value = 'SD';
+                $('#begBalField').hide();
             }
             else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
                 $js('accNature').selectedIndex = 10;
                 $js('natureCodeFill').value = 'COGS';
+                $('#begBalField').hide();
             }
             else if (removeNewlines(this.textContent) == 'Production') {
                 $js('accNature').selectedIndex = 11;
                 $js('natureCodeFill').value = 'WIP';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Contras') {
                 $js('accNature').selectedIndex = 12;
                 $js('natureCodeFill').value = 'CN';
+                $('#begBalField').show();
             }
             else if (removeNewlines(this.textContent) == 'Contra Expenses') {
                 $js('accNature').selectedIndex = 13;
                 $js('natureCodeFill').value = 'PD';
+                $('#begBalField').hide();
             }
         });
         $('.minimize').click(function () {
@@ -882,6 +894,7 @@
             let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
             var accCodeInit = null;
             let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
+            let balance = $js('begBal').value;
             if ($js('equitySelector').style.display == 'block') {
                 accCodeInit = $js('equitySelector').options[$js('equitySelector').selectedIndex].text;
             }
@@ -915,6 +928,11 @@
                 $js('accTxt').focus();
                 return;
             }
+            else if(accounts[accNatureCode].begBal && balance == ""){
+                notify('Begining Balance Empty!', 2);
+                $js('begBal').focus();
+                return;
+            }
             var accNumber = accCodeInit + "-" + accCodeFirst;
             if (accCodeSecond != '') {
                 accNumber += "-" + accCodeSecond;
@@ -926,6 +944,10 @@
                 accText: accTxt,
                 flag: accountFlag(accNature)
             };
+
+            if(accounts[accNatureCode].begBal){
+                account['balance'] = balance;
+            }
 
             if (editTriget == 1 && dbDataCode == accNumber) {
                 editTriget = 0;
