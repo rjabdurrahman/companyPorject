@@ -219,7 +219,7 @@ input[type="text"]:disabled:hover {
     padding-top: 50px;
     width: 100%;
     min-height: calc(100vh - 115px);
-    background-color: #dbe8ff;
+    background-color: #8bb4fc;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -227,7 +227,7 @@ input[type="text"]:disabled:hover {
 .overlay {
     border: 1px solid transparent;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(100, 100, 100, 0.2); */
     min-height: calc(100vh - 115px);
 }
 
