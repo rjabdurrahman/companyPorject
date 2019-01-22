@@ -516,5 +516,5 @@ input#userPasswordField {
     box-sizing: unset;
     position: fixed;
     width: calc(100% - 40px);
-    border-bottom: 1px solid gray;
+    box-shadow: 2px 2px 2px 2px gray;
 }
