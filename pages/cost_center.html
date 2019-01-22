@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button onclick="document.getElementById('id01').style.display='block';$js('submitCostCenterBtn').innerHTML = 'Submit';"
+                    class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -25,12 +25,12 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{costCenter.$value}}</td>
                                     <td>
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                        <button id="{{costCenter.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                                        <button id="{{costCenter.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button>
                                     </td>
                                     <td>
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        <button id="{{costCenter.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -43,6 +43,27 @@
                 </div>
             </div>
         </div>
+        <!-- Confirmation diallog start -->
+        <div id="confirmDel" class="w3-modal">
+            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
+                <header class="w3-container main-bg-color div-title">
+                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Confirm Delete?</h2>
+                </header>
+                <div class="w3-container">
+                    <p>Deleting this account will not remove name from journal account name.</p>
+                    <p>And no more suggestion is available for this account code until you create new one.</p>
+                </div>
+                <footer class="w3-container w3-white">
+                    <p class="flex" style="justify-content: center;">
+                        <button onclick="rmItem(onDel);" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
+                            Delete</button>
+                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                    </p>
+                </footer>
+            </div>
+        </div>
+        <!-- Confirmation diallog end -->
         <div id="id01" class="w3-modal">
             <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
                 <div class="div-box w3-light-gray w3-card-4 margin-auto">
@@ -60,7 +81,8 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="submitCostCenterBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="submitCostCenterBtn" onclick="submitCostCenterBtn()" class="w3-btn main-bg-color"
+                                style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -71,28 +93,105 @@
 </div>
 <script>
     var dbCostCenters = null;
-    $js('submitCostCenterBtn').addEventListener('click', function () {
+
+    /// edit data show in field start........................
+
+    var editTriget = 0;
+    var dbDataCode = "";
+    var dbID = "";
+
+    function editView(ID) {
+        $js('submitCostCenterBtn').innerHTML = 'Update';
+        document.getElementById('id01').style.display = 'block';
+        var id = ID.slice(0, -1);
+        dbID = ID.slice(0, -1);
+        console.log(id);
+        editTriget = 1;
+        getRef('costCenters/' + id).on('value', function (snapshot) {
+            let dbData = snapshot.val();
+            // console.log(dbData);
+            dbDataCode = dbData;   ///   from database code grip to control notification...............
+
+            $js('costCenterName').value = dbData;
+
+        });
+    }
+
+    /// edit data show in field end........................
+    function submitCostCenterBtn() {
         var costCenterName = $js('costCenterName').value;
         if (costCenterName == "") {
             $('#notification').html("<h6>Account Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        for (i = 0; i < dbCostCenters.length; i++) {
-            if (costCenterName == dbCostCenters[i].$value) {
-                $('#notification').html("<h6>Cost Center Already Exists!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                $js('accCodeSecond').focus();
-                return;
-            }
+
+
+        if (editTriget == 1 && dbDataCode == costCenterName) {
+            editTriget = 0;
+            console.log("first");
+            db.child('costCenters/' + dbID).set(costCenterName, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+
+            console.log("last");
+
         }
-        db.child('costCenters').push(costCenterName, function (error) {
-            if (error) {
-                $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            } else {
-                $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
-                $js('nodata').style.display = "none";
-                clearFields();
+        else if (editTriget == 1 && dbDataCode != costCenterName) {
+
+            for (i = 0; i < dbCostCenters.length; i++) {
+                if (costCenterName == dbCostCenters[i].$value) {
+                    $('#notification').html("<h6>Cost Center Already Exists!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('costCenterName').focus();
+                    return;
+                }
             }
-        });
+            editTriget = 0;
+            db.child('costCenters/' + dbID).set(costCenterName, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        } else {
+            editTriget = 0;
+            for (i = 0; i < dbCostCenters.length; i++) {
+                if (costCenterName == dbCostCenters[i].$value) {
+                    $('#notification').html("<h6>Cost Center Already Exists!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                    $js('costCenterName').focus();
+                    return;
+                }
+            }
+            db.child('costCenters').push(costCenterName, function (error) {
+                if (error) {
+                    $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+                } else {
+                    $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+                    $js('nodata').style.display = "none";
+                    clearFields();
+
+                }
+            });
+        }
+        // db.child('costCenters').push(costCenterName, function (error) {
+        //     if (error) {
+        //         $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        //     } else {
+        //         $('#notification').html("<h6>Added Sucessfully</h6>").removeClass('w3-red').addClass('w3-green').fadeIn(200).delay(300).fadeOut(200);
+        //         $js('nodata').style.display = "none";
+        //         clearFields();
+        //     }
+        // });
         // $print(costCenterName);
         // var comCostCenters = lsExGJInit('comCostCenters', []);
         // comCostCenters.push(costCenterName);
@@ -100,7 +199,26 @@
         // clearFields();
         // location.reload();
         exitModel();
-    });
+    }
+
+    // Delete data start......................
+    var onDel = '';
+    function getDbId(e) {
+        console.log("ok click");
+        $js('confirmDel').style.display = 'block';
+        onDel = e.target.id;
+    }
+    function rmItem(dbId) {
+        getRef('costCenters').child(dbId).remove()
+            .then(function (sucess) {
+                $js('confirmDel').style.display = 'none';
+                notify('Deleted Sucessfully', 1);
+            })
+            .catch(function (err) {
+                notify(err, 2);
+            });
+    }
+    // Delete data end......................
 
     function clearFields() {
         $js('costCenterName').value = "";
