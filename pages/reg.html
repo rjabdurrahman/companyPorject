@@ -3,7 +3,7 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Users</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -17,6 +17,7 @@
                                     <th>No</th>
                                     <th>Email</th>
                                     <th>Name</th>
+                                    <th>Password</th>
                                     <th style="width: 220px;">Permission</th>
                                 </tr>
                             </thead>
@@ -25,6 +26,7 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{user.email}}</td>
                                     <td>{{user.name}}</td>
+                                    <td>{{user.pass}}</td>
                                     <td>
                                         <button ng-if="user.uc" class="w3-btn w3-blue" disabled>Admin</button>
                                         <button ng-if="!user.uc" id="{{user.$id}}" onclick="permission(event)" ng-click="getPer($event)" class="w3-btn w3-blue">Permission</button>
