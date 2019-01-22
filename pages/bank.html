@@ -143,6 +143,9 @@
 
             $js('bankCode').value = dbData.code;
             $js('bankName').value = dbData.name;
+            $js('begBal').value = dbData.balance;
+            $js('bAccNo').value = dbData.accno;
+
         });
     }
 
@@ -151,7 +154,7 @@
         var bankCode = $js('bankCode').value;
         var bankName = $js('bankName').value;
         var begBal = $js('begBal').value;
-        var vType = $js('bAccNo').value;
+        var bAccNo = $js('bAccNo').value;
         if (bankCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -160,7 +163,14 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-
+        else if (begBal == "") {
+            $('#notification').html("<h6>Beginning Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (bAccNo == "") {
+            $('#notification').html("<h6>Account Number Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
         var bank = {
             code: bankCode,
             name: bankName,

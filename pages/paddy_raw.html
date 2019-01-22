@@ -181,6 +181,13 @@
 
             $js('paddyRawCode').value = dbData.code;
             $js('paddyRawName').value = dbData.name;
+            $js('priUnit').value = dbData.priUnit;
+            $js('priUnitPri').value = dbData.priUnitPri;
+            $js('priQu').value = dbData.priQu;
+            $js('stdUnit').value = dbData.stdUnit;
+            $js('stdUnitPri').value = dbData.stdUnitPri;
+            $js('stdQu').value = dbData.stdQu;
+            $js('totalPri').value = dbData.totalPri;
         });
     }
 
@@ -203,6 +210,35 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (priUnit == "") {
+            $('#notification').html("<h6>Primary Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (priUnitPri == "") {
+            $('#notification').html("<h6>Primary Unit  Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (priQu == "") {
+            $('#notification').html("<h6>Primary Quality Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (stdUnit == "") {
+            $('#notification').html("<h6>Standard Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (stdUnitPri == "") {
+            $('#notification').html("<h6>Standard Unit  Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (stdQu == "") {
+            $('#notification').html("<h6>Standard Quality Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (totalPri == "") {
+            $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+
 
         var paddyRaw = {
             code: paddyRawCode,

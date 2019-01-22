@@ -177,6 +177,8 @@
             $js('empPost').value = dbData.post;
             $js('empDes').value = dbData.des;
             $js('empSalary').value = dbData.salary;
+            $js('begBal').value = dbData.balance;
+
         });
     }
 
@@ -212,6 +214,10 @@
         }
         else if (empSalary == "") {
             $('#notification').html("<h6>Salary Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (begBal == "") {
+            $('#notification').html("<h6>Beginning Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
 

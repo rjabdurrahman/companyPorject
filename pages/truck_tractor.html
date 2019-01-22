@@ -141,6 +141,8 @@
 
             $js('trCode').value = dbData.code;
             $js('trNo').value = dbData.name;
+            $js('begBal').value = dbData.balance;
+            $js('vType').value = dbData.type;
 
         });
     }
@@ -157,6 +159,14 @@
         }
         else if (trNo == "") {
             $('#notification').html("<h6>Number Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (begBal == "") {
+            $('#notification').html("<h6>Beginning Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (vType == "") {
+            $('#notification').html("<h6>Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
 

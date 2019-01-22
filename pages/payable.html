@@ -194,6 +194,8 @@
             $js('payMObileNo').value = dbData.mobile.slice(5);
             $js('payPartyType').value = dbData.partyType;
             $js('payProprietor').value = dbData.proprietor;
+            $js('begBal').value = dbData.balance;
+
         });
     }
 
@@ -245,6 +247,9 @@
         }
         else if (payAddress == "") {
             $('#notification').html("<h6>Address Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        } else if (begBal == "") {
+            $('#notification').html("<h6>Beginning Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
 
