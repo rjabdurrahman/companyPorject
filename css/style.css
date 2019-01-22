@@ -108,7 +108,7 @@ span[role="status"] {
     top: 10px;
     right: 10px;
     display: none;
-    z-index: 10;
+    z-index: 9999999;
 }
 
 /* Construction notificiton */
