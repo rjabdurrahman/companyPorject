@@ -520,4 +520,5 @@ input#userPasswordField {
     position: fixed;
     width: calc(100% - 40px);
     box-shadow: 2px 2px 2px 2px gray;
+    z-index: 9999;
 }
