@@ -620,6 +620,14 @@
                                     <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
                                 </div>
                             </div>
+                            <div ng-if="accounts[natureSelection].begBal" class="w3-row w3-section">
+                                <div class="w3-col" style="width:130px; padding: 0px 10px;">
+                                    <label style="" class="w3-medium">Beginning Balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input id="begBal" class="w3-input w3-border"></input>
+                                </div>
+                            </div>
                             <p class="clearfix">
                                 <button id="submitAccBtn" onclick="submitAccBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                             </p>
