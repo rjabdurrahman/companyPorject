@@ -90,6 +90,54 @@
                                 <input class="w3-input w3-border" type="text" name="" id="riceName">
                             </div>
                         </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Standard Unit</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="stdUnit">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Pack Size</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="packSize">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Number Of Pack</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="noPack">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Total Quantity</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="totalQu">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Standard Unit Price</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Total Price</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="totalPri">
+                            </div>
+                        </div>
                         <p class="clearfix">
                             <button id="submitRiceBtn" onclick="submitRiceBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
@@ -124,6 +172,13 @@
 
             $js('riceCode').value = dbData.code;
             $js('riceName').value = dbData.name;
+            $js('stdUnit').value = dbData.packSize;
+            $js('packSize').value = dbData.packSize;
+            $js('noPack').value = dbData.noPack;
+            $js('totalQu').value = dbData.totalQu;
+            $js('stdUnitPri').value = dbData.stdUnitPri;
+            $js('totalPri').value = dbData.totalPri;
+
         });
     }
 
@@ -132,6 +187,15 @@
     function submitRiceBtn() {
         var riceCode = $js('riceCode').value;
         var riceName = $js('riceName').value;
+        var stdUnit = $js('stdUnit').value;
+        var packSize = $js('packSize').value;
+        var noPack = $js('noPack').value;
+        var totalQu = $js('totalQu').value;
+        var stdUnitPri = $js('stdUnitPri').value;
+        var totalPri = $js('totalPri').value;
+
+
+
         if (riceCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -140,10 +204,40 @@
             $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (stdUnit == "") {
+            $('#notification').html("<h6>Standard Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (packSize == "") {
+            $('#notification').html("<h6>Pack Size Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (noPack == "") {
+            $('#notification').html("<h6>Number Of Pack Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (totalQu == "") {
+            $('#notification').html("<h6>Total Qunantity Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (stdUnitPri == "") {
+            $('#notification').html("<h6>Standard Unit Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (totalPri == "") {
+            $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
 
         var rice = {
             code: riceCode,
-            name: riceName
+            name: riceName,
+            stdUnit: stdUnit,
+            packSize: packSize,
+            noPack: noPack,
+            totalQu: totalQu,
+            stdUnitPri: stdUnitPri,
+            totalPri: totalPri
         };
 
         if (editTriget == 1 && dbDataCode == riceCode) {
@@ -204,7 +298,10 @@
     }
 
     function clearFields() {
-        $js('riceCode').value = $js('riceName').value = "";
+        $js('riceCode').value = $js('riceName').value = $js('riceCode').value = $js('riceName').value = 
+        $js('stdUnit').value = $js('packSize').value = $js('noPack').value = $js('totalQu').value = 
+            $js('stdUnitPri').value = 
+            $js('totalPri').value = '';
     }
 
     function printRice() {
