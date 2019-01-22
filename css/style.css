@@ -213,6 +213,7 @@ input[type="text"]:disabled:hover {
 }
 
 .overlay-container {
+    padding-top: 50px;
     width: 100%;
     min-height: calc(100vh - 115px);
     background-color: #dbe8ff;
