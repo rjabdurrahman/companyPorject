@@ -17,6 +17,12 @@
                                     <th>ID</th>
                                     <th>Code</th>
                                     <th>Name</th>
+                                    <th>Std unit</th>
+                                    <th>Std unit price</th>
+                                    <th>Pack Size</th>
+                                    <th>Number Of pack</th>
+                                    <th>Total quantity</th>
+                                    <th>Total price</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -26,6 +32,12 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
+                                    <td>{{rice.stdUnit}}</td>
+                                    <td>{{rice.stdUnitPri}}</td>
+                                    <td>{{rice.packSize}}</td>
+                                    <td>{{rice.noPack}}</td>
+                                    <td>{{rice.totalQu}}</td>
+                                    <td>{{rice.totalPri}}</td>
                                     <td>
                                         <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -172,7 +184,7 @@
 
             $js('riceCode').value = dbData.code;
             $js('riceName').value = dbData.name;
-            $js('stdUnit').value = dbData.packSize;
+            $js('stdUnit').value = dbData.stdUnit;
             $js('packSize').value = dbData.packSize;
             $js('noPack').value = dbData.noPack;
             $js('totalQu').value = dbData.totalQu;
