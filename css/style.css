@@ -218,7 +218,7 @@ input[type="text"]:disabled:hover {
     padding-top: 50px;
     width: 100%;
     min-height: calc(100vh - 115px);
-    background-color: #8bb4fc;
+    background-image: url(../img/bu-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -226,7 +226,7 @@ input[type="text"]:disabled:hover {
 .overlay {
     border: 1px solid transparent;
     width: 100%;
-    /* background-color: rgba(100, 100, 100, 0.2); */
+    background-color: rgba(0, 0, 0, 0.4);
     min-height: calc(100vh - 115px);
 }
 
@@ -308,25 +308,30 @@ input#userPasswordField {
 .table-container thead th, .table-container thead td {
     font-weight: unset;
     /* text-align: center; */
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
 }
 
 .table-container tbody th, .table-container tbody td {
     /* text-align: center; */
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* Chart Table Style */
 
+.chart-tables{
+    text-transform: uppercase;
+}
+
 .chart-tables td:first-child, .chart-tables th:first-child {
-    padding-left: 40px !important;
-    width: 100px !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
 }
 
 .chart-tables td, .chart-tables th {
-    padding-left: 30px !important;
+    padding-left: 4px !important;
+    padding-right: 0 !important;
 }
 
 #chartTable, .chart-table {
@@ -519,6 +524,6 @@ input#userPasswordField {
     box-sizing: unset;
     position: fixed;
     width: calc(100% - 40px);
-    box-shadow: 2px 2px 2px 2px gray;
+    box-shadow: 1px 1px 1px 0.5px gray;
     z-index: 9999;
 }
