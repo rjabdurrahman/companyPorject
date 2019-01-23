@@ -972,6 +972,14 @@
                 accText: accTxt,
                 flag: accountFlag(accNature)
             };
+            // Account Type
+            if (accCodeInit == 'SE' || accCodeInit == 'SE') {
+                account['type'] = accounts['EQTY'].type;
+            }
+            else {
+                account['type'] = accounts[accCodeInit].type;
+            }
+            // Account Type End
 
             if (accounts[accNatureCode].begBal) {
                 account['balance'] = balance;
