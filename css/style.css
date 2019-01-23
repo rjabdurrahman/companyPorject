@@ -320,6 +320,10 @@ input#userPasswordField {
 
 /* Chart Table Style */
 
+.chart-tables{
+    text-transform: uppercase;
+}
+
 .chart-tables td:first-child, .chart-tables th:first-child {
     padding-left: 8px !important;
     padding-right: 0 !important;
