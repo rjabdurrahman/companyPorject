@@ -221,6 +221,7 @@ input[type="text"]:disabled:hover {
     background-image: url(../img/bu-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 0px 50px;
 }
 
 .overlay {
@@ -519,6 +520,7 @@ input#userPasswordField {
     padding: 8px 40px;
     background-color: #0467ce;
     color: white;
+    opacity: 0.8;
 }
 
 /* Header Nav div */
@@ -534,4 +536,5 @@ input#userPasswordField {
     width: calc(100% - 40px);
     box-shadow: 1px 1px 1px 0.5px gray;
     z-index: 9999;
+    opacity: 0.9;
 }
