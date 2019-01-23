@@ -18,6 +18,13 @@
                                     <th>Code</th>
                                     <th>Name</th>
                                     <th>Begining Balance</th>
+                                    <th>Primary Unit</th>
+                                    <th>Primary Quantity</th>
+                                    <th>Primary Unit Price</th>
+                                    <th>stad Unit</th>
+                                    <th>Stand Quantity</th>
+                                    <th>Stand Unit Price</th>
+                                    <th>Total Price</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -27,6 +34,13 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyRaw.code}}</td>
                                     <td>{{paddyRaw.name}}</td>
+                                    <td>{{paddyRaw.paddyRawBigBal}}</td>
+                                    <td>{{paddyRaw.priUnit}}</td>
+                                    <td>{{paddyRaw.priQu}}</td>
+                                    <td>{{paddyRaw.priUnitPri}}</td>
+                                    <td>{{paddyRaw.stdUnit}}</td>
+                                    <td>{{paddyRaw.stdQu}}</td>
+                                    <td>{{paddyRaw.stdUnitPri}}</td>
                                     <td>{{paddyRaw.totalPri}}</td>
                                     <td>
                                         <button id="{{paddyRaw.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
@@ -96,6 +110,14 @@
                             </div>
                             <div class="w3-row w3-section">
                                 <div class="w3-col" style="width:180px; padding: 10px;">
+                                    <label class="w3-medium">Beginning Balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="paddyRawBigBal">
+                                </div>
+                            </div>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:180px; padding: 10px;">
                                     <label class="w3-medium">Primary Unit</label>
                                 </div>
                                 <div class="w3-rest">
@@ -115,7 +137,7 @@
                                     <label class="w3-medium">Primary Unit Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="priUnitPri" onkeypress="numValidate(event)">
+                                    <input class="w3-input w3-border" type="text" name="" id="priUnitPri">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -123,7 +145,7 @@
                                     <label class="w3-medium">Standard Unit</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="stdUnit" onkeypress="numValidate(event)">
+                                    <input class="w3-input w3-border" type="text" name="" id="stdUnit">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -147,12 +169,11 @@
                                     <label class="w3-medium">Total Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="">
+                                    <input class="w3-input w3-border" type="text" name="" id="totalPri">
                                 </div>
                             </div>
                             <p class="clearfix">
-                                <button id="paddyRawSubmit" class="w3-btn main-bg-color"
-                                    style="float: right;">Submit</button>
+                                <button id="paddyRawSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                             </p>
                         </form>
 
@@ -199,6 +220,7 @@
             $js('stdUnitPri').value = dbData.stdUnitPri;
             $js('stdQu').value = dbData.stdQu;
             $js('totalPri').value = dbData.totalPri;
+            $js('paddyRawBigBal').value = dbData.paddyRawBigBal;
         });
     }
 
@@ -213,6 +235,7 @@
         var stdUnitPri = $js('stdUnitPri').value;
         var stdQu = $js('stdQu').value;
         var totalPri = $js('totalPri').value;
+        var paddyRawBigBal = $js('paddyRawBigBal').value;
         if (paddyRawCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -249,6 +272,10 @@
             $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (paddyRawBigBal == "") {
+            $('#notification').html("<h6>Beginnig Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
 
 
         var paddyRaw = {
@@ -261,6 +288,7 @@
             stdUnitPri: stdUnitPri,
             stdQu: stdQu,
             totalPri: totalPri,
+            paddyRawBigBal: paddyRawBigBal,
             actype: 1
         };
         if (editTriget == 1 && dbDataCode == paddyRawCode) {
