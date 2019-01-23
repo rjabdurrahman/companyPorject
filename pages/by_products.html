@@ -86,73 +86,76 @@
                         <h2>{{title}}</h2>
                     </div>
                     <div class="w3-container">
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Code</label>
+                        <form id="form1">
+
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Code</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="byProductCode">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="byProductCode">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Name</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="byProductName">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Name</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Standard Unit</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="stdUnit">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="byProductName">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Pack Size</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="packSize">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Standard Unit</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Number Of Pack</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="noPack">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="stdUnit">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Total Quantity</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="totalQu">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Pack Size</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Standard Unit Price</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="packSize">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Total Price</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="totalPri">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Number Of Pack</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="noPack">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Total Quantity</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="totalQu">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Standard Unit Price</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Total Price</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="totalPri">
-                            </div>
-                        </div>
-                        <p class="clearfix">
-                            <button id="byProductSubmit" onclick="byProductSubmit()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                        </p>
+                            <p class="clearfix">
+                                <button id="byProductSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -162,7 +165,12 @@
 </div>
 <script>
     var dbByProducts = null;
-
+    $js("form1").addEventListener("submit", function (event) {
+        event.preventDefault();
+    });
+    $js('byProductSubmit').addEventListener('click', function () {
+        byProductSubmit();
+    });
     /// edit data show in field start........................
 
     var editTriget = 0;
@@ -308,12 +316,12 @@
             });
         }
         console.log(" edit and update an insert last");
-      
+
         exitModel();
     }
 
     function clearFields() {
-        $js('byProductCode').value = $js('byProductName').value = $js('riceCode').value = $js('riceName').value = $js('stdUnit').value = $js('packSize').value = $js('noPack').value = $js('totalQu').value =$js('stdUnitPri').value = $js('totalPri').value = "";
+        $js('byProductCode').value = $js('byProductName').value = $js('riceCode').value = $js('riceName').value = $js('stdUnit').value = $js('packSize').value = $js('noPack').value = $js('totalQu').value = $js('stdUnitPri').value = $js('totalPri').value = "";
     }
 
     // function printbyProduct() {
@@ -365,7 +373,7 @@
                 notify(err, 2);
             });
 
-            console.log(" i last");
+        console.log(" i last");
     }
     // Delete data end......................
 </script>

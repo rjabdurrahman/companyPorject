@@ -78,41 +78,45 @@
                         <h2>{{title}}</h2>
                     </div>
                     <div class="w3-container">
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Code</label>
+                        <form id="form1">
+
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Code</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="trCode">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="trCode">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Vehicle Type</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="vType">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Vehicle Type</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Vehicle No</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="trNo">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="vType">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Begining Balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Vehicle No</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="trNo">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Begining Balance</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="begBal" onkeypress="numValidate(event)">
-                            </div>
-                        </div>
-                        <p class="clearfix">
-                            <button id="submitTrBtn" onclick="submitTrBtn()" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                        </p>
+                            <p class="clearfix">
+                                <button id="submitTrBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            </p>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -122,6 +126,12 @@
 </div>
 <script>
     var dbTrs = null;
+    $js("form1").addEventListener("submit", function (event) {
+        event.preventDefault();
+    });
+    $js('submitTrBtn').addEventListener('click', function () {
+        submitTrBtn();
+    });
     var editTriget = 0;
     var dbDataCode = "";
     var dbID = "";
