@@ -334,6 +334,10 @@ input#userPasswordField {
     padding-right: 0 !important;
 }
 
+.chart-tables td .w3-btn{
+    padding: 4px 8px !important;
+}
+
 #chartTable, .chart-table {
     background-color: white;
     table-layout: fixed;
