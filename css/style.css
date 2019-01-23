@@ -308,25 +308,26 @@ input#userPasswordField {
 .table-container thead th, .table-container thead td {
     font-weight: unset;
     /* text-align: center; */
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
 }
 
 .table-container tbody th, .table-container tbody td {
     /* text-align: center; */
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* Chart Table Style */
 
 .chart-tables td:first-child, .chart-tables th:first-child {
-    padding-left: 40px !important;
-    width: 100px !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
 }
 
 .chart-tables td, .chart-tables th {
-    padding-left: 30px !important;
+    padding-left: 4px !important;
+    padding-right: 0 !important;
 }
 
 #chartTable, .chart-table {
