@@ -43,8 +43,8 @@ a {
 
 .active-menu {
     /* border: 1px solid gray !important; */
-    background-color: #014387 !important;
-    color: white !important;
+    background-color: white !important;
+    color: #014387 !important;
 }
 
 .top-nav .w3-button {
@@ -122,7 +122,6 @@ span[role="status"] {
 
 a.w3-button, button.w3-button {
     outline: none;
-    border: 1px solid white;
     border-radius: 4px;
 }
 
@@ -512,7 +511,8 @@ input#userPasswordField {
 /* Header Nav div */
 
 .header-nav {
-    background-color: white;
+    background-color: #014387;
+    color: white !important;
     display: flex;
     padding: 5px 10px 10px 30px;
     height: 35px;
