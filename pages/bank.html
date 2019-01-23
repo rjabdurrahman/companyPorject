@@ -84,7 +84,7 @@
                                     <label class="w3-medium">Code</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bankCode">
+                                    <input class="w3-input w3-border" type="text" name="" id="bankCode" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -92,7 +92,7 @@
                                     <label class="w3-medium">Bank Name</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bankName">
+                                    <input class="w3-input w3-border" type="text" name="" id="bankName" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -100,7 +100,7 @@
                                     <label class="w3-medium">Account No</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bAccNo">
+                                    <input class="w3-input w3-border" type="text" name="" id="bAccNo" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -108,7 +108,7 @@
                                     <label class="w3-medium">Begining Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border" type="text" name="" id="begBal" required>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -125,8 +125,9 @@
 <script>
     var dbBanks = null;
     $(document).keypress(function (event) {
-        if(event.which == 61){
+        if (event.which == 61) {
             $('#id01').show();
+            $js('bankCode').focus();
         }
     });
     // KeyPress End
