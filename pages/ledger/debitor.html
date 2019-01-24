@@ -95,18 +95,18 @@
                                 <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{numToDate(rec.date)}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyName}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyName}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].ACName}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].ACName}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[0]" style="text-align: right;">_____</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">_____</td>
-                                    <td ng-if="rec.sCode == rec.ACCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyName}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">_____</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">{{rec.debitCredit[1].crAmount}}</td>
                                     <td style="text-align: right;">{{begBalance[0].$value + arrTotal(records, $index,
                                         0)}}</td>
                                 </tr>
