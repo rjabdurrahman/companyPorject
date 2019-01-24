@@ -17,7 +17,6 @@
                                     <th>ID</th>
                                     <th>Code</th>
                                     <th>Name</th>
-                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Primary Unit</th>
                                     <th>Primary Quantity</th>
                                     <th>Primary Unit Price</th>
@@ -34,7 +33,6 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyRaw.code}}</td>
                                     <td>{{paddyRaw.name}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{paddyRawBigBal.balance}}</td>
                                     <td>{{paddyRaw.priUnit}}</td>
                                     <td>{{paddyRaw.priQu}}</td>
                                     <td>{{paddyRaw.priUnitPri}}</td>
@@ -106,14 +104,6 @@
                                 </div>
                                 <div class="w3-rest">
                                     <input class="w3-input w3-border" type="text" name="" id="paddyRawName">
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:180px; padding: 10px;">
-                                    <label class="w3-medium">Beginning Balance</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="paddyRawBigBal">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -220,7 +210,6 @@
             $js('stdUnitPri').value = dbData.stdUnitPri;
             $js('stdQu').value = dbData.stdQu;
             $js('totalPri').value = dbData.totalPri;
-            $js('paddyRawBigBal').value = dbData.paddyRawBigBal;
         });
     }
 
@@ -235,7 +224,6 @@
         var stdUnitPri = $js('stdUnitPri').value;
         var stdQu = $js('stdQu').value;
         var totalPri = $js('totalPri').value;
-        var paddyRawBigBal = $js('paddyRawBigBal').value;
         if (paddyRawCode == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -272,10 +260,7 @@
             $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        else if (paddyRawBigBal == "") {
-            $('#notification').html("<h6>Beginnig Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            return;
-        }
+        
 
 
         var paddyRaw = {
@@ -288,7 +273,6 @@
             stdUnitPri: stdUnitPri,
             stdQu: stdQu,
             totalPri: totalPri,
-            paddyRawBigBal: paddyRawBigBal,
             actype: 1
         };
         if (editTriget == 1 && dbDataCode == paddyRawCode) {
