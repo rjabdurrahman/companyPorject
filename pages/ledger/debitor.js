@@ -1,12 +1,9 @@
-app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
-    $scope.title = "Creditor Ledger";
-    $scope.qCode = getQueryVariable('code') ? getQueryVariable('code') : '';
-    $scope.qName = getQueryVariable('name') ? decodeURI(getQueryVariable('name')) : '';
-    $scope.qEmail = getQueryVariable('email') ? getQueryVariable('email') : '';
+app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
+    $scope.title = "Debit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
     $scope.nodata = false;
-    $scope.begBalance = $firebaseArray(getRef('begBalanceCr'));
+    $scope.begBalance = $firebaseArray(getRef('begBalance'));
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
@@ -25,6 +22,11 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
             dateFrom.focus();
             return;
         }
+        else if (dateToNum(dateFrom.value) > dateToNum(dateTo.value)) {
+            $('#notification').html("<h6>From Date is Greater than To Date</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            dateFrom.focus();
+            return;
+        }
         else if (dateTo.value == "") {
             $('#notification').html("<h6>Input Date To</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             dateTo.focus();
@@ -33,11 +35,6 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         else if (!(dateTo.value).match(dateEx)) {
             $('#notification').html("<h6>Date To Format Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             dateTo.focus();
-            return;
-        }
-        else if (dateToNum(dateFrom.value) > dateToNum(dateTo.value)) {
-            $('#notification').html("<h6>From Date is Greater than To Date</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            dateFrom.focus();
             return;
         }
         else if (code.value == "") {
@@ -55,7 +52,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         $print(dateToNum(dateTo.value));
         $print(dateToNum(dateFrom.value));
         $scope.records = [];
-        fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
+        fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
                 if (snapshot.size == 0) {
@@ -79,7 +76,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
                 }
             })
             .catch(function (err) {
-                notify('Something went wrong in Database', 2);
+                $print(err);
                 e.target.disabled = false;
                 e.target.textContent = 'Calculate';
             });
@@ -90,25 +87,13 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         if (index == -1) return;
         let total = 0;
         for (i = 0; i <= index; i++) {
-            if (arr[i].sCode == arr[i].partyCodes[0] && (t == 0 || t == 1)) {
-                total -= arr[i].debitCredit[0].drAmount;
+            if (arr[i].sCode == arr[i].ACCodes[0] && (t == 0 || t == 1)) {
+                total += arr[i].debitCredit[0].drAmount;
             }
-            if (arr[i].sCode == arr[i].partyCodes[1] && (t == 0 || t == 2)) {
-                total += arr[i].debitCredit[1].crAmount;
+            if (arr[i].sCode == arr[i].ACCodes[1] && (t == 0 || t == 2)) {
+                total -= arr[i].debitCredit[1].crAmount;
             }
         }
         return total;
-    }
-    creditorCodes = $firebaseArray(getRef('payables'));
-
-    function generateMail(){
-        let msg =  `Your Ledger
-        This is the transaction
-        `;
-        return encodeURIComponent(msg);
-    }
-
-    $scope.sendMail = function(){
-        window.open('mailto:' + $scope.qEmail + '?subject=Your Ledger&body=' + generateMail());
     }
 });
