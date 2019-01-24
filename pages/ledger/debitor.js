@@ -7,7 +7,6 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.recShow = false;
     $scope.nodata = false;
     $scope.begBalance = $firebaseArray(getRef('begBalance'));
-    accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
         let code = name.parentElement.previousElementSibling.lastElementChild;
@@ -99,4 +98,6 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
         }
         return total;
     }
+
+    debitorCodes = [];
 });

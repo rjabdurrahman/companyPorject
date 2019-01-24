@@ -143,14 +143,15 @@
     </div>
 </div>
 <script>
+    var debitorCodes = null;
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
         getRef('begBalance').set({ value: inBal });
     }
-    var accArrayA = null;
+    // var accArrayA = null;
     function ACNameComplete(event) {
         event.target.value = $.trim(event.target.value);
-        let data = accArrayA.find(function (el) {
+        let data = debitorCodes.find(function (el) {
             return el.accCode == event.target.value;
         });
         // $print(data);
