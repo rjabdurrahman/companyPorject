@@ -29,7 +29,7 @@
                                     <td>{{bank.code}}</td>
                                     <td>{{bank.name}}</td>
                                     <td>{{bank.accno}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{bank.balance}}</td>
                                     <td>
                                         <button id="{{bank.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{bank.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"

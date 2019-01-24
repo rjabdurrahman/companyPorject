@@ -19,7 +19,7 @@
                                     <th>Party Name</th>
                                     <th>Party Type</th>
                                     <th>Propritor Name</th>
-                                    <th>Beginning Balance</th>
+                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
                                     <th>Address</th>
@@ -37,7 +37,7 @@
                                     </td>
                                     <td>{{pay.partyType}}</td>
                                     <td>{{pay.proprietor}}</td>
-                                    <td>{{pay.balance}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{pay.balance}}</td>
                                     <td>{{pay.mobile}}</td>
                                     <td>{{pay.email}}</td>
                                     <td>{{pay.address}}</td>

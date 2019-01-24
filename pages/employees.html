@@ -20,7 +20,7 @@
                                     <th>Employee Type</th>
                                     <th>Posting</th>
                                     <th>Designation</th>
-                                    <th>Beginning Balance</th>
+                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Salary</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -34,7 +34,7 @@
                                     <td>{{emp.type}}</td>
                                     <td>{{emp.post}}</td>
                                     <td>{{emp.des}}</td>
-                                    <td>{{emp.balance}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{emp.balance}}</td>
                                     <td>{{emp.salary}}</td>
                                     <td>
                                         <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
