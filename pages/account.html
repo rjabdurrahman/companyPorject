@@ -641,8 +641,7 @@
                                     </div>
                                 </div>
                                 <p class="clearfix">
-                                    <button id="submitAccBtn" class="w3-btn main-bg-color"
-                                        style="float: right;">Submit</button>
+                                    <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                                 </p>
                             </form>
                         </div>
@@ -813,7 +812,6 @@
                     $js('accCodeFirst').value = firstCode;
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
-
                 }
                 else if (dbData.nature == 'Non-Current Asset') {
                     $js('accNature').selectedIndex = 2;
@@ -902,6 +900,9 @@
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
 
+                }
+                if (accounts[codeShortForm].begBal) {
+                    $js('begBal').value = dbData.balance;
                 }
             });
         }
