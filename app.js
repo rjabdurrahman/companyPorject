@@ -149,7 +149,7 @@ app.config(function ($routeProvider) {
     })
     .otherwise({ redirectTo: '/' });
 });
-app.run(function ($rootScope, $location, $route) {
+app.run(function ($rootScope, $location, $route, $firebaseObject) {
   $rootScope.$route = $route;
   $rootScope.clogged = function () {
     if (lsGet('company')) return true;
@@ -161,6 +161,7 @@ app.run(function ($rootScope, $location, $route) {
   }
   $rootScope.userInfo = userInfo;
   $print($rootScope.userInfo);
+  $rootScope.begBalPer = $firebaseObject(getRef('begBalPer'));
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
