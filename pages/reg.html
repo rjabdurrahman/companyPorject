@@ -5,6 +5,13 @@
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Users</label>
                 <button onclick="document.getElementById('id01').style.display='block'" class="w3-xlarge w3-circle w3-white circle-btn"
                     style="float: right;">+</button>
+                <div class="ch-title mian-color w3-large ex-font" style="margin-top: 8px; float: right; margin-right: 22px;">
+                    <label>Beginning Balance</label>
+                    <label class="switch" style="margin-left: 8px; margin-top: 4px;">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -29,7 +36,8 @@
                                     <td>{{user.pass}}</td>
                                     <td>
                                         <button ng-if="user.uc" class="w3-btn w3-blue" disabled>Admin</button>
-                                        <button ng-if="!user.uc" id="{{user.$id}}" onclick="permission(event)" ng-click="getPer($event)" class="w3-btn w3-blue">Permission</button>
+                                        <button ng-if="!user.uc" id="{{user.$id}}" onclick="permission(event)" ng-click="getPer($event)"
+                                            class="w3-btn w3-blue">Permission</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -203,7 +211,8 @@
                 <footer class="w3-container w3-white">
                     <p class="flex" style="justify-content: center;">
                         <button id="confirmPermission" class="w3-btn w3-green" style="margin-left: 20px; margin-right: 20px;">Submit</button>
-                        <button onclick="$js('permissionWin').style.display='none';location.href = '#reg';" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
+                        <button onclick="$js('permissionWin').style.display='none';location.href = '#reg';" class="w3-btn main-bg-color"
+                            style="margin-left: 20px; margin-right: 20px;">Cancel</button>
                     </p>
                 </footer>
             </div>
