@@ -136,7 +136,7 @@
                                     <label class="w3-medium">Mobile No</label>
                                 </div>
                                 <div class="w3-rest" style="position: relative;">
-                                    <input class="w3-input w3-border phone" type="text" name="">
+                                    <input class="w3-input w3-border phone" type="text" name="" id="payMObileNo">
                                     <span class="phone">+8801</span>
                                 </div>
                             </div>
@@ -228,7 +228,6 @@
         var payEmail = $js('payEmail').value;
         var payAddress = $js('payAddress').value;
         var begBal = $js('begBal').value;
-
         if (payACCode == "") {
             $('#notification').html("<h6>Account Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
