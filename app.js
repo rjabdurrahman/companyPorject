@@ -400,5 +400,8 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
       }
     }
   }
+  $scope.getUsername = function(email){
+    return email.replace('@gmail.com', '');
+  }
   $scope.$applyAsync();
 });

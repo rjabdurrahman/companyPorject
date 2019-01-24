@@ -15,7 +15,7 @@
                             <thead>
                                 <tr class="main-bg-color">
                                     <th>No</th>
-                                    <th>Email</th>
+                                    <th>Username</th>
                                     <th>Name</th>
                                     <th>Password</th>
                                     <th style="width: 220px;">Permission</th>
@@ -24,7 +24,7 @@
                             <tbody>
                                 <tr ng-repeat="user in users track by $index">
                                     <td>{{$index + 1}}</td>
-                                    <td>{{user.email}}</td>
+                                    <td>{{getUsername(user.email)}}</td>
                                     <td>{{user.name}}</td>
                                     <td>{{user.pass}}</td>
                                     <td>
