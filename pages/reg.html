@@ -243,9 +243,17 @@
     </div>
 </div>
 <script>
+    getRef('begBalPer').on('value', function (snapshot) {
+        let bBal = snapshot.val();
+        if (bBal == 1)
+            $js("begBalCheck").checked = true;
+        else
+            $js("begBalCheck").checked = false;
+
+    });
     function begBalPer(e) {
         $print(e.target.checked);
-        db.child('begBalPer').set(e.target.checked, function (error) {
+        db.child('begBalPer').set(e.target.checked ? 1 : 0, function (error) {
             if (error) {
                 notify(error, 2);
             }
