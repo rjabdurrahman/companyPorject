@@ -321,12 +321,8 @@ input#userPasswordField {
 
 /* Chart Table Style */
 
-.chart-tables{
+.chart-tables {
     text-transform: uppercase;
-}
-
-.chart-tables th{
-    text-align: center !important;
 }
 
 .chart-tables td:first-child, .chart-tables th:first-child {
@@ -337,9 +333,10 @@ input#userPasswordField {
 .chart-tables td, .chart-tables th {
     padding-left: 4px !important;
     padding-right: 0 !important;
+    text-align: center !important;
 }
 
-.chart-tables td .w3-btn{
+.chart-tables td .w3-btn {
     padding: 4px 8px !important;
 }
 
