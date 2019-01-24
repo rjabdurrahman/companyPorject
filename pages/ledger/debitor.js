@@ -1,5 +1,8 @@
 app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
-    $scope.title = "Debit Ledger";
+    $scope.title = "Debitor Ledger";
+    $scope.qCode = getQueryVariable('code') ? getQueryVariable('code') : '';
+    $scope.qName = getQueryVariable('name') ? decodeURI(getQueryVariable('name')) : '';
+    $scope.qEmail = getQueryVariable('email') ? getQueryVariable('email') : '';
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
     $scope.nodata = false;
