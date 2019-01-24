@@ -129,7 +129,7 @@ app.config(function ($routeProvider) {
     })
     .when('/debitorledger', {
       templateUrl: 'pages/ledger/debitor.html',
-      controller: 'DebitLedgerCntlr',
+      controller: 'DebitorLedgerCntlr',
       activetab: 'ledger'
     })
     .when('/creditorledger', {

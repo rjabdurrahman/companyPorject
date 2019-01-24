@@ -153,7 +153,6 @@
         let inBal = parseFloat($js('initBalance').value);
         getRef('begBalanceCr').set({ value: inBal });
     }
-    // var accArrayA = null;
     function ACNameComplete(event) {
         event.target.value = $.trim(event.target.value);
         let data = creditorCodes.find(function (el) {

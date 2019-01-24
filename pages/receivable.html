@@ -33,7 +33,10 @@
                                 <tr ng-repeat="rec in comReceivables track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{rec.code}}</td>
-                                    <td>{{rec.name}}</td>
+                                    <td>
+                                        <a href="#debitorledger?code={{rec.code}}&name={{rec.name}}&email={{rec.email}}"
+                                            style="color: blue; cursor: pointer;">{{rec.name}}</a>
+                                    </td>
                                     <td>{{rec.cusType}}</td>
                                     <td>{{rec.recProprietor}}</td>
                                     <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{rec.balance}}</td>
