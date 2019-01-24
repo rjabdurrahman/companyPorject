@@ -22,7 +22,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -36,7 +36,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -65,7 +65,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -79,7 +79,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -108,7 +108,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -122,7 +122,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -151,7 +151,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -165,7 +165,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -194,7 +194,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -208,7 +208,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -442,7 +442,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -456,7 +456,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -485,7 +485,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1)">Beginning Balance</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -499,7 +499,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1)">{{comAcc.balance}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comAcc.balance}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
