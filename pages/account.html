@@ -901,7 +901,10 @@
                     $js('accTxt').value = dbData.accText;
 
                 }
-                if (accounts[codeShortForm].begBal) {
+                if (codeShortForm == 'SE' || codeShortForm == 'RE') {
+                    $js('begBal').value = dbData.balance;
+                }
+                else if(accounts[codeShortForm].begBal) {
                     $js('begBal').value = dbData.balance;
                 }
             });
@@ -970,7 +973,7 @@
                 flag: accountFlag(accNature)
             };
             // Account Type
-            if (accCodeInit == 'SE' || accCodeInit == 'SE') {
+            if (accCodeInit == 'SE' || accCodeInit == 'RE') {
                 account['type'] = accounts['EQTY'].type;
             }
             else {
