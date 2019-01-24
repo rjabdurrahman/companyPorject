@@ -8,7 +8,7 @@
                 <div class="ch-title mian-color w3-large ex-font" style="margin-top: 4px; float: right; margin-right: 22px;">
                     <label>Beginning Balance</label>
                     <label class="switch" style="margin-left: 8px; margin-top: 4px;">
-                        <input type="checkbox">
+                        <input type="checkbox" onclick="begBalPer(event)">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -243,6 +243,17 @@
     </div>
 </div>
 <script>
+    function begBalPer(e) {
+        $print(e.target.checked);
+        db.child('begBalPer').set(e.target.checked, function (error) {
+            if (error) {
+                notify(error, 2);
+            }
+            else {
+                notify('Permission Sucessfully Updated', 1);
+            }
+        });
+    }
     let email = $js('emailField');
     let password = $js('passwordField');
     let rePassword = $js('rePasswordField');
