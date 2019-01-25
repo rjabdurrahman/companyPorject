@@ -21,10 +21,10 @@
                                     <th>Party Name</th>
                                     <th>Party Type</th>
                                     <th>Propritor Name</th>
-                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
                                     <th>Address</th>
+                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -39,10 +39,10 @@
                                     </td>
                                     <td>{{rec.cusType}}</td>
                                     <td>{{rec.recProprietor}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
                                     <td>{{rec.mobile}}</td>
                                     <td>{{rec.email}}</td>
                                     <td>{{rec.address}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
                                     <td>
                                         <button id="{{rec.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <!-- <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -127,14 +127,6 @@
                             </div>
                             <div class="w3-row w3-section">
                                 <div class="w3-col" style="width:150px; padding: 10px;">
-                                    <label class="w3-medium">Beginning Balance</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:150px; padding: 10px;">
                                     <label class="w3-medium">Mobile No</label>
                                 </div>
                                 <div class="w3-rest" style="position: relative;">
@@ -156,6 +148,14 @@
                                 </div>
                                 <div class="w3-rest">
                                     <textarea class="w3-input w3-border" name="" id="recAddress" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Beginning Balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <p class="clearfix">

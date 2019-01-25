@@ -20,8 +20,8 @@
                                     <th>Employee Type</th>
                                     <th>Posting</th>
                                     <th>Designation</th>
-                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Salary</th>
+                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -34,8 +34,8 @@
                                     <td>{{emp.type}}</td>
                                     <td>{{emp.post}}</td>
                                     <td>{{emp.des}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(emp.balance)}}</td>
                                     <td>{{comNum(emp.salary)}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(emp.balance)}}</td>
                                     <td>
                                         <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{emp.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -140,6 +140,14 @@
                                 </div>
                                 <div class="w3-rest">
                                     <input class="w3-input w3-border commanum" type="text" name="" id="empSalary">
+                                </div>
+                            </div>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Beginning Balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <p class="clearfix">
