@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="rec in comReceivables track by $index">
+                                <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{rec.code}}</td>
                                     <td>
