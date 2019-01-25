@@ -274,3 +274,14 @@ function removeNewlines(str) {
     str = str.toString().trim().replace(/(\r\n|\n|\r)/g, "");
     return str;
 }
+
+function comNum(x) {
+    if (!isNaN(Number(x))) {
+      x = x.split('.');
+      if (x.length == 2) {
+        return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + x[1];
+      }
+      return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    return x;
+  }

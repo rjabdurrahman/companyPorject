@@ -163,7 +163,9 @@
 
         });
     }
-
+    begBal.onkeyup = function () { 
+        this.value = comNum(this.value.replace(",", ""));
+     };
     /// edit data show in field end........................
     function submitBankBtn() {
         var bankCode = $js('bankCode').value;
