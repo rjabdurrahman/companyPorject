@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="bank in comBanks track by $index">
+                                <tr ng-repeat="bank in comBanks | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{bank.code}}</td>
                                     <td>{{bank.name}}</td>

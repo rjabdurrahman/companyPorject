@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="rice in comRices track by $index">
+                                <tr ng-repeat="rice in comRices track | orderBy : 'code' by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
