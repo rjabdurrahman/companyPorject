@@ -640,6 +640,14 @@
                                         <input id="begBal" class="w3-input w3-border commanum"></input>
                                     </div>
                                 </div>
+                                <div id="rateArea" class="w3-row w3-section" id="begBalField">
+                                    <div class="w3-col" style="width:130px; padding: 0px 10px;">
+                                        <label class="w3-medium">Depreciation Rate</label>
+                                    </div>
+                                    <div class="w3-rest">
+                                        <input id="rate" class="w3-input w3-border commanum"></input>
+                                    </div>
+                                </div>
                                 <p class="clearfix">
                                     <button id="submitAccBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                                 </p>
@@ -663,6 +671,7 @@
         $js('submitAccBtn').addEventListener('click', function () {
             submitAccBtn();
         });
+        $('#rateArea').hide();
         // Enter Hit End
         $('#addAccount').hide();
         $('.g-toggle+div').hide();
@@ -701,6 +710,7 @@
                 $js('accNature').selectedIndex = 2;
                 $js('natureCodeFill').value = 'NCA';
                 $('#begBalField').show();
+                $('#rateArea').show();
             }
             else if (removeNewlines(this.textContent) == 'Current Liabilities') {
                 $js('accNature').selectedIndex = 3;
