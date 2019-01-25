@@ -651,6 +651,12 @@
         </div>
     </div>
     <script>
+        $(document).keypress(function (event) {
+            if (event.shiftKey && event.which == 43 && $js('addAccount').style.display == 'block') {
+                event.preventDefault();
+                $('#addAccount').click();
+            }
+        });
         $js("form1").addEventListener("submit", function (event) {
             event.preventDefault();
         });
@@ -904,7 +910,7 @@
                 if (codeShortForm == 'SE' || codeShortForm == 'RE') {
                     $js('begBal').value = dbData.balance;
                 }
-                else if(accounts[codeShortForm].begBal) {
+                else if (accounts[codeShortForm].begBal) {
                     $js('begBal').value = dbData.balance;
                 }
             });
