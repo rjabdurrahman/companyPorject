@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="rice in comRices track | orderBy : 'code' by $index">
+                                <tr ng-repeat="rice in comRices | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
@@ -177,9 +177,15 @@
     $js('submitRiceBtn').addEventListener('click', function () {
         submitRiceBtn();
     });
+    
     $('input.commanum').keyup(function (event) {
+        if (event.target.value.includes(".")) {
+            let str = event.target.value.split('.');
+            event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
+            return;
+        }
         // skip for arrow keys
-        if (event.which >= 37 && event.which <= 40) return;
+        if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
 
         // format number
         $(this).val(function (index, value) {

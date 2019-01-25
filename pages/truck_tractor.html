@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="Tr in comTrs track by $index">
+                                <tr ng-repeat="Tr in comTrs | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{Tr.code}}</td>
                                     <td>{{Tr.type}}</td>
@@ -140,8 +140,13 @@
     });
 
     $('input.commanum').keyup(function (event) {
+        if (event.target.value.includes(".")) {
+            let str = event.target.value.split('.');
+            event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
+            return;
+        }
         // skip for arrow keys
-        if (event.which >= 37 && event.which <= 40) return;
+        if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
 
         // format number
         $(this).val(function (index, value) {
