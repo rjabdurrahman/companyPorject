@@ -165,6 +165,8 @@
     }
     $('input.commanum').keyup(function (event) {
         if (event.target.value.includes(".")) {
+            let str = event.target.value.split('.');
+            event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
             return;
         }
         // skip for arrow keys
