@@ -65,6 +65,7 @@
                                             <th>Nature</th>
                                             <th>Account Code</th>
                                             <th>Account Head</th>
+                                            <th>Depreciation Rate</th>
                                             <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -79,6 +80,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
+                                            <td>{{comAcc.rate}}</td>
                                             <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
@@ -955,6 +957,7 @@
             var accCodeInit = null;
             let accCodeInitNode = $js('accCodeInit').firstElementChild.nextElementSibling;
             let balance = $js('begBal').value;
+            var rate = $js('rate').value;
             if ($js('equitySelector').style.display == 'block') {
                 accCodeInit = $js('equitySelector').options[$js('equitySelector').selectedIndex].text;
             }
@@ -993,6 +996,11 @@
                 $js('begBal').focus();
                 return;
             }
+            else if (accCodeInit == 'NCA' && rate == "") {
+                notify('Depreciation Rate Empty!', 2);
+                $js('rate').focus();
+                return;
+            }
             var accNumber = accCodeInit + "-" + accCodeFirst;
             if (accCodeSecond != '') {
                 accNumber += "-" + accCodeSecond;
@@ -1012,6 +1020,12 @@
                 account['type'] = accounts[accCodeInit].type;
             }
             // Account Type End
+
+            // D Rate
+            if(accCodeInit == 'NCA'){
+                account['rate'] = rate;
+            }
+            // D Rate End
 
             if (accounts[accNatureCode].begBal) {
                 account['balance'] = balance;
