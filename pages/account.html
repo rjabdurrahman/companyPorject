@@ -637,7 +637,7 @@
                                         <label class="w3-medium">Beginning Balance</label>
                                     </div>
                                     <div class="w3-rest">
-                                        <input id="begBal" class="w3-input w3-border"></input>
+                                        <input id="begBal" class="w3-input w3-border commanum"></input>
                                     </div>
                                 </div>
                                 <p class="clearfix">
@@ -923,6 +923,17 @@
 
         lsSetJ('comAccounts', []);
 
+        $('input.commanum').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            });
+        });
         function submitAccBtn() {
             let accNatureCode = $js('accNature').options[$js('accNature').selectedIndex].value;
             let accNature = $js('accNature').options[$js('accNature').selectedIndex].text;
