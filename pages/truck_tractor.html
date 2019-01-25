@@ -109,7 +109,7 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -137,6 +137,18 @@
     });
     $js('submitTrBtn').addEventListener('click', function () {
         submitTrBtn();
+    });
+
+    $('input.commanum').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
     });
     var editTriget = 0;
     var dbDataCode = "";
@@ -189,7 +201,7 @@
         var tr = {
             code: trCode,
             name: trNo,
-            balance: begBal,
+            balance: commaToNum(begBal),
             type: vType,
             actype: 1
         };

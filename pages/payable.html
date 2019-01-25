@@ -128,7 +128,7 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -182,6 +182,7 @@
     $js('submitPayBtn').addEventListener('click', function () {
         submitRecBtn();
     });
+    
     /// edit data show in field start........................
 
     var editTriget = 0;
@@ -275,7 +276,7 @@
             mobile: '+8801' + payMObileNo,
             email: payEmail,
             address: payAddress,
-            balance: begBal,
+            balance: commaToNum(begBal),
             actype: 2
 
         };

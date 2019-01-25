@@ -119,7 +119,7 @@
                                     <label class="w3-medium">Primary Quantity</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="priQu">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="priQu">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -127,7 +127,7 @@
                                     <label class="w3-medium">Primary Unit Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="priUnitPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="priUnitPri">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -143,7 +143,7 @@
                                     <label class="w3-medium">Standard Quantity</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="stdQu">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdQu">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -151,7 +151,7 @@
                                     <label class="w3-medium">Standard Unit Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdUnitPri">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -159,7 +159,7 @@
                                     <label class="w3-medium">Total Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="totalPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri">
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -188,6 +188,18 @@
     $js('paddyRawSubmit').addEventListener('click', function () {
         paddyRawSubmit();
     });
+
+    $('input.commanum').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
+    });
     /// edit data show in field start........................
 
     var editTriget = 0;
@@ -210,12 +222,12 @@
             $js('paddyRawCode').value = dbData.code;
             $js('paddyRawName').value = dbData.name;
             $js('priUnit').value = dbData.priUnit;
-            $js('priUnitPri').value = dbData.priUnitPri;
-            $js('priQu').value = dbData.priQu;
+            $js('priUnitPri').value = commaToNum (dbData.priUnitPri);
+            $js('priQu').value = commaToNum (dbData.priQu);
             $js('stdUnit').value = dbData.stdUnit;
-            $js('stdUnitPri').value = dbData.stdUnitPri;
-            $js('stdQu').value = dbData.stdQu;
-            $js('totalPri').value = dbData.totalPri;
+            $js('stdUnitPri').value = commaToNum (dbData.stdUnitPri);
+            $js('stdQu').value = commaToNum (dbData.stdQu);
+            $js('totalPri').value = commaToNum (dbData.totalPri);
         });
     }
 
@@ -273,12 +285,12 @@
             code: paddyRawCode,
             name: paddyRawName,
             priUnit: priUnit,
-            priUnitPri: priUnitPri,
-            priQu: priQu,
+            priUnitPri: commaToNum(priUnitPri),
+            priQu: commaToNum(priQu),
             stdUnit: stdUnit,
-            stdUnitPri: stdUnitPri,
-            stdQu: stdQu,
-            totalPri: totalPri,
+            stdUnitPri: commaToNum(stdUnitPri),
+            stdQu: commaToNum(stdQu),
+            totalPri: commaToNum(totalPri),
             actype: 1
         };
         if (editTriget == 1 && dbDataCode == paddyRawCode) {

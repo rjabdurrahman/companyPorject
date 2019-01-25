@@ -131,7 +131,7 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -139,7 +139,7 @@
                                     <label class="w3-medium">Salary</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="empSalary">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="empSalary">
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -168,6 +168,18 @@
     $js('submitEmpBtn').addEventListener('click', function () {
         submitEmpBtn();
     });
+
+    $('input.commanum').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
+    });
     /// edit data show in field start........................
 
     var editTriget = 0;
@@ -192,8 +204,8 @@
             $js('empType').value = dbData.type;
             $js('empPost').value = dbData.post;
             $js('empDes').value = dbData.des;
-            $js('empSalary').value = dbData.salary;
-            $js('begBal').value = dbData.balance;
+            $js('empSalary').value = commaToNum (dbData.salary);
+            $js('begBal').value = commaToNum (dbData.balance);
 
         });
     }
@@ -243,8 +255,8 @@
             type: empType,
             post: empPost,
             des: empDes,
-            salary: empSalary,
-            balance: begBal,
+            salary: commaToNum(empSalary),
+            balance: commaToNum(begBal),
             actype: 1
 
         };

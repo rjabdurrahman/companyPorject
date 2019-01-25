@@ -108,7 +108,7 @@
                                     <label class="w3-medium">Standard Unit</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="stdUnit">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdUnit">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -116,7 +116,7 @@
                                     <label class="w3-medium">Pack Size</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="packSize">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="packSize">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -124,7 +124,7 @@
                                     <label class="w3-medium">Number Of Pack</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="noPack">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="noPack">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -132,7 +132,7 @@
                                     <label class="w3-medium">Total Quantity</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="totalQu">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalQu">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -140,7 +140,7 @@
                                     <label class="w3-medium">Standard Unit Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="stdUnitPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdUnitPri">
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -148,7 +148,7 @@
                                     <label class="w3-medium">Total Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="totalPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri">
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -176,6 +176,17 @@
     });
     $js('submitRiceBtn').addEventListener('click', function () {
         submitRiceBtn();
+    });
+    $('input.commanum').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
     });
     /// edit data show in field start........................
 
@@ -259,11 +270,11 @@
             code: riceCode,
             name: riceName,
             stdUnit: stdUnit,
-            packSize: packSize,
-            noPack: noPack,
-            totalQu: totalQu,
-            stdUnitPri: stdUnitPri,
-            totalPri: totalPri,
+            packSize: commaToNum (packSize),
+            noPack: commaToNum(noPack),
+            totalQu: commaToNum(totalQu),
+            stdUnitPri: commaToNum(stdUnitPri),
+            totalPri: commaToNum(totalPri),
             type: 1
         };
 
