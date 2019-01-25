@@ -911,7 +911,7 @@
                     $js('begBal').value = dbData.balance;
                 }
                 else if (accounts[codeShortForm].begBal) {
-                    $js('begBal').value = dbData.balance;
+                    $js('begBal').value = numToComma(dbData.balance);
                 }
             });
         }
