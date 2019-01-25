@@ -34,12 +34,12 @@
                                     <td>{{paddyRaw.code}}</td>
                                     <td>{{paddyRaw.name}}</td>
                                     <td>{{paddyRaw.priUnit}}</td>
-                                    <td>{{paddyRaw.priQu}}</td>
-                                    <td>{{paddyRaw.priUnitPri}}</td>
+                                    <td>{{comNum(paddyRaw.priQu)}}</td>
+                                    <td>{{comNum(paddyRaw.priUnitPri)}}</td>
                                     <td>{{paddyRaw.stdUnit}}</td>
-                                    <td>{{paddyRaw.stdQu}}</td>
-                                    <td>{{paddyRaw.stdUnitPri}}</td>
-                                    <td>{{paddyRaw.totalPri}}</td>
+                                    <td>{{comNum(paddyRaw.stdQu)}}</td>
+                                    <td>{{comNum(paddyRaw.stdUnitPri)}}</td>
+                                    <td>{{comNum(paddyRaw.totalPri)}}</td>
                                     <td>
                                         <button id="{{paddyRaw.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{paddyRaw.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"

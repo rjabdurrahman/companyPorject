@@ -34,8 +34,8 @@
                                     <td>{{emp.type}}</td>
                                     <td>{{emp.post}}</td>
                                     <td>{{emp.des}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{emp.balance}}</td>
-                                    <td>{{emp.salary}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(emp.balance)}}</td>
+                                    <td>{{comNum(emp.salary)}}</td>
                                     <td>
                                         <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{emp.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"

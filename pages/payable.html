@@ -37,7 +37,7 @@
                                     </td>
                                     <td>{{pay.partyType}}</td>
                                     <td>{{pay.proprietor}}</td>
-                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{pay.balance}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(pay.balance)}}</td>
                                     <td>{{pay.mobile}}</td>
                                     <td>{{pay.email}}</td>
                                     <td>{{pay.address}}</td>

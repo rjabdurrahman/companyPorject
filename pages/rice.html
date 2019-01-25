@@ -33,11 +33,11 @@
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
                                     <td>{{rice.stdUnit}}</td>
-                                    <td>{{rice.stdUnitPri}}</td>
-                                    <td>{{rice.packSize}}</td>
-                                    <td>{{rice.noPack}}</td>
-                                    <td>{{rice.totalQu}}</td>
-                                    <td>{{rice.totalPri}}</td>
+                                    <td>{{comNum (rice.stdUnitPri)}}</td>
+                                    <td>{{comNum (rice.packSize)}}</td>
+                                    <td>{{comNum (rice.noPack)}}</td>
+                                    <td>{{comNum (rice.totalQu)}}</td>
+                                    <td>{{comNum (rice.totalPri)}}</td>
                                     <td>
                                         <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
