@@ -158,7 +158,7 @@
 
             $js('bankCode').value = dbData.code;
             $js('bankName').value = dbData.name;
-            $js('begBal').value = dbData.balance;
+            $js('begBal').value = numToComma(dbData.balance);
             $js('bAccNo').value = dbData.accno;
 
         });
