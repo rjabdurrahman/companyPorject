@@ -125,7 +125,7 @@
 <script>
     var dbBanks = null;
     $(document).keypress(function (event) {
-        if (event.which == 61) {
+        if (event.shiftKey && event.which == 43) {
             $('#id01').show();
             $js('bankCode').focus();
         }
