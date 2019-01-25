@@ -171,8 +171,7 @@
         $(this).val(function (index, value) {
             return value
                 .replace(/\D/g, "")
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                ;
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
     });
     /// edit data show in field end........................
@@ -200,10 +199,12 @@
         var bank = {
             code: bankCode,
             name: bankName,
-            balance: begBal,
+            balance: commaToNum(begBal),
             accno: bAccNo,
             actype: 1
         };
+        $print(bank);
+        return;
         if (editTriget == 1 && dbDataCode == bankCode) {
             editTriget = 0;
             db.child('banks/' + dbID).update(bank, function (error) {

@@ -288,5 +288,5 @@ function comNum(x) {
 
 // Commanum to Number
 function commaToNum(x){
-    return Number(x.replace(",", ""));
+    return Number(x.split(",").join(""));
 }
