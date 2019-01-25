@@ -162,6 +162,9 @@ app.run(function ($rootScope, $location, $route, $firebaseObject) {
   $rootScope.userInfo = userInfo;
   $print($rootScope.userInfo);
   $rootScope.begBalPer = $firebaseObject(getRef('begBalPer'));
+  $rootScope.comNum = function (x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
@@ -401,7 +404,7 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
       }
     }
   }
-  $scope.getUsername = function(email){
+  $scope.getUsername = function (email) {
     return email.replace('@gmail.com', '');
   }
   $scope.$applyAsync();
