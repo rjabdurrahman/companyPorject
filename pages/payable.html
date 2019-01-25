@@ -210,7 +210,7 @@
             $js('payMObileNo').value = dbData.mobile.slice(5);
             $js('payPartyType').value = dbData.partyType;
             $js('payProprietor').value = dbData.proprietor;
-            $js('begBal').value = dbData.balance;
+            $js('begBal').value = numToComma(dbData.balance);
 
         });
     }

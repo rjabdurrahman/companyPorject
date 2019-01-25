@@ -216,11 +216,11 @@
             $js('riceCode').value = dbData.code;
             $js('riceName').value = dbData.name;
             $js('stdUnit').value = dbData.stdUnit;
-            $js('packSize').value = dbData.packSize;
-            $js('noPack').value = dbData.noPack;
-            $js('totalQu').value = dbData.totalQu;
-            $js('stdUnitPri').value = dbData.stdUnitPri;
-            $js('totalPri').value = dbData.totalPri;
+            $js('packSize').value = numToComma(dbData.packSize);
+            $js('noPack').value = numToComma(dbData.noPack);
+            $js('totalQu').value = numToComma(dbData.totalQu);
+            $js('stdUnitPri').value = numToComma(dbData.stdUnitPri);
+            $js('totalPri').value = numToComma(dbData.totalPri);
 
         });
     }

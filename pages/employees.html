@@ -209,8 +209,8 @@
             $js('empType').value = dbData.type;
             $js('empPost').value = dbData.post;
             $js('empDes').value = dbData.des;
-            $js('empSalary').value = commaToNum (dbData.salary);
-            $js('begBal').value = commaToNum (dbData.balance);
+            $js('empSalary').value = numToComma(dbData.salary);
+            $js('begBal').value = numToComma(dbData.balance);
 
         });
     }

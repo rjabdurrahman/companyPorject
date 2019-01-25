@@ -174,7 +174,7 @@
 
             $js('trCode').value = dbData.code;
             $js('trNo').value = dbData.name;
-            $js('begBal').value = dbData.balance;
+            $js('begBal').value = numToComma(dbData.balance);
             $js('vType').value = dbData.type;
 
         });

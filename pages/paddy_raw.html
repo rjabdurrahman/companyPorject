@@ -227,12 +227,12 @@
             $js('paddyRawCode').value = dbData.code;
             $js('paddyRawName').value = dbData.name;
             $js('priUnit').value = dbData.priUnit;
-            $js('priUnitPri').value = commaToNum (dbData.priUnitPri);
-            $js('priQu').value = commaToNum (dbData.priQu);
+            $js('priUnitPri').value = numToComma (dbData.priUnitPri);
+            $js('priQu').value = numToComma (dbData.priQu);
             $js('stdUnit').value = dbData.stdUnit;
-            $js('stdUnitPri').value = commaToNum (dbData.stdUnitPri);
-            $js('stdQu').value = commaToNum (dbData.stdQu);
-            $js('totalPri').value = commaToNum (dbData.totalPri);
+            $js('stdUnitPri').value = numToComma (dbData.stdUnitPri);
+            $js('stdQu').value = numToComma (dbData.stdQu);
+            $js('totalPri').value = numToComma (dbData.totalPri);
         });
     }
 

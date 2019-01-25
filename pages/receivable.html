@@ -236,7 +236,7 @@
             $js('recMObileNo').value = dbData.mobile.slice(5);
             $js('recEmail').value = dbData.email;
             $js('recAddress').value = dbData.address;
-            $js('begBal').value = dbData.balance;
+            $js('begBal').value = numToComma(dbData.balance);
         });
     }
 
