@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="con in comContractors track by $index">
+                                <tr ng-repeat="con in comContractors | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{con.code}}</td>
                                     <td>{{con.name}}</td>

@@ -22,7 +22,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="ch in comCh track by $index">
+                                <tr ng-repeat="ch in comCh | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{ch.code}}</td>
                                     <td>{{ch.name}}</td>
