@@ -309,7 +309,7 @@
                     pass: password.value
                 };
                 Object.assign(user[auth.currentUser.uid], dPermission);
-                db.child('users').set(user, function (error) {
+                db.child('users').update(user, function (error) {
                     if (error) {
                         notify('Something Went Wrong in Database!', 2);
                     }
