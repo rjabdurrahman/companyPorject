@@ -286,7 +286,18 @@ function comNum(x) {
     return x;
 }
 
+function numToComma(x) {
+    if (!isNaN(Number(x))) {
+        x = x.toString().split('.');
+        if (x.length == 2) {
+            return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + x[1];
+        }
+        return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    return x;
+}
+
 // Commanum to Number
-function commaToNum(x){
+function commaToNum(x) {
     return Number(x.split(",").join(""));
 }

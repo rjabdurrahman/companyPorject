@@ -162,16 +162,7 @@ app.run(function ($rootScope, $location, $route, $firebaseObject) {
   $rootScope.userInfo = userInfo;
   $print($rootScope.userInfo);
   $rootScope.begBalPer = $firebaseObject(getRef('begBalPer'));
-  $rootScope.comNum = function (x) {
-    if (!isNaN(Number(x))) {
-      x = x.toString().split('.');
-      if (x.length == 2) {
-        return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + x[1];
-      }
-      return x[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    return x;
-  }
+  $rootScope.comNum = numToComma;
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
   $scope.message = "Login Cntl";
