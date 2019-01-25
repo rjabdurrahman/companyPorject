@@ -163,7 +163,10 @@ app.run(function ($rootScope, $location, $route, $firebaseObject) {
   $print($rootScope.userInfo);
   $rootScope.begBalPer = $firebaseObject(getRef('begBalPer'));
   $rootScope.comNum = function (x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (!isNaN(Number(x))) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    return x;
   }
 });
 app.controller('LoginCntlr', function ($scope, $firebaseObject) {
