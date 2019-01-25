@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="byProduct in comByProducts | orderBy : 'code'track by $index">
+                                <tr ng-repeat="byProduct in comByProducts | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{byProduct.code}}</td>
                                     <td>{{byProduct.name}}</td>
