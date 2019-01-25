@@ -309,88 +309,6 @@
                         </div>
                     </li>
                     <li>
-                        <div class="g-toggle g-header">Withdrawals</div>
-                        <div>
-                            <div class="w3-responsive" style="max-height: 600px;">
-                                <table class="w3-table-all chart-tables">
-                                    <thead ng-hide="getAccArr(8).length == 0" id="table-headm">
-                                        <tr class="main-bg-color">
-                                            <th>ID</th>
-                                            <th>Nature</th>
-                                            <th>Account Code</th>
-                                            <th>Account Head</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-show="getAccArr(8).length == 0">
-                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
-                                        </tr>
-                                        <tr ng-repeat="comAcc in getAccArr(8) | orderBy : 'accCode' track by $index">
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{comAcc.nature}}</td>
-                                            <td>{{comAcc.accCode}}</td>
-                                            <td>{{comAcc.accText}}</td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                                    style="display: none;">Update</button>
-                                            </td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="minimize">
-                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="g-toggle g-header">Contra Revenues</div>
-                        <div>
-                            <div class="w3-responsive" style="max-height: 600px;">
-                                <table class="w3-table-all chart-tables">
-                                    <thead ng-hide="getAccArr(9).length == 0" id="table-headm">
-                                        <tr class="main-bg-color">
-                                            <th>ID</th>
-                                            <th>Nature</th>
-                                            <th>Account Code</th>
-                                            <th>Account Head</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-show="getAccArr(9).length == 0">
-                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
-                                        </tr>
-                                        <tr ng-repeat="comAcc in getAccArr(9) | orderBy : 'accCode' track by $index">
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{comAcc.nature}}</td>
-                                            <td>{{comAcc.accCode}}</td>
-                                            <td>{{comAcc.accText}}</td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                                    style="display: none;">Update</button>
-                                            </td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="minimize">
-                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
                         <div class="g-toggle g-header">Cost of Goods Sold</div>
                         <div>
                             <div class="w3-responsive" style="max-height: 600px;">
@@ -414,49 +332,6 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                                    style="display: none;">Update</button>
-                                            </td>
-                                            <td>
-                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="minimize">
-                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="g-toggle g-header">Production</div>
-                        <div>
-                            <div class="w3-responsive" style="max-height: 600px;">
-                                <table class="w3-table-all chart-tables">
-                                    <thead ng-hide="getAccArr(11).length == 0" id="table-headm">
-                                        <tr class="main-bg-color">
-                                            <th>ID</th>
-                                            <th>Nature</th>
-                                            <th>Account Code</th>
-                                            <th>Account Head</th>
-                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-show="getAccArr(11).length == 0">
-                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
-                                        </tr>
-                                        <tr ng-repeat="comAcc in getAccArr(11) | orderBy : 'accCode' track by $index">
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{comAcc.nature}}</td>
-                                            <td>{{comAcc.accCode}}</td>
-                                            <td>{{comAcc.accText}}</td>
-                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
                                                 <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -518,6 +393,90 @@
                         </div>
                     </li>
                     <li>
+                        <div class="g-toggle g-header">Production</div>
+                        <div>
+                            <div class="w3-responsive" style="max-height: 600px;">
+                                <table class="w3-table-all chart-tables">
+                                    <thead ng-hide="getAccArr(11).length == 0" id="table-headm">
+                                        <tr class="main-bg-color">
+                                            <th>ID</th>
+                                            <th>Nature</th>
+                                            <th>Account Code</th>
+                                            <th>Account Head</th>
+                                            <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="getAccArr(11).length == 0">
+                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                        </tr>
+                                        <tr ng-repeat="comAcc in getAccArr(11) | orderBy : 'accCode' track by $index">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{comAcc.nature}}</td>
+                                            <td>{{comAcc.accCode}}</td>
+                                            <td>{{comAcc.accText}}</td>
+                                            <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
+                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                    style="display: none;">Update</button>
+                                            </td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="minimize">
+                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="g-toggle g-header">Withdrawals</div>
+                        <div>
+                            <div class="w3-responsive" style="max-height: 600px;">
+                                <table class="w3-table-all chart-tables">
+                                    <thead ng-hide="getAccArr(8).length == 0" id="table-headm">
+                                        <tr class="main-bg-color">
+                                            <th>ID</th>
+                                            <th>Nature</th>
+                                            <th>Account Code</th>
+                                            <th>Account Head</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="getAccArr(8).length == 0">
+                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                        </tr>
+                                        <tr ng-repeat="comAcc in getAccArr(8) | orderBy : 'accCode' track by $index">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{comAcc.nature}}</td>
+                                            <td>{{comAcc.accCode}}</td>
+                                            <td>{{comAcc.accText}}</td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
+                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                    style="display: none;">Update</button>
+                                            </td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="minimize">
+                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
                         <div class="g-toggle g-header">Contra Expenses</div>
                         <div>
                             <div class="w3-responsive" style="max-height: 600px;">
@@ -537,6 +496,47 @@
                                             <td class="acc_group_empty" colspan="6">No Record Added!</td>
                                         </tr>
                                         <tr ng-repeat="comAcc in getAccArr(13) | orderBy : 'accCode' track by $index">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{comAcc.nature}}</td>
+                                            <td>{{comAcc.accCode}}</td>
+                                            <td>{{comAcc.accText}}</td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
+                                                <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                                    style="display: none;">Update</button>
+                                            </td>
+                                            <td>
+                                                <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="minimize">
+                                <i class="fa fa-minus"></i>&nbsp;&nbsp;<span>Minimize</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="g-toggle g-header">Contra Revenues</div>
+                        <div>
+                            <div class="w3-responsive" style="max-height: 600px;">
+                                <table class="w3-table-all chart-tables">
+                                    <thead ng-hide="getAccArr(9).length == 0" id="table-headm">
+                                        <tr class="main-bg-color">
+                                            <th>ID</th>
+                                            <th>Nature</th>
+                                            <th>Account Code</th>
+                                            <th>Account Head</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="getAccArr(9).length == 0">
+                                            <td class="acc_group_empty" colspan="6">No Record Added!</td>
+                                        </tr>
+                                        <tr ng-repeat="comAcc in getAccArr(9) | orderBy : 'accCode' track by $index">
                                             <td>{{$index + 1}}</td>
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
