@@ -3,7 +3,7 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block';$js('submitCostCenterBtn').innerHTML = 'Submit';$js('costCenterName').focus();"
+                <button id="plusBtn" onclick="document.getElementById('id01').style.display='block';$js('submitCostCenterBtn').innerHTML = 'Submit';$js('costCenterName').focus();"
                     class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                     <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
@@ -94,6 +94,12 @@
 </div>
 <script>
     var dbCostCenters = null;
+    $(document).keypress(function (event) {
+        if (event.shiftKey && event.which == 43) {
+            event.preventDefault();
+            $('#plusBtn').click();
+        }
+    });
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });

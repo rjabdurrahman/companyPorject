@@ -165,6 +165,12 @@
 </div>
 <script>
     var dbByProducts = null;
+    $(document).keypress(function (event) {
+        if (event.shiftKey && event.which == 43) {
+            event.preventDefault();
+            $('#plusBtn').click();
+        }
+    });
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
