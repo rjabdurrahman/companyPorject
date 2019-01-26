@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
+                    <tr ng-repeat="rec in debitors | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{rec.code}}</td>
                         <td>
@@ -64,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="pay in comPayables | orderBy : 'code' track by $index">
+                    <tr ng-repeat="pay in creditors | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{pay.code}}</td>
                         <td>
@@ -98,7 +98,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="ch in comCh | orderBy : 'code' track by $index">
+                    <tr ng-repeat="ch in companyHeads | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{ch.code}}</td>
                         <td>{{ch.name}}</td>
@@ -126,7 +126,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="Tr in comTrs | orderBy : 'code' track by $index">
+                    <tr ng-repeat="Tr in vechicles | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{Tr.code}}</td>
                         <td>{{Tr.type}}</td>
@@ -159,7 +159,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="emp in comEmps | orderBy : 'code' track by $index">
+                    <tr ng-repeat="emp in employees | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{emp.code}}</td>
                         <td>{{emp.name}}</td>
@@ -212,7 +212,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="con in comContractors | orderBy : 'code' track by $index">
+                    <tr ng-repeat="con in contractors | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{con.code}}</td>
                         <td>{{con.name}}</td>
@@ -247,7 +247,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="paddyRaw in comPaddyRaws | orderBy : 'code' track by $index">
+                    <tr ng-repeat="paddyRaw in rawMaterials | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{paddyRaw.code}}</td>
                         <td>{{paddyRaw.name}}</td>
@@ -287,7 +287,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="rice in comRices | orderBy : 'code' track by $index">
+                    <tr ng-repeat="rice in finGoods | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{rice.code}}</td>
                         <td>{{rice.name}}</td>
@@ -325,7 +325,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="byProduct in comByProducts | orderBy : 'code' track by $index">
+                    <tr ng-repeat="byProduct in byProducts | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{byProduct.code}}</td>
                         <td>{{byProduct.name}}</td>
@@ -346,7 +346,7 @@
                 </tbody>
             </table>
             <!-- Loans -->
-            table class="w3-table-all chart-tables">
+            <table class="w3-table-all chart-tables">
             <thead>
                 <tr class="main-bg-color">
                     <th>ID</th>
@@ -360,7 +360,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
+                <tr ng-repeat="paddyDry in loans | orderBy : 'code' track by $index">
                     <td>{{$index + 1}}</td>
                     <td>{{paddyDry.code}}</td>
                     <td>{{paddyDry.name}}</td>
@@ -387,7 +387,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="costCenter in comCostCenters | orderBy : 'code' track by $index">
+                    <tr ng-repeat="costCenter in costCenters | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{costCenter.$value}}</td>
                         <td>

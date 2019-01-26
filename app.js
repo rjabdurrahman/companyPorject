@@ -425,4 +425,5 @@ app.controller('ChatExpoCntlr', function ($scope, $firebaseArray) {
   $scope.finGoods = $firebaseArray(getRef('rice'));
   $scope.byProducts = $firebaseArray(getRef('buyProducts'));
   $scope.loans = $firebaseArray(getRef('paddyDry'));
+  $scope.costCenters = $firebaseArray(getRef('costCenters'));
 });
