@@ -620,7 +620,8 @@
                                                 disabled>
                                         </section>
                                         <label style="padding: 8px;">-</label>
-                                        <input type="text" id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);">
+                                        <input type="text" id="accCodeFirst" class="w3-input w3-border" maxlength="4"
+                                            style="text-align: center; width: calc(100% - 180px);">
                                         <label style="padding: 8px;">-</label>
                                         <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2"
                                             style="width: 65px; text-align: center" required>
@@ -667,10 +668,10 @@
                 $('#addAccount').click();
             }
         });
-        $js('accCodeFirst').onkeyup = function(event){
+        $js('accCodeFirst').onkeyup = function (event) {
             event.target.value = event.target.value.replace(/\D/g, "");
         }
-        $js('accCodeSecond').onkeyup = function(event){
+        $js('accCodeSecond').onkeyup = function (event) {
             event.target.value = event.target.value.replace(/\D/g, "");
         }
         $js('rate').onkeyup = function (event) {
@@ -711,6 +712,7 @@
                 $js('natureCodeFill').style.display = 'none';
                 $js('equitySelector').style.display = 'block';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else {
                 $js('natureCodeFill').style.display = 'block';
@@ -721,6 +723,7 @@
                 $js('accNature').selectedIndex = 1;
                 $js('natureCodeFill').value = 'CA';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Non-Current Assets') {
                 $js('accNature').selectedIndex = 2;
@@ -732,51 +735,61 @@
                 $js('accNature').selectedIndex = 3;
                 $js('natureCodeFill').value = 'CL';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Non-Current Liabilities') {
                 $js('accNature').selectedIndex = 4;
                 $js('natureCodeFill').value = 'NCL';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Expenses') {
                 $js('accNature').selectedIndex = 6;
                 $js('natureCodeFill').value = 'EX';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Revenues') {
                 $js('accNature').selectedIndex = 7;
                 $js('natureCodeFill').value = 'REV';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Withdrawals') {
                 $js('accNature').selectedIndex = 8;
                 $js('natureCodeFill').value = 'WD';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Contra Revenues') {
                 $js('accNature').selectedIndex = 9;
                 $js('natureCodeFill').value = 'SD';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
                 $js('accNature').selectedIndex = 10;
                 $js('natureCodeFill').value = 'COGS';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Production') {
                 $js('accNature').selectedIndex = 11;
                 $js('natureCodeFill').value = 'WIP';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Contras') {
                 $js('accNature').selectedIndex = 12;
                 $js('natureCodeFill').value = 'CN';
                 $('#begBalField').show();
+                $('#rateArea').hide();
             }
             else if (removeNewlines(this.textContent) == 'Contra Expenses') {
                 $js('accNature').selectedIndex = 13;
                 $js('natureCodeFill').value = 'PD';
                 $('#begBalField').hide();
+                $('#rateArea').hide();
             }
         });
         $('.minimize').click(function () {
