@@ -147,6 +147,11 @@ app.config(function ($routeProvider) {
       controller: 'RegCntlr',
       activetab: 'user'
     })
+    .when('/exportchat', {
+      templateUrl: 'pages/export_chart.html',
+      controller: 'RegCntlr',
+      activetab: 'user'
+    })
     .otherwise({ redirectTo: '/' });
 });
 app.run(function ($rootScope, $location, $route, $firebaseObject) {
