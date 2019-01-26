@@ -17,6 +17,7 @@
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Address</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +63,7 @@
                         <td>{{pay.mobile}}</td>
                         <td>{{pay.email}}</td>
                         <td>{{pay.address}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(pay.balance)}}</td>
                     </tr>
                 </tbody>
             </table>
