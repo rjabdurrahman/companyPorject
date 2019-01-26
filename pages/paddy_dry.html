@@ -33,12 +33,10 @@
                                     <td>{{paddyDry.nature}}</td>
                                     <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
                                     <td>
-                                        <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
+                                        <button id="{{paddyDry.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                     </td>
                                     <td>
-                                        <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
+                                        <button id="{{paddyDry.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
