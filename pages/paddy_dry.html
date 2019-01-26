@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
+                                <tr ng-repeat="paddyDry in comPaddyDrys | orderBy : 'code' track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyDry.code}}</td>
                                     <td>{{paddyDry.name}}</td>
