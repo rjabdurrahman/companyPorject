@@ -193,6 +193,20 @@
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
+    $js('priQu').onkeyup = function (event) {
+        let priTP = $js('priUnitPri').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('priTotalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+        }
+    }
+    $js('priUnitPri').onkeyup = function (event) {
+        let priQ = $js('priQu').value;
+        // $print(priTP);
+        if (priQ != "") {
+            $js('priTotalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priQ)));
+        }
+    }
     $js('paddyRawSubmit').addEventListener('click', function () {
         paddyRawSubmit();
     });
@@ -235,12 +249,12 @@
             $js('paddyRawCode').value = dbData.code;
             $js('paddyRawName').value = dbData.name;
             $js('priUnit').value = dbData.priUnit;
-            $js('priUnitPri').value = numToComma (dbData.priUnitPri);
-            $js('priQu').value = numToComma (dbData.priQu);
+            $js('priUnitPri').value = numToComma(dbData.priUnitPri);
+            $js('priQu').value = numToComma(dbData.priQu);
             $js('stdUnit').value = dbData.stdUnit;
-            $js('stdUnitPri').value = numToComma (dbData.stdUnitPri);
-            $js('stdQu').value = numToComma (dbData.stdQu);
-            $js('totalPri').value = numToComma (dbData.totalPri);
+            $js('stdUnitPri').value = numToComma(dbData.stdUnitPri);
+            $js('stdQu').value = numToComma(dbData.stdQu);
+            $js('totalPri').value = numToComma(dbData.totalPri);
         });
     }
 
@@ -291,7 +305,7 @@
             $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        
+
 
 
         var paddyRaw = {
