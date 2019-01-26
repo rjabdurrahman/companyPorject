@@ -623,7 +623,7 @@
                                         <input type="text" id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);">
                                         <label style="padding: 8px;">-</label>
                                         <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2"
-                                            style="width: 65px; text-align: center">
+                                            style="width: 65px; text-align: center" required>
                                     </div>
                                 </div>
                                 <div class="w3-row w3-section">
@@ -631,7 +631,7 @@
                                         <label class="w3-medium">Account Head</label>
                                     </div>
                                     <div class="w3-rest">
-                                        <textarea id="accTxt" class="w3-input w3-border" name="" rows="5"></textarea>
+                                        <textarea id="accTxt" class="w3-input w3-border" name="" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div id="rateArea" class="w3-row w3-section" id="begBalField">
@@ -999,17 +999,14 @@
             }
             else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
                 notify('Code Must Between ' + accounts[accNatureCode].min + ' to ' + accounts[accNatureCode].max, 2);
-                $js('accCodeFirst').focus();
                 return;
             }
             else if ($js('accTxt').value == '') {
                 notify('Account Head Empty!', 2);
-                $js('accTxt').focus();
                 return;
             }
             else if (accounts[accNatureCode].begBal && balance == "") {
                 notify('Beginning Balance Empty!', 2);
-                $js('begBal').focus();
                 return;
             }
             else if ((accCodeInit == 'NCA' && rate == "") || rate < 0 || rate > 100) {
