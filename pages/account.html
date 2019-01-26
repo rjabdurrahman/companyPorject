@@ -847,7 +847,7 @@
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
                     $('#rateArea').show();
-                    // $js('rate').value = dbData.rate;
+                    $js('rate').value = parseFloat(dbData.rate);
 
                 }
                 else if (dbData.nature == 'Current Liability') {
