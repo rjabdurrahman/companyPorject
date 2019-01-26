@@ -269,6 +269,7 @@
             $js('priUnit').value = dbData.priUnit;
             $js('priUnitPri').value = numToComma(dbData.priUnitPri);
             $js('priQu').value = numToComma(dbData.priQu);
+            $js('priTotalPri').value = numToComma(dbData.priTotalPri);
             $js('stdUnit').value = dbData.stdUnit;
             $js('stdUnitPri').value = numToComma(dbData.stdUnitPri);
             $js('stdQu').value = numToComma(dbData.stdQu);
@@ -402,7 +403,7 @@
     }
 
     function clearFields() {
-        clearer(paddyRawCode, paddyRawName, priUnit, priQu, priUnitPri, stdUnit, stdQu, stdUnitPri, totalPri);
+        clearer(paddyRawCode, paddyRawName, priUnit, priQu, priUnitPri, stdUnit, stdQu, stdUnitPri, totalPri,priTotalPri);
     }
 
     // function printpaddyRaw() {
