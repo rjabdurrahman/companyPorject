@@ -96,7 +96,7 @@
                                     <label class="w3-medium">A/C Code</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="payACCode">
+                                    <input class="w3-input w3-border" type="text" name="" id="payACCode" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -104,7 +104,7 @@
                                     <label class="w3-medium">Party Name</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="payPartyName">
+                                    <input class="w3-input w3-border" type="text" name="" id="payPartyName" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -112,7 +112,7 @@
                                     <label class="w3-medium">Party Type</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="payPartyType">
+                                    <input class="w3-input w3-border" type="text" name="" id="payPartyType" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -120,7 +120,7 @@
                                     <label class="w3-medium">Proprietor Name</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="payProprietor">
+                                    <input class="w3-input w3-border" type="text" name="" id="payProprietor" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -128,7 +128,7 @@
                                     <label class="w3-medium">Mobile No</label>
                                 </div>
                                 <div class="w3-rest" style="position: relative;">
-                                    <input class="w3-input w3-border phone" type="text" name="" id="payMObileNo">
+                                    <input class="w3-input w3-border phone" type="text" name="" id="payMObileNo" required>
                                     <span class="phone">+8801</span>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                     <label class="w3-medium">Email</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="payEmail">
+                                    <input class="w3-input w3-border" type="text" name="" id="payEmail" required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -145,7 +145,7 @@
                                     <label class="w3-medium">Address</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <textarea class="w3-input w3-border" name="" id="payAddress" rows="2"></textarea>
+                                    <textarea class="w3-input w3-border" name="" id="payAddress" rows="2" required></textarea>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -153,7 +153,7 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal" required>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -274,7 +274,6 @@
         }
         else if (payEmail == "" || payEmail.indexOf('@') == -1 || payEmail.indexOf('.') == -1) {
             notify('Email Empty or Not Currect!', 2);
-            $js('recEmail').focus();
             return;
         }
         else if (payAddress == "") {
