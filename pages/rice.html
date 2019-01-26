@@ -18,10 +18,10 @@
                                     <th>Code</th>
                                     <th>Name</th>
                                     <th>Std unit</th>
-                                    <th>Std unit price</th>
                                     <th>Pack Size</th>
                                     <th>Number Of pack</th>
                                     <th>Total quantity</th>
+                                    <th>Std unit price</th>
                                     <th>Total price</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -33,10 +33,10 @@
                                     <td>{{rice.code}}</td>
                                     <td>{{rice.name}}</td>
                                     <td>{{rice.stdUnit}}</td>
-                                    <td>{{comNum (rice.stdUnitPri)}}</td>
                                     <td>{{comNum (rice.packSize)}}</td>
                                     <td>{{comNum (rice.noPack)}}</td>
                                     <td>{{comNum (rice.totalQu)}}</td>
+                                    <td>{{comNum (rice.stdUnitPri)}}</td>
                                     <td>{{comNum (rice.totalPri)}}</td>
                                     <td>
                                         <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>

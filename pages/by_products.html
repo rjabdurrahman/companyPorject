@@ -18,10 +18,10 @@
                                     <th>Code</th>
                                     <th>Name</th>
                                     <th>Std unit</th>
-                                    <th>Std unit price</th>
                                     <th>Pack Size</th>
                                     <th>Number Of pack</th>
                                     <th>Total quantity</th>
+                                    <th>Std unit price</th>
                                     <th>Total price</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -33,10 +33,10 @@
                                     <td>{{byProduct.code}}</td>
                                     <td>{{byProduct.name}}</td>
                                     <td>{{byProduct.stdUnit}}</td>
-                                    <td>{{comNum (byProduct.stdUnitPri)}}</td>
                                     <td>{{comNum (byProduct.packSize)}}</td>
                                     <td>{{comNum (byProduct.noPack)}}</td>
                                     <td>{{comNum (byProduct.totalQu)}}</td>
+                                    <td>{{comNum (byProduct.stdUnitPri)}}</td>
                                     <td>{{comNum (byProduct.totalPri)}}</td>
                                     <td>
                                         <button id="{{byProduct.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
