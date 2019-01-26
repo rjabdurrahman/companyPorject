@@ -1,10 +1,10 @@
 <div class="overlay-container">
     <div class="overlay">
         <div style="display: flex; justify-content: center; margin-top: calc(50vh - 59px); font-weight: bold; font-size: 22px;">
-            <button class="w3-btn w3-white">Export In Excel</button>
+            <button class="w3-btn w3-white" onclick="exportAll()">Export In Excel</button>
         </div>
         <!-- Tables -->
-        <div id="tableList" class="margin-auto chart-box">
+        <div id="bank" class="margin-auto chart-box">
             <!-- Debitors -->
             <table class="w3-table-all chart-tables">
                 <thead>
@@ -17,9 +17,6 @@
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Address</th>
-                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,14 +32,6 @@
                         <td>{{rec.email}}</td>
                         <td>{{rec.address}}</td>
                         <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
-                        <td>
-                            <button id="{{rec.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <!-- <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                style="display: none;">Update</button> -->
-                        </td>
-                        <td>
-                            <button id="{{rec.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -59,8 +48,6 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,14 +62,6 @@
                         <td>{{pay.mobile}}</td>
                         <td>{{pay.email}}</td>
                         <td>{{pay.address}}</td>
-                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(pay.balance)}}</td>
-                        <td>
-                            <button id="{{pay.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{pay.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{pay.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -93,8 +72,6 @@
                         <th>ID</th>
                         <th>A/C Code</th>
                         <th>Party Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,13 +79,6 @@
                         <td>{{$index + 1}}</td>
                         <td>{{ch.code}}</td>
                         <td>{{ch.name}}</td>
-                        <td>
-                            <button id="{{ch.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{ch.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{ch.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -121,8 +91,6 @@
                         <th>Vehicle Type</th>
                         <th>Vehicle No</th>
                         <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,13 +100,6 @@
                         <td>{{Tr.type}}</td>
                         <td>{{Tr.name}}</td>
                         <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(Tr.balance)}}</td>
-                        <td>
-                            <button id="{{Tr.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{Tr.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{Tr.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -154,8 +115,6 @@
                         <th>Designation</th>
                         <th>Salary</th>
                         <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -168,13 +127,6 @@
                         <td>{{emp.des}}</td>
                         <td>{{comNum(emp.salary)}}</td>
                         <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(emp.balance)}}</td>
-                        <td>
-                            <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{emp.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{emp.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -207,8 +159,6 @@
                         <th>Code</th>
                         <th>Name</th>
                         <th>Contract</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -217,13 +167,6 @@
                         <td>{{con.code}}</td>
                         <td>{{con.name}}</td>
                         <td>{{con.contact}}</td>
-                        <td>
-                            <button id="{{con.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{con.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{con.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -242,8 +185,6 @@
                         <th>Stand Quantity</th>
                         <th>Stand Unit Price</th>
                         <th>Standard Total Price</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -259,13 +200,6 @@
                         <td>{{comNum(paddyRaw.stdQu)}}</td>
                         <td>{{comNum(paddyRaw.stdUnitPri)}}</td>
                         <td>{{comNum(paddyRaw.totalPri)}}</td>
-                        <td>
-                            <button id="{{paddyRaw.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{paddyRaw.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{paddyRaw.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -282,8 +216,6 @@
                         <th>Total quantity</th>
                         <th>Std unit price</th>
                         <th>Total price</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -297,13 +229,6 @@
                         <td>{{comNum (rice.totalQu)}}</td>
                         <td>{{comNum (rice.stdUnitPri)}}</td>
                         <td>{{comNum (rice.totalPri)}}</td>
-                        <td>
-                            <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{rice.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -320,8 +245,6 @@
                         <th>Total quantity</th>
                         <th>Std unit price</th>
                         <th>Total price</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -335,13 +258,6 @@
                         <td>{{comNum (byProduct.totalQu)}}</td>
                         <td>{{comNum (byProduct.stdUnitPri)}}</td>
                         <td>{{comNum (byProduct.totalPri)}}</td>
-                        <td>
-                            <button id="{{byProduct.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                            <button id="{{byProduct.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
-                        </td>
-                        <td>
-                            <button id="{{byProduct.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -355,8 +271,6 @@
                     <th>Loan Type</th>
                     <th>Loan Nature</th>
                     <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                    <th style="width: 120px;">Edit</th>
-                    <th style="width: 130px;">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -367,12 +281,6 @@
                     <td>{{paddyDry.type}}</td>
                     <td>{{paddyDry.nature}}</td>
                     <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
-                    <td>
-                        <button id="{{paddyDry.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                    </td>
-                    <td>
-                        <button id="{{paddyDry.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                    </td>
                 </tr>
             </tbody>
             </table>
@@ -382,20 +290,12 @@
                     <tr class="main-bg-color">
                         <th>ID</th>
                         <th>Cost Center</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="costCenter in costCenters | orderBy : 'code' track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{costCenter.$value}}</td>
-                        <td>
-                            <button id="{{costCenter.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                        </td>
-                        <td>
-                            <button id="{{costCenter.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -405,4 +305,33 @@
 </div>
 <script>
     // $("#tableList").hide();
+    function exportAll() {
+        $print("print");
+        var ws = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        // var wscols = [
+        //     { wch: 4 },
+        //     { wch: 12 },
+        //     { wch: 20 },
+        //     { wch: 20 },
+        //     { wch: 14 },
+        //     { wch: 40 }
+        // ];
+        // var wsrows = [
+        //     {
+        //         hpx: 24,
+        //         level: 2
+        //     }
+        // ];
+        // ws['!cols'] = wscols;
+        // ws['!rows'] = wsrows;
+        XLSX.utils.book_append_sheet(wb, ws, 'Banks');
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Charts_Export.xlsx');
+    }
 </script>
