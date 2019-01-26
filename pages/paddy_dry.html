@@ -28,7 +28,7 @@
                                 <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyDry.code}}</td>
-                                    <td>{{paddyDry.no}}</td>
+                                    <td>{{paddyDry.name}}</td>
                                     <td>{{paddyDry.type}}</td>
                                     <td>{{paddyDry.nature}}</td>
                                     <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
@@ -165,7 +165,7 @@
             dbDataCode = dbData.code;   ///   from database code grip to control notification...............
 
             $js('code').value = dbData.code;
-            $js('loanNo').value = dbData.no;
+            $js('loanNo').value = dbData.name;
             $js('loanType').value = dbData.type;
             $js('loanNature').value = dbData.nature;
             $js('begBal').value = numToComma(dbData.balance);
@@ -217,7 +217,7 @@
         }
         var loan = {
             code: code,
-            no: loanNo,
+            name: loanNo,
             type: loanType,
             nature: loanNature,
             balance: commaToNum(begBal),
