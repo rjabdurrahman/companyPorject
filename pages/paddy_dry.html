@@ -3,8 +3,8 @@
         <div class="margin-auto chart-box">
             <section class="clearfix">
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-xlarge w3-circle w3-white circle-btn"
-                    style="float: right;">+</button>
+                <button id="plusBtn" onclick="document.getElementById('id01').style.display='block';$js('loanSubmit').innerHTML = 'Submit';$js('code').focus();"
+                    class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
                 <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
                                             <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
             </section>
@@ -28,10 +28,10 @@
                                 <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyDry.code}}</td>
-                                    <td>{{paddyDry.name}}</td>
-                                    <td>{{paddyDry.name}}</td>
-                                    <td>{{paddyDry.name}}</td>
-                                    <td>{{paddyDry.name}}</td>
+                                    <td>{{paddyDry.no}}</td>
+                                    <td>{{paddyDry.type}}</td>
+                                    <td>{{paddyDry.nature}}</td>
+                                    <td>{{paddyDry.balance}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -59,49 +59,51 @@
                         <h2>{{title}}</h2>
                     </div>
                     <div class="w3-container">
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Code</label>
+                        <form id="form1">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Code</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="code">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="code">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Loan No.</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="loanNo">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Loan No.</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Loan Type</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="loanType">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="loanNo">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Loan Nature</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="loanNature">
+                                </div>
                             </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Loan Type</label>
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:150px; padding: 10px;">
+                                    <label class="w3-medium">Beginning balance</label>
+                                </div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                </div>
                             </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="loanType">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Loan Nature</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="loanNature">
-                            </div>
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Beginning balance</label>
-                            </div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="begBal">
-                            </div>
-                        </div>
-                        <p class="clearfix">
-                            <button id="loanSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                        </p>
+                            <p class="clearfix">
+                                <button id="loanSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -225,7 +227,7 @@
                 }
             }
             editTriget = 0;
-            db.child('paddyDry/' + dbID).update(bank, function (error) {
+            db.child('paddyDry/' + dbID).update(loan, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
@@ -244,7 +246,7 @@
                     return;
                 }
             }
-            db.child('paddyDry').push(bank, function (error) {
+            db.child('paddyDry').push(loan, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
@@ -275,7 +277,7 @@
     }
 
     function clearFields() {
-        clearer(code, bankName, bAccNo, begBal);
+        clearer(code, loanNo, loanType, loanNature, begBal);
     }
 
     function printBank() {
