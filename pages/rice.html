@@ -132,7 +132,7 @@
                                     <label class="w3-medium">Total Quantity</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalQu">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalQu" disabled>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -148,7 +148,7 @@
                                     <label class="w3-medium">Total Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri" disabled>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -165,6 +165,7 @@
 </div>
 <script>
     var dbRices = null;
+    
     $(document).keypress(function (event) {
         if (event.shiftKey && event.which == 43) {
             event.preventDefault();
@@ -174,6 +175,40 @@
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
+    
+    //Total Cal
+    $js('packSize').onkeyup = function (event) {
+        let priTP = $js('noPack').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+            if($js('stdUnitPri').value != ""){
+                let priTP = $js('totalQu').value;
+                $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
+            }
+        }
+    }
+    $js('noPack').onkeyup = function (event) {
+        let priTP = $js('packSize').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+            if($js('stdUnitPri').value != ""){
+                let priTP = $js('totalQu').value;
+                $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
+            }
+        }
+    }
+    $js('stdUnitPri').onkeyup = function (event) {
+        let priTP = $js('totalQu').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+        }
+    }
+    
+    // // Total Cal End
+    
     $js('submitRiceBtn').addEventListener('click', function () {
         submitRiceBtn();
     });
