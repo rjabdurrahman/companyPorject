@@ -10,7 +10,7 @@
         <!-- Tables -->
         <div id="tableList" class="margin-auto chart-box">
                 <!-- Current Assets -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="ca" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(1).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -34,7 +34,7 @@
                         </tbody>
                     </table>
                 <!-- Non-Current Assets -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="nca" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(2).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -60,7 +60,7 @@
                         </tbody>
                     </table>
                 <!-- Current Liabilities -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="cl" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(3).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -84,7 +84,7 @@
                         </tbody>
                     </table>
                 <!-- Non-Current Liabilities -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="ncl" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(4).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -108,7 +108,7 @@
                         </tbody>
                     </table>
                 <!-- Equity -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="eqty" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(5).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -132,7 +132,7 @@
                         </tbody>
                     </table>
                 <!-- Expenses -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="ex" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(6).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -154,7 +154,7 @@
                         </tbody>
                     </table>
                 <!-- Revenues -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="rev" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(7).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -176,7 +176,7 @@
                         </tbody>
                     </table>
                 <!-- Cost of Goods Sold -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="cogs" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(10).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -198,7 +198,7 @@
                         </tbody>
                     </table>
                 <!-- Contras -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="cn" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(12).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -222,7 +222,7 @@
                         </tbody>
                     </table>
                 <!-- Production -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="wip" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(11).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -246,7 +246,7 @@
                         </tbody>
                     </table>
                 <!-- Withdrawals -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="wd" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(8).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -268,7 +268,7 @@
                         </tbody>
                     </table>
                 <!-- Contra Expenses -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="pd" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(13).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -290,7 +290,7 @@
                         </tbody>
                     </table>
                 <!-- Contra Revenues -->
-                <table id="" class="w3-table-all chart-tables">
+                <table id="sd" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(9).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -612,9 +612,24 @@
     </div>
 </div>
 <script>
-    $("#tableList").show();
+    $("#tableList").hide();
     function exportAll() {
         $print("print");
+        var ca = XLSX.utils.table_to_sheet($js('ca'), { cellDates: true });
+        var nca = XLSX.utils.table_to_sheet($js('nca'), { cellDates: true });
+        var cl = XLSX.utils.table_to_sheet($js('cl'), { cellDates: true });
+        var ncl = XLSX.utils.table_to_sheet($js('ncl'), { cellDates: true });
+        var eqty = XLSX.utils.table_to_sheet($js('eqty'), { cellDates: true });
+        var ex = XLSX.utils.table_to_sheet($js('ex'), { cellDates: true });
+        var rev = XLSX.utils.table_to_sheet($js('rev'), { cellDates: true });
+        var cogs = XLSX.utils.table_to_sheet($js('cogs'), { cellDates: true });
+        var cn = XLSX.utils.table_to_sheet($js('cn'), { cellDates: true });
+        var wip = XLSX.utils.table_to_sheet($js('wip'), { cellDates: true });
+        var wd = XLSX.utils.table_to_sheet($js('wd'), { cellDates: true });
+        var pd = XLSX.utils.table_to_sheet($js('pd'), { cellDates: true });
+        var sd = XLSX.utils.table_to_sheet($js('sd'), { cellDates: true });
+        // Account End
+
         var debitors = XLSX.utils.table_to_sheet($js('debitors'), { cellDates: true });
         var creditors = XLSX.utils.table_to_sheet($js('creditors'), { cellDates: true });
         var companyHeads = XLSX.utils.table_to_sheet($js('companyHeads'), { cellDates: true });
@@ -627,22 +642,21 @@
         var byProducts = XLSX.utils.table_to_sheet($js('byProducts'), { cellDates: true });
         var loans = XLSX.utils.table_to_sheet($js('loans'), { cellDates: true });
         var costCenters = XLSX.utils.table_to_sheet($js('costCenters'), { cellDates: true });
-        // var wscols = [
-        //     { wch: 4 },
-        //     { wch: 12 },
-        //     { wch: 20 },
-        //     { wch: 20 },
-        //     { wch: 14 },
-        //     { wch: 40 }
-        // ];
-        // var wsrows = [
-        //     {
-        //         hpx: 24,
-        //         level: 2
-        //     }
-        // ];
-        // ws['!cols'] = wscols;
-        // ws['!rows'] = wsrows;
+
+        XLSX.utils.book_append_sheet(wb, ca, 'Current Assets'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, nca, 'Non-Current Assets'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, cl, 'Current Liabilities'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, ncl, 'Non-Current Liabilities'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, eqty, 'Equity'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, ex, 'Expenses'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, rev, 'Revenues'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, cogs, 'Cost of Goods Sold'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, cn, 'Contras'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, wip, 'Production'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, wd, 'Withdrawals'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, pd, 'Contra Expenses'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, sd, 'Contra Revenues'.toUpperCase());
+        // Accouont End
         XLSX.utils.book_append_sheet(wb, debitors, 'debitors'.toUpperCase());
         XLSX.utils.book_append_sheet(wb, creditors, 'creditors'.toUpperCase());
         XLSX.utils.book_append_sheet(wb, companyHeads, 'companyHeads'.toUpperCase());
