@@ -83,12 +83,12 @@ var accounts = {
     EQTY: { name: 'Equity', min: 5001, max: 5999, flag: 5, type: 2, begBal: true },
     EX: { name: 'Expense', min: 6001, max: 6999, flag: 6, type: 1, begBal: false },
     REV: { name: 'Revenue', min: 7001, max: 7999, flag: 7, type: 2, begBal: false },
-    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8500, flag: 10, type: 1, begBal: false },
+    COGS: { name: 'Cost of Goods Sold', min: 8001, max: 8499, flag: 10, type: 1, begBal: false },
     CN: { name: 'Contra', min: 8501, max: 8999, flag: 12, type: 2, begBal: true },
-    WIP: { name: 'Production', min: 9001, max: 9500, flag: 11, type: 1, begBal: true },
-    WD: { name: 'Withdrawal', min: 9501, max: 9799, flag: 8, type: 1, begBal: false },
-    PD: { name: 'Contra Expense', min: 9801, max: 9899, flag: 13, type: 2, begBal: false },
-    SD: { name: 'Contra Revenue', min: 9901, max: 9999, flag: 9, type: 1, begBal: false }
+    WIP: { name: 'Production', min: 9001, max: 9199, flag: 11, type: 1, begBal: true },
+    WD: { name: 'Withdrawal', min: 9201, max: 9399, flag: 8, type: 1, begBal: false },
+    PD: { name: 'Contra Expense', min: 9401, max: 9599, flag: 13, type: 2, begBal: false },
+    SD: { name: 'Contra Revenue', min: 9601, max: 9799, flag: 9, type: 1, begBal: false }
 }
 
 function accountFlag(nat) {
