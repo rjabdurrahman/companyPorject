@@ -80,7 +80,7 @@
                                             <td>{{comAcc.nature}}</td>
                                             <td>{{comAcc.accCode}}</td>
                                             <td>{{comAcc.accText}}</td>
-                                            <td>{{comAcc.rate}}</td>
+                                            <td>{{comAcc.rate}}%</td>
                                             <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
                                             <td>
                                                 <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
@@ -624,7 +624,7 @@
                                             style="text-align: center; width: calc(100% - 180px);">
                                         <label style="padding: 8px;">-</label>
                                         <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2"
-                                            style="width: 65px; text-align: center" required>
+                                            style="width: 65px; text-align: center">
                                     </div>
                                 </div>
                                 <div class="w3-row w3-section">
@@ -639,8 +639,9 @@
                                     <div class="w3-col" style="width:130px; padding: 0px 10px;">
                                         <label class="w3-medium">Depreciation Rate</label>
                                     </div>
-                                    <div class="w3-rest">
-                                        <input type="number" id="rate" maxlength="3" class="w3-input w3-border"></input>
+                                    <div class="w3-rest" style="position: relative;">
+                                        <input type="text" id="rate" maxlength="3" class="w3-input w3-border" style="width: 68px;"></input>
+                                        <span class="phone" style="margin-left: 35px;">%</span>
                                     </div>
                                 </div>
                                 <div class="w3-row w3-section" id="begBalField">
