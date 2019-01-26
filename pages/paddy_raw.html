@@ -193,6 +193,7 @@
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
+    // Total Cal
     $js('priQu').onkeyup = function (event) {
         let priTP = $js('priUnitPri').value;
         // $print(priTP);
@@ -207,6 +208,21 @@
             $js('priTotalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priQ)));
         }
     }
+    $js('stdQu').onkeyup = function (event) {
+        let stdTP = $js('stdUnitPri').value;
+        // $print(priTP);
+        if (stdTP != "") {
+            $js('totalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(stdTP)));
+        }
+    }
+    $js('stdUnitPri').onkeyup = function (event) {
+        let stdQ = $js('stdQu').value;
+        // $print(priTP);
+        if (stdQ != "") {
+            $js('totalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(stdQ)));
+        }
+    }
+    // Total Cal End
     $js('paddyRawSubmit').addEventListener('click', function () {
         paddyRawSubmit();
     });
