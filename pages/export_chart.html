@@ -4,7 +4,7 @@
             <button class="w3-btn w3-white" onclick="exportAll()">Export In Excel</button>
         </div>
         <!-- Tables -->
-        <div id="bank" class="margin-auto chart-box">
+        <div id="tableList" class="margin-auto chart-box">
             <!-- Debitors -->
             <table class="w3-table-all chart-tables">
                 <thead>
@@ -306,7 +306,7 @@
     </div>
 </div>
 <script>
-    // $("#tableList").hide();
+    $("#tableList").hide();
     function exportAll() {
         $print("print");
         var debitorS = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
