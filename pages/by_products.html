@@ -194,6 +194,39 @@
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
     });
+
+    //Total Cal
+    $js('packSize').onkeyup = function (event) {
+        let priTP = $js('noPack').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+            if($js('stdUnitPri').value != ""){
+                let priTP = $js('totalQu').value;
+                $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
+            }
+        }
+    }
+    $js('noPack').onkeyup = function (event) {
+        let priTP = $js('packSize').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+            if($js('stdUnitPri').value != ""){
+                let priTP = $js('totalQu').value;
+                $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
+            }
+        }
+    }
+    $js('stdUnitPri').onkeyup = function (event) {
+        let priTP = $js('totalQu').value;
+        // $print(priTP);
+        if (priTP != "") {
+            $js('totalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
+        }
+    }
+    
+    // // Total Cal End
     /// edit data show in field start........................
 
     var editTriget = 0;
