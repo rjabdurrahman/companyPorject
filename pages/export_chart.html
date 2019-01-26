@@ -10,7 +10,7 @@
         <!-- Tables -->
         <div id="tableList" class="margin-auto chart-box">
                 <!-- Current Assets -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(1).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -18,8 +18,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,19 +30,11 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Non-Current Assets -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(2).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -53,8 +43,6 @@
                                 <th>Account Head</th>
                                 <th>Depreciation Rate</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,19 +56,11 @@
                                 <td>{{comAcc.accText}}</td>
                                 <td>{{comAcc.rate}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Current Liabilities -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(3).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -88,8 +68,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,19 +80,11 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Non-Current Liabilities -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(4).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -122,8 +92,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -136,19 +104,11 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Equity -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(5).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -156,8 +116,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -170,27 +128,17 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Expenses -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(6).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -202,27 +150,17 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Revenues -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(7).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -234,27 +172,17 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Cost of Goods Sold -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(10).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -266,19 +194,11 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Contras -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(12).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -286,8 +206,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -300,19 +218,11 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Production -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(11).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
@@ -320,8 +230,6 @@
                                 <th>Account Code</th>
                                 <th>Account Head</th>
                                 <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -334,27 +242,17 @@
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
                                 <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Withdrawals -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(8).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -366,27 +264,17 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Contra Expenses -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(13).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -398,27 +286,17 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 <!-- Contra Revenues -->
-                <table class="w3-table-all chart-tables">
+                <table id="" class="w3-table-all chart-tables">
                         <thead ng-hide="getAccArr(9).length == 0" id="table-headm">
                             <tr class="main-bg-color">
                                 <th>ID</th>
                                 <th>Nature</th>
                                 <th>Account Code</th>
                                 <th>Account Head</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -430,14 +308,6 @@
                                 <td>{{comAcc.nature}}</td>
                                 <td>{{comAcc.accCode}}</td>
                                 <td>{{comAcc.accText}}</td>
-                                <td>
-                                    <button id="{{comAcc.$id}}e" onclick="editView(this.id);" class="w3-btn w3-blue">Edit</button>
-                                    <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                        style="display: none;">Update</button>
-                                </td>
-                                <td>
-                                    <button id="{{comAcc.$id}}" onclick="removeItem(event)" class="w3-btn w3-red">Delete</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
