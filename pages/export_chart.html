@@ -265,26 +265,26 @@
             </table>
             <!-- Loans -->
             <table id="loans" class="w3-table-all chart-tables">
-            <thead>
-                <tr class="main-bg-color">
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Loan No.</th>
-                    <th>Loan Type</th>
-                    <th>Loan Nature</th>
-                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="paddyDry in loans | orderBy : 'code' track by $index">
-                    <td>{{$index + 1}}</td>
-                    <td>{{paddyDry.code}}</td>
-                    <td>{{paddyDry.name}}</td>
-                    <td>{{paddyDry.type}}</td>
-                    <td>{{paddyDry.nature}}</td>
-                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
-                </tr>
-            </tbody>
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Loan No.</th>
+                        <th>Loan Type</th>
+                        <th>Loan Nature</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="paddyDry in loans | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{paddyDry.code}}</td>
+                        <td>{{paddyDry.name}}</td>
+                        <td>{{paddyDry.type}}</td>
+                        <td>{{paddyDry.nature}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
+                    </tr>
+                </tbody>
             </table>
             <!-- cost centre -->
             <table id="costCenters" class="w3-table-all chart-tables">
@@ -306,21 +306,21 @@
     </div>
 </div>
 <script>
-    $("#tableList").show();
+    $("#tableList").hide();
     function exportAll() {
         $print("print");
         var debitors = XLSX.utils.table_to_sheet($js('debitors'), { cellDates: true });
-        // var creditors = XLSX.utils.table_to_sheet($js('creditors'), { cellDates: true });
-        // var companyHeads = XLSX.utils.table_to_sheet($js('companyHeads'), { cellDates: true });
-        // var vechicles = XLSX.utils.table_to_sheet($js('vechicles'), { cellDates: true });
-        // var employees = XLSX.utils.table_to_sheet($js('employees'), { cellDates: true });
-        // var banks = XLSX.utils.table_to_sheet($js('banks'), { cellDates: true });
-        // var contractors = XLSX.utils.table_to_sheet($js('contractors'), { cellDates: true });
-        // var rawMaterials = XLSX.utils.table_to_sheet($js('rawMaterials'), { cellDates: true });
-        // var finGoods = XLSX.utils.table_to_sheet($js('finGoods'), { cellDates: true });
-        // var byProducts = XLSX.utils.table_to_sheet($js('byProducts'), { cellDates: true });
-        // var loans = XLSX.utils.table_to_sheet($js('loans'), { cellDates: true });
-        // var costCenters = XLSX.utils.table_to_sheet($js('costCenters'), { cellDates: true });
+        var creditors = XLSX.utils.table_to_sheet($js('creditors'), { cellDates: true });
+        var companyHeads = XLSX.utils.table_to_sheet($js('companyHeads'), { cellDates: true });
+        var vechicles = XLSX.utils.table_to_sheet($js('vechicles'), { cellDates: true });
+        var employees = XLSX.utils.table_to_sheet($js('employees'), { cellDates: true });
+        var banks = XLSX.utils.table_to_sheet($js('banks'), { cellDates: true });
+        var contractors = XLSX.utils.table_to_sheet($js('contractors'), { cellDates: true });
+        var rawMaterials = XLSX.utils.table_to_sheet($js('rawMaterials'), { cellDates: true });
+        var finGoods = XLSX.utils.table_to_sheet($js('finGoods'), { cellDates: true });
+        var byProducts = XLSX.utils.table_to_sheet($js('byProducts'), { cellDates: true });
+        var loans = XLSX.utils.table_to_sheet($js('loans'), { cellDates: true });
+        var costCenters = XLSX.utils.table_to_sheet($js('costCenters'), { cellDates: true });
         // var wscols = [
         //     { wch: 4 },
         //     { wch: 12 },
@@ -337,7 +337,18 @@
         // ];
         // ws['!cols'] = wscols;
         // ws['!rows'] = wsrows;
-        XLSX.utils.book_append_sheet(wb, debitors, 'Banks');
+        XLSX.utils.book_append_sheet(wb, debitors, 'debitors'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, creditors, 'creditors'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, companyHeads, 'companyHeads'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, vechicles, 'vechicles'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, employees, 'employees'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, banks, 'banks'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, contractors, 'contractors'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, rawMaterials, 'rawMaterials'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, finGoods, 'finGoods'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, byProducts, 'byProducts'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, loans, 'loans'.toUpperCase());
+        XLSX.utils.book_append_sheet(wb, costCenters, 'costCenters'.toUpperCase());
         var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
         function s2ab(s) {
             var buf = new ArrayBuffer(s.length);
