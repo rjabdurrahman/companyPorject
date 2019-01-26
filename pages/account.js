@@ -2,7 +2,6 @@ app.controller('AccountCntlr', function ($scope, $firebaseArray) {
     var ref = getRef('accounts');
     $scope.title = "Account";
     $scope.accounts = accounts;
-    lsSetJ('accCodes', $scope.accounts);
     $scope.load = false;
     $scope.nodata = false;
     dbAccounts = $scope.comAccounts = $firebaseArray(ref);

@@ -97,12 +97,6 @@ function accountFlag(nat) {
     }
 }
 
-// Account Codes for Suggesitions
-var accountCodes = [];
-lsExGJInit('comAccounts', []).forEach(element => {
-    accountCodes.push(element.accCode);
-});
-
 var wb = XLSX.utils.book_new();
 wb.Props = {
     Title: "Company WordBook",
