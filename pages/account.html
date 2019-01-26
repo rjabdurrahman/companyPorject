@@ -620,7 +620,7 @@
                                                 disabled>
                                         </section>
                                         <label style="padding: 8px;">-</label>
-                                        <input id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);">
+                                        <input type="text" id="accCodeFirst" class="w3-input w3-border" maxlength="4" style="text-align: center; width: calc(100% - 180px);">
                                         <label style="padding: 8px;">-</label>
                                         <input id="accCodeSecond" class="w3-input w3-border" type="text" maxlength="2"
                                             style="width: 65px; text-align: center">
@@ -667,6 +667,12 @@
                 $('#addAccount').click();
             }
         });
+        $js('accCodeFirst').onkeyup = function(event){
+            event.target.value = event.target.value.replace(/\D/g, "");
+        }
+        $js('accCodeSecond').onkeyup = function(event){
+            event.target.value = event.target.value.replace(/\D/g, "");
+        }
         $js('rate').onkeyup = function (event) {
             if (parseFloat(event.target.value) > 100) {
                 notify("Depreciation Rate is Over 100", 2);
@@ -989,7 +995,6 @@
             }
             else if ($js('accCodeFirst').value == '') {
                 notify('Input Account Code!', 2);
-                $js('accCodeFirst').focus();
                 return;
             }
             else if (parseInt($js('accCodeFirst').value) < accounts[accNatureCode].min || parseInt($js('accCodeFirst').value) > accounts[accNatureCode].max) {
