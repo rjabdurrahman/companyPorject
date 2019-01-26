@@ -20,10 +20,11 @@
                                     <th>Primary Unit</th>
                                     <th>Primary Quantity</th>
                                     <th>Primary Unit Price</th>
+                                    <th>Primary Total Price</th>
                                     <th>stad Unit</th>
                                     <th>Stand Quantity</th>
                                     <th>Stand Unit Price</th>
-                                    <th>Total Price</th>
+                                    <th>Standard Total Price</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -36,6 +37,7 @@
                                     <td>{{paddyRaw.priUnit}}</td>
                                     <td>{{comNum(paddyRaw.priQu)}}</td>
                                     <td>{{comNum(paddyRaw.priUnitPri)}}</td>
+                                    <td>{{comNum(paddyRaw.priTotalPri)}}</td>
                                     <td>{{paddyRaw.stdUnit}}</td>
                                     <td>{{comNum(paddyRaw.stdQu)}}</td>
                                     <td>{{comNum(paddyRaw.stdUnitPri)}}</td>
@@ -250,6 +252,7 @@
         var paddyRawName = $js('paddyRawName').value;
         var priUnit = $js('priUnit').value;
         var priUnitPri = $js('priUnitPri').value;
+        var priTotalPri = $js('priTotalPri').value;
         var priQu = $js('priQu').value;
         var stdUnit = $js('stdUnit').value;
         var stdUnitPri = $js('stdUnitPri').value;
@@ -275,6 +278,10 @@
             $('#notification').html("<h6>Primary Quality Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
+        else if (priTotalPri == "") {
+            $('#notification').html("<h6>Primary Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
         else if (stdUnit == "") {
             $('#notification').html("<h6>Standard Unit Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
@@ -288,7 +295,7 @@
             return;
         }
         else if (totalPri == "") {
-            $('#notification').html("<h6>Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            $('#notification').html("<h6>Standard Total Price Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
         
@@ -300,6 +307,7 @@
             priUnit: priUnit,
             priUnitPri: commaToNum(priUnitPri),
             priQu: commaToNum(priQu),
+            priTotalPri: commaToNum(priTotalPri),
             stdUnit: stdUnit,
             stdUnitPri: commaToNum(stdUnitPri),
             stdQu: commaToNum(stdQu),
