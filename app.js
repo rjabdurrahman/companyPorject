@@ -150,7 +150,7 @@ app.config(function ($routeProvider) {
     .when('/exportchat', {
       templateUrl: 'pages/export_chart.html',
       controller: 'ChatExpoCntlr',
-      activetab: 'user'
+      activetab: 'chart'
     })
     .otherwise({ redirectTo: '/' });
 });
@@ -426,4 +426,8 @@ app.controller('ChatExpoCntlr', function ($scope, $firebaseArray) {
   $scope.byProducts = $firebaseArray(getRef('buyProducts'));
   $scope.loans = $firebaseArray(getRef('paddyDry'));
   $scope.costCenters = $firebaseArray(getRef('costCenters'));
+  $scope.load = false;
+  $scope.finGoods.$loaded().then(function () {
+    $scope.load = true;
+  });
 });

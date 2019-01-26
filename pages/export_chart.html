@@ -1,7 +1,11 @@
 <div class="overlay-container">
     <div class="overlay">
         <div style="display: flex; justify-content: center; margin-top: calc(50vh - 59px); font-weight: bold; font-size: 22px;">
-            <button class="w3-btn w3-white" onclick="exportAll()">Export In Excel</button>
+            <button ng-if="load" class="w3-btn w3-white" onclick="exportAll()">Export In Excel</button>
+            <button ng-if="!load" class="w3-btn w3-white" style="cursor: wait;">
+                <img src="img/loader.gif" alt="Loading..." style="height: 35px; width: 35px;"><br>
+                <span>Loading Data...</span>
+            </button>
         </div>
         <!-- Tables -->
         <div id="tableList" class="margin-auto chart-box">
