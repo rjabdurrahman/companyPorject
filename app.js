@@ -426,8 +426,14 @@ app.controller('ChatExpoCntlr', function ($scope, $firebaseArray) {
   $scope.byProducts = $firebaseArray(getRef('buyProducts'));
   $scope.loans = $firebaseArray(getRef('paddyDry'));
   $scope.costCenters = $firebaseArray(getRef('costCenters'));
+  $scope.comAccounts = $firebaseArray(getRef('accounts'));
+  $scope.getAccArr = function (fl) {
+    return $scope.comAccounts.filter(function (el) {
+      return el.flag == fl;
+    });
+  }
   $scope.load = false;
-  $scope.finGoods.$loaded().then(function () {
+  $scope.comAccounts.$loaded().then(function () {
     $scope.load = true;
   });
 });
