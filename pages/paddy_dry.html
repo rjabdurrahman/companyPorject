@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <p class="clearfix">
-                            <button id="paddyDrySubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
+                            <button id="loanSubmit" class="w3-btn main-bg-color" style="float: right;">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -121,8 +121,8 @@
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
-    $js('paddyDrySubmit').addEventListener('click', function () {
-        submitBankBtn();
+    $js('loanSubmit').addEventListener('click', function () {
+        submitLoanBtn();
     });
     /// edit data show in field start........................
 
@@ -131,22 +131,23 @@
     var dbID = "";
 
     function editView(ID) {
-        $js('submitBankBtn').innerHTML = 'Update';
+        $js('loanSubmit').innerHTML = 'Update';
         document.getElementById('id01').style.display = 'block';
         var id = ID.slice(0, -1);
         dbID = ID.slice(0, -1);
         editTriget = 1;
         console.log(id, editTriget);
-        getRef('banks/' + id).on('value', function (snapshot) {
+        getRef('paddyDry/' + id).on('value', function (snapshot) {
             let dbData = snapshot.val();
             console.log(dbData);
 
             dbDataCode = dbData.code;   ///   from database code grip to control notification...............
 
-            $js('bankCode').value = dbData.code;
-            $js('bankName').value = dbData.name;
+            $js('code').value = dbData.code;
+            $js('loanNo').value = dbData.no;
+            $js('loanType').value = dbData.type;
+            $js('loanNature').value = dbData.nature;
             $js('begBal').value = numToComma(dbData.balance);
-            $js('bAccNo').value = dbData.accno;
 
         });
     }
@@ -167,37 +168,43 @@
         });
     });
     /// edit data show in field end........................
-    function submitBankBtn() {
-        var bankCode = $js('bankCode').value;
-        var bankName = $js('bankName').value;
+    function submitLoanBtn() {
+        var code = $js('code').value;
+        var loanNo = $js('loanNo').value;
+        var loanType = $js('loanType').value;
+        var loanNature = $js('loanNature').value;
         var begBal = $js('begBal').value;
-        var bAccNo = $js('bAccNo').value;
-        if (bankCode == "") {
+        if (code == "") {
             $('#notification').html("<h6>Code Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        else if (bankName == "") {
-            $('#notification').html("<h6>Name Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+        else if (loanNo == "") {
+            $('#notification').html("<h6>Loan No Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (loanType == "") {
+            $('#notification').html("<h6>Loan Type Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            return;
+        }
+        else if (loanNature == "") {
+            $('#notification').html("<h6>Loan Nature Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
         else if (begBal == "") {
             $('#notification').html("<h6>Beginning Balance Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             return;
         }
-        else if (bAccNo == "") {
-            $('#notification').html("<h6>Account Number Empty</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            return;
-        }
-        var bank = {
-            code: bankCode,
-            name: bankName,
+        var loan = {
+            code: code,
+            no: loanNo,
+            type: loanType,
+            nature: loanNature,
             balance: commaToNum(begBal),
-            accno: bAccNo,
-            actype: 1
+            actype: 2
         };
-        if (editTriget == 1 && dbDataCode == bankCode) {
+        if (editTriget == 1 && dbDataCode == code) {
             editTriget = 0;
-            db.child('banks/' + dbID).update(bank, function (error) {
+            db.child('paddyDry/' + dbID).update(loan, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
@@ -208,17 +215,17 @@
                 }
             });
         }
-        else if (editTriget == 1 && dbDataCode != bankCode) {
+        else if (editTriget == 1 && dbDataCode != code) {
 
-            for (i = 0; i < dbBanks.length; i++) {
-                if (bankCode == dbBanks[i].code) {
+            for (i = 0; i < dbPaddyDrys.length; i++) {
+                if (code == dbPaddyDrys[i].code) {
                     $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                    $js('bankCode').focus();
+                    $js('code').focus();
                     return;
                 }
             }
             editTriget = 0;
-            db.child('banks/' + dbID).update(bank, function (error) {
+            db.child('paddyDry/' + dbID).update(bank, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
@@ -230,14 +237,14 @@
             });
         } else {
             editTriget = 0;
-            for (i = 0; i < dbBanks.length; i++) {
-                if (bankCode == dbBanks[i].code) {
+            for (i = 0; i < dbPaddyDrys.length; i++) {
+                if (code == dbPaddyDrys[i].code) {
                     $('#notification').html("<h6>Code Already Used in Another Account!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-                    $js('bankCode').focus();
+                    $js('code').focus();
                     return;
                 }
             }
-            db.child('banks').push(bank, function (error) {
+            db.child('paddyDry').push(bank, function (error) {
                 if (error) {
                     $('#notification').html("<h6>Something Went Wrong in Database!</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
                 } else {
@@ -268,7 +275,7 @@
     }
 
     function clearFields() {
-        clearer(bankCode, bankName, bAccNo, begBal);
+        clearer(code, bankName, bAccNo, begBal);
     }
 
     function printBank() {
