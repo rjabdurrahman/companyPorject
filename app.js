@@ -419,9 +419,10 @@ app.controller('ChatExpoCntlr', function ($scope, $firebaseArray) {
   $scope.companyHeads = $firebaseArray(getRef('companyHeads'));
   $scope.vechicles = $firebaseArray(getRef('truckTrackors'));
   $scope.employees = $firebaseArray(getRef('employees'));
-  // $scope.banks = $firebaseArray(getRef('receivables'));
-  // $scope.contractors = $firebaseArray(getRef('receivables'));
-  // $scope.rawMaterials = $firebaseArray(getRef('receivables'));
-  // $scope.finGoods = $firebaseArray(getRef('receivables'));
-  // $scope.byProducts = $firebaseArray(getRef('receivables'));
+  $scope.banks = $firebaseArray(getRef('banks'));
+  $scope.contractors = $firebaseArray(getRef('contractors'));
+  $scope.rawMaterials = $firebaseArray(getRef('paddyRaw'));
+  $scope.finGoods = $firebaseArray(getRef('rice'));
+  $scope.byProducts = $firebaseArray(getRef('buyProducts'));
+  $scope.loans = $firebaseArray(getRef('paddyDry'));
 });

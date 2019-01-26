@@ -1,124 +1,49 @@
 <div class="overlay-container">
     <div class="overlay">
-        <div class="margin-auto chart-box">
-            <section class="clearfix">
-                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
-                <button id="plusBtn" onclick="document.getElementById('id01').style.display='block';$js('submitBankBtn').innerHTML = 'Submit';$js('bankCode').focus();"
-                    class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
-                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
-                                                <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
-            </section>
-            <div class="w3-card-4 table-container">
-                <div class="ch-table-content">
-                    <div class="w3-responsive">
-                        <table class="w3-table-all chart-tables">
-                            <thead>
-                                <tr class="main-bg-color">
-                                    <th>ID</th>
-                                    <th>Code</th>
-                                    <th>Name</th>
-                                    <th>Account No</th>
-                                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="bank in comBanks | orderBy : 'code' track by $index">
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{bank.code}}</td>
-                                    <td>{{bank.name}}</td>
-                                    <td>{{bank.accno}}</td>
-                                    <td name="num" ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(bank.balance)}}</td>
-                                    <td>
-                                        <button id="{{bank.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
-                                        <button id="{{bank.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
-                                            style="display: none;">Update</button>
-                                    </td>
-                                    <td>
-                                        <button id="{{bank.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div ng-show="!load" class="w3-pale-blue" style="padding: 12px; text-align: center;"><img src="img/loader.gif"
-                                alt="Loading..." style="height: 25px; width: 25px;"></div>
-                        <div id="nodata" ng-show="nodata" class="w3-pale-blue" style="padding: 12px; text-align: center;">No
-                            Data Found!</div>
-                    </div>
-                </div>
-            </div>
+        <div style="display: flex; justify-content: center; margin-top: calc(50vh - 39px);">
+            <button class="w3-btn w3-white">Export In Excel</button>
         </div>
-        <!-- Confirmation diallog start -->
-        <div id="confirmDel" class="w3-modal">
-            <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
-                <header class="w3-container main-bg-color div-title">
-                    <span onclick="$js('confirmDel').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <h2>Confirm Delete?</h2>
-                </header>
-                <div class="w3-container">
-                    <p>Deleting this account will not remove name from journal account name.</p>
-                    <p>And no more suggestion is available for this account code until you create new one.</p>
-                </div>
-                <footer class="w3-container w3-white">
-                    <p class="flex" style="justify-content: center;">
-                        <button onclick="rmItem(onDel);" class="w3-btn w3-red" style="margin-left: 20px; margin-right: 20px;">Confirm
-                            Delete</button>
-                        <button onclick="$js('confirmDel').style.display='none'" class="w3-btn main-bg-color" style="margin-left: 20px; margin-right: 20px;">Cancel</button>
-                    </p>
-                </footer>
-            </div>
-        </div>
-        <!-- Confirmation diallog end -->
-        <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-animate-zoom" style="background-color: transparent;">
-                <div class="div-box w3-light-gray w3-card-4 margin-auto">
-                    <div class="w3-container main-bg-color div-title">
-                        <span onclick="exitModel();clearFields();" class="w3-button w3-display-topright">&times;</span>
-                        <h2>{{title}}</h2>
-                    </div>
-                    <div class="w3-container">
-                        <form id="form1">
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:150px; padding: 10px;">
-                                    <label class="w3-medium">Code</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bankCode" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:150px; padding: 10px;">
-                                    <label class="w3-medium">Bank Name</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bankName" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:150px; padding: 10px;">
-                                    <label class="w3-medium">Account No</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="bAccNo" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-col" style="width:150px; padding: 10px;">
-                                    <label class="w3-medium">Beginning Balance</label>
-                                </div>
-                                <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal" required>
-                                </div>
-                            </div>
-                            <p class="clearfix">
-                                <button id="submitBankBtn" class="w3-btn main-bg-color" style="float: right;">Submit</button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <!-- Tables -->
+        <div id="tableList" class="margin-auto chart-box">
+            <!-- Debitors -->
+            <!-- Creditors -->
+            <!-- Company Heads -->
+            <!-- Vehicles -->
+            <!-- Employees -->
+            <!-- Banks -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Account No</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="bank in banks | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{bank.code}}</td>
+                        <td>{{bank.name}}</td>
+                        <td>{{bank.accno}}</td>
+                        <td name="num" ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(bank.balance)}}</td>
+                        <td>
+                            <button id="{{bank.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{bank.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{bank.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <!-- End of the Journy -->
     </div>
 </div>
+<script>
+    // $("#tableList").hide();
+</script>
