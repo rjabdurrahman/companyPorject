@@ -16,7 +16,10 @@
                                 <tr class="main-bg-color">
                                     <th>ID</th>
                                     <th>Code</th>
-                                    <th>Name</th>
+                                    <th>Loan No.</th>
+                                    <th>Loan Type</th>
+                                    <th>Loan Nature</th>
+                                    <th>Beginning Balance</th>
                                     <th style="width: 120px;">Edit</th>
                                     <th style="width: 130px;">Delete</th>
                                 </tr>
@@ -25,6 +28,9 @@
                                 <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
                                     <td>{{$index + 1}}</td>
                                     <td>{{paddyDry.code}}</td>
+                                    <td>{{paddyDry.name}}</td>
+                                    <td>{{paddyDry.name}}</td>
+                                    <td>{{paddyDry.name}}</td>
                                     <td>{{paddyDry.name}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
@@ -58,15 +64,39 @@
                                 <label class="w3-medium">Code</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="paddyDryCode">
+                                <input class="w3-input w3-border" type="text" name="" id="code">
                             </div>
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-col" style="width:150px; padding: 10px;">
-                                <label class="w3-medium">Name</label>
+                                <label class="w3-medium">Loan No.</label>
                             </div>
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="text" name="" id="paddyDryName">
+                                <input class="w3-input w3-border" type="text" name="" id="loanNo">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Loan Type</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="loanType">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Loan Nature</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="loanNature">
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:150px; padding: 10px;">
+                                <label class="w3-medium">Beginning balance</label>
+                            </div>
+                            <div class="w3-rest">
+                                <input class="w3-input w3-border" type="text" name="" id="begBal">
                             </div>
                         </div>
                         <p class="clearfix">
