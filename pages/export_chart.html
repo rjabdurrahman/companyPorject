@@ -6,10 +6,178 @@
         <!-- Tables -->
         <div id="bank" class="margin-auto chart-box">
             <!-- Debitors -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Party Code</th>
+                        <th>Party Name</th>
+                        <th>Party Type</th>
+                        <th>Propritor Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{rec.code}}</td>
+                        <td>
+                            <a href="#debitorledger?code={{rec.code}}&name={{rec.name}}&email={{rec.email}}" style="color: blue; cursor: pointer;">{{rec.name}}</a>
+                        </td>
+                        <td>{{rec.cusType}}</td>
+                        <td>{{rec.recProprietor}}</td>
+                        <td>{{rec.mobile}}</td>
+                        <td>{{rec.email}}</td>
+                        <td>{{rec.address}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
+                        <td>
+                            <button id="{{rec.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <!-- <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
+                                style="display: none;">Update</button> -->
+                        </td>
+                        <td>
+                            <button id="{{rec.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Creditors -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Party Code</th>
+                        <th>Party Name</th>
+                        <th>Party Type</th>
+                        <th>Propritor Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="pay in comPayables | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{pay.code}}</td>
+                        <td>
+                            <a href="#creditorledger?code={{pay.code}}&name={{pay.name}}&email={{pay.email}}" style="color: blue; cursor: pointer;">{{pay.name}}</a>
+                        </td>
+                        <td>{{pay.partyType}}</td>
+                        <td>{{pay.proprietor}}</td>
+                        <td>{{pay.mobile}}</td>
+                        <td>{{pay.email}}</td>
+                        <td>{{pay.address}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(pay.balance)}}</td>
+                        <td>
+                            <button id="{{pay.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{pay.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{pay.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Company Heads -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>A/C Code</th>
+                        <th>Party Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ch in comCh | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{ch.code}}</td>
+                        <td>{{ch.name}}</td>
+                        <td>
+                            <button id="{{ch.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{ch.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{ch.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Vehicles -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Vehicle Type</th>
+                        <th>Vehicle No</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Tr in comTrs | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{Tr.code}}</td>
+                        <td>{{Tr.type}}</td>
+                        <td>{{Tr.name}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(Tr.balance)}}</td>
+                        <td>
+                            <button id="{{Tr.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{Tr.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{Tr.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Employees -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Employee Type</th>
+                        <th>Posting</th>
+                        <th>Designation</th>
+                        <th>Salary</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in comEmps | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{emp.code}}</td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.type}}</td>
+                        <td>{{emp.post}}</td>
+                        <td>{{emp.des}}</td>
+                        <td>{{comNum(emp.salary)}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(emp.balance)}}</td>
+                        <td>
+                            <button id="{{emp.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{emp.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{emp.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Banks -->
             <table class="w3-table-all chart-tables">
                 <thead>
@@ -32,10 +200,205 @@
                 </tbody>
             </table>
             <!-- Contractors -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Contract</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="con in comContractors | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{con.code}}</td>
+                        <td>{{con.name}}</td>
+                        <td>{{con.contact}}</td>
+                        <td>
+                            <button id="{{con.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{con.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{con.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Raw Materials -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Primary Unit</th>
+                        <th>Primary Quantity</th>
+                        <th>Primary Unit Price</th>
+                        <th>Primary Total Price</th>
+                        <th>stad Unit</th>
+                        <th>Stand Quantity</th>
+                        <th>Stand Unit Price</th>
+                        <th>Standard Total Price</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="paddyRaw in comPaddyRaws | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{paddyRaw.code}}</td>
+                        <td>{{paddyRaw.name}}</td>
+                        <td>{{paddyRaw.priUnit}}</td>
+                        <td>{{comNum(paddyRaw.priQu)}}</td>
+                        <td>{{comNum(paddyRaw.priUnitPri)}}</td>
+                        <td>{{comNum(paddyRaw.priTotalPri)}}</td>
+                        <td>{{paddyRaw.stdUnit}}</td>
+                        <td>{{comNum(paddyRaw.stdQu)}}</td>
+                        <td>{{comNum(paddyRaw.stdUnitPri)}}</td>
+                        <td>{{comNum(paddyRaw.totalPri)}}</td>
+                        <td>
+                            <button id="{{paddyRaw.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{paddyRaw.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{paddyRaw.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Finished Goods -->
-            <!-- Byp Products -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Std unit</th>
+                        <th>Pack Size</th>
+                        <th>Number Of pack</th>
+                        <th>Total quantity</th>
+                        <th>Std unit price</th>
+                        <th>Total price</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="rice in comRices | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{rice.code}}</td>
+                        <td>{{rice.name}}</td>
+                        <td>{{rice.stdUnit}}</td>
+                        <td>{{comNum (rice.packSize)}}</td>
+                        <td>{{comNum (rice.noPack)}}</td>
+                        <td>{{comNum (rice.totalQu)}}</td>
+                        <td>{{comNum (rice.stdUnitPri)}}</td>
+                        <td>{{comNum (rice.totalPri)}}</td>
+                        <td>
+                            <button id="{{rice.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{rice.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{rice.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- By Products -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Std unit</th>
+                        <th>Pack Size</th>
+                        <th>Number Of pack</th>
+                        <th>Total quantity</th>
+                        <th>Std unit price</th>
+                        <th>Total price</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="byProduct in comByProducts | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{byProduct.code}}</td>
+                        <td>{{byProduct.name}}</td>
+                        <td>{{byProduct.stdUnit}}</td>
+                        <td>{{comNum (byProduct.packSize)}}</td>
+                        <td>{{comNum (byProduct.noPack)}}</td>
+                        <td>{{comNum (byProduct.totalQu)}}</td>
+                        <td>{{comNum (byProduct.stdUnitPri)}}</td>
+                        <td>{{comNum (byProduct.totalPri)}}</td>
+                        <td>
+                            <button id="{{byProduct.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                            <button id="{{byProduct.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue" style="display: none;">Update</button>
+                        </td>
+                        <td>
+                            <button id="{{byProduct.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- Loans -->
+            table class="w3-table-all chart-tables">
+            <thead>
+                <tr class="main-bg-color">
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Loan No.</th>
+                    <th>Loan Type</th>
+                    <th>Loan Nature</th>
+                    <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                    <th style="width: 120px;">Edit</th>
+                    <th style="width: 130px;">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paddyDry in comPaddyDrys track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{paddyDry.code}}</td>
+                    <td>{{paddyDry.name}}</td>
+                    <td>{{paddyDry.type}}</td>
+                    <td>{{paddyDry.nature}}</td>
+                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
+                    <td>
+                        <button id="{{paddyDry.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                    </td>
+                    <td>
+                        <button id="{{paddyDry.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <!-- cost centre -->
+            <table class="w3-table-all chart-tables">
+                <thead>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Cost Center</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="costCenter in comCostCenters | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{costCenter.$value}}</td>
+                        <td>
+                            <button id="{{costCenter.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
+                        </td>
+                        <td>
+                            <button id="{{costCenter.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <!-- End of the Journy -->
     </div>
