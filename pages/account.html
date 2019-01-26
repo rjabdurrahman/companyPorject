@@ -634,20 +634,20 @@
                                         <textarea id="accTxt" class="w3-input w3-border" name="" rows="5" required></textarea>
                                     </div>
                                 </div>
-                                <div class="w3-row w3-section" id="begBalField">
-                                    <div class="w3-col" style="width:130px; padding: 0px 10px;">
-                                        <label class="w3-medium">Beginning Balance</label>
-                                    </div>
-                                    <div class="w3-rest">
-                                        <input id="begBal" class="w3-input w3-border commanum" required>
-                                    </div>
-                                </div>
                                 <div id="rateArea" class="w3-row w3-section" id="begBalField">
                                     <div class="w3-col" style="width:130px; padding: 0px 10px;">
                                         <label class="w3-medium">Depreciation Rate</label>
                                     </div>
                                     <div class="w3-rest">
-                                        <input id="rate" class="w3-input w3-border commanum" required>
+                                        <input type="number" id="rate" min="0" max="100" class="w3-input w3-border"></input>
+                                    </div>
+                                </div>
+                                <div class="w3-row w3-section" id="begBalField">
+                                    <div class="w3-col" style="width:130px; padding: 0px 10px;">
+                                        <label class="w3-medium">Beginning Balance</label>
+                                    </div>
+                                    <div class="w3-rest">
+                                        <input id="begBal" class="w3-input w3-border commanum"></input>
                                     </div>
                                 </div>
                                 <p class="clearfix">
@@ -667,6 +667,14 @@
                 $('#addAccount').click();
             }
         });
+        $js('rate').onkeyup = function (event) {
+            if (parseFloat(event.target.value) > 100) {
+                notify("Depreciation Rate is Over 100", 2);
+                // $js('submitAccBtn').disabled = true;
+            }
+            // else
+            // $js('submitAccBtn').disabled = false;
+        }
         $js("form1").addEventListener("submit", function (event) {
             event.preventDefault();
         });
@@ -674,9 +682,6 @@
             submitAccBtn();
         });
         $('#rateArea').hide();
-        $js("rate").addEventListener('keyup', function(){
-            $print('is alright');
-        });
         // Enter Hit End
         $('#addAccount').hide();
         $('.g-toggle+div').hide();
@@ -801,6 +806,7 @@
                 var codeShortForm = codeSp[0];
                 var firstCode = codeSp[1];
                 var secondCode = '';
+                $('#rateArea').hide();
                 if (codeSp.length == 3) {
                     secondCode = codeSp[2];
                 }
@@ -840,6 +846,8 @@
                     $js('accCodeFirst').value = firstCode;
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
+                    $('#rateArea').show();
+                    $js('rate').value = parseFloat(dbData.rate);
 
                 }
                 else if (dbData.nature == 'Current Liability') {
@@ -995,8 +1003,9 @@
                 notify('Beginning Balance Empty!', 2);
                 return;
             }
-            else if (accCodeInit == 'NCA' && rate == "") {
-                notify('Depreciation Rate Empty!', 2);
+            else if ((accCodeInit == 'NCA' && rate == "") || rate < 0 || rate > 100) {
+                notify('Depreciation Rate Empty or Wrong!', 2);
+                $js('rate').focus();
                 return;
             }
             var accNumber = accCodeInit + "-" + accCodeFirst;
@@ -1020,7 +1029,7 @@
             // Account Type End
 
             // D Rate
-            if(accCodeInit == 'NCA'){
+            if (accCodeInit == 'NCA') {
                 account['rate'] = rate;
             }
             // D Rate End
