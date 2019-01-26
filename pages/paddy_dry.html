@@ -31,7 +31,7 @@
                                     <td>{{paddyDry.no}}</td>
                                     <td>{{paddyDry.type}}</td>
                                     <td>{{paddyDry.nature}}</td>
-                                    <td>{{paddyDry.balance}}</td>
+                                    <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(paddyDry.balance)}}</td>
                                     <td>
                                         <button id="{{comAcc.$id}}e" onclick="editItem(event)" class="w3-btn w3-blue">Edit</button>
                                         <button id="{{comAcc.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
@@ -97,7 +97,7 @@
                                     <label class="w3-medium">Beginning balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border" type="text" name="" id="begBal">
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal">
                                 </div>
                             </div>
                             <p class="clearfix">
