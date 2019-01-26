@@ -754,39 +754,39 @@
                 $('#begBalField').hide();
                 $('#rateArea').hide();
             }
-            else if (removeNewlines(this.textContent) == 'Withdrawals') {
-                $js('accNature').selectedIndex = 8;
-                $js('natureCodeFill').value = 'WD';
-                $('#begBalField').hide();
-                $('#rateArea').hide();
-            }
-            else if (removeNewlines(this.textContent) == 'Contra Revenues') {
-                $js('accNature').selectedIndex = 9;
-                $js('natureCodeFill').value = 'SD';
-                $('#begBalField').hide();
-                $('#rateArea').hide();
-            }
             else if (removeNewlines(this.textContent) == 'Cost of Goods Sold') {
-                $js('accNature').selectedIndex = 10;
+                $js('accNature').selectedIndex = 8;
                 $js('natureCodeFill').value = 'COGS';
                 $('#begBalField').hide();
                 $('#rateArea').hide();
             }
-            else if (removeNewlines(this.textContent) == 'Production') {
-                $js('accNature').selectedIndex = 11;
-                $js('natureCodeFill').value = 'WIP';
-                $('#begBalField').show();
-                $('#rateArea').hide();
-            }
             else if (removeNewlines(this.textContent) == 'Contras') {
-                $js('accNature').selectedIndex = 12;
+                $js('accNature').selectedIndex = 9;
                 $js('natureCodeFill').value = 'CN';
                 $('#begBalField').show();
                 $('#rateArea').hide();
             }
+            else if (removeNewlines(this.textContent) == 'Production') {
+                $js('accNature').selectedIndex = 10;
+                $js('natureCodeFill').value = 'WIP';
+                $('#begBalField').show();
+                $('#rateArea').hide();
+            }
+            else if (removeNewlines(this.textContent) == 'Withdrawals') {
+                $js('accNature').selectedIndex = 11;
+                $js('natureCodeFill').value = 'WD';
+                $('#begBalField').hide();
+                $('#rateArea').hide();
+            }
             else if (removeNewlines(this.textContent) == 'Contra Expenses') {
-                $js('accNature').selectedIndex = 13;
+                $js('accNature').selectedIndex = 12;
                 $js('natureCodeFill').value = 'PD';
+                $('#begBalField').hide();
+                $('#rateArea').hide();
+            }
+            else if (removeNewlines(this.textContent) == 'Contra Revenues') {
+                $js('accNature').selectedIndex = 13;
+                $js('natureCodeFill').value = 'SD';
                 $('#begBalField').hide();
                 $('#rateArea').hide();
             }
@@ -900,49 +900,48 @@
                     $js('accTxt').value = dbData.accText;
 
                 }
-                else if (dbData.nature == 'Withdrawal') {
-                    $js('accNature').selectedIndex = 8;
-                    $js('natureCodeFill').value = 'WD';
-                    $js('accCodeFirst').value = firstCode;
-                    $js('accCodeSecond').value = secondCode;
-                    $js('accTxt').value = dbData.accText;
-
-                }
-                else if (dbData.nature == 'Contra Revenue') {
-                    $js('accNature').selectedIndex = 9;
-                    $js('natureCodeFill').value = 'SD';
-                    $js('accCodeFirst').value = firstCode;
-                    $js('accCodeSecond').value = secondCode;
-                    $js('accTxt').value = dbData.accText;
-
-                }
                 else if (dbData.nature == 'Cost of Goods Sold') {
-                    $js('accNature').selectedIndex = 10;
+                    $js('accNature').selectedIndex = 8;
                     $js('natureCodeFill').value = 'COGS';
                     $js('accCodeFirst').value = firstCode;
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
 
                 }
-                else if (dbData.nature == 'Production') {
-                    $js('accNature').selectedIndex = 11;
-                    $js('natureCodeFill').value = 'WIP';
-                    $js('accCodeFirst').value = firstCode;
-                    $js('accCodeSecond').value = secondCode;
-                    $js('accTxt').value = dbData.accText;
-
-                }
                 else if (dbData.nature == 'Contra') {
-                    $js('accNature').selectedIndex = 12;
+                    $js('accNature').selectedIndex = 9;
                     $js('natureCodeFill').value = 'CN';
                     $js('accCodeFirst').value = firstCode;
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
 
                 }
+                else if (dbData.nature == 'Production') {
+                    $js('accNature').selectedIndex = 10;
+                    $js('natureCodeFill').value = 'WIP';
+                    $js('accCodeFirst').value = firstCode;
+                    $js('accCodeSecond').value = secondCode;
+                    $js('accTxt').value = dbData.accText;
+                }
+                else if (dbData.nature == 'Withdrawal') {
+                    $js('accNature').selectedIndex = 11;
+                    $js('natureCodeFill').value = 'WD';
+                    $js('accCodeFirst').value = firstCode;
+                    $js('accCodeSecond').value = secondCode;
+                    $js('accTxt').value = dbData.accText;
+
+                }
                 else if (dbData.nature == 'Contra Expense') {
-                    $js('accNature').selectedIndex = 13;
+                    $js('accNature').selectedIndex = 12;
                     $js('natureCodeFill').value = 'PD';
+                    $js('accCodeFirst').value = firstCode;
+                    $js('accCodeSecond').value = secondCode;
+                    $js('accTxt').value = dbData.accText;
+
+                }
+                else if (dbData.nature == 'Contra Revenue') {
+                    $js('accNature').selectedIndex = 13;
+                    $js('natureCodeFill').value = 'SD';
                     $js('accCodeFirst').value = firstCode;
                     $js('accCodeSecond').value = secondCode;
                     $js('accTxt').value = dbData.accText;
