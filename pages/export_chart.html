@@ -4,7 +4,7 @@
             <button class="w3-btn w3-white" onclick="exportAll()">Export In Excel</button>
         </div>
         <!-- Tables -->
-        <div id="bank" class="margin-auto chart-box">
+        <div id="tableList" class="margin-auto chart-box">
             <!-- Debitors -->
             <table id="debitors" class="w3-table-all chart-tables">
                 <thead>
@@ -306,20 +306,21 @@
     </div>
 </div>
 <script>
-    // $("#tableList").hide();
+    $("#tableList").show();
     function exportAll() {
         $print("print");
-        var debitorS = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var creditors = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var companyHeads = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var vechicles = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var employees = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var banks = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var contractors = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var rawMaterials = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var finGoods = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var byProducts = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
-        var loans = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var debitors = XLSX.utils.table_to_sheet($js('debitors'), { cellDates: true });
+        // var creditors = XLSX.utils.table_to_sheet($js('creditors'), { cellDates: true });
+        // var companyHeads = XLSX.utils.table_to_sheet($js('companyHeads'), { cellDates: true });
+        // var vechicles = XLSX.utils.table_to_sheet($js('vechicles'), { cellDates: true });
+        // var employees = XLSX.utils.table_to_sheet($js('employees'), { cellDates: true });
+        // var banks = XLSX.utils.table_to_sheet($js('banks'), { cellDates: true });
+        // var contractors = XLSX.utils.table_to_sheet($js('contractors'), { cellDates: true });
+        // var rawMaterials = XLSX.utils.table_to_sheet($js('rawMaterials'), { cellDates: true });
+        // var finGoods = XLSX.utils.table_to_sheet($js('finGoods'), { cellDates: true });
+        // var byProducts = XLSX.utils.table_to_sheet($js('byProducts'), { cellDates: true });
+        // var loans = XLSX.utils.table_to_sheet($js('loans'), { cellDates: true });
+        // var costCenters = XLSX.utils.table_to_sheet($js('costCenters'), { cellDates: true });
         // var wscols = [
         //     { wch: 4 },
         //     { wch: 12 },
@@ -336,7 +337,7 @@
         // ];
         // ws['!cols'] = wscols;
         // ws['!rows'] = wsrows;
-        XLSX.utils.book_append_sheet(wb, ws, 'Banks');
+        XLSX.utils.book_append_sheet(wb, debitors, 'Banks');
         var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
         function s2ab(s) {
             var buf = new ArrayBuffer(s.length);
