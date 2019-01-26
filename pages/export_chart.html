@@ -307,7 +307,17 @@
     // $("#tableList").hide();
     function exportAll() {
         $print("print");
-        var ws = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var debitorS = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var creditors = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var companyHeads = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var vechicles = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var employees = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var banks = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var contractors = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var rawMaterials = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var finGoods = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var byProducts = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
+        var loans = XLSX.utils.table_to_sheet($js('bank'), { cellDates: true });
         // var wscols = [
         //     { wch: 4 },
         //     { wch: 12 },
