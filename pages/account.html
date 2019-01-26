@@ -676,12 +676,10 @@
             event.target.value = event.target.value.replace(/\D/g, "");
         }
         $js('rate').onkeyup = function (event) {
+            event.target.value = event.target.value.replace(/\D/g, "")
             if (parseFloat(event.target.value) > 100) {
                 notify("Depreciation Rate is Over 100", 2);
-                // $js('submitAccBtn').disabled = true;
             }
-            // else
-            // $js('submitAccBtn').disabled = false;
         }
         $js("form1").addEventListener("submit", function (event) {
             event.preventDefault();
