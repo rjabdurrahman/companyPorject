@@ -257,7 +257,7 @@ app.controller('PaddyRawCntlr', function ($scope, $firebaseArray) {
   });
 });
 app.controller('PaddyDryCntlr', function ($scope, $firebaseArray) {
-  $scope.title = "Paddy Dry";
+  $scope.title = "Loan";
   $scope.comPaddyDrys = lsExGJInit('comPaddyDrys', []);
   var ref = firebase.database().ref().child('paddyDry');
   dbPaddyDrys = $scope.comPaddyDrys = $firebaseArray(ref);

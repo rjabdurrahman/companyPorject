@@ -674,6 +674,9 @@
             submitAccBtn();
         });
         $('#rateArea').hide();
+        $js("rate").addEventListener('keyup', function(){
+            $print('is alright');
+        });
         // Enter Hit End
         $('#addAccount').hide();
         $('.g-toggle+div').hide();
