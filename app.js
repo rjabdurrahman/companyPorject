@@ -149,7 +149,7 @@ app.config(function ($routeProvider) {
     })
     .when('/exportchat', {
       templateUrl: 'pages/export_chart.html',
-      controller: 'RegCntlr',
+      controller: 'ChatExpoCntlr',
       activetab: 'user'
     })
     .otherwise({ redirectTo: '/' });
@@ -218,7 +218,6 @@ app.controller('TruckTractorCntlr', function ($scope, $firebaseArray) {
 });
 app.controller('EmployeesCntlr', function ($scope, $firebaseArray) {
   $scope.title = "Employee";
-  $scope.comEmps = lsExGJInit('comEmps', []);
   var ref = firebase.database().ref().child('employees');
   dbEmps = $scope.comEmps = $firebaseArray(ref);
   $scope.comEmps.$loaded().then(function () {
@@ -411,4 +410,18 @@ app.controller('RegCntlr', function ($scope, $firebaseArray) {
     return email.replace('@gmail.com', '');
   }
   $scope.$applyAsync();
+});
+// Chart Export Controller
+app.controller('ChatExpoCntlr', function ($scope, $firebaseArray) {
+  $scope.title = "Export in Excel";
+  $scope.debitors = $firebaseArray(getRef('receivables'));
+  $scope.creditors = $firebaseArray(getRef('payables'));
+  $scope.companyHeads = $firebaseArray(getRef('companyHeads'));
+  $scope.vechicles = $firebaseArray(getRef('truckTrackors'));
+  $scope.employees = $firebaseArray(getRef('employees'));
+  // $scope.banks = $firebaseArray(getRef('receivables'));
+  // $scope.contractors = $firebaseArray(getRef('receivables'));
+  // $scope.rawMaterials = $firebaseArray(getRef('receivables'));
+  // $scope.finGoods = $firebaseArray(getRef('receivables'));
+  // $scope.byProducts = $firebaseArray(getRef('receivables'));
 });
