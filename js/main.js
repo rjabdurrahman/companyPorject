@@ -295,3 +295,37 @@ function numToComma(x) {
 function commaToNum(x) {
     return Number(x.split(",").join(""));
 }
+// Comma with Minus Value
+function commaNumMakerMinus(event) {
+    // skip for arrow keys dot and minus
+    if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
+    if (event.which == 173 && !event.target.value.includes("-")) return;
+    let min = false;
+    if (event.target.value.includes("-")) {
+        min = true;
+    }
+    if (event.target.value.includes(".")) {
+        let str = event.target.value.split('.');
+        if (min) {
+            event.target.value = '-' + str[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + str[1].replace(/\D/g, "");
+            return;
+        }
+        else {
+            event.target.value = str[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + str[1].replace(/\D/g, "");
+            return;
+        }
+    }
+    // format number
+    $(this).val(function (index, value) {
+        if (min) {
+            return "-" + value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        else {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    });
+}
