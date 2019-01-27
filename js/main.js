@@ -295,6 +295,25 @@ function numToComma(x) {
 function commaToNum(x) {
     return Number(x.split(",").join(""));
 }
+// CommaNumMaker
+function commaNumMaker(event) {
+    // skip for arrow keys
+    if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
+
+    if (event.target.value.includes(".")) {
+        let str = event.target.value.split('.');
+        event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
+        return;
+    }
+
+    // format number
+    $(this).val(function (index, value) {
+        return value
+            .replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    });
+}
+
 // Comma with Minus Value
 function commaNumMakerMinus(event) {
     // skip for arrow keys dot and minus
