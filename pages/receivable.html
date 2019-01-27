@@ -130,7 +130,8 @@
                                     <label class="w3-medium">Mobile No</label>
                                 </div>
                                 <div class="w3-rest" style="position: relative;">
-                                    <input class="w3-input w3-border phone" type="text" name="" id="recMObileNo" required>
+                                    <input class="w3-input w3-border phone" type="text" name="" id="recMObileNo"
+                                        required>
                                     <span class="phone">+8801</span>
                                 </div>
                             </div>
@@ -190,19 +191,36 @@
     /// edit data show in field start........................
 
     $('input.commanum').keyup(function (event) {
+        // skip for arrow keys dot and minus
+        if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
+        if(event.which == 173 && !event.target.value.includes("-")) return;
+        let min = false;
+        if (event.target.value.includes("-")) {
+            min = true;
+        }
         if (event.target.value.includes(".")) {
             let str = event.target.value.split('.');
-            event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
-            return;
+            if (min) {
+                event.target.value = '-' + str[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + str[1].replace(/\D/g, "");
+                return;
+            }
+            else {
+                event.target.value = str[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + str[1].replace(/\D/g, "");
+                return;
+            }
         }
-        // skip for arrow keys
-        if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
-
         // format number
         $(this).val(function (index, value) {
-            return value
-                .replace(/\D/g, "")
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (min) {
+                return "-" + value
+                    .replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            else {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
         });
     });
 
