@@ -109,7 +109,8 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="begBal" required>
+                                    <input class="w3-input w3-border comma-num-minus" type="text" name="" id="begBal"
+                                        required>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -139,22 +140,7 @@
         submitTrBtn();
     });
 
-    $('input.commanum').keyup(function (event) {
-        if (event.target.value.includes(".")) {
-            let str = event.target.value.split('.');
-            event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
-            return;
-        }
-        // skip for arrow keys
-        if ((event.which >= 37 && event.which <= 40) || event.which == 190) return;
-
-        // format number
-        $(this).val(function (index, value) {
-            return value
-                .replace(/\D/g, "")
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        });
-    });
+    $('input.comma-num-minus').keyup(commaNumMakerMinus);
     var editTriget = 0;
     var dbDataCode = "";
     var dbID = "";
