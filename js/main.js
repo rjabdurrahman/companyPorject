@@ -302,10 +302,9 @@ function commaNumMaker(event) {
 
     if (event.target.value.includes(".")) {
         let str = event.target.value.split('.');
-        event.target.value = str[0] + "." + str[1].replace(/\D/g, "");
+        event.target.value = str[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + str[1].replace(/\D/g, "");
         return;
     }
-
     // format number
     $(this).val(function (index, value) {
         return value
