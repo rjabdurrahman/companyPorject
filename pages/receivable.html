@@ -6,8 +6,8 @@
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
                 <button id="plusBtn" onclick="document.getElementById('id01').style.display='block';$js('submitButton').innerHTML = 'Submit';$js('recACCode').focus();"
                     class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
-                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
-                            <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
+                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button> -->
+                <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn PDF_Btn"><i class="fa fa-print"></i></button>
             </section>
 
             <div class="w3-card-4 table-container">
@@ -25,8 +25,8 @@
                                     <th>Email</th>
                                     <th>Address</th>
                                     <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th name="debEdt">Edit</th>
+                                    <th name="debDel">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,12 +43,12 @@
                                     <td>{{rec.email}}</td>
                                     <td>{{rec.address}}</td>
                                     <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
-                                    <td>
+                                    <td name="debEdt1">
                                         <button id="{{rec.$id}}e" onclick="editView(this.id)" class="w3-btn w3-blue">Edit</button>
                                         <!-- <button id="{{rec.$id}}ec" onclick="editConfirm(event)" class="w3-btn w3-blue"
                                             style="display: none;">Update</button> -->
                                     </td>
-                                    <td>
+                                    <td name="debDel1">
                                         <button id="{{rec.$id}}" onclick="getDbId(event)" class="w3-btn w3-red">Delete</button>
                                     </td>
                                 </tr>
@@ -62,6 +62,8 @@
                 </div>
             </div>
         </div>
+        
+
         <!-- Confirmation diallog start -->
         <div id="confirmDel" class="w3-modal">
             <div class="w3-modal-content div-box w3-animate-zoom w3-card-4" style="width: 450px;">
@@ -156,7 +158,8 @@
                                     <label class="w3-medium">Beginning Balance</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border comma-num-minus" type="text" name="" id="begBal" required>
+                                    <input class="w3-input w3-border comma-num-minus" type="text" name="" id="begBal"
+                                        required>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -170,7 +173,45 @@
         </div>
         <!-- End of the journy -->
     </div>
+    
 </div>
+<div style="display: none;" >
+        <!-- Pdf print hide table...........start.................. -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="debPdfTable">
+                <thead>
+                        <tr>
+                                <td colspan="9" style="text-align: center; height: 50px; font-size: 25px;">DEBTORS</td>
+                            </tr>
+                    <tr>
+    
+                        <th>ID</th>
+                        <th>Party Code</th>
+                        <th>Party Name</th>
+                        <th>Party Type</th>
+                        <th>Propritor Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{rec.code}}</td>
+                        <td>{{rec.name}}</td>
+                        <td>{{rec.cusType}}</td>
+                        <td>{{rec.recProprietor}}</td>
+                        <td>{{rec.mobile}}</td>
+                        <td>{{rec.email}}</td>
+                        <td>{{rec.address}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+            <!-- Pdf print hide table...........end.................. -->
 <script>
     var dbReceivables = null;
     $(document).keypress(function (event) {
@@ -381,5 +422,20 @@
             });
     }
     // Delete data end......................
+
+    //pdf making and save............................Start....................
+    $('.PDF_Btn').click(function () {
+        $js('debPdfTable').style.visibility = "visible";
+        var printme = document.getElementById('debPdfTable');
+        var wme = window.open("", "", "width=900,height=700");
+        wme.document.write(printme.outerHTML);
+        wme.document.close();
+        wme.focus();
+        wme.print();
+        wme.close();
+        $js('debPdfTable').style.visibility = "hidden";
+
+    })
+    //pdf making and save............................End......................
 
 </script>
