@@ -21,7 +21,8 @@
     <script src="js/mithril.js"></script>
     <script src="js/angularfire.min.js"></script>
     <script src="xlsx.full.min.js"></script>
-    <script src="js/fs/src/FileSaver.js"></script> 
+    <script src="js/fs/src/FileSaver.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <style>
         .journal-csbtn {
             text-align: center;
@@ -60,7 +61,8 @@
                     <img src="img/logo.png" height="30"></a>
                 </a>
             </section>
-            <section style="margin-left: auto; font-size: 16px; box-sizing: border-box; font-family: 'Montserrat', sans-serif; font-weight: bold;" class="top-nav">
+            <section style="margin-left: auto; font-size: 16px; box-sizing: border-box; font-family: 'Montserrat', sans-serif; font-weight: bold;"
+                class="top-nav">
                 <div class="w3-bar main-bg-color">
                     <a href="javascript:void(0);" class="nav-icon w3-bar-item w3-button" onclick="myFunction()">
                         <i style="font-size: 18px;" class="fa fa-bars"></i>
@@ -96,8 +98,10 @@
                                 <a ng-show="userInfo.c_12" href="#buyproducts" class="w3-bar-item w3-button w3-mobile">By
                                     Products</a>
                                 <a ng-show="userInfo.c_10" href="#paddydry" class="w3-bar-item w3-button w3-mobile">Loans</a>
-                                <a ng-show="userInfo.c_10" href="#costcenter" class="w3-bar-item w3-button w3-mobile">Cost Centers</a>
-                                <a ng-show="userInfo.c_10" href="#exportchat" class="w3-bar-item w3-button w3-mobile">Export All (Excel)</a>
+                                <a ng-show="userInfo.c_10" href="#costcenter" class="w3-bar-item w3-button w3-mobile">Cost
+                                    Centers</a>
+                                <a ng-show="userInfo.c_10" href="#exportchat" class="w3-bar-item w3-button w3-mobile">Export
+                                    All (Excel)</a>
                                 <!-- <a onclick="printAll()" class="w3-bar-item w3-button w3-mobile">Export In Excel</a> -->
                             </div>
                         </div>
