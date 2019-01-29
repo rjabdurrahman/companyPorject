@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- Confirmation diallog start -->
         <div id="confirmDel" class="w3-modal">
@@ -173,45 +173,46 @@
         </div>
         <!-- End of the journy -->
     </div>
-    
+
 </div>
-<div style="display: none;" >
-        <!-- Pdf print hide table...........start.................. -->
-        <table border="1" cellspacing="0" style="visibility: hidden;" id="debPdfTable">
-                <thead>
-                        <tr>
-                                <td colspan="9" style="text-align: center; height: 50px; font-size: 25px;">DEBTORS</td>
-                            </tr>
-                    <tr>
-    
-                        <th>ID</th>
-                        <th>Party Code</th>
-                        <th>Party Name</th>
-                        <th>Party Type</th>
-                        <th>Propritor Name</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
-                        <td>{{$index + 1}}</td>
-                        <td>{{rec.code}}</td>
-                        <td>{{rec.name}}</td>
-                        <td>{{rec.cusType}}</td>
-                        <td>{{rec.recProprietor}}</td>
-                        <td>{{rec.mobile}}</td>
-                        <td>{{rec.email}}</td>
-                        <td>{{rec.address}}</td>
-                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    
-            <!-- Pdf print hide table...........end.................. -->
+<div style="display: none;">
+    <!-- Pdf print hide table...........start.................. -->
+    <table border="1" cellspacing="0" style="visibility: hidden;" id="debPdfTable">
+        <thead>
+            <tr>
+                <td colspan="9" style="text-align: center; height: 50px; font-size: 25px;"><span>DEBTORS</span><img
+                        style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+            </tr>
+            <tr>
+
+                <th>ID</th>
+                <th>Party Code</th>
+                <th>Party Name</th>
+                <th>Party Type</th>
+                <th>Propritor Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rec in comReceivables | orderBy : 'code' track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{rec.code}}</td>
+                <td>{{rec.name}}</td>
+                <td>{{rec.cusType}}</td>
+                <td>{{rec.recProprietor}}</td>
+                <td>{{rec.mobile}}</td>
+                <td>{{rec.email}}</td>
+                <td>{{rec.address}}</td>
+                <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(rec.balance)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Pdf print hide table...........end.................. -->
 <script>
     var dbReceivables = null;
     $(document).keypress(function (event) {
@@ -427,7 +428,7 @@
     $('.PDF_Btn').click(function () {
         $js('debPdfTable').style.visibility = "visible";
         var printme = document.getElementById('debPdfTable');
-        var wme = window.open("", "", "width=900,height=700");
+        var wme = window.open("", "", "width=900,height=900");
         wme.document.write(printme.outerHTML);
         wme.document.close();
         wme.focus();
