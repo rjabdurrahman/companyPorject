@@ -2,19 +2,23 @@
     <form id="debitForm">
         <div class="overlay">
             <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 99.5%; margin-top: 4px;">
-                <header class="w3-container main-bg-color div-title clearfix">
-                    <h2 class="ledger-title">{{title}}</h2>
+                <header class="w3-container main-bg-color div-title">
+                    <div class="clearfix">
+                        <h2 class="ledger-title" style="float: left">{{title}}</h2>
+                        <button style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn"><i
+                                class="fa fa-print"></i></button>
+                    </div>
                 </header>
                 <div class="ledger-header flex" style="overflow: auto; white-space: nowrap;">
                     <div>
                         <label>Account Type</label>
                         <input class="w3-input w3-border" type="text" value="Debit" disabled>
                     </div>
-                    <div style="width: 500px;">
+                    <div style="width: 300px;">
                         <label>Date From</label>
                         <input id="debDataForm" class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
                     </div>
-                    <div style="width: 500px;">
+                    <div style="width: 300px;">
                         <label>Date To</label>
                         <input class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
                     </div>
