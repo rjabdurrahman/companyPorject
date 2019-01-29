@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <label>Account Code</label>
-                        <input class="w3-input w3-border" type="text">
+                        <input id="ACCodeS" class="w3-input w3-border" type="text">
                     </div>
                     <div>
                         <label>Account Name</label>
@@ -145,6 +145,8 @@
 </div>
 <script>
     $js('debDataForm').focus();
+    $("#ACCodeS").keyup(ACNameComplete);
+    $js('ACCodeS').onpaste = ACNameComplete;
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
         getRef('begBalance').set({ value: inBal });
