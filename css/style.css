@@ -444,13 +444,18 @@ input#userPasswordField {
     padding: 0;
 }
 
-.ledger-header div label{
+.ledger-header div label {
     margin: 0 !important;
 }
 
-.ledger-header div input{
+.ledger-header div input {
     padding-top: 4px !important;
     padding-bottom: 4px !important;
+}
+
+.ledger-header div button {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
 }
 
 .ledger-header div {
