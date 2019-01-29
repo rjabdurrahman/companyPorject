@@ -745,6 +745,264 @@
                     </tr>
                 </tbody>
             </table>
+        <!--non current liability asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="nonCurLiaTable">
+                <thead ng-hide="getAccArr(4).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>NON-CURRENT LIABILITIES</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(4) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--equity asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="eqiTable">
+                <thead ng-hide="getAccArr(5).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>EQUITY</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(5) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--expense asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="expTable">
+                <thead ng-hide="getAccArr(6).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="4" style="text-align: center; height: 50px; font-size: 25px;"><span>EXPENSES</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(6) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--revenue asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="revTable">
+                <thead ng-hide="getAccArr(7).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="4" style="text-align: center; height: 50px; font-size: 25px;"><span>REVENUES</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(7) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--cost of goods sold asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="cogsTable">
+                <thead ng-hide="getAccArr(10).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="4" style="text-align: center; height: 50px; font-size: 25px;"><span>COST OF GOODS SOLD</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(10) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--contras asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="conTable">
+                <thead ng-hide="getAccArr(12).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>CONTRAS</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(12) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--production asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="proTable">
+                <thead ng-hide="getAccArr(11).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>PRODUCTION</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+                        <th ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">Beginning Balance</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(11) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                        <td ng-hide="!(begBalPer.$value == 1 || userInfo.uc)">{{comNum(comAcc.balance)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--withdrawl asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="WidTable">
+                <thead ng-hide="getAccArr(8).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="4" style="text-align: center; height: 50px; font-size: 25px;"><span>WIDTHDRAWALS</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(8) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!--contra expense asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="conExpTable">
+                <thead ng-hide="getAccArr(13).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>CONTRA EXPENSES</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(13) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!--contra revenue asset -->
+        <table border="1" cellspacing="0" style="visibility: hidden;" id="conRevTable">
+                <thead ng-hide="getAccArr(9).length == 0" id="table-headm">
+                    <tr>
+                        <td colspan="5" style="text-align: center; height: 50px; font-size: 25px;"><span>CONTRA EXPENSES</span><img
+                                style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+                    </tr>
+                    <tr class="main-bg-color">
+                        <th>ID</th>
+                        <th>Nature</th>
+                        <th>Account Code</th>
+                        <th>Account Head</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comAcc in getAccArr(9) | orderBy : 'accCode' track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{comAcc.nature}}</td>
+                        <td>{{comAcc.accCode}}</td>
+                        <td>{{comAcc.accText}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+
+
     </div>
     <!-- Pdf print hide table...........end.................. -->
 
@@ -1269,7 +1527,7 @@
 
         }
         $('.PDF_Btn').click(function () {
-            nonCurAstTable
+            console.log(accountSelection);
             if (accountSelection == 'Current Assets') {
                 pdfMake('curAstTable');
             }
@@ -1279,36 +1537,36 @@
             else if (accountSelection == 'Current Liabilities') {
                 pdfMake('curLiaTable');
             }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
-            // else if(){
-            //     pdfMake(t);
-            // }
+            else if(accountSelection == 'Non-Current Liabilities'){
+                pdfMake('nonCurLiaTable');
+            }
+            else if(accountSelection == 'Equity'){
+                pdfMake('eqiTable');
+            }
+            else if(accountSelection == 'Expenses'){
+                pdfMake('expTable');
+            }
+            else if(accountSelection == 'Revenues'){
+                pdfMake('revTable');
+            }
+            else if(accountSelection == 'Cost of Goods Sold'){
+                pdfMake('cogsTable');
+            }
+            else if(accountSelection == 'Contras'){
+                pdfMake('conTable');
+            }
+            else if(accountSelection == 'Production'){
+                pdfMake('proTable');
+            }
+            else if(accountSelection == 'Withdrawals'){
+                pdfMake('WidTable');
+            }
+            else if(accountSelection == 'Contra Expenses'){
+                pdfMake('conExpTable');
+            }
+            else if(accountSelection == 'Contra Revenues'){
+                pdfMake('conRevTable');
+            }
 
         })
         //pdf making and save............................End......................
