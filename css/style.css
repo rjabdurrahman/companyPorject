@@ -439,6 +439,20 @@ input#userPasswordField {
 
 /* Ledger Style */
 
+.ledger-title {
+    margin: 0;
+    padding: 0;
+}
+
+.ledger-header div label{
+    margin: 0 !important;
+}
+
+.ledger-header div input{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
 .ledger-header div {
     width: 100%;
     box-sizing: border-box;
@@ -612,4 +626,5 @@ input:checked+.slider:before {
         margin-right: 0mm; */
     }
 }
+
 /* Print CSS End */
