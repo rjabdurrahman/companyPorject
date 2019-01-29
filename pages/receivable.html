@@ -175,9 +175,10 @@
     </div>
 
 </div>
-<div style="display: none;">
     <!-- Pdf print hide table...........start.................. -->
-    <table border="1" cellspacing="0" style="visibility: hidden;" id="debPdfTable">
+
+<div style="display: none;">
+    <table border="1" cellspacing="0" style="visibility: hidden;" id="PdfTable">
         <thead>
             <tr>
                 <td colspan="9" style="text-align: center; height: 50px; font-size: 25px;"><span>DEBTORS</span><img
@@ -426,19 +427,20 @@
 
     //pdf making and save............................Start....................
     $('.PDF_Btn').click(function () {
-        $js('debPdfTable').style.visibility = "visible";
-        var printme = document.getElementById('debPdfTable');
+        location.reload();
+        $js('PdfTable').style.visibility = "visible";
+        var printme = document.getElementById('PdfTable');
         var wme = window.open("", "", "width=900,height=900");
         wme.document.write(printme.outerHTML);
         wme.document.close();
         wme.focus();
         wme.print();
         wme.close();
-        $js('debPdfTable').style.visibility = "hidden";
+        $js('PdfTable').style.visibility = "hidden";
 
     })
     //pdf making and save............................End......................
-    //Print in Landscape
+    //Print in Landscape...........start........
     var css = '@page { size: landscape; }',
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');
@@ -453,4 +455,6 @@
     }
 
     head.appendChild(style);
+    //Print in Landscape...........end........
+
 </script>

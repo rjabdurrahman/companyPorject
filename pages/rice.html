@@ -5,8 +5,8 @@
                 <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">{{title}}s</label>
                 <button id="plusBtn" onclick="document.getElementById('id01').style.display='block';$js('submitRiceBtn').innerHTML = 'Submit';$js('riceCode').focus();"
                     class="w3-xlarge w3-circle w3-white circle-btn" style="float: right;">+</button>
-                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button>
-                                    <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-print"></i></button> -->
+                <!-- <button class="w3-btn w3-xlarge w3-circle w3-white circle-btn"><i class="fa fa-edit"></i></button> -->
+                <button style="margin-left: 12px;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn"><i class="fa fa-print"></i></button>                
             </section>
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
@@ -106,7 +106,7 @@
                             <div class="w3-row w3-section">
                                 <div class="w3-col" style="width:150px; padding: 10px;">
                                     <label class="w3-medium">Standard Unit</label>
-                                </div>   
+                                </div>
                                 <div class="w3-rest">
                                     <input class="w3-input w3-border" type="text" name="" id="stdUnit" required>
                                 </div>
@@ -116,7 +116,8 @@
                                     <label class="w3-medium">Pack Size</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="packSize" required>
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="packSize"
+                                        required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -132,7 +133,8 @@
                                     <label class="w3-medium">Total Quantity</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalQu" disabled>
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalQu"
+                                        disabled>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -140,7 +142,8 @@
                                     <label class="w3-medium">Standard Unit Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdUnitPri" required>
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="stdUnitPri"
+                                        required>
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -148,7 +151,8 @@
                                     <label class="w3-medium">Total Price</label>
                                 </div>
                                 <div class="w3-rest">
-                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri" disabled>
+                                    <input class="w3-input w3-border commanum" type="text" name="" id="totalPri"
+                                        disabled>
                                 </div>
                             </div>
                             <p class="clearfix">
@@ -163,9 +167,45 @@
         <!-- End of the Journy -->
     </div>
 </div>
+<!-- Pdf print hide table...........start.................. -->
+<div style="display: none;">
+    <table border="1" cellspacing="0" style="visibility: hidden;" id="PdfTable">
+        <thead>
+            <tr>
+                <td colspan="9" style="text-align: center; height: 50px; font-size: 25px;"><span>FINISHED GOODS</span><img
+                        style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
+            </tr>
+            <tr class="main-bg-color">
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Std unit</th>
+                <th>Pack Size</th>
+                <th>Number Of pack</th>
+                <th>Total quantity</th>
+                <th>Std unit price</th>
+                <th>Total price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rice in comRices | orderBy : 'code' track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{rice.code}}</td>
+                <td>{{rice.name}}</td>
+                <td>{{rice.stdUnit}}</td>
+                <td>{{comNum (rice.packSize)}}</td>
+                <td>{{comNum (rice.noPack)}}</td>
+                <td>{{comNum (rice.totalQu)}}</td>
+                <td>{{comNum (rice.stdUnitPri)}}</td>
+                <td>{{comNum (rice.totalPri)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Pdf print hide table...........end.................. -->
 <script>
     var dbRices = null;
-    
+
     $(document).keypress(function (event) {
         if (event.shiftKey && event.which == 43) {
             event.preventDefault();
@@ -175,14 +215,14 @@
     $js("form1").addEventListener("submit", function (event) {
         event.preventDefault();
     });
-    
+
     //Total Cal
     $js('packSize').onkeyup = function (event) {
         let priTP = $js('noPack').value;
         // $print(priTP);
         if (priTP != "") {
             $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
-            if($js('stdUnitPri').value != ""){
+            if ($js('stdUnitPri').value != "") {
                 let priTP = $js('totalQu').value;
                 $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
             }
@@ -193,7 +233,7 @@
         // $print(priTP);
         if (priTP != "") {
             $js('totalQu').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
-            if($js('stdUnitPri').value != ""){
+            if ($js('stdUnitPri').value != "") {
                 let priTP = $js('totalQu').value;
                 $js('totalPri').value = numToComma(parseFloat(commaToNum($js('stdUnitPri').value)) * parseFloat(commaToNum(priTP)));
             }
@@ -206,13 +246,13 @@
             $js('totalPri').value = numToComma(parseFloat(commaToNum(event.target.value)) * parseFloat(commaToNum(priTP)));
         }
     }
-    
+
     // // Total Cal End
-    
+
     $js('submitRiceBtn').addEventListener('click', function () {
         submitRiceBtn();
     });
-    
+
     $('input.commanum').keyup(function (event) {
         if (event.target.value.includes(".")) {
             let str = event.target.value.split('.');
@@ -311,7 +351,7 @@
             code: riceCode,
             name: riceName,
             stdUnit: stdUnit,
-            packSize: commaToNum (packSize),
+            packSize: commaToNum(packSize),
             noPack: commaToNum(noPack),
             totalQu: commaToNum(totalQu),
             stdUnitPri: commaToNum(stdUnitPri),
@@ -430,4 +470,36 @@
             });
     }
     // Delete data end......................
+
+    //pdf making and save............................Start....................
+    $('.PDF_Btn').click(function () {
+        location.reload();
+        $js('PdfTable').style.visibility = "visible";
+        var printme = document.getElementById('PdfTable');
+        var wme = window.open("", "", "width=900,height=900");
+        wme.document.write(printme.outerHTML);
+        wme.document.close();
+        wme.focus();
+        wme.print();
+        wme.close();
+        $js('PdfTable').style.visibility = "hidden";
+
+    })
+    //pdf making and save............................End......................
+    //Print in Landscape...........start........
+    var css = '@page { size: landscape; }',
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+
+    style.type = 'text/css';
+    style.media = 'print';
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+    //Print in Landscape...........end........
 </script>
