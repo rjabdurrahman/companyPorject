@@ -600,3 +600,16 @@ input:checked+.slider:before {
 }
 
 /* Switch CSS End */
+
+/* Print CSS */
+
+@media print {
+    @page {
+        margin: 0mm;
+        /* margin-top: 8mm;
+        margin-bottom: 0mm;
+        margin-left: 0mm;
+        margin-right: 0mm; */
+    }
+}
+/* Print CSS End */
