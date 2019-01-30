@@ -4,7 +4,6 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
     $scope.nodata = false;
-    $scope.begBalance = $firebaseArray(getRef('begBalance'));
     $scope.begBal = 0;
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
