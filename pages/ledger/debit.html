@@ -85,7 +85,8 @@
                         <thead>
                             <tr class="main-bg-color">
                                 <th>No</th>
-                                <th>Entry No</th>
+                                <th>ENo</th>
+                                <th>VNo</th>
                                 <th>Date</th>
                                 <th>Party Code</th>
                                 <th>Party Name</th>
@@ -100,6 +101,7 @@
                             <tr ng-repeat="rec in records track by $index">
                                 <td>{{$index + 1}}</td>
                                 <td>{{rec.entryNo}}</td>
+                                <td>{{rec.voucherNo}}</td>
                                 <td>{{numToDate(rec.date)}}</td>
                                 <td ng-if="rec.sCode == rec.ACCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
                                 <td ng-if="rec.sCode == rec.ACCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
