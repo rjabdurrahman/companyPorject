@@ -1,4 +1,5 @@
 app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
+    
     $scope.title = "Debit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
@@ -47,6 +48,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             code.focus();
             return;
         }
+        document.getElementById("debCal").disabled = false;
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
         $print(dateToNum(dateTo.value));
