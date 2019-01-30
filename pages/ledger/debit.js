@@ -5,6 +5,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.recShow = false;
     $scope.nodata = false;
     $scope.begBalance = $firebaseArray(getRef('begBalance'));
+    $scope.begBal = 0;
     accArrayA = $firebaseArray(getRef('accounts'));
     $scope.debitTaker = function (e) {
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
@@ -57,8 +58,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
         // Begining Balance
         let ref = firebase.database().ref("accounts");
         ref.orderByChild("accCode").equalTo(code.value).on("child_added", function (snapshot) {
-            console.log("snapshot.key");
-            console.log(snapshot.val());
+            $scope.begBal = snapshot.val().balance;
         });
         $scope.records = [];
         $scope.preRecords = [];
@@ -123,7 +123,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
 
     var mainTotal = 100;
     $scope.arrTotal = function (arr, index, t) {
-        if (index == -1) return;
+        if (index == -1) return 0;
         let total = 0;
         for (i = 0; i <= index; i++) {
             if (arr[i].sCode == arr[i].ACCodes[0] && (t == 0 || t == 1)) {
