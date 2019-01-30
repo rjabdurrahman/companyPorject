@@ -1392,7 +1392,7 @@
             // D Rate End
 
             if (accounts[accNatureCode].begBal) {
-                account['balance'] = balance;
+                account['balance'] = commaToNum(balance);
             }
 
             if (editTriget == 1 && dbDataCode == accNumber) {
