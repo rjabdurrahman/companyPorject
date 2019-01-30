@@ -1,5 +1,5 @@
 app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
-
+    
     $scope.title = "Debit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
@@ -49,41 +49,12 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             return;
         }
         document.getElementById("debCal").disabled = false;
+        
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
-        // $print(dateToNum(dateTo.value));
-        // $print(dateToNum(dateFrom.value));
+        $print(dateToNum(dateTo.value));
+        $print(dateToNum(dateFrom.value));
         $scope.records = [];
-        $scope.preRecords = [];
-        fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", "<", dateToNum(dateFrom.value)).get()
-            .then(function (snapshot) {
-                $scope.recShow = true;
-                if (snapshot.size == 0) {
-                    // e.target.disabled = false;
-                    // e.target.textContent = 'Calculate';
-                    // $scope.nodata = true;
-                    // $scope.$applyAsync();
-                }
-                else {
-                    snapshot.docs.forEach(element => {
-                        let obj = element.data();
-                        obj.sCode = code.value;
-                        // $print(obj);
-                        $scope.preRecords.push(obj);
-                        $scope.nodata = false;
-                        $scope.$applyAsync();
-                        $print('is it');
-                        $print($scope.preRecords);
-                        // e.target.disabled = false;
-                        // e.target.textContent = 'Calculate';
-                    });
-                }
-            })
-            .catch(function (err) {
-                $print(err);
-                e.target.disabled = false;
-                e.target.textContent = 'Calculate';
-            });
         fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
