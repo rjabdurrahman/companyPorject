@@ -53,6 +53,12 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
         e.target.textContent = 'Loading...';
         // $print(dateToNum(dateTo.value));
         // $print(dateToNum(dateFrom.value));
+        // Begining Balance
+        let ref = firebase.database().ref("accounts");
+        ref.orderByChild("accCode").equalTo(code.value).on("child_added", function (snapshot) {
+            console.log("snapshot.key");
+            console.log(snapshot.val());
+        });
         $scope.records = [];
         $scope.preRecords = [];
         fsDb.collection("JournalForm").where('ACCodes', 'array-contains', code.value).where("date", "<", dateToNum(dateFrom.value)).get()
@@ -72,7 +78,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
                         $scope.preRecords.push(obj);
                         $scope.nodata = false;
                         $scope.$applyAsync();
-                        $print('is it');
+                        $print('Pre Records');
                         $print($scope.preRecords);
                         // e.target.disabled = false;
                         // e.target.textContent = 'Calculate';
