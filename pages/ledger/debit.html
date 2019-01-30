@@ -5,8 +5,8 @@
                 <header class="w3-container main-bg-color div-title">
                     <div class="clearfix">
                         <h2 class="ledger-title" style="float: left">{{title}}</h2>
-                        <button id="debCal" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn PDF_Btn" disabled><i
-                                class="fa fa-print"></i></button>
+                        <button id="debCal" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn PDF_Btn"
+                            disabled><i class="fa fa-print"></i></button>
                     </div>
                 </header>
                 <div class="ledger-header flex" style="overflow: auto; white-space: nowrap;">
@@ -55,14 +55,15 @@
                         <tbody>
                             <tr>
                                 <td>Begining Balance</td>
-                                <td id="begd" style="text-align: right;">{{begBalance[0].$value}}</td>
+                                <td id="begd" style="text-align: right;">{{arrTotal(preRecords, preRecords.length - 1, 0)}}</td>
                                 <td id="begc" style="text-align: right;">_____</td>
                                 <td id="begb" style="text-align: right;">{{begBalance[0].$value}}</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
                                 <td id="totd" style="text-align: right;">{{arrTotal(records, records.length - 1, 1)}}</td>
-                                <td id="totc" style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 2)}}</td>
+                                <td id="totc" style="text-align: right;">{{-1 * arrTotal(records, records.length - 1,
+                                    2)}}</td>
                                 <td id="totb" style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
                                     records.length - 1, 0)}}</td>
                             </tr>
@@ -284,18 +285,18 @@
     $('.PDF_Btn').click(function () {
         location.reload();
         ///--------------------------------
-        $js('at').innerHTML =$js('atype').value;
-        $js('df').innerHTML =$js('debDataForm').value;
-        $js('dt').innerHTML =$js('dateto').value;
-        $js('ac').innerHTML =$js('ACCodeS').value;
-        $js('an').innerHTML =$js('aname').value;
+        $js('at').innerHTML = $js('atype').value;
+        $js('df').innerHTML = $js('debDataForm').value;
+        $js('dt').innerHTML = $js('dateto').value;
+        $js('ac').innerHTML = $js('ACCodeS').value;
+        $js('an').innerHTML = $js('aname').value;
         ////-------------------------------------
-        $js('bd').innerHTML =$js('begd').innerHTML;
-        $js('bc').innerHTML =$js('begc').innerHTML;
-        $js('bb').innerHTML =$js('begb').innerHTML;
-        $js('td').innerHTML =$js('totd').innerHTML;
-        $js('tc').innerHTML =$js('totc').innerHTML;
-        $js('tb').innerHTML =$js('totb').innerHTML;
+        $js('bd').innerHTML = $js('begd').innerHTML;
+        $js('bc').innerHTML = $js('begc').innerHTML;
+        $js('bb').innerHTML = $js('begb').innerHTML;
+        $js('td').innerHTML = $js('totd').innerHTML;
+        $js('tc').innerHTML = $js('totc').innerHTML;
+        $js('tb').innerHTML = $js('totb').innerHTML;
         ///--------------------------------------------
         $js('debPdfTable').style.visibility = "visible";
         var printme = document.getElementById('debPdfTable');
