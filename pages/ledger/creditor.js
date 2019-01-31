@@ -49,6 +49,9 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
             code.focus();
             return;
         }
+
+        document.getElementById("ctorPrint").disabled = false;
+
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
         $print(dateToNum(dateTo.value));
