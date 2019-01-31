@@ -49,6 +49,9 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
             code.focus();
             return;
         }
+
+        document.getElementById("dtorPrint").disabled = false;
+
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
         $print(dateToNum(dateTo.value));
