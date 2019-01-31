@@ -24,7 +24,7 @@
                     </div>
                     <div style="width: 500px;">
                         <label>Account Code</label>
-                        <input id="ACCodeS" class="w3-input w3-border" type="text">
+                        <input id="ACCodeS" class="w3-input w3-border" type="text" autocomplete="off">
                     </div>
                     <div>
                         <label>Account Name</label>
@@ -250,6 +250,7 @@
     }
     var accArrayA = null;
     function ACNameComplete(event) {
+        event.target.value = event.target.value.toUpperCase();
         event.target.value = $.trim(event.target.value);
         let data = accArrayA.find(function (el) {
             return el.accCode == event.target.value;

@@ -1,5 +1,5 @@
 app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
-    
+
     $scope.title = "Debit Ledger";
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
@@ -23,6 +23,11 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             dateFrom.focus();
             return;
         }
+        else if (!(dateTo.value).match(dateEx)) {
+            $('#notification').html("<h6>Date To Format Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
+            dateTo.focus();
+            return;
+        }
         else if (dateToNum(dateFrom.value) > dateToNum(dateTo.value)) {
             $('#notification').html("<h6>From Date is Greater than To Date</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             dateFrom.focus();
@@ -30,11 +35,6 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
         }
         else if (dateTo.value == "") {
             $('#notification').html("<h6>Input Date To</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
-            dateTo.focus();
-            return;
-        }
-        else if (!(dateTo.value).match(dateEx)) {
-            $('#notification').html("<h6>Date To Format Invalid</h6>").removeClass('w3-green').addClass('w3-red').fadeIn(200).delay(1000).fadeOut(200);
             dateTo.focus();
             return;
         }
@@ -49,7 +49,7 @@ app.controller('DebitLedgerCntlr', function ($scope, $firebaseArray) {
             return;
         }
         document.getElementById("debCal").disabled = false;
-        
+
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
         // $print(dateToNum(dateTo.value));
