@@ -634,3 +634,40 @@ input:checked+.slider:before {
 }
 
 /* Print CSS End */
+
+
+/* fixed table head css  start */
+/* table{
+    border-collapse: collapse;
+  overflow-x: scroll;
+  display: block;
+  width: 100%;
+}
+thead{
+    background-color: #EFEFEF;
+}
+
+thead{
+    display: block;
+}
+tbody{
+    display: block;
+}
+
+tbody{
+    overflow-y: scroll;
+  overflow-x: hidden;
+  height: 140px;
+}
+
+td,th{
+    min-width: 200px;
+    height: 25px;
+    border: dashed 1px lightblue;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px; 
+    text-align: center;
+  } */
+
+/* fixed table head css  end */

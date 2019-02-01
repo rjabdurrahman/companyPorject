@@ -6,7 +6,7 @@
             </section>
             <div class="w3-card-4 table-container">
                 <div class="ch-table-header">
-                    <div class="w3-responsive" style="height: calc(100vh - 90px);">
+                    <div id="fixHead">
                         <table class="w3-table-all">
                             <thead>
                                 <tr class="main-bg-color">
@@ -35,6 +35,10 @@
                                     <th>Total Price (TK)</th>
                                 </tr>
                             </thead>
+                        </table>
+                    </div>
+                    <div id="tab" onscroll="myFunction()" class="w3-responsive" style="height: calc(100vh - 90px);">
+                        <table class="w3-table-all">
                             <tbody ng-repeat="jor in journal | orderBy : 'entryNo' : true track by $index">
                                 <tr ng-repeat="deb in jor.debitCredit track by $index">
                                     <td>{{jor.entryNo}}</td>
@@ -91,3 +95,17 @@
             </table> -->
         </div>
     </div>
+</div>
+<script>
+    function myFunction() {
+        var n = document.getElementById("tab").scrollLeft;
+        // console.log(n);
+        $js('fixHead').style.marginLeft = "-" + n + "px";
+    }
+//         $('table').on('scroll', function() {
+//             console.log($("table").scrollLeft());
+
+
+// //   $("table > *").width($("table").width() + $("table").scrollLeft());
+// });
+</script>
