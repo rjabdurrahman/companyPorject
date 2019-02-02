@@ -63,7 +63,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         ref.orderByChild("code").equalTo(code.value).on("child_added", function (snapshot) {
             $scope.begBal = snapshot.val().balance;
         });
-        fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
+        fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", "<", dateToNum(dateFrom.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
                 if (snapshot.size == 0) {
