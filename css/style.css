@@ -450,6 +450,7 @@ input#userPasswordField {
     margin: 0 !important;
     text-align: center;
     text-transform: uppercase;
+    font-size: 12px;
 }
 
 .ledger-header div input {
