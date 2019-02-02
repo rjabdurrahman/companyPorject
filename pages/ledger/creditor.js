@@ -6,7 +6,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.numToDate = numToDateConv;
     $scope.recShow = false;
     $scope.nodata = false;
-    $scope.begBalance = $firebaseArray(getRef('begBalanceCr'));
+    $scope.begBal = 0;
     $scope.debitTaker = function (e) {
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
         let code = name.parentElement.previousElementSibling.lastElementChild;
@@ -54,9 +54,14 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
 
         e.target.disabled = true;
         e.target.textContent = 'Loading...';
-        $print(dateToNum(dateTo.value));
-        $print(dateToNum(dateFrom.value));
+        // $print(dateToNum(dateTo.value));
+        // $print(dateToNum(dateFrom.value));
         $scope.records = [];
+        // Begining Balance
+        let ref = firebase.database().ref("payables");
+        ref.orderByChild("code").equalTo(code.value).on("child_added", function (snapshot) {
+            $scope.begBal = snapshot.val().balance;
+        });
         fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
@@ -103,14 +108,14 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
     }
     creditorCodes = $firebaseArray(getRef('payables'));
 
-    function generateMail(){
-        let msg =  `Your Ledger
+    function generateMail() {
+        let msg = `Your Ledger
         This is the transaction
         `;
         return encodeURIComponent(msg);
     }
 
-    $scope.sendMail = function(){
+    $scope.sendMail = function () {
         window.open('mailto:' + $scope.qEmail + '?subject=Your Ledger&body=' + generateMail());
     }
 });
