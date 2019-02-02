@@ -304,6 +304,7 @@ input#userPasswordField {
 .ch-table-content {
     max-height: calc(100vh - 150px);
     overflow: auto;
+    text-transform: uppercase;
 }
 
 .table-container thead th, .table-container thead td {
@@ -447,6 +448,8 @@ input#userPasswordField {
 
 .ledger-header div label {
     margin: 0 !important;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .ledger-header div input {
