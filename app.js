@@ -167,7 +167,7 @@ app.run(function ($rootScope, $location, $route, $firebaseObject) {
   $rootScope.userInfo = userInfo;
   $print($rootScope.userInfo);
   $rootScope.begBalPer = $firebaseObject(getRef('begBalPer'));
-  $rootScope.comNum = function numToComma(x) {
+  $rootScope.comNum = function (x) {
     if (!isNaN(Number(x))) {
       x = x.toString().split('.');
       if (x.length == 2) {

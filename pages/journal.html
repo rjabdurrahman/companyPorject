@@ -9,7 +9,7 @@
                     <div id="fixHead">
                         <table class="w3-table-all">
                             <thead>
-                                <tr class="main-bg-color">
+                                <tr id="fixTr" class="main-bg-color">
                                     <th>Entry No</th>
                                     <th>Date</th>
                                     <th>Voucher No</th>
@@ -37,9 +37,9 @@
                             </thead>
                         </table>
                     </div>
-                    <div id="tab" onscroll="myFunction()" class="w3-responsive" style="height: calc(100vh - 90px);">
+                    <div id="tab" onscroll="myFunction()" class="w3-responsive" style="height: calc(100vh - 190px);">
                         <table class="w3-table-all">
-                            <tbody ng-repeat="jor in journal | orderBy : 'entryNo' : true track by $index">
+                            <tbody id="genTr" ng-repeat="jor in journal | orderBy : 'entryNo' : true track by $index">
                                 <tr ng-repeat="deb in jor.debitCredit track by $index">
                                     <td>{{jor.entryNo}}</td>
                                     <td>{{numToDate(jor.date)}}</td>
@@ -102,6 +102,13 @@
         // console.log(n);
         $js('fixHead').style.marginLeft = "-" + n + "px";
     }
+    // console.log($js('fixTr'));
+    setTimeout(function () {
+        $('#genTr tr:nth-child(1) td').each(function () {
+            console.log($(this).outerWidth());
+        });
+    }, 3000);
+
 //         $('table').on('scroll', function() {
 //             console.log($("table").scrollLeft());
 
