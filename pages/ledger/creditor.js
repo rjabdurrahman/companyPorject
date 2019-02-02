@@ -57,11 +57,40 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
         // $print(dateToNum(dateTo.value));
         // $print(dateToNum(dateFrom.value));
         $scope.records = [];
+        $scope.preRecords = [];
         // Begining Balance
         let ref = firebase.database().ref("payables");
         ref.orderByChild("code").equalTo(code.value).on("child_added", function (snapshot) {
             $scope.begBal = snapshot.val().balance;
         });
+        fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
+            .then(function (snapshot) {
+                $scope.recShow = true;
+                if (snapshot.size == 0) {
+                    // e.target.disabled = false;
+                    // e.target.textContent = 'Calculate';
+                    // $scope.nodata = true;
+                    // $scope.$applyAsync();
+                }
+                else {
+                    snapshot.docs.forEach(element => {
+                        let obj = element.data();
+                        obj.sCode = code.value;
+                        // $print(obj);
+                        $scope.preRecords.push(obj);
+                        $scope.nodata = false;
+                        $scope.$applyAsync();
+                        $print($scope.preRecords);
+                        // e.target.disabled = false;
+                        // e.target.textContent = 'Calculate';
+                    });
+                }
+            })
+            .catch(function (err) {
+                notify('Something went wrong in Database', 2);
+                e.target.disabled = false;
+                e.target.textContent = 'Calculate';
+            });
         fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", ">=", dateToNum(dateFrom.value)).where("date", "<=", dateToNum(dateTo.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
@@ -94,7 +123,7 @@ app.controller('CreditorLedgerCntlr', function ($scope, $firebaseArray) {
 
     var mainTotal = 100;
     $scope.arrTotal = function (arr, index, t) {
-        if (index == -1) return;
+        if (index == -1) return 0;
         let total = 0;
         for (i = 0; i <= index; i++) {
             if (arr[i].sCode == arr[i].partyCodes[0] && (t == 0 || t == 1)) {
