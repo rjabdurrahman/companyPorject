@@ -5,8 +5,8 @@
                 <header class="w3-container main-bg-color div-title clearfix">
                     <div class="clearfix">
                         <h2 class="ledger-title" style="float: left">Creditor Ledger</h2>
-                        <button id="ctorPrint" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn" disabled><i
-                                class="fa fa-print"></i></button>
+                        <button id="ctorPrint" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn"
+                            disabled><i class="fa fa-print"></i></button>
                     </div>
                 </header>
                 <div class="w3-container ledger-header flex" style="overflow: auto; white-space: nowrap;">
@@ -24,7 +24,8 @@
                     </div>
                     <div>
                         <label>Account Code</label>
-                        <input id="ACCodeS" class="w3-input w3-border" type="text" onkeyup="ACNameComplete(event)" value="{{qCode}}">
+                        <input id="ACCodeS" class="w3-input w3-border" type="text" onkeyup="ACNameComplete(event)"
+                            value="{{qCode}}">
                     </div>
                     <div>
                         <label>Account Name</label>
@@ -61,8 +62,10 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td id="totd" style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 1)}}</td>
-                                    <td id="totc" style="text-align: right;">{{arrTotal(records, records.length - 1, 2)}}</td>
+                                    <td id="totd" style="text-align: right;">{{-1 * arrTotal(records, records.length -
+                                        1, 1)}}</td>
+                                    <td id="totc" style="text-align: right;">{{arrTotal(records, records.length - 1,
+                                        2)}}</td>
                                     <td id="totb" style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
                                         records.length - 1, 0)}}</td>
                                 </tr>
@@ -84,11 +87,13 @@
                             <thead>
                                 <tr class="main-bg-color">
                                     <th>No</th>
+                                    <th>EN</th>
+                                    <th>VN</th>
                                     <th>Date</th>
+                                    <th>Party Code</th>
                                     <th>Party Name</th>
                                     <th>A/C Code</th>
-                                    <th>Particulars</th>
-                                    <th>Party Code</th>
+                                    <th>A/C Name</th>
                                     <th>Debit Amount</th>
                                     <th>Credit Amount</th>
                                     <th>Balance</th>
@@ -97,15 +102,17 @@
                             <tbody>
                                 <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
+                                    <td>{{rec.entryNo}}</td>
+                                    <td>{{rec.voucherNo}}</td>
                                     <td>{{numToDate(rec.date)}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACName}}</td>
-                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
-                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">_____</td>
