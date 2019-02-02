@@ -55,17 +55,17 @@
                         <tbody>
                             <tr>
                                 <td>Begining Balance</td>
+                                <td id="begc" style="text-align: right;">_____</td>
                                 <td id="begd" style="text-align: right;">{{comNum(begBal + arrTotal(preRecords,
                                     preRecords.length - 1, 0))}}</td>
-                                <td id="begc" style="text-align: right;">_____</td>
                                 <td id="begb" style="text-align: right;">{{comNum(begBal + arrTotal(preRecords,
                                     preRecords.length - 1, 0))}}</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td id="totd" style="text-align: right;">{{comNum(arrTotal(records, records.length - 1,
+                                <td id="totd" style="text-align: right;">{{comNum(-1 * arrTotal(records, records.length - 1,
                                     1))}}</td>
-                                <td id="totc" style="text-align: right;">{{comNum(-1 * arrTotal(records, records.length
+                                <td id="totc" style="text-align: right;">{{comNum(arrTotal(records, records.length
                                     - 1, 2))}}</td>
                                 <td id="totb" style="text-align: right;">{{comNum(begBal + arrTotal(preRecords,
                                     preRecords.length - 1, 0) + arrTotal(records, records.length - 1, 0))}}</td>
