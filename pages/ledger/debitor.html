@@ -4,7 +4,7 @@
             <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 99.5%; margin-top: 4px;">
                 <header class="w3-container main-bg-color div-title clearfix">
                     <div class="clearfix">
-                        <h2 class="ledger-title" style="float: left">Creditor Ledger</h2>
+                        <h2 class="ledger-title" style="float: left">{{title}}</h2>
                         <button id="ctorPrint" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn"
                             disabled><i class="fa fa-print"></i></button>
                     </div>
@@ -218,21 +218,24 @@
 <!-- Pdf print hide table...........end.................. -->
 <script>
     $js('ctorDataForm').focus();
-    var creditorCodes = null;
+    var debitorCodes = null;
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
         getRef('begBalanceCr').set({ value: inBal });
     }
     function ACNameComplete(event) {
         event.target.value = $.trim(event.target.value);
-        let data = creditorCodes.find(function (el) {
-            return el.code == event.target.value;
-        });
-        // $print(data);
-        if (data) {
-            event.target.parentElement.nextElementSibling.lastElementChild.value = data.name;
+        for (i in debitorCodes) {
+            let data = debitorCodes[i].find(function (el) {
+                return el.code == event.target.value;
+            });
+            // $print(data);
+            if (data) {
+                event.target.parentElement.nextElementSibling.lastElementChild.value = data.name;
+                return;
+            }
+            else event.target.parentElement.nextElementSibling.lastElementChild.value = '';
         }
-        else event.target.parentElement.nextElementSibling.lastElementChild.value = '';
     }
     $js("creditorForm").addEventListener("submit", function (event) {
         event.preventDefault();

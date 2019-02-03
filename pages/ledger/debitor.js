@@ -135,7 +135,17 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
         }
         return total;
     }
-    creditorCodes = $firebaseArray(getRef('payables'));
+    debitorCodes = [$firebaseArray(getRef('buyProducts'))];
+    debitorCodes.push($firebaseArray(getRef('buyProducts')));
+    debitorCodes.push($firebaseArray(getRef('buyProducts')));
+    debitorCodes.push($firebaseArray(getRef('companyHeads')));
+    debitorCodes.push($firebaseArray(getRef('contractors')));
+    debitorCodes.push($firebaseArray(getRef('employees')));
+    debitorCodes.push($firebaseArray(getRef('paddyDry')));
+    debitorCodes.push($firebaseArray(getRef('paddyRaw')));
+    debitorCodes.push($firebaseArray(getRef('receivables')));
+    debitorCodes.push($firebaseArray(getRef('rice')));
+    debitorCodes.push($firebaseArray(getRef('truckTrackors')));
 
     function generateMail() {
         let msg = `Your Ledger
