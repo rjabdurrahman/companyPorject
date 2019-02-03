@@ -1,22 +1,22 @@
 <div class="overlay-container">
     <div class="overlay">
-        <form id="debitorForm">
-            <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 99%; margin-top: 18px;">
+        <form id="creditorForm">
+            <div class="div-box w3-light-gray w3-card-4 margin-auto" style="display: block; width: 99.5%; margin-top: 4px;">
                 <header class="w3-container main-bg-color div-title clearfix">
                     <div class="clearfix">
-                        <h2 class="ledger-title" style="float: left">Debitor Ledger</h2>
-                        <button id="dtorPrint" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn" disabled><i
-                                class="fa fa-print"></i></button>
+                        <h2 class="ledger-title" style="float: left">Creditor Ledger</h2>
+                        <button id="ctorPrint" style="margin-right: 12px; float: right;" class="w3-xlarge w3-circle w3-white circle-btn PDF_Btn"
+                            disabled><i class="fa fa-print"></i></button>
                     </div>
                 </header>
                 <div class="w3-container ledger-header flex" style="overflow: auto; white-space: nowrap;">
                     <div>
                         <label>Account Type</label>
-                        <input id="atype" class="w3-input w3-border" type="text" value="Debit" disabled>
+                        <input id="atype" class="w3-input w3-border" type="text" value="Credit" disabled>
                     </div>
                     <div style="width: 500px;">
                         <label>Date From</label>
-                        <input id="dtorDataForm" class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
+                        <input id="ctorDataForm" class="w3-input w3-border" type="text" placeholder="DD-Mon-YY">
                     </div>
                     <div style="width: 500px;">
                         <label>Date To</label>
@@ -24,7 +24,8 @@
                     </div>
                     <div>
                         <label>Account Code</label>
-                        <input id="ACCodeS" class="w3-input w3-border" type="text" value="{{qCode}}">
+                        <input id="ACCodeS" class="w3-input w3-border" type="text" onkeyup="ACNameComplete(event)"
+                            value="{{qCode}}">
                     </div>
                     <div>
                         <label>Account Name</label>
@@ -35,11 +36,11 @@
                         <button ng-click="debitTaker($event);" class="w3-btn main-bg-color">Calculate</button>
                     </div>
                 </div>
-                <div class="clearfix" style="height: 18px;"></div>
+                <div class="clearfix" style="height: 4px;"></div>
             </div>
         </form>
         <!-- Head Table -->
-        <div class="margin-auto" style="width: 99%; margin-top: 18px; margin-bottom: 18px;">
+        <div class="margin-auto" style="width: 99.5%; margin-top: 3px; margin-bottom: 0px;">
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
                     <div class="w3-responsive">
@@ -55,14 +56,17 @@
                             <tbody>
                                 <tr>
                                     <td>Begining Balance</td>
-                                    <td id="begd" style="text-align: right;">{{begBalance[0].$value}}</td>
-                                    <td id="begc" style="text-align: right;">_____</td>
+                                    <td id="begd" style="text-align: right;">_____</td>
+                                    <td id="begc" style="text-align: right;">{{comNum(begBal + arrTotal(preRecords,
+                                        preRecords.length - 1, 0))}}</td>
                                     <td id="begb" style="text-align: right;">{{begBalance[0].$value}}</td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td id="totd" style="text-align: right;">{{arrTotal(records, records.length - 1, 1)}}</td>
-                                    <td id="totc" style="text-align: right;">{{-1 * arrTotal(records, records.length - 1, 2)}}</td>
+                                    <td id="totd" style="text-align: right;">{{-1 * arrTotal(records, records.length -
+                                        1, 1)}}</td>
+                                    <td id="totc" style="text-align: right;">{{arrTotal(records, records.length - 1,
+                                        2)}}</td>
                                     <td id="totb" style="text-align: right;">{{begBalance[0].$value + arrTotal(records,
                                         records.length - 1, 0)}}</td>
                                 </tr>
@@ -73,9 +77,9 @@
             </div>
         </div>
         <!-- Debits Table -->
-        <div class="margin-auto chart-box">
+        <div class="margin-auto chart-box" style="width: 99.5%;">
             <section class="clearfix">
-                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 8px;">Records</label>
+                <label class="ch-title mian-color w3-large ex-font" style="float: left; margin-top: 1px;">Records</label>
             </section>
             <div class="w3-card-4 table-container">
                 <div class="ch-table-content">
@@ -84,11 +88,13 @@
                             <thead>
                                 <tr class="main-bg-color">
                                     <th>No</th>
+                                    <th>EN</th>
+                                    <th>VN</th>
                                     <th>Date</th>
+                                    <th>Party Code</th>
                                     <th>Party Name</th>
                                     <th>A/C Code</th>
-                                    <th>Particulars</th>
-                                    <th>Party Code</th>
+                                    <th>A/C Name</th>
                                     <th>Debit Amount</th>
                                     <th>Credit Amount</th>
                                     <th>Balance</th>
@@ -97,15 +103,17 @@
                             <tbody>
                                 <tr ng-repeat="rec in records track by $index">
                                     <td>{{$index + 1}}</td>
+                                    <td>{{rec.entryNo}}</td>
+                                    <td>{{rec.voucherNo}}</td>
                                     <td>{{numToDate(rec.date)}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACName}}</td>
-                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
-                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">{{rec.debitCredit[0].drAmount}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">_____</td>
@@ -123,14 +131,19 @@
                 </div>
             </div>
         </div>
+        <div ng-show="recShow" class="clearfix">
+            <button ng-click="sendMail();" class="w3-btn main-bg-color" style="float: right; margin-right: 0.5%; margin-bottom: 12px;">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{qEmail}}
+            </button>
+        </div>
         <!-- Debit Table End -->
     </div>
 </div>
 <!-- Pdf print hide table...........start.................. -->
 <div style="display: none;">
-    <table border="1" cellspacing="0" style="visibility: hidden;" id="debitorPdfTable">
+    <table border="1" cellspacing="0" style="visibility: hidden;" id="creditorPdfTable">
         <tr>
-            <td colspan="10" style="text-align: center; height: 50px; font-size: 25px;"><span>DEBITOR LEDGER</span><img
+            <td colspan="10" style="text-align: center; height: 50px; font-size: 25px;"><span>CREDITOR LEDGER</span><img
                     style="width: 50px; height: 50px; float: right;" src="/img/logo3.png"></td>
         </tr>
         <tr>
@@ -204,24 +217,24 @@
 </div>
 <!-- Pdf print hide table...........end.................. -->
 <script>
-    $js('dtorDataForm').focus();
-    var debitorCodes = null;
+    $js('ctorDataForm').focus();
+    var creditorCodes = null;
     function initBalSubmit() {
         let inBal = parseFloat($js('initBalance').value);
-        getRef('begBalance').set({ value: inBal });
+        getRef('begBalanceCr').set({ value: inBal });
     }
     function ACNameComplete(event) {
         event.target.value = $.trim(event.target.value);
-        let data = debitorCodes.find(function (el) {
-            return el.accCode == event.target.value;
+        let data = creditorCodes.find(function (el) {
+            return el.code == event.target.value;
         });
         // $print(data);
         if (data) {
-            event.target.parentElement.nextElementSibling.lastElementChild.value = data.accText;
+            event.target.parentElement.nextElementSibling.lastElementChild.value = data.name;
         }
         else event.target.parentElement.nextElementSibling.lastElementChild.value = '';
     }
-    $js("debitorForm").addEventListener("submit", function (event) {
+    $js("creditorForm").addEventListener("submit", function (event) {
         event.preventDefault();
     });
 
@@ -230,7 +243,7 @@
         location.reload();
         ///--------------------------------
         $js('at').innerHTML = $js('atype').value;
-        $js('df').innerHTML = $js('dtorDataForm').value;
+        $js('df').innerHTML = $js('ctorDataForm').value;
         $js('dt').innerHTML = $js('dateto').value;
         $js('ac').innerHTML = $js('ACCodeS').value;
         $js('an').innerHTML = $js('aname').value;
@@ -242,15 +255,15 @@
         $js('tc').innerHTML = $js('totc').innerHTML;
         $js('tb').innerHTML = $js('totb').innerHTML;
         ///--------------------------------------------
-        $js('debitorPdfTable').style.visibility = "visible";
-        var printme = document.getElementById('debitorPdfTable');
+        $js('creditorPdfTable').style.visibility = "visible";
+        var printme = document.getElementById('creditorPdfTable');
         var wme = window.open("", "", "width=900,height=900");
         wme.document.write(printme.outerHTML);
         wme.document.close();
         wme.focus();
         wme.print();
         wme.close();
-        $js('debitorPdfTable').style.visibility = "hidden";
+        $js('creditorPdfTable').style.visibility = "hidden";
 
     })
     //pdf making and save............................End......................
