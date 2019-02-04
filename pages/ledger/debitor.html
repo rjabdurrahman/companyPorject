@@ -99,6 +99,11 @@
                                     <th>Party Name</th>
                                     <th>A/C Code</th>
                                     <th>A/C Name</th>
+                                    <th>SU</th>
+                                    <th>PS</th>
+                                    <th>NOP</th>
+                                    <th>TQ</th>
+                                    <th>SUP</th>
                                     <th>Debit Amount</th>
                                     <th>Credit Amount</th>
                                     <th>Balance</th>
@@ -118,6 +123,16 @@
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACName}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACName}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[0].stdUnit}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.stdUnit}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.packSize}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.packSize}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.packs}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.packs}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.totalQuantity}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.totalQuantity}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.stdUnitPrice}}</td>
+                                    <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.stdUnitPrice}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">{{comNum(rec.debitCredit[0].drAmount)}}</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">_____</td>
                                     <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">_____</td>
