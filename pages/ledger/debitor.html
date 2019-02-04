@@ -217,6 +217,39 @@
         <tr>
             <td colspan="10" style="text-align: center; height: 30px; font-size: 25px;"><span>RECORDS</span></td>
         </tr>
+        <tr class="main-bg-color">
+            <th>No</th>
+            <th>EN</th>
+            <th>VN</th>
+            <th>Date</th>
+            <th>Party Code</th>
+            <th>Party Name</th>
+            <th>A/C Code</th>
+            <th>A/C Name</th>
+            <th>Debit Amount</th>
+            <th>Credit Amount</th>
+            <th>Balance</th>
+        </tr>
+        <tr ng-repeat="rec in records track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{rec.entryNo}}</td>
+            <td>{{rec.voucherNo}}</td>
+            <td>{{numToDate(rec.date)}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyCode}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyCode}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].partyName}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].partyName}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACCode}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACCode}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]">{{rec.debitCredit[1].ACName}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]">{{rec.debitCredit[0].ACName}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">{{comNum(rec.debitCredit[0].drAmount)}}</td>
+            <td ng-if="rec.sCode == rec.partyCodes[0]" style="text-align: right;">_____</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">_____</td>
+            <td ng-if="rec.sCode == rec.partyCodes[1]" style="text-align: right;">{{comNum(rec.debitCredit[1].crAmount)}}</td>
+            <td style="text-align: right;">{{comNum(begBal + arrTotal(records, $index,
+                0))}}</td>
+        </tr>
     </table>
 </div>
 <!-- Pdf print hide table...........end.................. -->
