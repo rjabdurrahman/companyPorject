@@ -7,6 +7,17 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
     $scope.recShow = false;
     $scope.nodata = false;
     $scope.begBal = 0;
+    debitorCodes = [$firebaseArray(getRef('buyProducts'))];
+    debitorCodes.push($firebaseArray(getRef('buyProducts')));
+    debitorCodes.push($firebaseArray(getRef('buyProducts')));
+    debitorCodes.push($firebaseArray(getRef('companyHeads')));
+    debitorCodes.push($firebaseArray(getRef('contractors')));
+    debitorCodes.push($firebaseArray(getRef('employees')));
+    debitorCodes.push($firebaseArray(getRef('paddyDry')));
+    debitorCodes.push($firebaseArray(getRef('paddyRaw')));
+    debitorCodes.push($firebaseArray(getRef('receivables')));
+    debitorCodes.push($firebaseArray(getRef('rice')));
+    debitorCodes.push($firebaseArray(getRef('truckTrackors')));
     $scope.debitTaker = function (e) {
         let name = e.target.parentElement.previousElementSibling.lastElementChild;
         let code = name.parentElement.previousElementSibling.lastElementChild;
@@ -59,10 +70,17 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
         $scope.records = [];
         $scope.preRecords = [];
         // Begining Balance
-        let ref = firebase.database().ref("payables");
-        ref.orderByChild("code").equalTo(code.value).on("child_added", function (snapshot) {
-            $scope.begBal = snapshot.val().balance;
-        });
+        for (i in debitorCodes) {
+            let data = debitorCodes[i].find(function (el) {
+                return el.code == code.value;
+            });
+            // $print(data);
+            if (data) {
+                $scope.begBal = data.balance;
+                break;
+            }
+            else $scope.begBal = 0;
+        }
         fsDb.collection("JournalForm").where('partyCodes', 'array-contains', code.value).where("date", "<", dateToNum(dateFrom.value)).get()
             .then(function (snapshot) {
                 $scope.recShow = true;
@@ -127,25 +145,14 @@ app.controller('DebitorLedgerCntlr', function ($scope, $firebaseArray) {
         let total = 0;
         for (i = 0; i <= index; i++) {
             if (arr[i].sCode == arr[i].partyCodes[0] && (t == 0 || t == 1)) {
-                total -= arr[i].debitCredit[0].drAmount;
+                total += arr[i].debitCredit[0].drAmount;
             }
             if (arr[i].sCode == arr[i].partyCodes[1] && (t == 0 || t == 2)) {
-                total += arr[i].debitCredit[1].crAmount;
+                total -= arr[i].debitCredit[1].crAmount;
             }
         }
         return total;
     }
-    debitorCodes = [$firebaseArray(getRef('buyProducts'))];
-    debitorCodes.push($firebaseArray(getRef('buyProducts')));
-    debitorCodes.push($firebaseArray(getRef('buyProducts')));
-    debitorCodes.push($firebaseArray(getRef('companyHeads')));
-    debitorCodes.push($firebaseArray(getRef('contractors')));
-    debitorCodes.push($firebaseArray(getRef('employees')));
-    debitorCodes.push($firebaseArray(getRef('paddyDry')));
-    debitorCodes.push($firebaseArray(getRef('paddyRaw')));
-    debitorCodes.push($firebaseArray(getRef('receivables')));
-    debitorCodes.push($firebaseArray(getRef('rice')));
-    debitorCodes.push($firebaseArray(getRef('truckTrackors')));
 
     function generateMail() {
         let msg = `Your Ledger
